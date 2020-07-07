@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container">
+    <form class="form">
+      <div class="form-group">
+        <label for="mainInput">Input name</label>
+        <div class="d-flex justify-content-between">
+          <input type="text" name="" id="" class="form-control mainInput py-4">
+          <button type="submit" class="btn btn-info addbtn ml-2">Add</button>
+        </div>
+      </div>
+    </form>
+    <div class="list-group text-dark"></div>
+
+  </div>
+  <!-- https://www.instagram.com/p/CBGKIFcA445/ -->
+  <script>
+    const form = document.querySelector('form')
+    const list = document.querySelector('.list-group')
+    const input = document.querySelector('.mainInput')
+    const addBtn = document.querySelector('.addBtn')
+    const randomId = () => Math.floor(Math.random() * 10000);
+    let items = [{
+      id: randomId(),
+      text: 'item1'
+    }, ];
+
+    let formStatus = 'add';
+
+    const generateItem = (item) => {
+      const div = document.createElement('div');
+      div.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center');
+      div.id = item.id;
+      const span = document.createElement('span');
+      span.setAttribute('class', 'text');
+      span.innerText = item.text;
+      const div2 = document.createElement('div');
+      const editButton = document.createElement('button');
+      editButton.setAttribute('class', 'btn btn-dark editBtn btn-sm mr-1');
+      editButton.innerText = "Edit";
+
+      const delButton = document.createElement('button');
+      delButton.setAttribute('class', 'btn btn-danger delBtn btn-sm ');
+      delButton.innerText = "Delete";
+      div2.appendChild(editButton)
+      div2.appendChild(delButton)
+      div.appendChild(span)
+      div.appendChild(div2)
+      return div;
+    }
+
+    function showItems() {
+      list.innerHTML = "";
+      items.forEach(item => {
+        list.appendChild(generateItem(item))
+      })
+    }
+    showItems();
+
+    function addItem(item) {
+      const newItem = {
+        id: randomId(),
+        text: item
+      }
+      items.unshift(newItem);
+      input.value = "";
+      showItems();
+    }
+
+    window.addEventListener('click', e => {
+
+      if (e.target.classList.contains('editBtn')) {
+        const item = e.target.parentNode.parentNode;
+        const id = item.id;
+        const text = item.firstChild.innerText;
+        input.value = text;
+        input.id = id;
+        formStatus = "update";
+        addBtn.innerText = "Update";
+      }
+    });
+
+    window.addEventListener('click', e => {
+
+      if (e.target.classList.contains('delBtn')) {
+        const item = e.target.parentNode.parentNode;
+        const id = item.id;
+        items = items.filter(itemObj => Number(itemObj.id) !== Number(id));
+        showItems();
+      }
+    });
+
+    function updateItem(item) {
+      items.forEach(itemObj => {
+        if (Number(itemObj.id) === Number(item.id)) {
+          itemObj.text = item.text;
+        }
+      });
+      input.value = '';
+      formStatus = "add";
+      addBtn.innerText = "add"
+      showItems();
+    }
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (formStatus === 'add' && input.value !== '') {
+        addItem(input.value)
+      }
+      if (formStatus === 'update' && input.value !== '') {
+        updateItem({
+          id: input.id,
+          text: input.value
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>

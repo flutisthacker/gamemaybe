@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    background-color: #16161d;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    background-color: coral;
+    width: 800px;
+    margin: 30px auto;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 3px 3px 35px 10px rgb(15, 134, 179, .5);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 2.6em;
+    text-transform: uppercase;
+  }
+
+  #seconds,
+  #tens,
+  .dots {
+    font-size: 2em;
+    font-weight: 800;
+  }
+
+  button {
+    border-radius: 5px;
+    background: coral;
+    color: #fff;
+    border: solid 1px #fff;
+    cursor: pointer;
+    text-decoration: none;
+    width: 150px;
+    margin: 10px;
+    outline: none;
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 18px 10px;
+  }
+
+  button:hover {
+    transition: all .5s ease-in-out;
+    background: #fff;
+    border: solid 1px #fff;
+    color: coral;
+  }
+</style>
+
+<style>
+  /* typewriter */
+
+  /* body {
+    background: repeating-linear-gradient(#ff6677 5%, transparent 90%, transparent 85%),
+      repeating-linear-gradient(#ff6677 15%, #ff1a57 15%);
+  } */
+
+  .typewriter {
+    color: #ffd700;
+    position: absolute;
+    top: 30%;
+    right: 50%;
+    transform: translate(25%, 5%);
+    font-family: cursive;
+    letter-spacing: .25em;
+    overflow: hidden;
+    border-right: .15em solid #fff;
+    white-space: nowrap;
+    text-shadow: 5px 5px 5px #ffd700;
+    animation: typing 4s steps(30, end) infinite, blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 50%;
+    }
+  }
+
+  /* https://www.instagram.com/p/CAskJ0KgFT6/ */
+</style>
+
+
+<style>
+  .threed {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 70px;
+    color: #e5e5e5;
+    text-shadow: 1px 1px 1px #818181,
+      1px 2px 1px #818181,
+      1px 3px 1px #818181,
+      1px 4px 1px #818181,
+      1px 5px 1px #818181,
+      1px 6px 1px #818181,
+      1px 8px 1px #818181,
+      1px 9px 1px #818181,
+      1px 10px 5px #818181,
+      1px 13px 5px rgba(14, 14, 14, .4),
+      1px 16px 5px rgba(14, 14, 14, .2),
+      1px 18px 5px rgba(14, 14, 14, .2),
+      1px 21px 5px rgba(14, 14, 14, .4);
+  }
+
+  /* https://www.instagram.com/p/CBGC4M-gVoE/ */
+</style>
+
+<style>
+  .ptext {
+    font-size: 150px;
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+  }
+
+  .text {
+    /* color: white; */
+    color: white;
+  }
+
+  .reflection {
+    background: linear-gradient(white, rbga(255, 255, 255, .3));
+    -webkittext-fill-color: transparent;
+    background-clip: text;
+    transform: rotateX(180deg);
+    position: relative;
+    bottom: 65px;
+    border: red;
+  }
+</style>
+
+<body>
+  <div class="wrapper">
+    <h2>
+      <p> saman stop watch</p>
+    </h2>
+    <p>
+      <span id="seconds">00</span><span id="dots">:</span>
+      <span id="tens">00</span>
+    </p>
+    <button id="btn-start">Start</button>
+    <button id="btn-stop">Stop</button>
+    <button id="btn-reset">Reset</button>
+  </div>
+  <h1 class="threed typewriter">stopwatch</h1>
+
+  <div class="main">
+    <p class="ptext text">hello</p>
+    <p class="ptext reflection">hello</p>
+  </div>
+  <script>
+    window.onload = function () {
+      var seconds = 00;
+      var tens = 00;
+      var appendsTens = document.getElementById("tens")
+      var appendsSeconds = document.getElementById("seconds")
+      var btnStart = document.getElementById("btn-start")
+      var btnStop = document.getElementById("btn-stop")
+      var btnReset = document.getElementById("btn-reset")
+      var interval;
+      btnStart.onclick = function () {
+        clearInterval(interval);
+        interval = setInterval(startTimer, 10);
+      }
+
+      btnStop.onclick = function () {
+        clearInterval(interval);
+      }
+      btnReset.onclick = function () {
+        clearInterval(interval);
+        tens = "00";
+        seconds = "00";
+        appendsTens.innerHTML = tens;
+        appendsSeconds.innerHTML = seconds;
+      }
+
+      function startTimer() {
+
+        tens++;
+        if (tens < 9) {
+          appendsTens.innerHTML = "0" + tens;
+        }
+        if (tens > 9) {
+          appendsTens.innerHTML = tens;
+        }
+        if (tens > 99) {
+          console.log("sec");
+          seconds++;
+          appendsTens.innerHTML = "0" + seconds;
+          tens = 0;
+          appendsTens.innerHTML = "0" + 0;
+        }
+        if (seconds > 9) {
+          appendsSeconds.innerHTML = seconds;
+        }
+      }
+
+    }
+  </script>
+</body>
+
+</html>

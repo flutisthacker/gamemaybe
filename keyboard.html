@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .numbers,
+  .letters1,
+  .letters2,
+  .letters3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 3px;
+  }
+
+  .number,
+  .letter1,
+  .letter2,
+  .letter3 {
+    width: 150px;
+    height: 150px;
+    background: #000;
+    color: white;
+    margin: 5px;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  #engtonepali {
+    font-size: 3rem;
+  }
+
+  #nepalitype {
+    font-family: myFirstFont, sans-serif;
+    font-size: 3rem;
+  }
+
+  @font-face {
+    font-family: myFirstFont;
+    src: url(ranjana.woff) format('woff');
+  }
+</style>
+
+<body>
+
+  <div class="numbers">
+    <div class="number" id="tick">`</div>
+    <div class="number" id="one"> 1<span></span></div>
+    <div class="number" id="two">2 <span></span> </div>
+    <div class="number" id="three">3 <span></span> </div>
+    <div class="number" id="four">4 <span></span> </div>
+    <div class="number" id="five">5 <span></span> </div>
+    <div class="number" id="six">6 <span></span> </div>
+    <div class="number" id="seven">7 <span></span> </div>
+    <div class="number" id="eight">8 <span></span> </div>
+    <div class="number" id="nine">9 <span></span> </div>
+    <div class="number" id="zero">0 <span></span> </div>
+    <div class="number" id="dash">-</div>
+    <div class="number" id="eqto">=</div>
+  </div>
+  <div class="letters1">
+    <div class="letter1" id="q">q</div>
+    <div class="letter1" id="w">w</div>
+    <div class="letter1" id="e">e</div>
+    <div class="letter1" id="r">r</div>
+    <div class="letter1" id="t">t</div>
+    <div class="letter1" id="y">y</div>
+    <div class="letter1" id="u">u</div>
+    <div class="letter1" id="i">i</div>
+    <div class="letter1" id="o">o</div>
+    <div class="letter1" id="p">p</div>
+    <div class="letter1" id="bigpl">[</div>
+    <div class="letter1" id="bigpr">]</div>
+  </div>
+  <div class="letters2">
+    <div class="letter2" id="a">a</div>
+    <div class="letter2" id="s">s</div>
+    <div class="letter2" id="d">d</div>
+    <div class="letter2" id="f">f</div>
+    <div class="letter2" id="g">g</div>
+    <div class="letter2" id="h">h</div>
+    <div class="letter2" id="j">j</div>
+    <div class="letter2" id="k">k</div>
+    <div class="letter2" id="l">l</div>
+    <div class="letter2" id="semicolon">;</div>
+    <div class="letter2" id="qoute">'</div>
+    <div class="letter2" id="hash">#</div>
+  </div>
+  <div class="letters3">
+    <div class="letter3" id="fslash">\</div>
+    <div class="letter3" id="z">z</div>
+    <div class="letter3" id="x">x</div>
+    <div class="letter3" id="c">c</div>
+    <div class="letter3" id="v">v</div>
+    <div class="letter3" id="b">b</div>
+    <div class="letter3" id="n">n</div>
+    <div class="letter3" id="m">m</div>
+    <div class="letter3" id="comma">,</div>
+    <div class="letter3" id="dot">.</div>
+    <div class="letter3" id="bslash">/</div>
+  </div>
+  <div class="texts">
+    <textarea name="" id="engtonepali" cols="30" rows="10"></textarea>
+    <textarea name="" id="nepalitype" cols="30" rows="10"></textarea>
+  </div>
+
+</body>
+<script>
+  document.addEventListener("keydown", keyDownTextField, false);
+  document.addEventListener("keydown", bothanb, false);
+  var changed = false;
+  var prevStrs = [];
+  var prevStr = "";
+  var nepali1 = ["ञ", "ज्ञ", "घ", "ङ", "झ", "छ", "ट", "ठ", "ड", "ढ", "ण", "(", "."]
+  var nepali11 = ["ञ्", "१", "२", "३", "४", "५", "६", "७", "८", "९", "०", ")", "ं"]
+  var english1 = ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="]
+  var englishid2 = ["#q",
+    "#w",
+    "#e",
+    "#r",
+    "#t",
+    "#y",
+    "#u",
+    "#i",
+    "#o",
+    "#p",
+    "#bigpl",
+    "#bigpr"
+  ]
+  var english2 = ["q",
+    "w",
+    "e",
+    "r",
+    "t",
+    "y",
+    "u",
+    "i",
+    "o",
+    "p",
+    "[",
+    "]"
+  ]
+  var nepali2 = ["त्र", "ध", "भ", "च", "त", "थ", "ग", "ष", "य", "उ", "ृ", "े"];
+  var englishid1 = ["#tick",
+    "#one",
+    "#two",
+    "#three",
+    "#four",
+    "#five",
+    "#six",
+    "#seven",
+    "#eight",
+    "#nine",
+    "#zero",
+    "#dash",
+    "#eqto"
+  ];
+  var english3 = [
+    "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "#"
+  ]
+  var englishid3 = [
+    "#a", "#s", "#d", "#f", "#g", "#h", "#j", "#k", "#l", "#semicolon", "#qoute", "#hash"
+  ]
+
+  var nepali3 = [
+    "ब", "क", "म", "ा", "न", "ज", "व", "प", "ि", "स", "ु", " ु", "र"
+  ];
+  var english1 = ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="];
+  var english4 = ["\\",
+    "z",
+    "x",
+    "c",
+    "v",
+    "b",
+    "n",
+    "m",
+    ",",
+    ".",
+    "/"
+  ];
+  var englishid4 = ["#fslash",
+    "#z",
+    "#x",
+    "#c",
+    "#v",
+    "#b",
+    "#n",
+    "#m",
+    "#comma",
+    "#dot",
+    "#bslash"
+  ];
+
+  var nepali4 = [" ",
+    "श",
+    "ह",
+    "अ",
+    "ख",
+    "द",
+    "ल",
+    "फ",
+    ",",
+    "।",
+    "र"
+  ];
+
+  function bothanb(e) {
+    if (e.keyCode == 116) {
+      location.reload()
+    }
+    if (e.keyCode == 16 || e.keyCode == 17 || e.keyCode == 18 || e.keyCode == 37 || e.keyCode == 38 ||
+      e.keyCode == 39) {
+      document.querySelector('#engtonepali').value = "";
+      document.querySelector('#nepalitype').value = "";
+
+    } else if (e.keyCode == 8) {
+      prev = prevStr.slice(0, (prevStrs.length - 1))
+      prevStrs.pop();
+      console.log(prev)
+      document.querySelector('#engtonepali').value = prev;
+      document.querySelector('#nepalitype').value = prev;
+    } else {
+      document.querySelector('#engtonepali').value += e.key;
+      document.querySelector('#nepalitype').value += e.key;
+      prevStrs.push(e.key)
+      prevStr += e.key
+    }
+  }
+
+  function clearbg() {
+    for (var i = 0; i < english1.length; i++) {
+      document.querySelector(englishid1[i]).style = "color:white"
+    }
+
+    for (var i = 0; i < english2.length; i++) {
+      document.querySelector(englishid2[i]).style = "color:white"
+    }
+    for (var i = 0; i < english3.length; i++) {
+      document.querySelector(englishid3[i]).style = "color:white"
+    }
+    for (var i = 0; i < english4.length; i++) {
+      document.querySelector(englishid4[i]).style = "color:white"
+    }
+  }
+
+  function findnepali(key) {
+    for (var i = 0; i < english1.length; i++) {
+      if (key == english1[i]) {
+        document.querySelector(englishid1[i]).style = "color:red"
+      }
+    }
+    for (var i = 0; i < english2.length; i++) {
+      if (key == english2[i]) {
+        document.querySelector(englishid2[i]).style = "color:red"
+      }
+    }
+    for (var i = 0; i < english3.length; i++) {
+      if (key == english3[i]) {
+        document.querySelector(englishid3[i]).style = "color:red"
+      }
+    }
+    for (var i = 0; i < english4.length; i++) {
+      if (key == english4[i]) {
+        document.querySelector(englishid4[i]).style = "color:red"
+      }
+    }
+  }
+
+  function keyDownTextField(e) {
+    clearbg();
+    console.log(e.shiftKey, e.which, e.key)
+    findnepali(e.key);
+    var keyCode = e.keyCode;
+
+    if (keyCode == 37) {
+      //nepali
+      for (var i = 0; i < englishid1.length; i++) {
+        document.querySelector(englishid1[i]).innerHTML = nepali1[i];
+      }
+      for (var i = 0; i < englishid2.length; i++) {
+        document.querySelector(englishid2[i]).innerHTML = nepali2[i];
+      }
+      for (var i = 0; i < englishid3.length; i++) {
+        document.querySelector(englishid3[i]).innerHTML = nepali3[i];
+
+      }
+      for (var i = 0; i < englishid4.length; i++) {
+        document.querySelector(englishid4[i]).innerHTML = nepali4[i];
+      }
+    }
+    if (keyCode == 38) {
+      for (var i = 0; i < englishid1.length; i++) {
+        document.querySelector(englishid1[i]).innerHTML = english1[i];
+      }
+      for (var i = 0; i < englishid2.length; i++) {
+        document.querySelector(englishid2[i]).innerHTML = english2[i];
+      }
+      for (var i = 0; i < englishid3.length; i++) {
+        document.querySelector(englishid3[i]).innerHTML = english3[i];
+      }
+      for (var i = 0; i < englishid4.length; i++) {
+        document.querySelector(englishid4[i]).innerHTML = english4[i];
+      }
+    }
+    if (keyCode == 39) {
+      for (var i = 0; i < englishid1.length; i++) {
+        if (changed == false) {
+          document.querySelector(englishid1[i]).innerHTML = nepali11[i];
+        } else {
+          document.querySelector(englishid1[i]).innerHTML = english1[i];
+        }
+      }
+
+    }
+  }
+
+  if (e.shiftKey) {
+    changed = true;
+  } else {
+    changed = false
+  }
+</script>
+
+</html>

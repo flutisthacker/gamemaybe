@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<style>
+  .img-shadow {
+    filter: drop-shadow(15px 15px 4px gray);
+    /* box-shadow: 12px 12px 2px 2px gray; */
+    width: 500px;
+    height: 500px;
+  }
+
+  div.ex1 {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+
+  .img {
+    width: 400px;
+    height: 400px;
+    /* background: url("../cssPractice/cat1.jpg"), linear-gradient(90deg, blue red); */
+    background: url("../cssPractice/cat1.jpg"), red;
+    background-size: cover;
+    object-fit: center;
+    background-position: center;
+    /* background-blend-mode: multiply; */
+    background-clip: border-box;
+    /* background-origin:content-box; */
+    transition: all .5s ease;
+    transform: translate(15%, 15%);
+  }
+</style>
+
+<body>
+  <div class="row">
+    <!-- <div class="img" id="img"></div> -->
+
+    <div class="col-lg-6">
+      <div class="img-shadow">
+
+        <div class="img" id="img"></div>
+      </div>
+    </div>
+    <div class="row col-lg-6">
+      <table>
+        <tr>
+          <td> <button id="addpoly" class="btn btn-outline-primary">polygon+</button>
+          </td>
+          <td>
+            <input type="checkbox" name="audiocheck" id="audiocheck">
+            <label for="audiocheck">Turn on audio</label>
+          </td>
+          <td>
+            <select name="" id="mySelect">
+              <option value="nonagon">nonagon</option>
+              <option value="hexagon">hexagon</option>
+              <option value="decagon">decagon</option>
+              <option value="octagon">octagon</option>
+              <option value="heptagon">heptagon</option>
+              <option value="pentagon">pentagon</option>
+              <option value="message">message</option>
+              <option value="triangle">triangle</option>
+              <option value="rhombus">rhombus</option>
+              <option value="star">star</option>
+              <option value="close">close</option>
+              <option value="rabbet">rabbet</option>
+              <option value="plus">plus</option>
+              <option value="frame">frame</option>
+              <option value="left">left</option>
+              <option value="right">right</option>
+              <option value="leftpoint">leftpoint</option>
+              <option value="rightpoint">rightpoint</option>
+              <option value="leftchevron">leftchevron</option>
+              <option value="rightchevron">rightchevron</option>
+              <option value="sixstar">sixstar</option>
+            </select></td>
+          <td>
+            <select name="" id="myBlend">
+              <option value="multiply">multiply</option>
+              <option value="screen">screen</option>
+              <option value="darken">darken</option>
+              <option value="lighten">lighten</option>
+              <option value="color-dodge">color-dodge</option>
+              <option value="saturation">saturation</option>
+              <option value="luminosity">luminosity</option>
+              <option value="color">color</option>
+              <option value="overlay">overlay</option>
+              <option value="normal" selected>normal</option>
+            </select></td>
+        </tr>
+
+      </table>
+      <p class="col-lg-6 text" id="myCode">
+      </p>
+      <p class="col-lg-6 text" id="myValue">
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <table class="table table-hover">
+        <tr>
+          <td>circle
+            <input type="range" class="trans" id="circle" min="0" max="100" value="0">
+          </td>
+          <td>circle1
+            <input type="range" class="trans" id="circle1" min="0" max="100" value="50">
+          </td>
+          <td>circle2
+            <input type="range" class="trans" id="circle2" min="0" max="100" value="50">
+          </td>
+        </tr>
+
+        <tr>
+          <td>Ellipse1<input type="range" class="trans" id="ellipse1" min="0" max="100" value="100"></td>
+          <td>Ellipse2<input type="range" class="trans" id="ellipse2" min="0" max="100" value="100"></td>
+          <td>Ellipse3<input type="range" class="trans" id="ellipse3" min="0" max="100" value="100"></td>
+          <td>Ellipse4<input type="range" class="trans" id="ellipse4" min="0" max="100" value="100"></td>
+        </tr>
+        <tr>
+          <td>Inset1<input type="range" class="trans" id="inset1" min="0" max="100" value="0"></td>
+          <td>Inset2<input type="range" class="trans" id="inset2" min="0" max="100" value="0"></td>
+          <td>Inset3<input type="range" class="trans" id="inset3" min="0" max="100" value="0"></td>
+          <td>Inset4<input type="range" class="trans" id="inset4" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>left to right<input type="range" class="trans" id="bgpos1" min="0" max="100" value="0"></td>
+          <td>top to bottom<input type="range" class="trans" id="bgpos2" min="0" max="100" value="0"></td>
+        </tr>
+        <tr id="mypolygons">
+          <td>X1:<input type="range" class="polygon" id="polygon1" min="0" max="100" value="100"></td>
+          <td>Y2:<input type="range" class="polygon" id="polygon2" min="0" max="100" value="100"></td>
+          <td>X3:<input type="range" class="polygon" id="polygon3" min="0" max="100" value="100"></td>
+          <td>Y4:<input type="range" class="polygon" id="polygon4" min="0" max="100" value="100"></td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</body>
+
+<script>
+  var myCode = document.querySelector('#myCode');
+  var myValue = document.querySelector('#myValue');
+  var img = document.querySelector('#img');
+
+  function randombg() {
+    var bgs = ["cat1.jpg", "cat2.jpg", "cat3.jpg", "cat4.jpg", "cat5.jpg", "cat6.jpg", "cat7.jpg"];
+    console.log(Math.floor(Math.random() * 5));
+    img.style = `background:url('../cssPractice/${bgs[Math.floor(Math.random() * 5)]}')`;
+  }
+  // randombg();
+  var mySelect = document.querySelector('#mySelect');
+  var myBlend = document.querySelector('#myBlend');
+  var circle = document.querySelector('#circle');
+  var circle1 = document.querySelector('#circle1');
+  var circle2 = document.querySelector('#circle2');
+  var ellipse1 = document.querySelector('#ellipse1');
+  var ellipse2 = document.querySelector('#ellipse2');
+  var ellipse3 = document.querySelector('#ellipse3');
+  var ellipse4 = document.querySelector('#ellipse4');
+  var polygon1 = document.querySelector('#polygon1');
+  var polygon2 = document.querySelector('#polygon2');
+  var polygon3 = document.querySelector('#polygon3');
+  var polygon4 = document.querySelector('#polygon4');
+  var inset1 = document.querySelector('#inset1');
+  var inset2 = document.querySelector('#inset2');
+  var inset3 = document.querySelector('#inset3');
+  var inset4 = document.querySelector('#inset4');
+  var bgpos1 = document.querySelector('#bgpos1');
+  var bgpos2 = document.querySelector('#bgpos2');
+  var mypolygons = document.querySelector('#mypolygons');
+  var audiocheck = document.querySelector('#audiocheck');
+  var addpoly = document.querySelector('#addpoly');
+
+
+
+  function changeRadio() {
+    for (var i = 0; i < audiocheck.length; i++) {
+      if (audiocheck[i].checked) {
+        radio = audiocheck[i].value;
+        constraints.audio = false;
+        startup();
+      }
+    }
+    tdiv.style.transformOrigin = radio;
+  }
+
+  //   circle(40%)
+  // circle(20%)
+  // ellipse(25% 40% at 50% 50%)
+  // ellipse(25% 25% at 50% 50%)
+  // polygon(50% 0%, 0% 100%, 100% 100%)
+  // polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)
+  // inset(5% 20% 15% 10%)
+  // clip-path: inset(50px 60px 20px 20px);
+  /* clip-path: circle(90px at 170px 95px); */
+  /* clip-path: polygon(50% 0%, 100% 50%, 50%, 100%, 0% 50%); */
+  // rect(110px, 160px, 170px, 60px);
+  addpoly.addEventListener("click", () => {
+    td1 = document.createElement("td1");
+    var addp = document.querySelectorAll('.polygon');
+    td2 = document.createElement("td2");
+    td3 = document.createElement("td1");
+    td4 = document.createElement("td2");
+    newpolygon = document.createElement("input");
+    newpolygon1 = document.createElement("input");
+    newpolygon.type = "range";
+    newpolygon1.type = "range";
+    newpolygon.id = "polygon" + (addp.length + 1).toString()
+    newpolygon1.id = "polygon" + (addp.length + 2).toString()
+    newpolygon.min = 0;
+    newpolygon1.min = 0;
+    newpolygon.value = 100;
+    newpolygon1.value = 100;
+    newpolygon.max = 100;
+    newpolygon1.max = 100;
+    newpolygon.className = "polygon";
+    newpolygon1.className = "polygon";
+    td1.appendChild(newpolygon)
+    td3.innerTEXT = newpolygon.id
+    td2.appendChild(newpolygon1)
+    td4.innerTEXT = newpolygon1.id;
+    // newpolygon.addEventListener("change", () => {
+    //   img.style =
+    //     `clip-path:polygon(${polygon1.value}% ${polygon2.value}% ,${polygon3.value}% ${polygon4.value}% , ${newpolygon.value} ${newpolygon1.value} )`;
+    //   console.log("change")
+    // });
+    // newpolygon1.addEventListener("change", () => {
+    //   img.style =
+    //     `clip-path:polygon(${polygon1.value}% ${polygon2.value}% ,${polygon3.value}% ${polygon4.value}% , ${newpolygon.value} ${newpolygon1.value} )`;
+    //   console.log("change")
+
+    // });
+    mypolygons.appendChild(td1);
+    mypolygons.appendChild(td2);
+
+    polyevent();
+
+  });
+
+  function polyevent() {
+    var addp = document.querySelectorAll('.polygon');
+    for (var i = 0; i < addp.length; i++) {
+      let addpstr = "";
+      console.log(addp[i])
+      addp[i].addEventListener("change", () => {
+        for (var j = 0; j < addp.length; j++) {
+          if (j % 2 == 0) {
+            addpstr += addp[j].value + "% "
+          }
+          if (j == addp.length) {
+            addpstr += addp[j].value + "%"
+          }
+          if (j % 2 != 0) {
+            console.log(addpstr)
+            addpstr += addp[j].value + "%,"
+          }
+        }
+        addpstr = addpstr.slice(0, (addpstr.length - 1))
+        img.style = `clip-path:polygon(${
+          addpstr})`;
+        myCode.innerHTML = `clip-path:polygon(${addpstr})`;
+
+        if (i == addp.length - 1) {
+          addpstr = null;
+        }
+      });
+    }
+  }
+  audiocheck.addEventListener("change", () => {
+    if (audiocheck == false) {
+      constraints.audio = false;
+      startup();
+    } else {
+      constraints.audio = true;
+      startup();
+    }
+  });
+
+  myBlend.addEventListener("change", () => {
+    console.log(myBlend.value);
+    img.style =
+      "background-blend-mode:" + myBlend.value
+    myCode.innerHTML =
+      "background-blend-mode:" + myBlend.value
+  });
+
+  mySelect.addEventListener("change", () => {
+    console.log(mySelect.value);
+    switch (mySelect.value) {
+      case "nonagon":
+        img.style =
+          "clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);"
+        myCode.innerHTML =
+          "clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);"
+        break;
+      case "heptagon":
+        img.style =
+          "clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);"
+        myCode.innerHTML =
+          "clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);"
+        break;
+      case "octagon":
+        img.style =
+          "clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);"
+        myCode.innerHTML =
+          "clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);"
+        break;
+      case "hexagon":
+        img.style =
+          "clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);"
+        myCode.innerHTML =
+          "clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);"
+        break;
+      case "pentagon":
+        img.style =
+          "clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);"
+        myCode.innerHTML =
+          "clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);"
+        break;
+      case "decagon":
+        img.style =
+          "clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);"
+        myCode.innerHTML =
+          "clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);"
+        break;
+      case "triangle":
+        img.style =
+          "clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"
+        myCode.innerHTML =
+          "clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"
+        break;
+      case "message":
+        img.style =
+          "clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);"
+        myCode.innerHTML =
+          "clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);"
+        break;
+      case "close":
+        img.style =
+          "clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);"
+        myCode.innerHTML =
+          "clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);"
+        break;
+      case "rhombus":
+        img.style =
+          "clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"
+        myCode.innerHTML =
+          "clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"
+        break;
+      case "star":
+        img.style =
+          "clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"
+        myCode.innerHTML =
+          "clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"
+        break;
+      case "rabbet":
+        img.style =
+          "clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);"
+        myCode.innerHTML =
+          "clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);"
+        break;
+      case "plus":
+        img.style =
+          img.style =
+          "clip-path: polygon(0% 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0% 65%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(0% 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0% 65%);"
+        break;
+      case "left":
+        img.style =
+          img.style =
+          "clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);"
+        break;
+      case "right":
+        img.style =
+          img.style =
+          "clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);"
+        break;
+      case "leftpoint":
+        img.style =
+          img.style =
+          "clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);"
+        break;
+      case "rightpoint":
+        img.style =
+          img.style =
+          "clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);"
+        break;
+      case "leftchevron":
+        img.style =
+          img.style =
+          "clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);"
+        break;
+      case "rightchevron":
+        img.style =
+          img.style =
+          "clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);"
+        break;
+      case "frame":
+        img.style =
+          img.style =
+          "clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);"
+        break;
+      case "cross":
+        img.style =
+          img.style =
+          "clip-path: polygon(10% 25%, 35% 25%, 35% 0%, 65% 0%, 65% 25%, 90% 25%, 90% 50%, 65% 50%, 65% 100%, 35% 100%, 35% 50%, 10% 50%);"
+        myCode.innerHTML =
+          img.style =
+          "clip-path: polygon(10% 25%, 35% 25%, 35% 0%, 65% 0%, 65% 25%, 90% 25%, 90% 50%, 65% 50%, 65% 100%, 35% 100%, 35% 50%, 10% 50%);"
+        break;
+      case "sixstar":
+        img.style =
+          "clip-path: polygon(50% 0%,65% 25%, 100% 25%, 75% 50%,100% 75%, 65% 75%, 50% 100%,35% 75%, 0% 75%, 25% 50%,0% 25%, 35% 25%) "
+        myCode.innerHTML =
+          "clip-path: polygon(50% 0%,65% 25%, 100% 25%, 75% 50%,100% 75%, 65% 75%, 50% 100%,35% 75%, 0% 75%, 25% 50%,0% 25%, 35% 25%) "
+        break;
+
+
+    }
+  });
+  circle.addEventListener("change", () => {
+    img.style = `clip-path:circle(${circle.value}% at ${circle1.value}% ${circle2.value}%)`;
+    myCode.innerHTML = `clip-path:circle(${circle.value}% at ${circle1.value}% ${circle2.value}%)`;
+    myValue.innerHTML = circle.value;
+
+  });
+  circle1.addEventListener("change", () => {
+    img.style = `clip-path:circle(${circle.value}% at ${circle1.value}% ${circle2.value}%)`;
+    myCode.innerHTML = `clip-path:circle(${circle.value}% at ${circle1.value}% ${circle2.value}%)`;
+    myValue.innerHTML = circle1.value;
+  });
+  circle2.addEventListener("change", () => {
+    img.style = `clip-path:circle(${circle.value}% at ${circle1.value}% ${circle2.value}%)`;
+    myCode.innerHTML = `clip-path:circle(${circle.value}% at ${circle1.value}% ${circle2.value}%)`;
+    myValue.innerHTML = circle2.value;
+  });
+  ellipse1.addEventListener("change", () => {
+    img.style = `clip-path:ellipse(${ellipse1.value}% ${ellipse2.value}% at ${ellipse3.value}% ${ellipse4.value}%)`;
+    myCode.innerHTML =
+      `clip-path:ellipse(${ellipse1.value}% ${ellipse2.value}% at ${ellipse3.value}% ${ellipse4.value}%)`;
+    myValue.innerHTML = ellipse1.value;
+  });
+  ellipse2.addEventListener("change", () => {
+    img.style = `clip-path:ellipse(${ellipse1.value}% ${ellipse2.value}% at ${ellipse3.value}% ${ellipse4.value}%)`;
+    myCode.innerHTML =
+      `clip-path:ellipse(${ellipse1.value}% ${ellipse2.value}% at ${ellipse3.value}% ${ellipse4.value}%)`;
+    myValue.innerHTML = ellipse2.value;
+  });
+  ellipse3.addEventListener("change", () => {
+    img.style = `clip-path:ellipse(${ellipse1.value}% ${ellipse2.value}% at ${ellipse3.value}% ${ellipse4.value}%)`;
+    myCode.innerHTML =
+      `clip-path:ellipse(${ellipse1.value}% ${ellipse2.value}% at ${ellipse3.value}% ${ellipse4.value}%)`;
+    myValue.innerHTML = ellipse3.value;
+  });
+  ellipse4.addEventListener("change", () => {
+    img.style = `clip-path:ellipse(${ellipse1.value}% ${ellipse2.value}% at ${ellipse3.value}% ${ellipse4.value}%)`;
+    myCode.innerHTML =
+      `clip-path:ellipse(${ellipse1.value}% ${ellipse2.value}% at ${ellipse3.value}% ${ellipse4.value}%)`;
+    myValue.innerHTML = ellipse4.value;
+  });
+
+  inset1.addEventListener("change", () => {
+    img.style = `clip-path:inset(${inset1.value}% ${inset2.value}% ${inset3.value}% ${inset4.value}%)`;
+    myCode.innerHTML =
+      `clip-path:inset(${inset1.value}% ${inset2.value}% ${inset3.value}% ${inset4.value}%)`;
+    myValue.innerHTML = inset1.value;
+  });
+  inset2.addEventListener("change", () => {
+    img.style = `clip-path:inset(${inset1.value}% ${inset2.value}% ${inset3.value}% ${inset4.value}%)`;
+    myCode.innerHTML =
+      `clip-path:inset(${inset1.value}% ${inset2.value}% ${inset3.value}% ${inset4.value}%)`;
+    myValue.innerHTML = inset2.value;
+  });
+  inset3.addEventListener("change", () => {
+    img.style = `clip-path:inset(${inset1.value}% ${inset2.value}% ${inset3.value}% ${inset4.value}%)`;
+    myCode.innerHTML =
+      `clip-path:inset(${inset1.value}% ${inset2.value}% ${inset3.value}% ${inset4.value}%)`;
+    myValue.innerHTML = inset3.value;
+  });
+  inset4.addEventListener("change", () => {
+    img.style = `clip-path:inset(${inset1.value}% ${inset2.value}% ${inset3.value}% ${inset4.value}%)`;
+    myCode.innerHTML = `clip-path:inset(${inset1.value}% ${inset2.value}% ${inset3.value}% ${inset4.value}%)`;
+    myValue.innerHTML = inset4.value;
+  });
+  bgpos1.addEventListener("change", () => {
+    img.style = `background-position:${bgpos1.value}% ${bgpos2.value}% `;
+    myCode.innerHTML =
+      `background-position:${bgpos1.value}% ${bgpos2.value}% `;
+    myValue.innerHTML = bgpos1.value;
+  });
+  bgpos2.addEventListener("change", () => {
+    img.style = `background-position:${bgpos1.value}% ${bgpos2.value}% `;
+    myCode.innerHTML =
+      `background-position:${bgpos1.value}% ${bgpos2.value}% `;
+    myValue.innerHTML = bgpos2.value;
+  });
+</script>
+
+</html>

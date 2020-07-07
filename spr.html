@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #119292;
+    /* 119292 */
+  }
+
+  .container p {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: -5px;
+    margin: 5px;
+  }
+
+  .container ul {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    box-shadow: 3px 3px 25px 15px gray;
+  }
+
+  .container ul li {
+    margin: 25px;
+    width: 25%;
+    border-radius: 50%;
+    background: #16161d;
+    padding: 25px;
+  }
+
+  .container ul li i {
+    font-size: 5rem;
+    color: #119292;
+    padding: 20px;
+    transition: all .9s ease;
+    /* animation: fade-down .9s ease forwards; */
+    border-radius: 50%;
+  }
+
+
+  .container ul li:hover i {
+    color: #ee6d6d;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <ul>
+      <li class="enemygame" id="xrock"><i class="fas fa-hand-rock"></i></li>
+      <li class="enemygame" id="xpaper"><i class="fas fa-hand-paper"></i></li>
+      <li class="enemygame" id="xscissors"><i class="fas fa-hand-scissors"></i></li>
+      <p id="escore">0
+    </ul>
+    <p id="declare">
+      status
+    </p>
+    <p id="enemy">compitators move</p>
+    <ul>
+      <li class="game" id="rock"><i class="fas fa-hand-rock"></i></li>
+      <li class="game" id="paper"><i class="fas fa-hand-paper"></i></li>
+      <li class="game" id="scissors"><i class="fas fa-hand-scissors"></i></li>
+      <p id="score">0
+    </ul>
+    </p>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  var probality = ["scissors", "paper", "rock"]
+  var enemyid = ["#xscissors i", "#xpaper i", "#xrock i"]
+  score = 0;
+  escore = 0;
+  var game = document.querySelectorAll(".game")
+
+  function clearcolor() {
+    for (var i = 0; i < enemyid.length; i++) {
+      $(enemyid[i]).css("color", "#119292");
+    }
+  }
+  $('.game').click(function () {
+    clearcolor()
+    var computerchoose = Math.floor(Math.random() * 3);
+    var pcc = probality[computerchoose];
+    var ecc = enemyid[computerchoose]
+    $("#enemy").text("Compitater chooses " + pcc);
+    $(ecc).css("color", "#ee6d6d");
+
+    console.log("me" + $(this).attr("id"))
+    console.log("enemy" + pcc)
+    console.log("enemy" + ecc)
+
+    switch ($(this).attr("id")) {
+      case "rock":
+        if (pcc == $(this).attr("id")) {
+          document.querySelector("#declare").innerHTML = "you are in draw ";
+          break;
+        }
+        if (pcc == "papper") {
+          document.querySelector("#declare").innerHTML = "you loose ";
+          escore += 1;
+          // score -= 1;
+          $("#escore").text(escore);
+          break;
+        }
+        if (pcc == "scissors") {
+          document.querySelector("#declare").innerHTML = "you win ";
+          score += 1;
+          $("#score").text(score);
+          break;
+        }
+        break;
+      case "paper":
+        if (pcc == $(this).attr("id")) {
+          document.querySelector("#declare").innerHTML = "you are in draw ";
+          break;
+        } else {
+          if (pcc == "rock") {
+            document.querySelector("#declare").innerHTML = "you win ";
+            score += 1;
+            $("#score").text(score);
+            break;
+          }
+          if (pcc == "scissors") {
+            document.querySelector("#declare").innerHTML = "you loose ";
+            escore += 1;
+            $("#escore").text(escore);
+            break;
+          }
+          break;
+        }
+        break;
+      case "scissors":
+        if (pcc == $(this).attr("id")) {
+          document.querySelector("#declare").innerHTML = "you are in draw ";
+          break;
+        } else {
+          if (pcc == "rock") {
+            document.querySelector("#declare").innerHTML = "you loose ";
+            escore += 1;
+            $("#escore").text(escore);
+            break;
+          }
+          if (pcc == "papper") {
+            document.querySelector("#declare").innerHTML = "you win ";
+            score += 1;
+            $("#score").text(score);
+            break;
+          }
+          break;
+        }
+        break;
+    }
+  });
+  for (var i = 0; i < game.length; i++) {
+    // game[i].addEventListener("click", (e) => {
+    //   var computerchoose = Math.floor(Math.random() * 3);
+    //   console.log(probality[computerchoose])
+    //   document.querySelector("#enemy").innerHTML = "Compitater chooses " + probality[computerchoose];
+    //   console.log("clicked");
+    //   console.log(e.srcElement.id);
+    //   if (probality[computerchoose] == e.srcElement.id) {
+    //     document.querySelector("#score").innerHTML = "you are in draw ";
+
+    //   }
+    // });
+  }
+</script>
+
+</html>

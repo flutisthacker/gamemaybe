@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<style>
+  .compass g {
+    transform-origin: center;
+  }
+</style>
+
+<body>
+
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-6 mx-auto">
+        <h3 class="text-center mb-5">List visitor</h3>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col">NO</th>
+            <th class="col">name</th>
+            <th class="col">age</th>
+            <th class="col">job</th>
+          </tr>
+        </thead>
+        <tbody id="visitor-table">
+
+        </tbody>
+      </table>
+      <div class="empty text-center"></div>
+    </div>
+  </div>
+
+  <script>
+    localStorage.setItem('name', 'jhon doe');
+    const savedName = localStorage.getItem('name');
+    console.log(savedName);
+
+    let visitor = [{
+        name: "john",
+        age: 20,
+        job: "Front End deceloper"
+      },
+      {
+        name: "Richsar",
+        age: 50,
+        job: "back End deceloper"
+      }
+    ];
+    localStorage.setItem("visitor", JSON.stringify(visitor));
+    const savedVisitior = JSON.parse(localStorage.getItem("visitor"));
+    console.log(savedVisitior);
+
+    const visitorstable = document.getElementById("visitor-table");
+    const emptyEl = document.querySelector(".empty");
+    renderVisitors();
+
+    function renderVisitors() {
+      let visitorHtml = '';
+      if (savedVisitior) {
+        savedVisitior.forEach((visitor, index) => {
+          visitorHtml += `<tr>
+            <th scope = "row" > ${index + 1} </th>
+            <td>${visitor.name}</td>
+            <td>${visitor.age}</td>
+            <td>${visitor.job}</td>
+            </tr>`;
+          console.log(visitorHtml);
+        });
+        visitorstable.innerHTML = visitorHtml;
+        emptyEl.innerHTML = "";
+      } else {
+        emptyEl.innerHTML = `<p> NO stored data</p>`
+      }
+
+    }
+  </script>
+</body>
+
+</html>

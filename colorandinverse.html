@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<style>
+  body {
+    scroll-behavior: smooth;
+  }
+
+  .input-color-container {
+    position: relative;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border: solid 2px #ddd;
+    border-radius: 40px;
+  }
+
+  input[type="color"] {
+    -webkit-appearance: none;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 96px;
+    height: 96px;
+    border: none;
+  }
+
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  input[type="color"]::-webkit-color-swatch {
+    border: none;
+  }
+
+  .color-text {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #3498db;
+  }
+
+  #colorhex {
+    color: #16161d;
+  }
+
+  .inverseCol {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+<body>
+  <div class="inverseCol">
+    <div class="input-color-container">
+      <a href="www.pinetools.com">for colorss</a>
+      <input type="color" value="#000000" id="color">
+    </div>
+    <label for="color" class="colortext">Color Hex code</label>
+    <div id="colortable">
+    </div>
+    <div class="row col-12" id="video">
+      <div class="col-6">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Hex code</th>
+              <th scope="col">Color</th>
+            </tr>
+          </thead>
+          <tbody id="addcolor"></tbody>
+        </table>
+
+      </div>
+      <div class="col-6">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Hex code</th>
+              <th scope="col">Inverse Color</th>
+            </tr>
+          </thead>
+          <tbody id="addinverse"></tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+  <iframe src="generatecolor.html" width="100%" height="1024px" frameborder="0"></iframe>
+  <iframe src="dynamicgradient.html" width="100%" height="1024px" frameborder="0"></iframe>
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded mr-2" alt="...">
+      <strong class="mr-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    document.getElementById('video').requestFullscreen().catch((err) => console.log("couldnt open in fullscreen"))
+
+    var table = document.querySelector('#colortable');
+    color.addEventListener("change", syncColors);
+
+    function syncColors() {
+      Icolor = invertcolor(color.value);
+
+      var colortbody = `          <tr>
+            <td scope="col">${color.value}</td>
+            <td scope="col" style="background-color:${color.value}"></td>
+          </tr>
+      `
+      document.querySelector('#addcolor').innerHTML += colortbody;
+      var inversetbody = `          <tr>
+            <td scope="col">${Icolor}</td>
+            <td scope="col" style="background-color:${Icolor}"></td>
+          </tr>
+      `
+      document.querySelector('#addinverse').innerHTML += inversetbody;
+      $(".toast").toast('show');
+      //   var colorItem = `<div style="display:inline">
+
+      //   <div>${color.value}
+      //     <input type="color" value="${color.value}"></div>
+      // </div>`;
+      //   var inverseItem = `<div style="display:inline">
+
+      //   <div>${Icolor}
+      //     <input type="color" value="${Icolor}"></div>
+      // </div>`;
+
+      //   table.innerHTML += colorItem;
+      //   table.innerHTML += inverseItem;
+      // hextorgb(color.value);
+
+    }
+
+    function invertcolor(color) {
+      var b = color.toString().split("");
+      hexnumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+      hexinverse = ["f", "e", "d", "c", "b", "a", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"];
+      var myIndex = [];
+      var myhexcolor = [];
+      var newcolor = "#";
+      console.log(b)
+      for (var i = 1; i < b.length; i++) {
+        for (var j = 0; j < hexnumber.length; j++) {
+          if (b[i] == hexnumber[j]) {
+            myIndex.push(j);
+            myhexcolor.push(hexinverse[j]);
+            newcolor += hexinverse[j];
+            console.log(j, b[i], hexnumber[j])
+          }
+        }
+      }
+      myhexcolor.unshift("#");
+      return newcolor;
+    }
+
+    function hextorgb(color) {
+      b = [];
+      b.push(color.toString().slice(1, 3));
+      b.push(color.toString().slice(3, 5));
+      b.push(color.toString().slice(5, 7));
+      console.log(b);
+      a = [];
+      c = [];
+      var changeIt;
+      for (var i = 0; i < b.length; i++) {
+        // b.push(a[i] * 17);
+        a.push(b[i].split(""))
+        for (var j = 0; i < a.length; j++) {
+          if (a[j] == ("a" || "b" || "c" || "d" || "e" || "f")) {
+            debugger
+            if (a[j] == "a") {
+              changeIt = 10;
+            }
+            if (a[j] == "b") {
+              changeIt = 11;
+            }
+            if (a[j] == "c") {
+              changeIt = 12;
+            }
+            if (a[j] == "d") {
+              changeIt = 13;
+            }
+            if (a[j] == "e") {
+              changeIt = 14;
+            }
+            if (a[j] == "f") {
+              changeIt = 15;
+            } else {
+              changeIt = a[j];
+              debugger
+            }
+          }
+          if (j == 0) {
+            c.push(parseInt(changeIt) * 16);
+          }
+          if (j == 1) {
+            c.push(parseInt(changeIt) * 1);
+          }
+        }
+
+        // b = b.join()
+        console.log(c, a);
+      }
+
+
+    }
+  </script>
+</body>
+
+</html>

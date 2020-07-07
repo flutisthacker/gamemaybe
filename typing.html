@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .heading {
+    text-align: center;
+  }
+
+  .typer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    background: linear-gradient(20deg, rgba(0, 183, 255, .4), purple);
+  }
+
+  .result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  #myText {
+    width: 100%;
+    height: 50px;
+    padding: 40px 2px;
+    margin: 2px;
+    box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+
+  }
+
+  #text {
+    width: 500px;
+    height: 500px;
+    font-size: 20px;
+    font-weight: 900;
+    background: #16161d;
+    color: white;
+    padding: 20px 20px;
+  }
+
+
+  #text:focus {
+    color: green;
+  }
+
+  .btn {
+    margin: 20px
+  }
+</style>
+
+<style>
+  .order-timeline {
+    /* display: flex;
+    justify-content: end;
+    align-items: center; */
+    flex-direction: column;
+  }
+
+  .timeline-object:not(.complete) .timeline-status {
+    background: #fff;
+    border: 4px solid #c5c5c5;
+  }
+
+  .timeline-object:not(.complete) .timeline-p h1 {
+    background: #dbdbdb;
+    color: #8a8a8a
+  }
+
+  .timeline-object {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+  }
+
+  .timeline-object.complete::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 150px;
+    background-color: #1dbf73;
+    position: absolute;
+    left: 23px;
+    top: 50px;
+    transform: translateX(-50%);
+  }
+
+  .timeline-p {
+    margin-left: 15px;
+  }
+
+  .timeline-object.inprogress .timeline-status {
+    box-shadow: 10px 10px 10px #aaa;
+  }
+
+  .timeline-p h1 {
+    font-size: 22px;
+    color: #1dbf73;
+    background-color: #b4ffdc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+
+  .timeline-p span {
+    color: #103b27;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .timeline-status {
+    width: 46px;
+    height: 46px;
+    background-color: #1dbf73;
+    border-radius: 50%;
+  }
+</style>
+<style>
+  .cylinder {
+    height: 90px;
+    width: 400px;
+    border: solid 2px black;
+    border-left: none;
+    border-right: none;
+    background: #d56005;
+    display: flex;
+    margin: 1em;
+    position: relative;
+    text-align: center;
+    line-height: 200px;
+    color: white;
+    font-size: 2em;
+    /* transform: rotate(45deg); */
+    /* box-shadow: 0 0 5px black, inset 0 0 5px #48a;
+    box-shadow: black 0px 0px 1px,
+      black 1px 1px 1px,
+      black 2px 2px 1px,
+      black 99px 99px 1px,
+      black 100px 100px 1px;
+     */
+  }
+
+  .cylinder::before {
+    content: '';
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    background: #d56005;
+    border: solid 2px black;
+    transform: translateX(-45%) translateY(-2%);
+    /* border-top: none; */
+    border-right: none;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    ;
+  }
+
+  .cylinder::after {
+    content: '';
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    background: #d56005;
+    border: solid 2px black;
+    transform: translateX(393%) translateY(-2%);
+    /* border-radius: 100% 35%; */
+    border-left: none;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+
+  .circle {
+    height: 45px;
+    width: 45px;
+    background: #000;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .circle:nth-child(1) {
+    position: absolute;
+    bottom: 65px;
+    left: 40px;
+  }
+</style>
+
+<body>
+  <h2 class="heading"> Typing game!</h2>
+  <div class="typer">
+    <div class="result">
+      <div class="btn btn-large">
+        Errors:<span id="errors">0</span>
+      </div>
+      <div class="btn btn-large">Timer <span id="time"></span></div>
+      <div class="btn btn-large">Accuracy<span class="accuracy"> 100%</span></div>
+      <span id="change" class="fas fa-random"></span>
+    </div>
+    <p id="myText">hello</p>
+    <textarea name="" id="text" cols="30" rows="10"></textarea>
+  </div>
+
+  <div class="order-timeline">
+    <div class="timeline-object complete">
+      <div class="timeline-status"></div>
+      <div class="timeline-p">
+        <h1>Order placed</h1>
+        <span> data</span>
+      </div>
+    </div>
+    <div class="timeline-object complete inprogress">
+      <div class="timeline-status"></div>
+      <div class="timeline-p">
+        <h1>Order in progress</h1>
+        <span>date</span>
+      </div>
+    </div>
+    <div class="timeline-object">
+      <div class="timeline-status"></div>
+      <div class="timeline-p">
+        <h1>Order complete</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cylinder">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</body>
+<script>
+  var a = document.getElementById('errors');
+  var b = document.getElementById('time');
+  var c = document.getElementsByClassName('accuracy');
+  var d = document.getElementById('text');
+  var e = document.getElementById('myText');
+  var words = ["A bad workman always blames his tools",
+    "A bird in hand is worth two in the bush",
+    "Absence makes the heart grow fonder",
+    "A cat has nine lives",
+    "A chain is only as strong as its weakest link",
+    "Actions speak louder than words",
+    "A drowning man will clutch at a straw",
+    "Adversity and loss make a man wise",
+    "A fool and his money are soon parted",
+    "Among the blind the one-eyed man is king",
+    "An apple a day keeps the doctor away",
+    "An empty vessel makes much noise",
+    "An idle brain is the devil’s workshop",
+    "An ounce of protection is worth a pound of cure",
+    "A picture is worth a thousand words",
+    "Appearances can be deceptive",
+    "A rolling stone gathers no moss",
+    "You can’t unscramble a scrambled egg",
+    "You show me the man and I’ll show you the rule",
+    "You can’t win them all",
+    "A ship in the harbor is safe, but that is not what a ship is for",
+    "A stitch in time saves nine",
+    "As you sow, so you shall reap",
+    "A thing begun is half done",
+    "Barking dogs seldom bite",
+    "Be slow in choosing, but slower in changing",
+    "Beauty is in the eye of the beholder",
+    "Beauty is only skin deep",
+    "Beggars can’t be choosers",
+    "A journey of thousand miles begins with a single step", "All good things come to an end.",
+    "A leopard can’t/ doesn’t change its spots", "All’s well that ends well", "All that glitters is not gold",
+    "All’s fair in love and war", "Always put your best foot forward"
+  ];
+  e.textContent = words[Math.floor(Math.random() * 30)] || "Lorem ipsum dolor sit amet. ";
+  var choosenWord = e.textContent
+  var timetaken;
+  var timet = [];
+  d.addEventListener('keyup', (aw) => {
+    timet.push(new Date().getTime());
+    changetext = document.getElementById('text').value;
+    accuracy(a, changetext, choosenWord);
+    speed();
+    if (timet.length > 0) {
+      timetaken = timet[1] - timet[0];
+      // b.textContent = timetaken + " ms";
+    }
+    if (timet.length > 1) {
+      timet = [];
+    }
+  });
+
+
+  function speed() {}
+
+  function accuracy(main, a, b) {
+    var error = 0;
+    var mileko = b.length - error;
+    a = a.split("");
+    b = b.split("");
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) {
+        error += 1;
+      }
+    }
+    for (var i = 0; i < b.length; i++) {
+      errorx = (mileko / b.length) * 100;
+      console.log(errorx + "%");
+      if (a.join() == b.join()) {
+        e.textContent = words[Math.floor(Math.random() * 10)];
+        choosenWord = e.textContent;
+        d.value = "";
+      }
+
+    }
+    main.textContent = error;
+  }
+
+  document.getElementById('change').addEventListener('click', () => {
+    e.textContent = words[Math.floor(Math.random() * 30)];
+    choosenWord = e.textContent;
+    d.value = "";
+  })
+</script>
+
+</html>

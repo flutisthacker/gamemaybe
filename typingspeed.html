@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<style>
+  .container {
+    width: 500px;
+    height: 500px;
+  }
+
+  textarea {
+    width: 200px;
+    height: 200px;
+  }
+</style>
+<style>
+  nav {
+    width: 100%;
+    height: 300px;
+  }
+
+  body {
+    background: #79cd84;
+  }
+
+  .container {
+    width: inherit;
+    /* background: #c39bda48; */
+    background: #fff;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 20px 0;
+    box-shadow: 2px 2px 4px 4px gray;
+  }
+
+  .sideline {
+    writing-mode: vertical-rl;
+    transform: rotate(-90deg) translateY(100px);
+    margin: 10px;
+    font-size: 4rem;
+    text-transform: uppercase;
+    color: #4242ff;
+    transition: all .5s ease;
+    background: white;
+    text-shadow: 6px 6px 5px gray;
+  }
+
+  .sideline .fa {
+    transform: rotate(0deg);
+  }
+
+  p {
+    font-size: 1.8rem;
+    padding: 10px;
+    font-weight: 200;
+    filter: blur(5px);
+  }
+
+  nav .container:nth-child(1):hover .sideline,
+  nav .container:nth-child(2):hover .sideline {
+    transform: translateY(0) rotate(180deg);
+  }
+
+  nav .container:nth-child(1):hover p,
+  nav .container:nth-child(2):hover p {
+    filter: blur(0);
+
+  }
+
+  .btnp {
+    width: 200px;
+    height: 50px;
+  }
+
+  .btn {
+    width: inherit;
+    height: inherit;
+    transform-origin: left;
+    transition: .5s;
+    position: relative;
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+    padding: 20px;
+  }
+
+  .btn:hover::before {
+    background: #2233bb;
+    width: inherit;
+  }
+
+  .btn:link {
+    text-decoration: none;
+  }
+
+  .btn-active {
+    box-shadow: 2px 2px 3px 5px gray;
+    ;
+  }
+
+  .btn::before {
+    position: absolute;
+    width: 0;
+    height: inherit;
+    content: '';
+
+    z-index: -1;
+    transition: .5s ease;
+
+  }
+</style>
+
+<body>
+  <div id="timer">
+    <div class="container">
+      <div id="quote"></div><textarea name="" id="quoteInput" cols="30" rows="10"></textarea>
+    </div>
+  </div>
+
+  <nav>
+    <div class="container">
+      <div class="sideline">
+        <i class="fa fa-info"></i>
+        home</div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dicta laudantium aut id et tempore cum
+        quas voluptates! Consequatur ullam nisi ipsa laboriosam odio facere tenetur neque quasi, cumque aut.
+        Aperiam aut, assumenda aliquam accusantium officiis qui quasi delectus aliquid voluptatem vel repellendus neque.
+        Excepturi atque sit, doloremque natus qui illo optio in magnam quas asperiores, veritatis commodi similique
+        omnis.
+        Distinctio quidem eum incidunt eveniet, suscipit nulla nihil ducimus sunt quia! Laborum itaque saepe nisi quasi
+        praesentium libero vel minima dolorum, eos nihil molestiae officiis accusantium! Quae ducimus vel adipisci.
+
+      </p>
+    </div>
+    <div class="container">
+      <div class="sideline">
+        <i class="fa fa-cog"></i> case</div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dicta laudantium aut id et tempore cum
+        quas voluptates! Consequatur ullam nisi ipsa laboriosam odio facere tenetur neque quasi, cumque aut.
+        Aperiam aut, assumenda aliquam accusantium officiis qui quasi delectus aliquid voluptatem vel repellendus neque.
+        Excepturi atque sit, doloremque natus qui illo optio in magnam quas asperiores, veritatis commodi similique
+        omnis.
+        Distinctio quidem eum incidunt eveniet, suscipit nulla nihil ducimus sunt quia! Laborum itaque saepe nisi quasi
+        praesentium libero vel minima dolorum, eos nihil molestiae officiis accusantium! Quae ducimus vel adipisci.
+
+      </p>
+    </div>
+    <span class="btnp">
+      <a href="" class="btn">Click me</a>
+
+    </span>
+  </nav>
+</body>
+<script>
+  var displayQuote = document.getElementById('quote')
+  const quoteInput = document.getElementById('quoteInput')
+  const timer = document.getElementById('timer')
+
+
+  async function newQuote() {
+    const quote = await getQuote()
+    displayQuote.innerText = ''
+    quote.split("").forEach(character => {
+      const charSpan = document.createElement('span')
+      charSpan.innerText = character
+      displayQuote.appendChild(charSpan)
+    })
+    quoteInput.value = null
+    startTimer()
+
+  }
+  newQuote()
+
+  quoteInput.addEventListener('input', () => {
+    const quoteArray = displayQuote.querySelectorAll('span')
+    const valueArray = quoteInput.value.split('');
+    let correct = true
+    quote.forEach((charSpan, index) => {
+      const character = valueArray[index]
+      if (character == null) {
+        charSpan.classList.remove('correct')
+        charSpan.classList.remove('incorrect')
+        correct = false;
+      } else if (character === charSpan.innerText) {
+        charSpan.classList.add('correct')
+        charSpan.classList.remove('incorrect')
+      } else {
+        charSpan.classList.remove('correct')
+        charSpan.classList.add('incorrect')
+        correct = false
+      }
+    })
+    if (correct) newQuote()
+
+  })
+
+  function getQuote() {
+    return fetch('https://api.quotable.io/random').then(response => response.json().then(data => data.content))
+  }
+  // https://www.instagram.com/p/CB41voyAitV/
+  let startTime;
+
+  function startTimer() {
+    timer.innerText = 0
+    startTime = new Date();
+    setInterval(() => {
+      timer.innerText = getTimerTime() + " sec"
+    }, 1000)
+  }
+
+  function getTimerTime() {
+    return Math.floor((new Date()) - startTime) / 1000
+  }
+</script>
+
+</html>

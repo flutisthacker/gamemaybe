@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #ee6d6d;
+    /* 119292 */
+  }
+
+  .container p {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: -5px;
+    margin: 5px;
+  }
+
+
+  .coin {
+    height: 300px;
+    position: relative;
+    width: 300px;
+  }
+
+  .head,
+  .tail {
+    width: 300px;
+    height: 300px;
+    font-size: 6rem;
+    overflow: hidden;
+    transition: transform .9s linear;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    position: absolute;
+    line-height: 300px;
+    text-align: center;
+  }
+
+  .head {
+    background-color: #921111;
+    border-radius: 50%;
+    transform: perspective(600px)rotateX(0deg);
+  }
+
+
+  .tail {
+    background-color: #119292;
+    border-radius: 50%;
+    transform: perspective(600px) rotateX(-180deg);
+  }
+
+
+  /* .coin:hover>.head {
+    transform: perspective(600px) rotateX(180deg);
+  }
+
+  .coin:hover>.tail {
+
+    transform: perspective(600px) rotateX(0deg);
+  } */
+</style>
+
+<body>
+  <div class="container">
+    <div class="coin">
+      <div class="head"><i class="fas fa-user-circle"></i></div>
+      <div class="tail"><i class="fas fa-mouse-pointer"></i></div>
+    </div>
+    <button class="btn btn-outline-success" id="head"> <i class="fas fa-user-circle"></i>
+    </button>
+    <button class="btn btn-outline-warning" id="tail"><i class="fas fa-mouse-pointer"></button>
+    <p id="enemy">compitators move</p>
+    <p id="declare">status</p>
+    <p id="score">0
+    </p>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  var probality = ["head", "tail"]
+  var game = document.querySelectorAll(".btn")
+  score = 0;
+
+  $(game).click(function () {
+    var degree = 180;
+    var computerchoose = Math.floor(Math.random() * 2);
+    var randommove = Math.floor(Math.random() * 5);
+    var pcc = probality[computerchoose];
+    console.log(computerchoose, randommove)
+    if (randommove > 0) {
+      randommove += 1;
+    }
+    $('.head').css("transform", `perspective(600px)rotateX(${(degree*randommove)}deg)`)
+    $('.tail').css("transform", `perspective(600px)rotateX(${(degree*randommove)-180}deg)`)
+
+    $("#enemy").text("Compitater chooses " + pcc);
+    // $(ecc).css("color", "#ee6d6d");
+    console.log("me" + $(this).attr("id"))
+    console.log("enemy" + pcc)
+
+    switch ($(this).attr("id")) {
+      case "head":
+        if (pcc == $(this).attr("id")) {
+          document.querySelector("#declare").innerHTML = "you are in draw ";
+          break;
+        }
+        if (pcc == "tail") {
+          document.querySelector("#declare").innerHTML = "you win ";
+          score += 1;
+          $("#score").text(escore);
+          break;
+        }
+        break;
+      case "tail":
+        if (pcc == $(this).attr("id")) {
+          document.querySelector("#declare").innerHTML = "you are in draw ";
+          break;
+        } else {
+          if (pcc == "head") {
+            document.querySelector("#declare").innerHTML = "you loose ";
+            score -= 1;
+            $("#score").text(score);
+            break;
+          }
+          break;
+        }
+        break;
+    }
+  });
+</script>
+
+</html>

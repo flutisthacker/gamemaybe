@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+
+</head>
+<style>
+  #mirroredword,
+  #colorhex {
+    width: 200px;
+    height: 200px;
+    color: blue;
+  }
+
+  #mirroredword:hover {}
+
+  body {
+    background: #16161d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+</style>
+
+<body>
+
+  <div class="card p-3" style="width: 18rem;">
+    <div class="card-title" id="mirroredword"></div>
+
+    <div class="card-body">
+      <input class="card-text" type="text" name="" id="mirror">
+      <button class="btn btn-outline-success" id="mirrorbtn">mirror</button>
+    </div>
+  </div>
+
+</body>
+<script src="console.js"></script>
+<script>
+  swapp([1, 4, 2, 5], 2)
+  swapp([1, 4, 2, 5], 2)
+  swapp([6, 2, 3, 1, 7, 8], 2)
+  swapp([4, 7, 2, 3], 2)
+
+  function swapp(array, x) {
+    return 0;
+  }
+</script>
+<script>
+  // palindrome
+  findPalindrome(12);
+  findPalindrome(11);
+  findPalindrome(1111);
+  findPalindrome(1112);
+  findPalindrome(1121);
+  findPalindrome(121);
+
+  function findPalindrome(ds) {
+    ds = ds.toString();
+    ds = ds.split("");
+    for (i = 1; i < ds.length; i++) {
+      if (ds.length % 2 == 0) {
+        // ds.length/2
+        if (ds[i - 1] == ds[ds.length - i]) {
+          console.log("palindrome");
+          console.log(ds[i - 1], ds[ds.length - i]);
+        } else {
+          console.log("not palindrome");
+          break;
+        }
+      } else {
+        console.log("odd");
+      }
+    }
+  }
+</script>
+<script>
+  // n no of villian
+  // hero with x health
+  // when hero battle
+  // hero health - villian health
+  // return number of defeated villians
+  var villianNO = Math.floor(Math.random() * 10);
+  var herohealth = Math.floor(Math.random() * 500);
+  var villianList = villianlist(villianNO);
+  villianList = villianList.sort();
+  var newvillianList = []
+  numofdefeated = 0;
+  herovsvillian(herohealth, villianList);
+  herovsvillian(herohealth, villianList);
+  herovsvillian(herohealth, villianList);
+
+  function villianlist(villianNO) {
+    let villianhlth = [];
+    for (i = 0; i < villianNO; i++) {
+      villianhlth.push(Math.floor(Math.random() * 500));
+    }
+    return villianhlth;
+  }
+
+  function herovsvillian(herohealth, villianList) {
+    for (var i = 0; i < villianList.length; i++) {
+      herohealth = herohealth - villianList[i]
+      newvillianList.push(villianList[i] - herohealth);
+      if (villianList[i] < herohealth) {
+        numofdefeated++;
+      }
+      if (herohealth < 0) {
+        break;
+      }
+    }
+    colorLog("numofdefeated" + numofdefeated, "success");
+    consoleprint(herohealth, "#222", "#bada55"); //     .console-error-level .console-message-text{
+
+    //     .console-error-level .console-message-text{
+    //     color: red;
+    // }
+
+    // .console-warning-level .console-message-text {
+    //     color: orange;
+    // }
+
+    // .console-log-level .console-message-text {
+    //     color:green;
+    // }
+  }
+</script>
+
+<script>
+  console.log(fire(0, 0, 90, 10))
+  // 0,10
+  console.log(fire(10, 20, 180, 20))
+  // 30 20
+  console.log(fire(20, 0, 270, 20))
+  // 20 -20
+  console.log(fire(10, 20, 0, 20))
+  // -10 20
+  function fire(x, y, deg, dis) {
+    if (deg == 180) {
+      x = dis + x;
+    }
+    if (deg == 270) {
+      y = y - dis;
+    }
+    if (deg == 90) {
+      y = y + dis;
+    }
+    if (deg == 0) {
+      x = x - dis;
+    }
+    fired = [x, y]
+    return fired;
+  }
+</script>
+<script>
+  function fibo(len) {
+    let cur;
+    const res = [];
+    new Array(len).fill(1).forEach((v, i) => {
+      if (i == 0 || i == 1) {
+        res.push(i);
+        return;
+      }
+      res.push(res[res.length - 2] + res[res.length - 1]);
+    })
+    return res;
+  }
+  const fibo10 = fibo(10)
+  console.log(fibo10)
+</script>
+<script>
+  var mirror = document.querySelector("#mirror");
+  var mirrorbtn = document.querySelector("#mirrorbtn");
+  var mirrored = document.querySelector("#mirroredword");
+  let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+    "t",
+    "u",
+    "v",
+    "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+    "T",
+    "U",
+    "V",
+    "W", "X", "Y", "Z"
+  ]
+  let lettersr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+    "T",
+    "U",
+    "V",
+    "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+    "t",
+    "u",
+    "v",
+    "w", "x", "y", "z"
+  ].reverse();
+
+  mirror.addEventListener("keyup", (e) => {
+    var string = mirror.value;
+    strings = string.split("");
+    var revstr = [];
+    var newstr = "";
+    for (j = 0; j < strings.length; j++) {
+      for (i = 0; i < letters.length; i++) {
+        if (strings[j] == letters[i] || strings[j] == "_") {
+          revstr.push(i);
+        }
+      }
+    }
+    for (j = 0; j < revstr.length; j++) {
+      for (i = 0; i < lettersr.length; i++) {
+        if (revstr[j] == i || revstr[j] == "_") {
+          newstr += lettersr[i];
+        }
+      }
+    }
+    mirrored.innerText = newstr;
+  })
+</script>
+
+</html>

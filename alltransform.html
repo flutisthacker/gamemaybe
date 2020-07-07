@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+  .all {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gamediv {
+    perspective: 3000px;
+    width: 100%;
+    height: 400px;
+    background: #16161d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .transformdiv {
+    perspective: 2000px;
+    font-size: 5em;
+    text-align: center;
+    line-height: 2.5em;
+    color: white;
+
+  }
+
+  .transformdiv {
+    width: 200px;
+    height: 200px;
+    background-image: url('./cat1.jpg');
+    background-size: cover;
+    transition: .9s ease;
+    transform-style: preserve-3d;
+    perspective-origin: left;
+  }
+
+
+
+  .transrang {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+  }
+</style>
+
+<body>
+  <div class="all">
+    <div class="gamediv">
+      <div class="transformdiv">
+        Hello
+      </div>
+    </div>
+    <div class="transrang">
+      <table class="table table-secondary">
+        <tr>
+          <td>rotateX</td>
+          <td><input type="range" class="trans" id="rotateX" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>rotateY</td>
+          <td>
+            <label for="rotateY"> <input type="range" class="trans" id="rotateY" min="0" max="100" value="0"></label>
+          </td>
+        </tr>
+        <tr>
+          <td>rotateZ</td>
+          <td>
+            <input type="range" class="trans" id="rotateZ" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>rotate</td>
+          <td>
+            <input type="range" class="trans" id="rotate" min="0" max="100" value="0">
+          </td>
+        </tr>
+
+        <tr>
+          <td>translate</td>
+          <td> <input type="range" class="trans" id="translate" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>translateX</td>
+          <td> <input type="range" class="trans" id="translateX" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>translatey</td>
+          <td> <input type="range" class="trans" id="translateY" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>translateZ</td>
+          <td> <input type="range" class="trans" id="translateZ" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>skewX</td>
+          <td>
+            <input type="range" class="trans" id="skewX" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>skewY</td>
+          <td>
+            <input type="range" class="trans" id="skewY" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>skewZ</td>
+          <td>
+            <input type="range" class="trans" id="skewZ" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+
+      </table>
+      <table class="table table-danger">
+        <tr>
+          <td>opacity</td>
+          <td> <input type="range" class="trans" id="opacity" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>invert</td>
+          <td> <input type="range" class="trans" id="invert" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>huerotate</td>
+          <td>
+            <input type="range" class="trans" id="huerotate" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>skew</td>
+          <td><input type="range" class="trans" id="skew" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>saturate</td>
+          <td><input type="range" class="trans" id="saturate" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>contrast</td>
+          <td><input type="range" class="trans" id="contrast" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>grayscale</td>
+          <td><input type="range" class="trans" id="grayscale" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>sepia</td>
+          <td><input type="range" class="trans" id="sepia" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>bright</td>
+          <td><input type="range" class="trans" id="brightness" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>blur</td>
+          <td><input type="range" class="trans" id="blur" min="0" max="100" value="0"></td>
+        </tr>
+
+
+      </table>
+      <table class="table table-primary">
+        <tr>
+          <td>linergradient</td>
+          <td>
+            <input type="range" name="" id="linergradient" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>radialgradient</td>
+          <td>
+            <input type="range" name="" id="radialgradient" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>conicgradient</td>
+          <td>
+            <input type="range" name="" id="conicgradient" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>perspective</td>
+          <td>
+            <input type="range" name="" id="perspective" min="0" max="1000" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>left</td>
+          <td><input type="radio" onclick="changeRadio()" name="transformorigin" value="left" id="toleft"></td>
+        </tr>
+        <tr>
+          <td>right</td>
+          <td><input type="radio" onclick="changeRadio()" name="transformorigin" value="right" id="toright"></td>
+        </tr>
+        <tr>
+          <td>top</td>
+          <td><input type="radio" onclick="changeRadio()" name="transformorigin" value="top" id="totop"></td>
+        </tr>
+        <tr>
+          <td>bottom</td>
+          <td><input type="radio" onclick="changeRadio()" name="transformorigin" value="bottom" id="tobottom"></td>
+        </tr>
+      </table>
+      <table class="table table-dark">
+        <tr>
+          <td>scale</td>
+          <td>
+            <input type="range" name="" id="scale" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>scaleX</td>
+          <td>
+            <input type="range" name="" id="scaleX" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>scaleY</td>
+          <td>
+            <input type="range" name="" id="scaleY" min="0" max="100" value="50">
+          </td>
+        </tr>
+        <tr>
+          <td>spacing</td>
+          <td>
+            <input type="range" name="" id="padding" min="0" max="100" value="0">
+          </td>
+        </tr>
+
+      </table>
+      <table class="table table-warning">
+
+        <tr>
+          <td>box shadows</td>
+          <td>
+        <tr>
+          <td>x axis</td>
+          <td> <input type="range" name="" id="shadow1" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>Y axis</td>
+          <td> <input type="range" name="" id="shadow2" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>blur</td>
+          <td> <input type="range" name="" id="shadow3" min="0" max="100" value="0">
+
+          </td>
+        </tr>
+        <tr>
+          <td>spread</td>
+          <td> <input type="range" name="" id="shadow4" min="0" max="100" value="0">
+          </td>
+        </tr>
+        </td>
+        </tr>
+        <tr>
+          <td>Drop shadows</td>
+          <td>
+        <tr>
+          <td>x axis</td>
+          <td> <input type="range" name="" id="dshadow1" min="0" max="100" value="0"></td>
+        </tr>
+        <tr>
+          <td>Y axis</td>
+          <td> <input type="range" name="" id="dshadow2" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>blur</td>
+          <td> <input type="range" name="" id="dshadow3" min="0" max="100" value="0">
+
+          </td>
+        </tr>
+        </td>
+        </tr>
+
+      </table>
+      <table class="table table-success">
+        <tr>
+          <td>border radius</td>
+          <td>
+            <input type="range" name="" id="borderchange" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>bordertop</td>
+          <td> <input type="range" name="" id="btop" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>borderright</td>
+          <td> <input type="range" name="" id="bright" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>borderbottom</td>
+          <td> <input type="range" name="" id="bbottom" min="0" max="100" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>borderleft</td>
+          <td> <input type="range" name="" id="bleft" min="0" max="100" value="0">
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!--
+      drop-shadow()
+      hue-rotate()
+      invert()
+      opacity()
+      blur()
+brightness()
+contrast()
+grayscale()
+saturate()
+sepia() -->
+    <input type="color" value="#000000" id="color">
+    <label for="color" class="colortext">Color Hex code</label>
+    <div id="colortable">
+    </div>
+  </div>
+
+</body>
+
+
+
+<script>
+  var radio;
+  const radios = document.querySelectorAll("input[name=transformorigin]");
+
+  function changeRadio() {
+    for (var i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        radio = radios[i].value;
+        radio[i].checked = false;
+      }
+    }
+    tdiv.style.transformOrigin = radio;
+  }
+  var color = document.querySelector('#color');
+  var border = document.querySelector('.borderRad');
+  var border2 = document.querySelector('#borderchange');
+  var btop = document.querySelector('#btop');
+  var bright = document.querySelector('#bright');
+  var bbottom = document.querySelector('#bbottom');
+  var bleft = document.querySelector('#bleft');
+  var tdiv = document.querySelector('.transformdiv');
+  var rotateX = document.querySelector('#rotateX');
+  var rotateY = document.querySelector('#rotateY');
+  var rotateZ = document.querySelector('#rotateZ');
+  var skewX = document.querySelector('#skewX');
+  var skewY = document.querySelector('#skewY');
+  var skewZ = document.querySelector('#skewZ');
+  var rotate = document.querySelector('#rotate');
+
+  var huerotate = document.querySelector('#huerotate');
+  var blur = document.querySelector('#blur');
+  var brightness = document.querySelector('#brightness');
+  var contrast = document.querySelector('#contrast');
+  var grayscale = document.querySelector('#grayscale');
+  var saturate = document.querySelector('#saturate');
+  var sepia = document.querySelector('#sepia');
+
+  var padding = document.querySelector('#padding');
+
+  var translate = document.querySelector('#translate');
+  var translateX = document.querySelector('#translateX');
+  var translateY = document.querySelector('#translateY');
+  var translateZ = document.querySelector('#translateZ');
+
+  var scale = document.querySelector('#scale');
+  var scaleX = document.querySelector('#scaleX');
+  var scaleY = document.querySelector('#scaleY');
+
+  var linergradient = document.querySelector('#linergradient');
+  var radialgradient = document.querySelector('#radialgradient');
+
+  var shadow1 = document.querySelector('#shadow1');
+  var shadow2 = document.querySelector('#shadow2');
+  var shadow3 = document.querySelector('#shadow3');
+  var shadow4 = document.querySelector('#shadow4');
+  var dshadow1 = document.querySelector('#dshadow1');
+  var dshadow2 = document.querySelector('#dshadow2');
+  var dshadow3 = document.querySelector('#dshadow3');
+
+  var opacity = document.querySelector('#opacity');
+  var invert = document.querySelector('#invert');
+  var perspective = document.querySelector('#perspective');
+  padding.addEventListener("change", () => {
+    tdiv.margin = padding.value + "px";
+    tdiv.style = "border:1px solid black"
+  });
+
+  border2.addEventListener("change", () => {
+    tdiv.style.borderRadius = border2.value + "px";
+  });
+  btop.addEventListener("change", () => {
+    tdiv.style = `border-radius:${btop.value}% ${bright.value}% ${bbottom.value}% ${bleft.value}%`;
+  });
+  bright.addEventListener("change", () => {
+    tdiv.style = `border-radius:${btop.value}% ${bright.value}% ${bbottom.value}% ${bleft.value}%`;
+  });
+  bbottom.addEventListener("change", () => {
+    tdiv.style = `border-radius:${btop.value}% ${bright.value}% ${bbottom.value}% ${bleft.value}%`;
+  });
+  bleft.addEventListener("change", () => {
+    tdiv.style = `border-radius:${btop.value}% ${bright.value}% ${bbottom.value}% ${bleft.value}%`;
+  });
+  translate.addEventListener("change", () => {
+    tdiv.style = `transform:translate(${translate.value}%, ${translate.value}%)`;
+  });
+  translateX.addEventListener("change", () => {
+    tdiv.style = `transform:translateX(${translateX.value}%)`;
+  });
+  translateY.addEventListener("change", () => {
+    tdiv.style = `transform:translateY(${translateY.value}%)`;
+  });
+  translateZ.addEventListener("change", () => {
+    tdiv.style = `transform:translateZ(${translateZ.value*5}px) perspective(${perspective.value}px)`;
+  });
+  rotateX.addEventListener("change", () => {
+    tdiv.style = `transform:rotateX(${(rotateX.value/100)*360}deg)`;
+  });
+  rotateZ.addEventListener("change", () => {
+    tdiv.style = `transform:rotateZ(${(rotateZ.value/100)*360}deg)  perspective(${perspective.value}px)`;
+  });
+  rotate.addEventListener("change", () => {
+    tdiv.style = `transform:rotate(${(rotate.value/100)*360}deg)`;
+  });
+  huerotate.addEventListener("change", () => {
+    tdiv.style = `filter:hue-rotate(${(huerotate.value/100)*360}deg)`;
+  });
+
+  blur.addEventListener("change", () => {
+    tdiv.style = `filter:blur(${blur.value/10}px)`;
+  });
+  sepia.addEventListener("change", () => {
+    tdiv.style = `filter:sepia(${sepia.value}%)`;
+  });
+  brightness.addEventListener("change", () => {
+    tdiv.style = `filter:brightness(${brightness.value}%)`;
+  });
+  contrast.addEventListener("change", () => {
+    tdiv.style = `filter:contrast(${contrast.value}%)`;
+  });
+  grayscale.addEventListener("change", () => {
+    tdiv.style = `filter:grayscale(${grayscale.value}%)`;
+  });
+  saturate.addEventListener("change", () => {
+    tdiv.style = `filter:saturate(${saturate.value}%)`;
+  });
+
+  opacity.addEventListener("change", () => {
+    tdiv.style = `filter:opacity(${opacity.value}%)`;
+  });
+  invert.addEventListener("change", () => {
+    tdiv.style = `filter:invert(${invert.value}%)`;
+  });
+  rotateY.addEventListener("change", () => {
+    tdiv.style = `transform:rotateY(${(rotateY.value/100)*360}deg)`;
+    // tdiv.style.rotateY = `${(rotateY.value / 100) * 360}deg`;
+  });
+  skewX.addEventListener("change", () => {
+    tdiv.style = `transform:skewX(${(skewX.value/100)*360}deg)`;
+  });
+  skewZ.addEventListener("change", () => {
+    tdiv.style =
+      `transform:skew(${(skewX.value/100)*360}deg ${(skewY.value/100)*360}deg)  perspective(${perspective.value}px)`;
+  });
+  skew.addEventListener("change", () => {
+    tdiv.style = `transform:skew(${(skew.value/100)*360}deg)`;
+  });
+  skewY.addEventListener("change", () => {
+    tdiv.style = `transform:skewY(${(skewY.value/100)*360}deg)`;
+    // tdiv.style.rotateY = `${(rotateY.value / 100) * 360}deg`;
+  });
+  scale.addEventListener("change", () => {
+    tdiv.style = `transform:scale(${(scale.value/50)})`;
+  });
+  scaleX.addEventListener("change", () => {
+    tdiv.style = `transform:scaleX(${(scaleX.value/50)})`;
+  });
+  scaleY.addEventListener("change", () => {
+    tdiv.style = `transform:scaleY(${(scaleY.value/50)})`;
+  });
+
+  linergradient.addEventListener("change", () => {
+    tdiv.style.background = `linear-gradient(${(linergradient.value/100)*360}deg, black, white)`;
+  });
+  radialgradient.addEventListener("change", () => {
+    tdiv.style.background =
+      `radial-gradient(green ${radialgradient.value}%, red ${radialgradient.value}%)`;
+  });
+  conicgradient.addEventListener("change", () => {
+    tdiv.style.background =
+      `conic-gradient( from ${(conicgradient.value/100)*360}deg at center, black ,white`;
+  });
+
+  perspective.addEventListener("change", () => {
+    tdiv.perspective = perspective.value + "px";
+  });
+  dshadow1.addEventListener("change", () => {
+    tdiv.style.filter =
+      `drop-shadow(${dshadow1.value}px ${dshadow2.value}px ${dshadow3.value}px  gray)`;
+    console.log(`drop-shadow(${dshadow1.value}px ${dshadow2.value}px ${dshadow3.value}px  gray)`)
+  });
+  dshadow2.addEventListener("change", () => {
+    tdiv.style.filter =
+      `drop-shadow(${dshadow1.value}px ${dshadow2.value}px ${dshadow3.value}px gray)`;
+  });
+  dshadow3.addEventListener("change", () => {
+    tdiv.style.filter =
+      `drop-shadow(${dshadow1.value}px ${dshadow2.value}px ${dshadow3.value}px gray)`;
+  });
+  shadow1.addEventListener("change", () => {
+    tdiv.style = `box-shadow:${shadow1.value}px ${shadow2.value}px ${shadow3.value}px ${shadow4.value}px #eee`;
+  });
+  shadow2.addEventListener("change", () => {
+    tdiv.style = `box-shadow:${shadow1.value}px ${shadow2.value}px ${shadow3.value}px ${shadow4.value}px #eee`;
+  });
+  shadow3.addEventListener("change", () => {
+    tdiv.style = `box-shadow:${shadow1.value}px ${shadow2.value}px ${shadow3.value}px ${shadow4.value}px #eee`;
+  });
+  shadow4.addEventListener("change", () => {
+    tdiv.style = `box-shadow:${shadow1.value}px ${shadow2.value}px ${shadow3.value}px ${shadow4.value}px #eee`;
+  });
+
+  document.addEventListener("keypress", (e) => {
+    if (e.keyCode == 120) {
+      tdiv.style = "transform:translateX(20%)";
+    }
+    if (e.keyCode == 121) {
+      tdiv.style = "transform:translateY(20%)"
+    }
+    if (e.keyCode == 122) {
+      tdiv.style = "transform:translateZ(20%)"
+    }
+    if (e.keyCode == 97) {
+      tdiv.style = "transform:rotate(-120deg)"
+    }
+    if (e.keyCode == 99) {
+      tdiv.style = "transform:rotate(120deg)"
+    }
+    console.log(e.keyCode)
+  })
+</script>
+
+</html>

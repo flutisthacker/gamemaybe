@@ -190,6 +190,7 @@
 </body>
 <script>
   takedeg = document.querySelector("#takedeg");
+  takedeg2 = document.querySelector("#takedeg2");
   takedeg.addEventListener("change", () => {
     document.querySelector(".sui").style = "transform:rotate(" + takedeg.value + "deg);"
   })
@@ -197,7 +198,7 @@
   sensor.start();
 
   sensor.onreading = () => {
-    takedeg.innerHTML += sensor.x + " " + sensor.y + " " + sensor.z;
+    takedeg2.innerHTML += sensor.x + " " + sensor.y + " " + sensor.z;
     console.log("Acceleration along X-axis: " + sensor.x);
     console.log("Acceleration along Y-axis: " + sensor.y);
     console.log("Acceleration along Z-axis: " + sensor.z);

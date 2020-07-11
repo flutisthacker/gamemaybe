@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>change scale</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -23,14 +23,16 @@
     </div>
     <div class="addSect">
       <select name="" id="songs">
-        <option selected value="hpd">Happy birthday</option>
-        <option value="gingle">gingle bell</option>
-        <option value="sakura">sakura</option>
-        <option value="janenahi">janenahi</option>
-        <option value="temp">alankar</option>
-        <option value="ntc">NTC</option>
-        <option value="lilbrownjug">lilttle brown jug</option>
-        <option value="twinkle">twinkle twinkle</option>
+        <option selected value="note.hpd">Happy birthday</option>
+        <option value="note.gingle">gingle bell</option>
+        <option value="note.sakura">sakura</option>
+        <option value="note.janenahi">janenahi</option>
+        <option value="note.temp">alankar</option>
+        <option value="note.ntc">NTC</option>
+        <option value="note.lilbrownjug">lilttle brown jug</option>
+        <option value="note.twinkle">twinkle twinkle</option>
+        <option value="note.ogreenland">ogreenland</option>
+        <option value="note.flowerofedinburgh">flowerofedinburgh</option>
       </select>
       <select name="" id="songkey">
         <option selected value="C">C</option>
@@ -51,82 +53,12 @@
     <div class="list"></div>
   </div>
 
-  <!-- <script>
-    const notes = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
-    const notesNep = ["सा", "रेे।", "रे", "ग", "ग।", "म", "म।", "प", "ध।", "ध", "नि।", "नि"];
-
-    const addBtn = document.querySelector(".add")
-    const taskField = document.querySelector(".taskInput")
-    const list = document.querySelector(".list")
-    let transposeBy = 0;
-
-    addBtn.addEventListener("click", addTask)
-
-    function addTask() {
-      transposeBy = parseInt(taskField.value.slice(1));
-      taskField.value = taskField.value.split(" ")[0];
-      if (taskField.value.length === 0) {
-        return;
-      } else {
-        const taskContainer = list.appendChild(document.createElement("div"))
-        const task = taskContainer.appendChild(document.createElement("p"))
-        const doneBtn = taskContainer.appendChild(document.createElement("i"))
-        const deleteBtn = taskContainer.appendChild(document.createElement("i"))
-
-        deleteBtn.className = "fas fa-trash-alt";
-        doneBtn.className = "fas fa-check";
-
-        taskContainer.className = "taskContainer";
-        task.className = "task";
-
-        for (let index = 0; index < notes.length; index++) {
-          const element = taskField.value.split("");
-
-          if (taskField.value == notes[index]) {
-            var trueTrans = index + transposeBy;
-
-            for (sndIndex = index; sndIndex < notes.length; sndIndex++) {
-              if (sndIndex == trueTrans) {
-                // transpose
-                taskField.value = notes[sndIndex];
-                break;
-              }
-              if (trueTrans >= notes.length) {
-                taskField.value = notes[trueTrans - notes.length]
-                break;
-              }
-            }
-            task.innerHTML = taskField.value.charAt(0).toUpperCase() + taskField.value.slice(1);
-            break;
-          } else {
-            task.innerHTML = taskField.value;
-          }
-
-        }
-        taskField.value = "";
-
-        deleteBtn.addEventListener("click", deleteTask)
-        doneBtn.addEventListener("click", checkTask)
-
-        function checkTask(e) {
-          e.target.previousSibling.style.textDecoration = "line-through";
-        }
-
-        function deleteTask(e) {
-          e.target.parentElement.remove();
-        }
-      }
-    }
-  </script> -->
   <script type="text/javascript" src="notes.json">
   </script>
+  <script type="text/javascript" src="varnotes.js">
+  </script>
+
   <script>
-    var mydata = JSON.parse(note);
-    note = {
-      "hpd": ["gg", "a", "g", "c", "b", "-", "-", "-"]
-    };
-    console.log(note.hpd[0]);
-    console.log(mydata[0].hpd[0]);
     // console.log(mydata[0].age);
     // console.log(mydata[1].name);
     // console.log(mydata[1].age);
@@ -167,6 +99,7 @@
   </script>
   <script>
     const Ckey = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "-"];
+    const Nepnotes = ["सा", "रेे।", "रे", "ग|", "ग", "म", "म।", "प", "ध।", "ध", "नि।", "नि", "-"];
     const Cskey = ["c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "-"];
     const Dkey = ["d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "-"];
     const Dskey = ["d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "-"];
@@ -181,41 +114,7 @@
 
     // var Ckey = ["c", "d", "e", "f", "g", "a", "b", "-"]
     // var Dkey = ["d", "e", "f#", "g", "a", "b", "d#", "-"]
-    var hpd = ["gg", "a", "g", "c", "b", "-", "-", "-"]
-    var sakura = ["a", "a", "b", "-", "a", "a", "b", "-", "a", "b", "c", "b", "a",
-      "ba", "f", "-", "e", "c", "e", "f", "e", "ec", "b", "-", "a", "a", "b", "-", "a", "a", "b", "-", "e", "f", "ba",
-      "f", "e", "-", "-", "-"
-    ];
-    const Nepnotes = ["सा", "रेे।", "रे", "ग|", "ग", "म", "म।", "प", "ध।", "ध", "नि।", "नि", "-"];
-    var gingle = ["e", "e", "e", "-",
-      "e", "e", "e", "-",
-      "e", "g", "c", "d",
-      "e", "-", "-", "-",
-      "f", "f", "f", "-",
-      "e", "e", "e", "-",
-      "d", "d", "d", "e",
-      "d", "-", "g", "-",
-      "g", "g", "g", "-",
-      "e", "-", "d", "-",
-      "c", "-", "a", "-",
-      "a", "a", "a", "-",
-      "f", "-", "e", "-"
-    ]
-    var janenahi = ["-e", "fg",
-      "c",
-      "-", "-e", "fg",
-      "c",
-      "-", "-e", "fg",
-      "c",
-      "-f", "e", "d", "-", "-", "ed", "ed", "-c", "-", "e", "d", "ed", "eg", "f", "e", "c", "g", "e", "d", "ed", "eg",
-      "f", "e", "c", "g", "e", "d", "ed", "eg", "f", "e", "c", "ce", "d", "-", "-", "-"
-    ]
 
-    var lilbrownjug = [
-      "ac", "c", "cb", "dd", "ee", "de", "fg", "a",
-      "ac", "c", "cb", "dd", "ee", "de", "af", "f"
-
-    ]
     var afreen = ["cb", "ag-g", "d-d", "d", "bc", "de", "dg", "fe"
       // sn s g g g gm
       // gr rp mg
@@ -236,28 +135,7 @@
       // pp pd mp gr
       // pp p nsd  dpm pmr
     ]
-    var twinkle = ["c", "c", "g", "g",
-      "a", "a", "g", "-",
-      "f", "f", "e", "e",
-      "d", "d", "c", "-",
-      "g", "g", "f", "f",
-      "e", "e", "d", "-",
-      "g", "g", "f", "e",
-      "ef", "de", "c", "-"
-    ]
 
-    var ntc = ["a", "e", "d", "e",
-      "c", "d", "c", "b",
-      "a", "e", "d", "e",
-      "cd", "eg", "d", "-",
-      "g", "g", "g", "e",
-      "a", "g", "e", "d",
-      "de", "dc", "d-", "cb",
-      "d", "c", "b", "a"
-    ]
-    var tempx = ["c", "d", "e", "f"]
-    var temp = ["cd", "de", "ef", "fg", "ga", "ab", "bc", "-", "cde", "def", "efg", "gab", "abc"]
-    var aroundstupa = ["-", "f", "e", "d", "e", "f", "g", "f", "g", "g", "-"]
     songs = document.querySelector("#songs");
     songkey = document.querySelector("#songkey");
     translate = document.querySelector("#translate");
@@ -277,11 +155,13 @@
     var totranspose = [];
 
     function translates(note) {
+      // to nepali
       let newscale = [];
       for (i = 0; i < note.length; i++) {
         if ((note[i].length == 2 || note[i].length == 3) && !note[i].includes("#")) {
           notej = [];
           notei = note[i].split("")
+          console.log(notei, note[i])
           for (z = 0; z < notei.length; z++) {
             for (x = 0; x < Ckey.length; x++) {
               if (notei[z] == Ckey[x]) {
@@ -293,8 +173,10 @@
           console.log("my length" + note[i].length, note[i]);
 
           console.log(notej)
-          newscale.push(notej.join().replace(",", " "));
-
+          const searchRegExp = /,/g;
+          const replaceWith = '';
+          const result = notej.join().replace(searchRegExp, replaceWith);
+          newscale.push(result);
         }
 
         for (j = 0; j < Nepnotes.length; j++) {
@@ -315,6 +197,7 @@
         if (note[i].length == 2 || note[i].length == 3) {
           notej = [];
           notei = note[i].split("")
+          console.log(notei, note[i])
           for (z = 0; z < notei.length; z++) {
             for (x = 0; x < Ckey.length; x++) {
               if (notei[z] == Ckey[x]) {
@@ -324,9 +207,11 @@
             }
           }
           console.log("my length" + note[i].length, note[i]);
-
-          console.log(notej)
-          newscale.push(notej.join().replace(",", " "));
+          console.log(notej + "conjoined piece")
+          const searchRegExp = /,/g;
+          const replaceWith = '';
+          const result = notej.join().replace(searchRegExp, replaceWith);
+          newscale.push(result);
 
         }
         for (j = 0; j < Ckey.length; j++) {

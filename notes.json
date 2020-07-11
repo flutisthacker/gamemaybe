@@ -1,2 +1,2 @@
-note = {"hpd": ["gg", "a", "g", "c", "b", "-", "-", "-"]};
+notes = '{"hpd": "gg a g c b - - -","aroundstupa":"- - - - - f e d e f g f g g - ga a# a g f - gf d# d c a# c f - d# d c - - - - f - e f g b b c - c - f f - e d c - b - b c d# d c - - - b - c - b c - a g a f g - - b - c ed c b - a g a g - - -","ntc":"a e d e c d c b a e d e cd eg d - g g g e a g e d de dc d- cb d c b a","afreen": "cb agg d-d d bc de dg fe cb ce ee ef ed dg fe - cb c ce ee ef ed dg fe ef ed da aa a ff a gg ef ed da ac agf a gg - gg g b c ba ff a gg gg cc c c cdb cc c c bb bd b a a ff gf d bab ce f ed ab cc b c ","wochugalli":"g gb b b g gb b b a b c c b ba g"}';
 // note = '[{"name" : "Ashwin", "age" : "20"},{"name" : "Abhinandan", "age" : "20"}]';

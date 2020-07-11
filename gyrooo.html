@@ -7,92 +7,174 @@
   <title>compass</title>
 </head>
 <style>
-  .compass {
-    background-color: #16161d;
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
-    position: relative;
-  }
+  @media screen and (max-width: 599px) {
+    .compass {
+      background-color: #16161d;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      position: relative;
+    }
 
-  .north {
-    color: #fff;
-    font-size: 4rem;
-    position: absolute;
-    background-color: transparent;
-    top: 0%;
-    left: 50%;
-  }
+    .north {
+      color: #fff;
+      font-size: 2rem;
+      position: absolute;
+      background-color: transparent;
+      top: 0%;
+      left: 50%;
+    }
 
-  .south {
-    color: #fff;
-    font-size: 4rem;
-    position: absolute;
-    background-color: transparent;
-    top: 90%;
-    left: 50%;
-  }
+    .south {
+      color: #fff;
+      font-size: 2rem;
+      position: absolute;
+      background-color: transparent;
+      top: 90%;
+      left: 50%;
+    }
 
-  .east {
-    color: #fff;
-    font-size: 4rem;
-    position: absolute;
-    background-color: transparent;
-    align-items: flex-end;
-    top: 45%;
-    left: 0%;
-  }
+    .east {
+      color: #fff;
+      font-size: 2rem;
+      position: absolute;
+      background-color: transparent;
+      align-items: flex-end;
+      top: 45%;
+      left: 0%;
+    }
 
-  .west {
-    color: #fff;
-    font-size: 4rem;
-    background-color: transparent;
-    align-items: center;
-    position: absolute;
-    top: 45%;
-    left: 90%;
-  }
+    .west {
+      color: #fff;
+      font-size: 2rem;
+      background-color: transparent;
+      align-items: center;
+      position: absolute;
+      top: 45%;
+      left: 90%;
+    }
 
-  .sui {
-    width: 4px;
-    border-radius: 2px;
-    background: #fff;
-    height: 40%;
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform-origin: bottom;
-    transition: all 2s ease;
-  }
+    .sui {
+      width: 4px;
+      border-radius: 2px;
+      background: #fff;
+      height: 40%;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform-origin: bottom;
+      transition: all 2s ease;
+    }
 
-  /* .compass:hover .sui {
+    /* .compass:hover .sui {
     transform: rotate(360deg);
   } */
 
-  #sui {
-    display: none;
+    #sui {
+      display: none;
+    }
+
+    #sui:checked+.sui {
+      transform: rotate(360deg);
+
+    }
+
+    #takedeg {
+      z-index: 2;
+      width: 250px;
+      height: 250px;
+      position: absolute;
+      right: 0;
+      font-size: 5rem;
+    }
   }
 
-  #sui:checked+.sui {
+  @media screen and (min-width:1024px) {
+    .compass {
+      background-color: #16161d;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .north {
+      color: #fff;
+      font-size: 4rem;
+      position: absolute;
+      background-color: transparent;
+      top: 0%;
+      left: 50%;
+    }
+
+    .south {
+      color: #fff;
+      font-size: 2rem;
+      position: absolute;
+      background-color: transparent;
+      top: 90%;
+      left: 50%;
+    }
+
+    .east {
+      color: #fff;
+      font-size: 2rem;
+      position: absolute;
+      background-color: transparent;
+      align-items: flex-end;
+      top: 45%;
+      left: 0%;
+    }
+
+    .west {
+      color: #fff;
+      font-size: 2rem;
+      background-color: transparent;
+      align-items: center;
+      position: absolute;
+      top: 45%;
+      left: 90%;
+    }
+
+    .sui {
+      width: 4px;
+      border-radius: 2px;
+      background: #fff;
+      height: 40%;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform-origin: bottom;
+      transition: all 2s ease;
+    }
+
+    /* .compass:hover .sui {
     transform: rotate(360deg);
+  } */
 
-  }
+    #sui {
+      display: none;
+    }
 
-  #takedeg {
-    z-index: 2;
-    width: 500px;
-    height: 500px;
-    position: absolute;
-    right: 0;
-    font-size: 5rem;
+    #sui:checked+.sui {
+      transform: rotate(360deg);
+
+    }
+
+    #takedeg {
+      z-index: 2;
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      right: 0;
+      font-size: 5rem;
+    }
   }
 </style>
 
 <body>
-  <input type="number" id="takedeg">
-  <input type="text" id="takedeg2">
-  <label for="sui">
 
+  <label for="sui">
     <div class="compass">
       <div class="compass north" data-content="N">N</div>
       <div class="compass south">S</div>
@@ -102,6 +184,9 @@
       <div class="sui"></div>
     </div>
   </label>
+  <input type="number" id="takedeg">
+  <input type="text" id="takedeg2">
+
 </body>
 <script>
   takedeg = document.querySelector("#takedeg");

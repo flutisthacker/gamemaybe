@@ -90,6 +90,7 @@
 
 <body>
   <input type="number" id="takedeg">
+  <input type="text" id="takedeg2">
   <label for="sui">
 
     <div class="compass">
@@ -111,6 +112,7 @@
   sensor.start();
 
   sensor.onreading = () => {
+    takedeg.innerHTML += sensor.x + " " + sensor.y + " " + sensor.z;
     console.log("Acceleration along X-axis: " + sensor.x);
     console.log("Acceleration along Y-axis: " + sensor.y);
     console.log("Acceleration along Z-axis: " + sensor.z);

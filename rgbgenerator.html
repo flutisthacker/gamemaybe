@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
+  }
+
+  .rgb {
+    width: 50%;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    font-size: 3rem;
+    line-height: 50vh;
+    text-align: center;
+  }
+
+  .hsl {
+    width: 50%;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    font-size: 3rem;
+    line-height: 50vh;
+    text-align: center;
+  }
+
+  .rgb:hover,
+  .hsl:hover {
+    box-shadow: inset 15px 15px 12px 5px gray;
+  }
+</style>
+
+<body>
+  <div class="rgb">
+    generate color
+  </div>
+
+  <div class="hsl">
+    generate color
+  </div>
+
+</body>
+<script>
+  body = document.querySelector("body")
+  rgb = document.querySelector(".rgb")
+  rgb.addEventListener("click", () => {
+    random1 = randomRGB();
+    random2 = randomRGB();
+    random3 = randomRGB();
+    console.log(random1, random2, random3)
+    bodystyle = `background:rgb(${random1}, ${random2}, ${random3})`
+    rgb.style = bodystyle
+    // body.style = `background:hsl(${random1}, ${random2}, ${random3})`
+    rgb.innerHTML = bodystyle
+    // rgb.style = `color:rgb(${255-random1}, ${255-random2}, ${255-random3})`
+  })
+
+  function randomRGB() {
+    random = Math.floor(Math.random() * 255);
+    return random;
+  }
+
+  hsl = document.querySelector(".hsl")
+  hsl.addEventListener("click", () => {
+    random4 = randomHSL(358);
+    random5 = randomHSL(100);
+    random6 = randomHSL(100);
+    console.log(random4, random5, random6)
+    bodystyle = `background:hsl(${random4}, ${random5}%, ${random6}%)`
+    hsl.style = bodystyle
+    // body.style = `background:hsl(${random4}, ${random5}, ${random6})`
+    hsl.innerHTML = bodystyle
+  })
+
+
+
+  function randomHSL(num) {
+    random = Math.floor(Math.random() * num);
+    return random;
+  }
+
+  const randomRGBs = () => [
+    randomNumber(0, 255),
+    randomNumber(0, 255),
+    randomNumber(0, 255)
+  ];
+
+  function randomNumber(min, max) {
+    min = Math.cell(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() + (max - min + 1)) + min;
+  }
+</script>
+
+</html>

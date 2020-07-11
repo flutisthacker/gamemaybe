@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>colorinverse</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -58,10 +58,70 @@
     margin: 0;
     padding: 0;
   }
+
+  .monochrome,
+  .split {
+    width: 60%;
+    height: 60%;
+  }
+
+  .color1,
+  .color2,
+  .color3,
+  .color4,
+  .color5,
+  .scolor2,
+  .scolor1,
+  .tcolor1,
+  .tcolor2,
+  .acolor2,
+  .acolor1 {
+    width: 50px;
+    height: 50px;
+  }
 </style>
 
+
 <body>
-  <div class="inverseCol">
+  <div class=" row col-lg-12">
+    <div class="split row col-lg-3">
+      <div class="scolor col-lg-4"></div>
+      <div class="scolor1 col-lg-4"></div>
+      <div class="scolor2 col-lg-4"></div>
+    </div>
+    <div class="row col-lg-3">
+      <div class=" col-lg-4"> analogous</div>
+      <div class="acolor1 col-lg-4"></div>
+      <div class="acolor2 col-lg-4"></div>
+    </div>
+    <div class="row col-lg-3">
+      <div class=" col-lg-4">traid</div>
+      <div class="tcolor1 col-lg-4"></div>
+      <div class="tcolor2 col-lg-4"></div>
+    </div>
+    <div class="row col-lg-3">
+      <div class=" col-lg-2">square</div>
+      <div class="sqcolor1 col-lg-2"></div>
+      <div class="sqcolor2 col-lg-2"></div>
+      <div class="sqcolor3 col-lg-2"></div>
+      <div class="sqcolor4 col-lg-2"></div>
+    </div>
+  </div>
+
+  <div class="monochrome row col-lg-12">
+    <div class="color1 col-lg-1"></div>
+    <div class="color2 col-lg-1"></div>
+    <div class="color3 col-lg-1"></div>
+    <div class="color4 col-lg-1"></div>
+    <div class="color5 col-lg-1"></div>
+    <div class="icolor1 col-lg-1"></div>
+    <div class="icolor2 col-lg-1"></div>
+    <div class="icolor3 col-lg-1"></div>
+    <div class="icolor4 col-lg-1"></div>
+    <div class="icolor5 col-lg-1"></div>
+  </div>
+
+  <div class="inverseCol" id="inversecol">
     <div class="input-color-container">
       <a href="www.pinetools.com">for colorss</a>
       <input type="color" value="#000000" id="color">
@@ -95,11 +155,13 @@
 
       </div>
     </div>
+
   </div>
 
 
   <iframe src="generatecolor.html" width="100%" height="1024px" frameborder="0"></iframe>
   <iframe src="dynamicgradient.html" width="100%" height="1024px" frameborder="0"></iframe>
+  <iframe src="rgbgenerator.html" width="100%" height="1024px" frameborder="0"></iframe>
   <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <img src="..." class="rounded mr-2" alt="...">
@@ -114,8 +176,10 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="colorchange.js"></script>
+
   <script>
-    document.getElementById('video').requestFullscreen().catch((err) => console.log("couldnt open in fullscreen"))
+    document.getElementById('inversecol').requestFullscreen().catch((err) => console.log("couldnt open in fullscreen"))
 
     var table = document.querySelector('#colortable');
     color.addEventListener("change", syncColors);
@@ -124,18 +188,44 @@
       Icolor = invertcolor(color.value);
 
       var colortbody = `          <tr>
-            <td scope="col">${color.value}</td>
+            <td scope="col">${color.value}+ ${hexToRGB(color.value)}+ ${hexToHSL(color.value)} </td>
             <td scope="col" style="background-color:${color.value}"></td>
           </tr>
       `
       document.querySelector('#addcolor').innerHTML += colortbody;
       var inversetbody = `          <tr>
-            <td scope="col">${Icolor}</td>
+            <td scope="col">${Icolor} + ${hexToRGB(Icolor)}+ ${hexToHSL(Icolor)}</td>
             <td scope="col" style="background-color:${Icolor}"></td>
           </tr>
       `
       document.querySelector('#addinverse').innerHTML += inversetbody;
-      $(".toast").toast('show');
+      $(".color1").css("background", hexToHsl(color.value, -20))
+      $(".color2").css("background", hexToHsl(color.value, -10))
+      $(".color3").css("background", hexToHsl(color.value, 0))
+      $(".color4").css("background", hexToHsl(color.value, 10))
+      $(".color5").css("background", hexToHsl(color.value, 20))
+      $(".icolor1").css("background", hexToHsl(Icolor, -20))
+      $(".icolor2").css("background", hexToHsl(Icolor, -10))
+      $(".icolor3").css("background", hexToHsl(Icolor, 0))
+      $(".icolor4").css("background", hexToHsl(Icolor, 10))
+      $(".icolor5").css("background", hexToHsl(Icolor, 20))
+
+      $(".scolor").css("background", color.value);
+      $(".scolor1").css("background", splitcolor(color.value, -1));
+      $(".scolor2").css("background", splitcolor(color.value, 1));
+
+      $(".acolor1").css("background", analogouscolor(color.value, -1));
+      $(".acolor2").css("background", analogouscolor(color.value,
+        1));
+      // traid
+      // console.log(hexToHsltriad("#bd7d42", 37.5))
+      $(".tcolor1").css("background", hexToHsltriad(color.value, 37.5));
+      $(".tcolor2").css("background", hexToHsltriad(color.value, 62.5));
+
+      $(".sqcolor1").css("background", hexToHsltriad(color.value, 12.5));
+      $(".sqcolor2").css("background", hexToHsltriad(color.value, 37.5));
+      $(".sqcolor3").css("background", hexToHsltriad(color.value, 65.5));
+      $(".sqcolor4").css("background", hexToHsltriad(color.value, 75));
       //   var colorItem = `<div style="display:inline">
 
       //   <div>${color.value}
@@ -149,25 +239,27 @@
 
       //   table.innerHTML += colorItem;
       //   table.innerHTML += inverseItem;
-      // hextorgb(color.value);
 
     }
 
     function invertcolor(color) {
+      // var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
+      console.log(result)
       var b = color.toString().split("");
       hexnumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
       hexinverse = ["f", "e", "d", "c", "b", "a", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"];
       var myIndex = [];
       var myhexcolor = [];
       var newcolor = "#";
-      console.log(b)
+      // console.log(b)
       for (var i = 1; i < b.length; i++) {
         for (var j = 0; j < hexnumber.length; j++) {
           if (b[i] == hexnumber[j]) {
             myIndex.push(j);
             myhexcolor.push(hexinverse[j]);
             newcolor += hexinverse[j];
-            console.log(j, b[i], hexnumber[j])
+            // console.log(j, b[i], hexnumber[j])
           }
         }
       }
@@ -175,58 +267,53 @@
       return newcolor;
     }
 
-    function hextorgb(color) {
-      b = [];
-      b.push(color.toString().slice(1, 3));
-      b.push(color.toString().slice(3, 5));
-      b.push(color.toString().slice(5, 7));
-      console.log(b);
-      a = [];
-      c = [];
-      var changeIt;
-      for (var i = 0; i < b.length; i++) {
-        // b.push(a[i] * 17);
-        a.push(b[i].split(""))
-        for (var j = 0; i < a.length; j++) {
-          if (a[j] == ("a" || "b" || "c" || "d" || "e" || "f")) {
-            debugger
-            if (a[j] == "a") {
-              changeIt = 10;
-            }
-            if (a[j] == "b") {
-              changeIt = 11;
-            }
-            if (a[j] == "c") {
-              changeIt = 12;
-            }
-            if (a[j] == "d") {
-              changeIt = 13;
-            }
-            if (a[j] == "e") {
-              changeIt = 14;
-            }
-            if (a[j] == "f") {
-              changeIt = 15;
-            } else {
-              changeIt = a[j];
-              debugger
-            }
-          }
-          if (j == 0) {
-            c.push(parseInt(changeIt) * 16);
-          }
-          if (j == 1) {
-            c.push(parseInt(changeIt) * 1);
+    function splitcolor(color, times) {
+      // var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
+      console.log(result)
+      var b = color.toString().split("");
+      hexnumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+      hexinverse = ["f", "e", "d", "c", "b", "a", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"];
+      var myIndex = [];
+      var myhexcolor = [];
+      var newcolor = "#";
+      // console.log(b)
+      for (var i = 1; i < b.length; i++) {
+        for (var j = 0; j < hexnumber.length; j++) {
+          if (b[i] == hexnumber[j]) {
+            myIndex.push(j);
+            myhexcolor.push(hexinverse[j + times]);
+            newcolor += hexinverse[j + times];
+            // console.log(j, b[i], hexnumber[j])
           }
         }
-
-        // b = b.join()
-        console.log(c, a);
       }
+      myhexcolor.unshift("#");
+      return newcolor;
+    }
 
-
+    function analogouscolor(color, times) {
+      var b = color.toString().split("");
+      hexnumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+      var myIndex = [];
+      var myhexcolor = [];
+      var newcolor = "#";
+      // console.log(b)
+      for (var i = 1; i < b.length; i++) {
+        for (var j = 0; j < hexnumber.length; j++) {
+          if (b[i] == hexnumber[j]) {
+            myIndex.push(j);
+            myhexcolor.push(hexnumber[j + times]);
+            newcolor += hexnumber[j + times];
+            // console.log(j, b[i], hexnumber[j])
+          }
+        }
+      }
+      myhexcolor.unshift("#");
+      return newcolor;
     }
   </script>
+
 </body>
 
 </html>

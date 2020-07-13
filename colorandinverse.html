@@ -7,6 +7,8 @@
   <title>colorinverse</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 </head>
 
@@ -179,8 +181,6 @@
   <script src="colorchange.js"></script>
 
   <script>
-    document.getElementById('inversecol').requestFullscreen().catch((err) => console.log("couldnt open in fullscreen"))
-
     var table = document.querySelector('#colortable');
     color.addEventListener("change", syncColors);
 
@@ -188,16 +188,17 @@
       Icolor = invertcolor(color.value);
 
       var colortbody = `          <tr>
-            <td scope="col">${color.value}+ ${hexToRGB(color.value)}+ ${hexToHSL(color.value)} </td>
+            <td scope="col" id="content" onclick="copy()" class="far fa-copy">${color.value} ${hexToRGB(color.value)} ${hexToHSL(color.value)}</td>
             <td scope="col" style="background-color:${color.value}"></td>
           </tr>
       `
       document.querySelector('#addcolor').innerHTML += colortbody;
       var inversetbody = `          <tr>
-            <td scope="col">${Icolor} + ${hexToRGB(Icolor)}+ ${hexToHSL(Icolor)}</td>
+            <td scope="col"  id="content" onclick="copy()" class="far fa-copy">${Icolor}  ${hexToRGB(Icolor)} ${hexToHSL(Icolor)}</td>
             <td scope="col" style="background-color:${Icolor}"></td>
           </tr>
       `
+
       document.querySelector('#addinverse').innerHTML += inversetbody;
       $(".color1").css("background", hexToHsl(color.value, -20))
       $(".color2").css("background", hexToHsl(color.value, -10))
@@ -312,6 +313,9 @@
       myhexcolor.unshift("#");
       return newcolor;
     }
+  </script>
+
+  <script src="copy.js">
   </script>
 
 </body>

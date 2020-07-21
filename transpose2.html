@@ -19,20 +19,10 @@
 
   <div class="containerd">
     <div class="title">
-      <h1>Transpose</h1>
+      <h1 id="titlename">Transpose</h1>
     </div>
     <div class="addSect">
       <select name="" id="songs">
-        <option selected value="note.hpd">Happy birthday</option>
-        <option value="note.gingle">gingle bell</option>
-        <option value="note.sakura">sakura</option>
-        <option value="note.janenahi">janenahi</option>
-        <option value="note.temp">alankar</option>
-        <option value="note.ntc">NTC</option>
-        <option value="note.lilbrownjug">lilttle brown jug</option>
-        <option value="note.twinkle">twinkle twinkle</option>
-        <option value="note.ogreenland">ogreenland</option>
-        <option value="note.flowerofedinburgh">flowerofedinburgh</option>
       </select>
       <select name="" id="songkey">
         <option selected value="C">C</option>
@@ -112,34 +102,10 @@
     const Askey = ["a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "-"];
     const Bkey = ["b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "-"];
 
-    // var Ckey = ["c", "d", "e", "f", "g", "a", "b", "-"]
-    // var Dkey = ["d", "e", "f#", "g", "a", "b", "d#", "-"]
-
-    var afreen = ["cb", "ag-g", "d-d", "d", "bc", "de", "dg", "fe"
-      // sn s g g g gm
-      // gr rp mg
-      // sn s sg gg
-      // gm gr rp mg
-
-      // gm gr rd dd d mm d pp
-      // gm gr rd ds dpm d pp
-      // pp p n s nd mm d pp
-      // pp ss ss srn ss ss
-      // nn n r nd d mm pmr
-
-      // ndn sg m gr sd ss ss
-
-      // gm gr pp
-      //  pp d mg rgm
-      // pp pdpd mp
-      // pp pd mp gr
-      // pp p nsd  dpm pmr
-    ]
-
     songs = document.querySelector("#songs");
     songkey = document.querySelector("#songkey");
     translate = document.querySelector("#translate");
-    Ckey.map(key => console.log(`${key} is the natural key`))
+    // Ckey.map(key => console.log(`${key} is the natural key`))
 
     translate.addEventListener("click", () => {
       // translates(eval(songs.value))
@@ -158,7 +124,7 @@
       // to nepali
       let newscale = [];
       for (i = 0; i < note.length; i++) {
-        if ((note[i].length == 2 || note[i].length == 3) && !note[i].includes("#")) {
+        if ((note[i].length == 2 || note[i].length == 3 || note[i].length == 4) && !note[i].includes("#")) {
           notej = [];
           notei = note[i].split("")
           console.log(notei, note[i])
@@ -194,20 +160,20 @@
     function transpose(note, key) {
       newscale = [];
       for (i = 0; i < note.length; i++) {
-        if (note[i].length == 2 || note[i].length == 3) {
+        if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4) {
           notej = [];
           notei = note[i].split("")
-          console.log(notei, note[i])
+          // console.log(notei, note[i])
           for (z = 0; z < notei.length; z++) {
             for (x = 0; x < Ckey.length; x++) {
               if (notei[z] == Ckey[x]) {
-                console.log(Ckey[x], notei[z], key[x])
+                // console.log(Ckey[x], notei[z], key[x])
                 notej.push(key[x])
               }
             }
           }
-          console.log("my length" + note[i].length, note[i]);
-          console.log(notej + "conjoined piece")
+          // console.log("my length" + note[i].length, note[i]);
+          // console.log(notej + "conjoined piece")
           const searchRegExp = /,/g;
           const replaceWith = '';
           const result = notej.join().replace(searchRegExp, replaceWith);
@@ -241,18 +207,6 @@
     }
 
     function maketable() {
-      //     <table class="table table-hover">
-      //   <thead class="thead thead-dark">
-      //     <tr>
-      //       <td>1</td>
-      //       <td>2</td>
-      //       <td>3</td>
-      //       <td>4</td>
-      //     </tr>
-      //   </thead>
-      //   <tbody class="tbody"></tbody>
-      // </table>
-
       body = document.querySelector('.list');
       body.innerHTML = ""
       table = document.createElement('table');

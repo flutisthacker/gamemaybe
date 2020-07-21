@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../instaclone/perfect.css">
+</head>
+<style>
+  body {
+    flex-direction: column;
+    color: black;
+  }
+
+  @media screen and (max-width:599px) {
+    .covid-19 {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-row-gap: 20px;
+      grid-column-gap: 20px;
+    }
+
+    .covid {
+      width: 120px;
+      height: 120px;
+      text-align: center;
+      line-height: 15px;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+
+    .table {
+      display: none;
+      width: 100vw;
+    }
+
+    #countries {
+      width: 100vw;
+      height: 40px;
+    }
+  }
+
+  @media screen and (min-width:1024px) {
+    .covid-19 {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-row-gap: 20px;
+      grid-column-gap: 20px;
+    }
+
+    .covid {
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+    }
+
+
+    #countries {
+      width: 100%;
+      height: 40px;
+    }
+  }
+
+
+  .newr {
+    background: linear-gradient(135deg, var(--cp23c1), var(--cp23c2), var(--cp23c3), var(--cp23c4));
+    /* background: var(--cp23c1); */
+  }
+
+  .newd {
+    background: linear-gradient(135deg, var(--cp24c1), var(--cp24c2), var(--cp24c3), var(--cp24c4));
+  }
+
+  .newc {
+    background: linear-gradient(135deg, var(--ailove1), var(--ailove2), var(--ailove3), var(--ailove4));
+    /* background: var(--cp23c3); */
+  }
+
+  .totalr {
+    background: linear-gradient(135deg, var(--questionmonkey1), var(--questionmonkey2), var(--questionmonkey3), var(--questionmonkey4));
+
+    /* background: var(--cp24c1); */
+  }
+
+  .totald {
+    background: linear-gradient(135deg, var(--happycoffee1), var(--happycoffee2), var(--happycoffee3), var(--happycoffee4));
+    /* background: var(--cp24c2); */
+  }
+
+  .totalc {
+    background: linear-gradient(135deg, var(--tiredAC1), var(--tiredAC2), var(--tiredAC3), var(--tiredAC4));
+    /* background: var(--cp24c3); */
+  }
+</style>
+
+<body><select name="" id="countries">
+    <option value="Nepal">Choose</option>
+  </select>
+  <table class="table table-dark col-lg-12 col-sm-12">
+    <thead class="thead col-lg-12 col-sm-12">
+      <tr>
+        <td>Total confirmed</td>
+        <td>Total Death</td>
+        <td>Total recovered</td>
+        <td>New confirmed</td>
+        <td>New Death</td>
+        <td>New recovered</td>
+
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+  <div class="covid-19">
+    <div class="covid newd brcircle">
+      New deaths:
+      <span id="newd"></span>
+    </div>
+    <div class="covid newr brcircle">
+      New recovered:
+      <span id="newr"></span>
+    </div>
+    <div class="covid newc brcircle">
+      New confirmed:
+      <span id="newc"></span>
+    </div>
+    <div class="covid totald brcircle">
+      total deaths:
+      <span id="totald"></span>
+    </div>
+    <div class="covid totalr brcircle">
+      total recovered:
+      <span id="totalr"></span>
+    </div>
+    <div class="covid totalc brcircle ">
+      total confirmed:
+      <span id="totalc"></span>
+    </div>
+  </div>
+  <script>
+    getdata();
+    var mydata;
+    document.addEventListener("load", getdata);
+    document.querySelector("#countries").addEventListener("change", () => {
+      aaaaa = document.querySelector("#countries").value
+      console.log(mydata.Countries[aaaaa]);
+      country(mydata.Countries[aaaaa]);
+    })
+
+    function getdata() {
+      url = "https://api.covid19api.com/summary"
+      fetch(url).then((covidData) => {
+        return covidData.json();
+      }).then((getData) => {
+        mydata = getData
+        console.log(mydata.Countries[118]);
+        console.log(mydata);
+        console.log(mydata.Countries.length);
+        global(mydata["Global"]);
+        mydata.Countries.forEach((con, index) => {
+          option = document.createElement("option")
+          option.innerHTML = con.Country
+          option.value = index
+          document.querySelector("#countries").append(option)
+        })
+
+        return getData;
+      })
+    }
+
+    function global(getData) {
+      gTotalRecovered = getData.TotalRecovered;
+      gTotalConfirmed = getData.TotalConfirmed;
+      gTotalDeaths = getData.TotalDeaths;
+      gNewRecovered = getData.NewRecovered;
+      gNewConfirmed = getData.NewConfirmed;
+      gNewDeaths = getData.NewDeaths;
+      gdate = getData.Date;
+      gcountry = getData.Country;
+      // debugger
+      gtr = document.createElement("tr")
+      gtc = document.createElement("td")
+      gtc.innerHTML = gTotalConfirmed
+      gtr.append(gtc)
+      gtd = document.createElement("td")
+      gtd.innerHTML = gTotalDeaths
+      gtr.append(gtd)
+      gtrr = document.createElement("td")
+      gtrr.innerHTML = gTotalDeaths
+      gtr.append(gtrr)
+      gnc = document.createElement("td")
+      gnc.innerHTML = gNewConfirmed
+      gtr.append(gnc)
+      gnd = document.createElement("td")
+      gnd.innerHTML = gNewDeaths
+      gtr.append(gnd)
+      gnrr = document.createElement("td")
+      gnrr.innerHTML = gNewDeaths
+      gtr.append(gnrr)
+      document.querySelector("tbody").append(gtr)
+    }
+
+    function country(getData) {
+      TotalRecovered = getData.TotalRecovered;
+      TotalConfirmed = getData.TotalConfirmed;
+      TotalDeaths = getData.TotalDeaths;
+      NewRecovered = getData.NewRecovered;
+      NewConfirmed = getData.NewConfirmed;
+      NewDeaths = getData.NewDeaths;
+      newd.innerHTML = NewDeaths
+      newc.innerHTML = NewConfirmed
+      newr.innerHTML = NewRecovered
+      totald.innerHTML = TotalDeaths
+      totalc.innerHTML = TotalConfirmed
+      totalr.innerHTML = TotalRecovered
+      date = getData.Date;
+      countri = getData.Country;
+      // debugger
+
+    }
+  </script>
+</body>
+
+</html>

@@ -73,10 +73,12 @@ function transpose(note, key) {
     if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4) {
       notej = [];
       notei = note[i].split("")
-      // console.log(notei, note[i])
+      console.group("1111")
+      console.log(notei, note[i])
       for (z = 0; z < notei.length; z++) {
         for (x = 0; x < Ckey.length; x++) {
-          if (notei[z] == Ckey[x]) {
+          console.log(notei[z].toLowerCase())
+          if (notei[z].toLowerCase() == Ckey[x]) {
             // console.log(Ckey[x], notei[z], key[x])
             notej.push(key[x])
           }

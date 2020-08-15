@@ -61,8 +61,7 @@ note = {
     "de", "dc", "d-", "cb",
     "d", "c", "b", "a"
   ],
-  "tempx": ["c", "d", "e", "f"],
-  "temp": ["cd", "de", "ef", "fg", "ga", "ab", "bc", "-", "cde", "def", "efg", "gab", "abc", "cdef", "defg", "efga", "fgab"],
+  "temp": ["c", "d", "e", "f", "g", "a", "b", "c", "cd", "de", "ef", "fg", "ga", "ab", "bc", "-", "cde", "def", "efg", "gab", "abc", "cdef", "defg", "efga", "fgab"],
   "aroundstupa": ["-", "-", "-", "-", "-", "f", "e", "d", "e", "f", "g", "f", "g", "g", "-", "ga", "a#", "a", "g",
     "f", "-", "gf",
     "d#", "d", "c", "a#", "c", "f", "-", "d#", "d", "c", "-", "-", "-", "-", "f", "-", "e", "f", "g", "b", "b",
@@ -76,7 +75,7 @@ note = {
   "afreen": ["cb", "agg", "d-d", "d", "bc", "de", "dg", "fe", "cb", "ce", "ee", "ef", "ed", "dg", "fe", "-", "cb", "c", "ce", "ee", "ef", "ed", "dg", "fe", "ef", "ed", "da", "aa", "a", "ff", "a", "gg", "ef", "ed", "da", "ac", "agf", "a", "gg", "-", "gg", "g", "b", "c", "ba", "ff", "a", "gg", "gg", "cc", "c", "c", "cdb", "cc", "c", "c",
     "bb", "bd", "b", "a", "a", "ff", "gf", "d", "bab", "ce", "f", "ed", "ab", "cc", "b", "c"
   ],
-  "wochugalli": ["g", "gb", "b", "b", "g", "gb", "b", "b", "a", "b", "c", "c", "b", "ba", "g", "-"],
+  "wochugalli": ["g", "gb", "b", "b", "g", "gb", "b", "b", "a", "b", "c", "c", "b", "ba", "g", "-", "g", "ga", "g", "f", "e", "ed", "c", "b", "-", "bc", "-d", "e", "f#", "f#", "", "g", "-", "-", "bd", "-c", "b", "a", "af", "g", "g", "f#", "fe", "d", "c", "d", "f#", "g", "-", "-", "de", "-g", "g", "ga", "g", "f#", "ga", "ag", "a#", "a", "g", "f", "e", "-", "-", "de", "-g", "f", "e", "ed", "c", "b", "-", "bc", "-d", "e", "f#", "f#", "g", "-", "d", "d", "f", "f", "g", "g", "ad", "ba", "ba", "ag", "a", "gf", "g", "-", "-", "ed", "fgf", "dc", "df", "g"],
   "jigubaisha": ["c", "ce", "cb", "c", "cb", "ce", "cb", "c",
     "g", "f", "e", "d", "c",
     "gg", "ff", "e",
@@ -198,11 +197,11 @@ note = {
   ],
   "smokeonwater": ["a", "c", "d", "-a", "-c", "-e", "d", "-", "a", "c", "d", "-c", "-a", "-", "-", "-"],
   "makurijalai": ["ee", "gg", "ga", "ge", "g", "a", "c", "-", "ga", "ge", "g", "a", "c", "-", "gca", "ca", "ge", "c", "de", "g", "e", "d", "c", "-"],
-  "fireflies": ["c", "g", "g", "f", "g", "f", "c",
-    "c", "d", "d", "c", "d", "f", "g",
-    "a", "g", "f", "c", "c", "c", "g", "f", "d",
-    "c", "g", "g", "f", "g", "f", "c",
-    "c", "d", "d", "c", "d", "f", "g",
+  "fireflies": ["cg", "gf", "gf", "c",
+    "cd", "dc", "df", "g",
+    "a-g", "fcc", "cg", "fd",
+    "cg", "gf", "gf", "c",
+    "cd", "dc", "df", "g",
     "c", "c", "a", "g",
     "f", "c", "c", "a", "g", "d", "f"
   ],
@@ -230,27 +229,111 @@ note = {
   "irishwasherman": ["gf", "ecc", "gcc", "ece", "gfe", "bdd", "add", "fdf", "agf", "ecc", "gcc", "ece", "gfe", "fef", "dgf", "dcc", "c-g", "cgc", "cgc", "cgc", "edc", "bgb", "bgb", "bgb", "dcb", "acc", "gcc", "fcc", "ecc", "fef", "dgf", "ecc", "c"],
   "gulabi": ["ee", "e", "c", "c", "cb", "c", "d", "b", "ba", "b", "c", "a", "a", "g", "a", "b", "e", "f", "ae", "-", "e", "f", "af", "-", "f", "g", "a", "ba", "ab", "ag", "af", "e", "b", "c", "d", "e", "-", "-", "fe", "fe", "dc", "b", "cd", "-", "ed", "ed", "cb", "a", "bc", "-", "dc", "dc", "ba", "g", "ab", "-"],
   "fairytail": ["aba", "ge", "deg", "ag", "aba", "ge", "deg", "cb", "aba", "ge", "deg", "ag", "cba", "bag", "egag", "cb", "abc", "bd", "ce", "dcb", "abc", "bd", "ce", "dcb",
-    "a-", "e-", "--", "-da", "c-", "b-", "a-", "b-", "a-", "e-", "g-", "-ef", "dg", "cb", "a-", "g-"
-  ]
+    "a-", "e-", "--", "-da", "c-", "b-", "a-", "b-", "a-", "e-", "g-", "-ef", "dg", "cb", "a-", "g-",
+    "a", "ab", "c", "ba", "g", "e", "-", "dc", "d", "-c", "d", "cb", "a", "-", "b", "-", "a", "ab", "c", "ba", "ge", "ge", "-", "dc", "d", "-e", "d", "cb", "a", "bc", "b", "g"
+  ],
+  "ntc": ["ae", "de", "cd", "cb", "ae", "de", "cdeg", "d", "gg", "ge", "ag", "ed", "dedc", "dcb", "dc", "ba", "ae", "de", "cde", "edcb", "bcde", "dcbc", "a", "-"],
+  "closer": ["cd", "ee", "fd", "cd", "bcd", "efe", "dd", "dc", "cef", "f", "ece", "cd", "cef", "gd", "cbc", "c"],
+  "alankar": ["-e", "de", "cd", "e-", "-e", "de", "cd", "f-", "-e", "de", "cd", "g-", "fe", "fe", "dc",
+    "-", "-f", "ef", "de", "f-", "-f", "ef", "de", "g-", "-f", "ef", "de", "a-", "gf", "gf", "ed", "-",
+    "-g", "fg", "ef", "g-", "-g", "fg", "ef", "a-", "-g", "fg", "ef", "b-", "ag", "ag", "fe", "-",
+    "-a", "ga", "fg", "a-", "-a", "ga", "fg", "b-", "-a", "ga", "fg", "c-", "ba", "ba", "gf", "-",
+    "-b", "ab", "ga", "b-", "-b", "ab", "ga", "c-", "-b", "ab", "ga", "d-", "cb", "cb", "ag", "-",
+    "-c", "bc", "ab", "c-", "-c", "bc", "ab", "r-", "-c", "bc", "ab", "e-", "dc", "dc", "ba", "-",
+    "cb", "ab", "ag", "-b", "-a", "ga", "gf", "-a", "-g", "fg", "fe", "-g", "-f", "ef", "ed", "c-"
+  ],
+  "ektarfa": ["bb", "bb", "bcc", "ba", "g", "-", "-", "-",
+    "bb", "bb", "bcc", "ba", "g", "-", "-", "-",
+    "bb", "bb", "bcc", "ba", "g", "-", "-", "-",
+    "bb", "bb", "dc", "ba", "g", "-", "-", "-",
+    "cc", "dddf", "ffg", "f", "ee", "dc", "d", "-",
+    "cc", "gf", "ffff", "gf", "ee", "", "edc", "c", "-",
+    "gg", "dd", "cc", "cc", "cc", "de", "dc", "ba",
+    "aa-a", "aa-a", "ag", "gaa", "ab", "bcc", "", "ba", "gg",
+    "ed", "ed", "ed", "egfg", "e", "dc", "dcb", "a",
+    "g", "gb", "a", "-", "gf", "g", "-", "-",
+    "gg", "gc", "aa", "-", "gf", "g", "-", "-",
+    "g", "gb", "a", "-", "gf", "g", "-", "-",
+    "gg", "cb", "g", "-",
+    "gg", "gc", "aa", "-", "gf", "g", "-", "-"
+
+  ],
+  "lyamadaju": ["cd", "ef", "f", "f", "g", "ga", "f", "-", "e", "d", "df", "ed", "c", "c", "b", "-", "-", "g", "b", "-", "c", "-", "d", "de", "cd", "g", "f", "e", "d", "e", "d", "cd", "b", "c", "-", "--", "g", "g", "g", "ga", "ab", "b", "-", "-", "bc", "-c", "d", "c", "c", "b", "-", "a", "a", "g", "g", "ga", "ab", "b", "-", "-", "bc", "-c", "d", "c", "c", "b", "-", "a", "a", "g", "g", "f", "f", "e", "d", "", "f", "e", "d", "c", "c", "b", "-", "-", "g", "b", "b", "c", "-", "d", "de", "cd", "g", "f", "e", "d", "e", "d", "c", "b", "c", "-", "-"],
+  "hayejyapunitata": ["-", "g", "-g", "c", "cc", "a#", "a", "g", "d", "f", "ga", "g", "fe", "ef", "d", "c", "-", "b", "-b", "b", "c", "c", "df", "f", "-", "df", "ga", "g", "fe", "ef", "d", "c", "-", "cd", "-d", "d", "d#", "-", "d", "c"],
+  "manakihum": ["de", "-d", "e", "dc", "de", "-d", "e", "-", "de", "-d", "e", "ag", "e", "d", "-", "-", "c", "b", "a", "b", "c", "e", "-", "-", "d", "f", "e", "-", "e", "ed", "g", "f", "f", "e", "d", "-", "e", "f", "a", "e", "de", "-", "-", "dc", "cd", "cba", "fa", "ag", "g", "df", "fe", "-", "c", "b", "a", "b", "c", "g", "-a", "fe", "ga", "gaa", "ga", "gaa", "bb", "c", "ba", "ag", "g", "c", "ag", "f", "g", "c", "ag", "dcag", "cb", "ga", "g", "-", "gaa", "gaa", "gcc", "a", "b", "dc", "b", "ba", "ag", "ag", "gg", "-"],
+  "dancemonkey": ["ag", "ag", "ag", "ag", "ac", "b", "-", "-", "cc", "ba", "ag", "ag", "ac", "b", "-", "-", "-g", "ag", "ag", "ag", "ag", "ac", "b", "-"],
+  "spongebob": ["ge", "ce", "ec", "eg", "bag", "dca", "ca", "ge", "dc", "df", "ef", "fed", "gf", "gb", "c", "g"],
+  "wisemansay": ["c", "-", "-", "-", "g", "-", "-", "-", "c", "-", "-", "-", "d", "e", "f", "-", "e", "-", "-", "-", "d", "-", "-", "-", "g", "d", "-", "-", "n", "-", "-", "-", "c", "-", "-", "-", "d", "e", "f", "-", "e", "-", "-", "-", "d", "-", "-", "-", "c", "-", "-", "-"],
+  "krishna": ["c", "cd", "e", "f", "ef", "gf", "e", "d", "cd", "cb", "cc", "dd", "fe", "dc", "c", "c",
+    "g", "gcc", "c", "ba", "ba", "gf", "fg", "g", "g", "gba", "fe", "dc", "e", "d", "-", "-", "bc", "-", "-", "fe", "bc", "-", "-", "-"
+  ],
+  "wokishnahai": ["c", "g", "-", "", "fe", "d", "f", "-", "ed", "c", "e", "-", "dc", "d", "-", "-", "-", "c", "g", "-", "", "fe", "d", "f", "-", "ed", "c", "e", "-", "dc", "c", "-c", "ab", "c", "-c", "ab", "d", "ed", "-c", "ab", "c", "-"],
+  "untamed": ["e", "-", "c", "a", "b", "g", "e", "-", "a", "bc", "d", "g", "a", "-", "-", "-", "e", "-", "c", "a", "b", "g", "e", "fg", "a", "-", "dc", "bc", "b", "-", "-", "-", "cd", "e", "d", "cb", "ca", "b", "a", "g", "cd", "ef", "g", "d", "e", "-", "-", "-",
+    "d", "eg", "c", "-", "bc", "e", "a", "-", "g", "g", "e", "c", "cd", "ed", "eg", "a", "-", "-", "-", "-", "eg", "a", "c", "b", "a", "g", "e", "-dg", "e", "ab", "c", "ab", "ag", "e", "-", "-", "fg", "a", "c", "b", "a", "g", "e", "eb", "a", "ag", "ac", "b", "g", "a", "-", "-",
+    "c", "-", "-", "dg", "e", "-", "-", "-", "c", "-", "-", "da", "g", "-", "-", "g", "c", "-", "-", "dg", "e", "-", "e", "ca", "d", "-", "-", "-", "-", "-", "cd", "ag", "c", "-", "-", "-"
+  ],
+  "rajamati": ["gg", "ga", "CC", "C", "cd", "ed", "ccb", "ag", "ga", "bb", "bag", "ag", "g", "-c", "cd", "bc", "ga", "aa", "ab", "ag", "ga", "gf", "ee", "dc", "cd", "ee"]
 };
 
+
+// srg s rsns yahe mayela
+// gm pn dnpd mp
+// gr pm ggr sns
+// rs gr sndn s
+
+// mmm mrg sr n ns r - r rm gg ggr sndn s - - -(rgrs)
+// np nn s s s rm pn dnd pp ps ss nn dd pdp gm p -
+
+
+//   music
+// gm gr s - r n - s g m n dn pd mp
+// gmp ndp dn pdp grs
+// ndp nn g - s gmp p m rsns
+
+
+// music
+// grsnn ' d pd n'
+// sgm r s / n 'dp
+// dn pd g gm grs
+// ns rm gm rg nrs
+
+// music
+// gm pn dn pd mp
+// gr pm g gr sns
+
+// gm pn d - - - -
+//   nd pm p - - -
 
 
 var songList = [
   "temp",
+  "alankar",
+  "spongebob",
+  "untamed",
+  "wisemansay",
+  "wokishnahai",
+  "krishna",
   "terebin",
+  "rajamati",
+  "ektarfa",
+  "dancemonkey",
   "hpd",
+  "ntc",
   "gulabi",
   "dekhahajaro",
+  "lyamadaju",
+  "hayejyapunitata",
   "rooptera",
   "bolna",
   "janenahi",
   "korakagaz",
+  "manakihum",
   "jasnebahara",
   "piyabole",
   "fairytail",
   "barrishlete",
   "asalmein",
+  "closer",
   "afreen",
   "smokeonwater",
   "titanic",
@@ -286,11 +369,18 @@ var songList = [
 ]
 
 songs = document.querySelector("#songs");
+songstwo = document.querySelector("#songstwo");
 songList.forEach(song => {
   option = document.createElement("option");
   option.value = ("note." + song);
   option.innerHTML = song;
   songs.append(option)
+
+  li = document.createElement("li");
+  li.id = ("note." + song);
+  li.innerHTML = song;
+  songstwo.append(li)
+
 })
 
 

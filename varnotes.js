@@ -610,9 +610,55 @@ note = {
     "e", "f", "-g", "f", "e", "ce", "c", "-", "-", "-",
     "e", "g", "-", "e", "g", "-", "e", "c", "cf",
     "e", "f", "-g", "f", "e", "c", "g", "-", "-"
-
-  ]
+  ],
+  "momyfinger": [
+    "ce", "gg", "ce", "gg", "a", "c", "g", "-", "a", "ff", "a", "ff", "f", "de", "c", "-"
+  ],
+  "karpurgauram": [
+    "de", "a", "-", "-", "gc", "a", "-", "-", "cag", "e", "-", "-", "ce", "-", "d", "-", "-c", "dd", "dd", "ed", "-c", "dd", "dd", "ed", "-c", "cc", "d", "e", "-g", "e", "-ge", "d", "-b", "bb", "b", "a", "aa", "cb", "a", "g", "-", "-", "-", "-", "e", "-", "-", "-", "e", "e", "e", "e", "dc", "-e", "ed", "-"
+  ],
+  "humhaiespal": [
+    "c", "cb", "ag", "-a", "c", "e", "-", "-",
+    "e", "ef", "ga", "-g", "e", "b", "-", "-",
+    "c", "cb", "ag", "-a", "c", "e", "-", "-",
+    "e", "ef", "ga", "-b", "a", "c", "-", "-",
+    "cb", "c", "e", "e", "-", "-", "de", "-",
+    "cb", "c", "f", "f", "-", "-", "ef", "", "-",
+    "fgf", "ed", "dc", "b", "-", "-", "-", "-",
+    "ga", "ab", "ag", "e", "-", "-", "-", "-"
+  ],
+  "nira": [
+    "cb", "cc", "dd", "e", "cb", "cc", "dd", "e", "cb", "cc", "dd", "ed", "cb", "cd", "cc", "c", "-gf", "ef", "e", "gg", "gf", "ef", "e", "-",
+    "cc", "dd", "ed", "cb", "ac", "dd", "e", "cb", "cc", "dd", "e", "cb", "cc", "dd", "e", "cb", "cc", "dd", "ed", "cb", "cd", "cc", "c", "-"
+  ],
+  "jaidevjaidev": ["gc", "cc-c", "cd", "c", "cb", "-", "bd", "dd", "dc", "b", "b-b", "b", "cd", "-", "cd", "g", "fgd", "", "bb", "b", "cd", "cc", "cc", "-", "-", "gc", "cc-c", "cd", "c", "cb", "-", "bd", "dd", "dc", "b", "b-b", "b", "cd", "-", "c-cc", "c-cc", "-", "-", "eee", "eee", "dee", "fe", "ddd", "ddd", "ccc", "de", "dc"],
+  "terebinabeswadi": [
+    "b", "ba", "b", "ba", "bb", "b", "ba", "d", "ba", "a", "ag", "a", "a", "aa", "ge", "g", "gg", "ab", "db", "a", "g", "g", "g", "dd", "de", "dc", "cd", "cb", "ab", "ag", "g", "g", "ga", "b", "c", "c", "c", "c", "c", "c", "ba", "ba", "ccc", "ced", "bag", "ab", "alankar", "bcd", "ee", "dc", "c", "c", "c", "c", "gfe", "edc", "cde", "def", "efg", "fedc", "c", "c", "c", "c", "bdcb", "cbabag", "gfe", "ef", "ga", "fef", "deg", "fa", "bb", "cbc", "abab", "ag"
+  ],
+  "achutamkesavam": ["c", "d", "e", "e", "f", "e", "bc", "d", "d", "e", "d", "c", "b", "a", "a", "d", "d", "d", "ded", "cb", "b", "c"],
+  "tuhai": ["g", "d", "efg", "fe", "g", "dd", "efg", "fe", "g", "cc", "ded", "dd", "cba", "dd", "cc", "bb", "aa", "gg", "f", "ee", "def", "ee", "dd", "dd", "cc", "bb", "aa", "gg", "f", "ee", "ba", "ba", "ba", "bd", "db", "ag"]
 };
+
+
+/*
+f/c
+
+
+aafnai
+sr g -p gr sn s -g r
+sr g -p gr sn s - -
+sr g -p gr sn r -g r
+g p d - n d p g r g - p g
+gp d n d g r g
+sn r -g r sn s -r s
+gare ga -re sa ni re - -
+ni resa - -ni pa - -
+gr g r sn p
+sn p r nr s
+rp g - - sn - -nnn rrr g
+ppp nnn s
+ */
+
 let songkolagijson = {};
 
 function arrayToJson() {
@@ -644,20 +690,28 @@ var songList = [
   "untamed_G",
   "wisemansay",
   "wokishnahai",
+  "krishna",
+  "achutamkesavam",
+  "tuhai",
+  "jaidevjaidev",
+  "terebinabeswadi",
   "jhanjaka",
   "tmletahoina",
   "oncscale",
-  "krishna",
   "harrypotter",
+  "karpurgauram",
   "suryaputra",
   "krishnalila",
   "terebin",
+  "nira",
+  "momyfinger",
   "kahilekahi",
   "subhakamana",
   "pariwartan",
   "sawanikhola",
   "sayathari",
   "moomin",
+  "humhaiespal",
   "thamelbazar",
   "lukkichupi_Gs",
   "ohmaicha",

@@ -24,7 +24,27 @@
     weight: 100%;
   }
 
-  @media screen and (max-width:520px) {
+  form {
+    max-width: 40vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  form label {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  form input {
+    border: 2px solid lightslategray;
+    height: 40px;
+    border-radius: 3ox;
+    padding: 5px;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  @media screen and (max-width:584px) {
 
     .containerd {
       width: 400px;

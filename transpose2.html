@@ -34,6 +34,19 @@
       <h1 id="titlename">Transpose</h1>
     </div>
     <div class="addSect">
+      <!-- <form>
+        <input type="text" id="yahoo" name="yahoo" placeholder="type here/..." list="songs">
+        <datalist id="songs">
+          <option value="how to become a hacker">
+          <option value="how to become a coder">
+          <option value="how to become a programmer">
+          <option value="how to become a teacher">
+          <option value="how to become a dancer">
+          <option value="how to become a musician">
+          <option value="how to become a chefs">
+          <option value="how to become a rapper">
+        </datalist>
+      </form> -->
       <select name="" id="songs"></select>
       <select name="" id="songkey">
         <option selected value="C">C</option>
@@ -166,7 +179,7 @@
       console.log(songs.value, a)
       totransposed = {
         name: songs.value,
-        notes: totranspose
+        notes: eval(songs.value)
       }
       let cccc = JSON.stringify(totransposed)
       localStorage.setItem("totranslatenote", cccc);
@@ -237,14 +250,18 @@
     songstwoli.forEach(songl => {
       songl.addEventListener("click", (e) => {
         songlid = songl.id
+        document.querySelector("#titlename").innerHTML = songlid
         songlid.replace("note.", "")
         transpose(eval(songlid), eval(songkey.value + "key"))
       });
     })
     songs.addEventListener("change", () => {
+      document.querySelector("#titlename").innerHTML = songs.value
+
       transpose(eval(songs.value), eval(songkey.value + "key"))
     });
     songkey.addEventListener("change", () => {
+      document.querySelector("#titlename").innerHTML = songs.value
       transpose(eval(songs.value), eval(songkey.value + "key"))
     });
 
@@ -261,7 +278,7 @@
           } else {
             notei = note[i].split("")
           }
-          console.log(notei, note[i])
+          // console.log(notei, note[i])
           for (let z = 0; z < notei.length; z++) {
             for (let x = 0; x < Ckey.length; x++) {
               if (notei[z] == Ckey[x]) {
@@ -313,6 +330,7 @@
       for (i = 0; i < note.length; i++) {
         if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4) {
           notej = [];
+          debugger
           notei = note[i].split("")
           // console.log(notei, note[i])
           for (z = 0; z < notei.length; z++) {
@@ -332,7 +350,7 @@
 
         }
         for (j = 0; j < Ckey.length; j++) {
-          if (note[i] == Ckey[j]) {
+          if (note[i].toLowerCase() == Ckey[j]) {
             newscale.push(key[j]);
           }
         }

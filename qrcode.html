@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>qr maker</title>
+  <!-- <link rel="stylesheet" href="../resources/perfect.css"> -->
+</head>
+<style>
+  body {
+    flex-direction: column;
+  }
+
+  #custom-qr-code {
+    padding: 10px;
+    margin: 10px;
+    background: #fff;
+  }
+
+  /* #custom-qr-code::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    content: "";
+    display: block;
+    width: 35%;
+    height: 35%;
+    border-radius: 50%;
+
+  }
+    /* background: url() no-repeat center; */
+  /* background-size: cover; */
+
+
+  #myqr,
+  #mylinks {
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+
+  }
+</style>
+
+<body>
+  <div id="getdata">
+    <input type="text" name="myqr" placeholder="Put your link here.." id="myqr">
+    <select name="" id="mylinks">
+  </div>
+  <option value="facebook.com">facebook</option>
+  <option value="twitter.com">twitter</option>
+  <option value="instagram.com">instagram</option>
+  <option value="linkedin.com">linkedin</option>
+  <option value="linktr.ee">linktree</option>
+  <option value="github.com">github</option>
+  </select>
+  <div id="custom-qr-code"></div>
+
+  <!-- <script src="https://gitcdn.link/repo/davidshimjs/qrcodejs/master/qrcode.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const href = "https://www.instagram.com/samanmaharjan"
+    const size = 300;
+    document.querySelector("#myqr").addEventListener("keypress", (q) => {
+      let value = document.querySelector("#myqr").value;
+      let link = document.querySelector("#mylinks").value;
+      if (q.keyCode == "13") {
+        getQR(link, value);
+      }
+    })
+
+    function getQR(link, value) {
+      const href = "www." + link + "/" + value
+      new QRCode(document.getElementById("custom-qr-code"), {
+        text: href,
+        width: size,
+        height: size,
+        colorDark: "#0c0f16",
+        colorLight: "rgba(0,0,0,0)"
+      });
+    }
+  </script>
+</body>
+
+</html>

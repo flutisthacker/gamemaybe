@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>qr maker</title>
-  <!-- <link rel="stylesheet" href="../resources/perfect.css"> -->
+  <link rel="stylesheet" href="../resources/perfect.css">
 </head>
 <style>
   body {
@@ -16,6 +16,8 @@
     padding: 10px;
     margin: 10px;
     background: #fff;
+    display: flex;
+    justify-content: space-between;
   }
 
   /* #custom-qr-code::before {
@@ -43,36 +45,266 @@
 
   }
 </style>
+<style>
+  section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+  }
+
+  li {
+    margin: 0.8rem;
+    border-radius: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: #fff;
+    animation: dotanimation 0.8s ease infinite alternate both;
+  }
+
+  li:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  li:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  li:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+
+  li:nth-child(5) {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes dotanimation {
+    from {
+      transform: translateY(0)
+    }
+
+    50% {
+      box-shadow: 0px 12px 10px black;
+    }
+
+
+    to {
+      transform: translateY(-4rem)
+    }
+  }
+</style>
+
+<style>
+  #dragable {
+    width: 20rem;
+    height: 12rem;
+    border: .2rem solid #ff4754;
+    border-radius: .2rem;
+    position: absolute;
+    z-index: 9;
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  #dragable.drag {
+    border-color: rgba(255, 255, 255, .1);
+    box-shadow: 3px 6px 24px rgba(0, 0, 0, .5);
+  }
+
+  #dragable #dragzone {
+    width: 100%;
+    height: 2rem;
+
+    cursor: move;
+    z-index: 10;
+    background-color: #ff4754;
+  }
+</style>
+<style>
+  .div {
+    margin: 0 auto;
+    font-size: 1rem;
+    box-shadow: -2px 2px 30px 3px #000;
+    border-radius: 15px;
+    position: relative;
+    width: 400px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+
+  input[type="checkbox"]:checked+label span::after {
+    transform: translateY(-100%);
+  }
+
+  .div input[type="checkbox"]:checked+label span::before {
+    transform: translateY(100%);
+  }
+
+  .div span {
+    font-size: 2rem;
+    margin: 10px;
+  }
+
+  .locaksec {
+    display: flex;
+  }
+</style>
+<style>
+  button#toast-button {
+    font-size: 1.2rem;
+    color: #fff;
+    background: #ff4754;
+    border-radius: .2rem;
+
+    padding: 1.2rem 2.4rem;
+    transition: opacity .2s;
+  }
+
+  button#toast-button:hover {
+    opacity: .8;
+    cursor: pointer;
+  }
+
+  #toast-message {
+    position: fixed;
+    bottom: -8rem;
+
+    user-select: none;
+    color: #ff4754;
+    background: #000;
+    border-radius: .2rem;
+    padding: 1.2rem 2.4rem;
+    transition: bottom .4s ease;
+    box-shadow: 3px 6px 12px rgba(0, 0, 0, .4)
+  }
+
+  #toast-message.show {
+    bottom: 2rem;
+  }
+</style>
+<style>
+  #insta #instaVideo,
+  #insta #instaDownload {
+    padding: 10px 20px;
+    border-radius: 15px;
+    outline: none;
+    margin: 2px;
+  }
+
+  #insta #instaVideo:focus,
+  #insta #instaDownload:focus {
+    border: #ff4754;
+  }
+</style>
 
 <body>
-  <div id="getdata">
-    <input type="text" name="myqr" placeholder="Put your link here.." id="myqr">
-    <select name="" id="mylinks">
-  </div>
-  <option value="facebook.com">facebook</option>
-  <option value="twitter.com">twitter</option>
-  <option value="instagram.com">instagram</option>
-  <option value="linkedin.com">linkedin</option>
-  <option value="linktr.ee">linktree</option>
-  <option value="github.com">github</option>
-  </select>
-  <div id="custom-qr-code"></div>
+  <section>
+    <button class="db-click" id="toast-button">Make Payment</button>
+    <div id="toast-message">Payment Sccesful</div>
+  </section>
+  <section class="locaksec">
+    <div class="div">
+      <input type="checkbox" name="" id="lock">
+      <label for="lock"><span class="fa fa-lock text-dark"></span></label>
+      <input type="text" name="" id="">
+    </div>
+  </section>
+  <section>
+    <div id="dragable">
+      <header id="dragzone"></header>
+    </div>
+  </section>
+  <section>
+    <input type="text" id="binary">
+    <label for="" id="bconvert"></label>
+  </section>
+  <section>
+    <ul class="dot-loader">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </section>
+  <section>
+    <input type="text" class="s-input" id="barcode-value"><button onclick="generateBarcode()"
+      class="s-btn gen-value">generate barcode</button>
+    <svg id="barcode"></svg>
+  </section>
+  <section>
+    <div id="getdata">
+      <input type="text" name="myqr" placeholder="Put your ID here.." id="myqr">
+      <select name="" id="mylinks">
+        <option value="facebook.com">facebook</option>
+        <option value="twitter.com">twitter</option>
+        <option value="instagram.com">instagram</option>
+        <option value="linkedin.com">linkedin</option>
+        <option value="linktr.ee">linktree</option>
+        <option value="github.com">github</option>
+      </select>
+      <button class="btn btn-success generate">Generate</button>
+    </div>
+    <div id="custom-qr-code"></div>
 
+  </section>
+
+  <section id="insta">
+    <input type="text" id="instaDownload" placeholder="public/private download">
+    <input type="text" id="instaVideo" placeholder="video download">
+  </section>
   <!-- <script src="https://gitcdn.link/repo/davidshimjs/qrcodejs/master/qrcode.min.js"></script> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"
+    integrity="sha512-w4pcgbmUBZR7deYveLC+NlibgGG+I9Yy1D+5twZE9sh0lf7OTmK4xs5v0O/sHq8dySMQCCnDsFmYsXrkO0y2sA=="
+    crossorigin="anonymous"></script>
+  <script>
+    function generateBarcode() {
+      let barcodeValue = document.getElementById("barcode-value").value
+      JsBarcode("#barcode", barcodeValue, {
+        background: "#143754",
+        lineColor: "#fff"
+      })
+    }
+
+    const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387")
+
+    const buttons = document.querySelectorAll("button")
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        audio.play();
+      })
+    })
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
     const href = "https://www.instagram.com/samanmaharjan"
     const size = 300;
-    document.querySelector("#myqr").addEventListener("keypress", (q) => {
+    document.querySelector(".generate").addEventListener("click", (q) => {
       let value = document.querySelector("#myqr").value;
       let link = document.querySelector("#mylinks").value;
-      if (q.keyCode == "13") {
-        getQR(link, value);
-      }
+      getQR(link, value);
     })
 
     function getQR(link, value) {
-      const href = "www." + link + "/" + value
+      const href = "https://www." + link + "/" + value
       new QRCode(document.getElementById("custom-qr-code"), {
         text: href,
         width: size,
@@ -80,7 +312,196 @@
         colorDark: "#0c0f16",
         colorLight: "rgba(0,0,0,0)"
       });
+      let alink = document.createElement("button");
+      alink.addEventListener("click", () => {
+        location.href = href;
+      });
+      alink.textContent = "Visit";
+      alink.className = "btn btn-primary";
+      document.querySelector("body").append(alink)
     }
+  </script>
+
+  <script>
+    const btns = document.querySelectorAll(".db-click");
+    const hexColor = () => {
+      Math.floor(Math.random() * 16777215).toString(16)
+    }
+
+    btns.forEach(btn => {
+      btn.addEventListener("dblclick", () => {
+        btn.style.background = `#${hexColor()}`;
+      })
+    })
+  </script>
+
+  <script>
+    //instadownload
+    document.querySelector("#instaDownload").addEventListener("keypress", (e) => {
+      if (e.keyCode == 13) {
+        getpic(document.querySelector("#instaDownload").value);
+        document.querySelector("#instaDownload").value = ""
+      }
+    })
+
+    document.querySelector("#instaVideo").addEventListener("keypress", (e) => {
+      if (e.keyCode == 13) {
+        getVid(document.querySelector("#instaVideo").value);
+      }
+    })
+
+    async function getVid(link) {
+      if (link.includes(",")) {
+        let vale = link.split(",");
+        forceDownload(vale[0], vale[1])
+      } else {
+        const atsni = await getJSON(link)
+        const linkfor = atsni.graphql.shortcode_media.video_url
+        const name = await getName(atsni)
+        forceDownload(linkfor, name)
+      }
+    }
+
+
+
+    async function getpic(link) {
+      if (link.includes(",")) {
+        let vale = link.split(",");
+        forceDownload(vale[0], vale[1])
+      } else {
+        atsni = await getJSON(link)
+        // aaaa.graphql.shortcode_media.video_url
+        atsnis = atsni.graphql.shortcode_media.display_resources.length
+        // console.log(atsnis, atsni)
+        linkfor = atsni.graphql.shortcode_media.display_resources[atsnis - 1].src
+        alink = document.createElement("a");
+        alink.href = await toDataURL(linkfor);
+        alink.download = "linkfor.jpg";
+        alink.textContent = "DOWNLOAD"
+        document.querySelector("#insta").appendChild(alink);
+        // alink.click();
+        document.querySelector("#insta").removeChild(alink);
+        let name = await getName(atsni)
+        name = name.replaceAll(".", "_");
+        console.log(name)
+        forceDownload(linkfor, name)
+      }
+    }
+    async function getName(link) {
+      const name = link.graphql.shortcode_media.owner.username
+      return name;
+    }
+    async function toDataURL(url) {
+      return fetch(url).then((response) => {
+        return response.blob();
+      }).then(blob => {
+        return URL.createObjectURL(blob);
+      });
+    }
+
+    function forceDownload(url, fileName) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      xhr.responseType = "blob";
+      xhr.onload = function () {
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        var tag = document.createElement('a');
+        tag.href = imageUrl;
+        tag.download = fileName;
+        document.body.appendChild(tag);
+        tag.click();
+        document.body.removeChild(tag);
+      }
+      xhr.send();
+    }
+    async function getJSON(link) {
+      link = link + "?__a=1";
+      const response = await fetch(link);
+      const data = await response.json();
+      if (data != null) {
+        return data
+      } else {
+        return link;
+      }
+    }
+  </script>
+  <script>
+    document.querySelector("#binary").addEventListener("keypress", (e) => {
+      console.log(e.keyCode)
+      if (e.keyCode == 13) {
+        a = document.querySelector("#binary").value
+        acs = dividee(a, 0)
+        document.querySelector("#bconvert").innerHTML = myanstotal.split("").reverse().join("")
+        myanstotal = "";
+      }
+    })
+
+    var myanstotal = "";
+
+    function dividee(number, myans) {
+      if (number != 0) {
+        const x = Math.floor(number / 2);
+        const y = number % 2;
+        myanstotal += y.toString()
+        dividee(x, y)
+      } else {
+        return myans;
+      }
+    }
+  </script>
+
+  <script>
+    // dragable
+    const dragElement = (element, dragzone) => {
+      let pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+      const dragMouseUp = () => {
+        document.onmousesup = null;
+        document.onmousemove = null;
+        element.classList.remove("drag");
+      }
+      const dragMouseMove = (e) => {
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        element.style.top = `${(element.offsetTop - pos2)}px`;
+        element.style.left = `${(element.offsetLeft - pos1)}px`;
+      }
+
+      const dragMouseDown = (e) => {
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        element.classList.add('drag')
+        document.onmouseup = dragMouseUp;
+        document.onmousemove = dragMouseMove
+
+      }
+      dragzone.onmousedown = dragMouseDown
+    }
+
+    const dragable = document.querySelector("#dragable")
+    const dragzone = document.querySelector("#dragzone")
+    dragElement(dragable, dragzone)
+  </script>
+
+  <script>
+    //toast
+    const button = document.querySelector("#toast-button")
+    const message = document.querySelector("#toast-message")
+    button.addEventListener("click", () => {
+      message.classList.add("show");
+      setTimeout(() => {
+        message.classList.remove("show")
+      }, 2000)
+    })
   </script>
 </body>
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  section {
+    width: 100%;
+    height: 100vh;
+  }
+</style>
+
+<body>
+  <section>
+    <input type="text" placeholder="num to binary" id="binary">
+    <label for="" id="bconvert"></label>
+    <input type="text" id="cchar" placeholder="binary to char ">
+    <label for="" id="cconvert"></label>
+  </section>
+
+  <script>
+    document.querySelector("#cchar").addEventListener("keypress", (e) => {
+      console.log(e.keyCode)
+      if (e.keyCode == 13) {
+        let a = document.querySelector("#cchar").value
+        document.querySelector("#cconvert").innerHTML = charToBinary(a)
+      }
+    })
+
+    function charToBinary(a) {
+      let aa = a.split("").reverse();
+      let aharu = [];
+      aa.forEach((aaa, index) => {
+        if (aaa == "1") {
+          aharu.push(Math.pow(2, index));
+        }
+      })
+      let amai = 0;
+      aharu.forEach(ahar => {
+        amai = ahar + amai;
+      })
+      return String.fromCharCode(amai);
+    }
+    // stringIntoBinary("saman");
+
+    function stringIntoBinary(str) {
+      strs = str.split("");
+      let newBinaryArry = [];
+      strs.forEach(sttr => {
+        dvd = divider(sttr.charCodeAt(0));
+        newBinaryArry.push(dvd);
+      })
+    }
+
+
+    document.querySelector("#binary").addEventListener("keypress", (e) => {
+      console.log(e.keyCode)
+      if (e.keyCode == 13) {
+        a = document.querySelector("#binary").value
+        if (Number.isInteger(a) == false) {
+          a = a.charCodeAt(0)
+        }
+        acs = divider(a)
+        document.querySelector("#bconvert").innerHTML = acs
+      }
+    })
+
+    var myanstotal = "";
+
+    function divider(number) {
+      dividee(number, 0);
+      const lastans = myanstotal.split("").reverse().join("")
+      myanstotal = "";
+      return lastans;
+    }
+
+    function dividee(number, myans) {
+      if (number != 0) {
+        const x = Math.floor(number / 2);
+        const y = number % 2;
+        myanstotal += y.toString()
+        dividee(x, y)
+      } else {
+        return myans;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

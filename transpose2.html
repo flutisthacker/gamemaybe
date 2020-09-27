@@ -34,20 +34,11 @@
       <h1 id="titlename">Transpose</h1>
     </div>
     <div class="addSect">
-      <!-- <form>
-        <input type="text" id="yahoo" name="yahoo" placeholder="type here/..." list="songs">
-        <datalist id="songs">
-          <option value="how to become a hacker">
-          <option value="how to become a coder">
-          <option value="how to become a programmer">
-          <option value="how to become a teacher">
-          <option value="how to become a dancer">
-          <option value="how to become a musician">
-          <option value="how to become a chefs">
-          <option value="how to become a rapper">
-        </datalist>
-      </form> -->
-      <select name="" id="songs"></select>
+      <input type="text" id="notesearch" name="notesearch" placeholder="Enter your song name..." list="songsearch">
+      <select name="" id="songs" hidden></select>
+      <datalist id="songsearch">
+      </datalist>
+
       <select name="" id="songkey">
         <option selected value="C">C</option>
         <option value="Cs">C#</option>
@@ -79,7 +70,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body notecapture">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary">Save changes</button>
@@ -102,6 +93,8 @@
   <script type="text/javascript" src="notes.json">
   </script>
   <script type="text/javascript" src="varnotes.js">
+  </script>
+  <script type="text/javascript" src="varnotes2.js">
   </script>
   <script>
     var btn = document.getElementById("toggle");
@@ -133,46 +126,12 @@
     })
     document.querySelector(".btn-primary").addEventListener("click", () => {
       html2canvas(document.querySelector("#capture")).then(canvas => {
-        $('.modal-body').append(canvas)
+        $('.notecapture').append(canvas)
       });
     })
     // console.log(mydata[0].age);
     // console.log(mydata[1].name);
     // console.log(mydata[1].age);
-    /* function readTextFile(file, callback) {
-      var rawFile = new XMLHttpRequest();
-      rawFile.overrideMimeType("application/json");
-      rawFile.open("GET", file, true);
-      rawFile.onreadystatechange = function () {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-          callback(rawFile.responseText);
-        }
-      }
-      rawFile.send(null);
-    }
-
-    //usage:
-    readTextFile("/Users/Documents/workspace/test.json", function (text) {
-      var data = JSON.parse(text);
-      console.log(data);
-    }); */
-
-    /*     fetch("notes.json")
-      .then(response => response.json())
-      .then(json => console.log(json)); */
-
-    /* <input type="file" id="get_the_file">
-    document.getElementById("get_the_file").addEventListener("change", function() {
-      var file_to_read = document.getElementById("get_the_file").files[0];
-      var fileread = new FileReader();
-      fileread.onload = function(e) {
-        var content = e.target.result;
-        // console.log(content);
-        var intern = JSON.parse(content); // Array of Objects.
-        console.log(intern); // You can index every object
-      };
-      fileread.readAsText(file_to_read);
-    }); */
 
     document.querySelector("#staff").addEventListener("click", (e) => {
       a = eval(songs.value)
@@ -225,6 +184,7 @@
   <script>
     const Ckey = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "-"];
     const Nepnotes = ["सा", "रेे।", "रे", "ग|", "ग", "म", "म।", "प", "ध।", "ध", "नि।", "नि", "-"];
+    const Newanotes = ["न", "माे।", "माे", "बा।", "बा।", "गे", "म।", "साे", "ध।", "रा", "नि।", "क", "-"];
     const Cskey = ["c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "-"];
     const Dkey = ["d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "-"];
     const Dskey = ["d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "-"];
@@ -255,6 +215,10 @@
         transpose(eval(songlid), eval(songkey.value + "key"))
       });
     })
+    document.querySelector("#notesearch").addEventListener("keyup", (e) => {
+      noteserchval = document.querySelector("#notesearch").value;
+      transpose(eval("note." + noteserchval.replaceAll(" ", "")), eval(songkey.value + "key"))
+    })
     songs.addEventListener("change", () => {
       document.querySelector("#titlename").innerHTML = songs.value
 
@@ -269,11 +233,12 @@
 
     function translates(note) {
       // to nepali
+      console.log("html")
       let newscale = [];
       for (i = 0; i < note.length; i++) {
         if ((note[i].length == 2 || note[i].length == 3 || note[i].length == 4)) {
           notej = [];
-          if (note[i].includes("#") && note[i].length >= 4) {
+          if (note[i].length >= 2 && note[i].includes("#")) {
             notei = splitnotes(note[i])
           } else {
             notei = note[i].split("")
@@ -282,7 +247,7 @@
           for (let z = 0; z < notei.length; z++) {
             for (let x = 0; x < Ckey.length; x++) {
               if (notei[z] == Ckey[x]) {
-                console.log(Ckey[x], notei[z], Nepnotes[x])
+                // console.log(Ckey[x], notei[z], Nepnotes[x])
                 notej.push(Nepnotes[x])
               }
             }
@@ -315,7 +280,7 @@
          */
         for (j = 0; j < Nepnotes.length; j++) {
           if (note[i] == Ckey[j]) {
-            console.log(note[i], Nepnotes[j])
+            // console.log(note[i], Nepnotes[j])
             newscale.push(Nepnotes[j]);
           }
         }
@@ -326,11 +291,12 @@
     }
 
     function transpose(note, key) {
+      console.log("html")
+
       newscale = [];
       for (i = 0; i < note.length; i++) {
         if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4) {
           notej = [];
-          debugger
           notei = note[i].split("")
           // console.log(notei, note[i])
           for (z = 0; z < notei.length; z++) {
@@ -361,6 +327,8 @@
     }
 
     function tabledisplay(na) {
+      console.log("html")
+
       maketable();
       count = 0;
       tbody = document.querySelector('.tbody');
@@ -376,6 +344,8 @@
     }
 
     function maketable() {
+      console.log("html")
+
       body = document.querySelector('.list');
       body.innerHTML = ""
       table = document.createElement('table');

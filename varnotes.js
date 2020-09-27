@@ -1290,6 +1290,16 @@ note = {
     "efga", "baga", "baga", "bc",
     "efga", "baga", "gfef", "edcb", "abce", "fece", "fgag", "abc", "bc", "bcb", "cbc", "bcb", "ab", "aba", "bab", "ab",
     "efga", "bagf", "efga", "bagf"
+  ],
+  "napachwone": ["-", "fg", "-b", "-b", "c", "cd", "d", "cb", "c", "-", "cb", "g", "x2", "c", "-", "-", "-", "cb", "gf", "gb", "c",
+    "Cg", "gg", "bb", "b", "c", "cc", "ed", "eg", "f", "-", "ef", "ed", "c", "cd", "cb", "b",
+    "Cg", "gg", "bb", "b", "c", "cc", "ed", "eg", "f", "-", "ef", "ed", "c", "cd", "cb", "b",
+    "Cg", "gg", "bb", "b", "c", "cc", "ed", "eg", "f", "-", "ef", "ed", "c", "cd", "cb", "b",
+    "Cg", "gg", "bb", "b", "c", "cc", "ed", "eg", "f", "-", "ef", "ed", "c", "cd", "cb", "b",
+    "Cg", "gg", "bb", "b", "c", "cc", "ed", "eg", "f", "-", "ef", "ed", "c", "cd", "cb", "-",
+    "-", "e", "fg", "-b", "c", "cb", "ba", "ag", "g", "-g", "e", "dc", "de", "-", "-", "fg",
+    "F", "-g", "e", "dc", "de", "-", "-", "-", "-", "fg", "-b", "-b", "c", "cd", "d", "cb", "c", "-", "cb", "g", "c", "-", "-", "-", "cb", "gf", "gb", "c",
+    "-", "c", "-ce", "-f", "g", "ga", "gf", "g", "-e", "ed", "e-f", "e", "de", "dc", "c", "g", "gg", "b", "bb", "cc", "-c", "ed", "eg", "f", "-", "e", "ed", "c", "cd", "cb", "b", "cg", "gg", "bb", "b", "c", "cc", "ed", "eg", "f", "-", "ef", "ed", "c", "cd", "cb", "b"
   ]
 };
 
@@ -1498,6 +1508,7 @@ var songList = [
   "byachuli",
   "mikhayaaja",
   "hakanachhaka",
+  "napachwone",
   "dyoyatasinha",
   "yosanmayo_C",
   "mussuka_Ds",

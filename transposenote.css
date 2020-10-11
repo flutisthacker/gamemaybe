@@ -21,7 +21,7 @@
   #staffnotation {
     background: white;
     height: 100vh;
-    weight: 100%;
+    width: 100%;
   }
 
   form {
@@ -245,6 +245,11 @@
       cursor: pointer;
     }
 
+    .select ul li.active {
+      box-shadow: 1px 1px 5px gray;
+      background: rgba(0, 245, 0, 0.11);
+    }
+
     .select ul li:hover {
       box-shadow: 1px 1px 5px gray;
       background: rgba(255, 0, 0, 0.11);
@@ -456,6 +461,11 @@
       cursor: pointer;
     }
 
+    .select ul li.active {
+      box-shadow: 1px 1px 5px gray;
+      background: rgba(0, 245, 0, 0.11);
+    }
+
     .select ul li:hover {
       box-shadow: 1px 1px 5px gray;
       background: rgba(255, 0, 0, 0.11);
@@ -663,6 +673,11 @@
       text-transform: capitalize;
       margin: 5px 5px;
       cursor: pointer;
+    }
+
+    .select ul li.active {
+      box-shadow: 1px 1px 5px gray;
+      background: rgba(0, 245, 0, 0.11);
     }
 
     .select ul li:hover {

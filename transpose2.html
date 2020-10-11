@@ -202,7 +202,7 @@
     songkey = document.querySelector("#songkey");
     translate = document.querySelector("#translate");
     // Ckey.map(key => console.log(`${key} is the natural key`))
-
+    var cursongtwo = "";
     translate.addEventListener("click", () => {
       // translates(eval(songs.value))
       translates(totranspose)
@@ -212,6 +212,13 @@
         songlid = songl.id
         document.querySelector("#titlename").innerHTML = songlid
         songlid.replace("note.", "")
+        if (cursongtwo == "") {
+          cursongtwo = songlid;
+        } else {
+          document.getElementById(cursongtwo).className = "";
+          cursongtwo = songlid;
+        }
+        songl.className = "active"
         transpose(eval(songlid), eval(songkey.value + "key"))
       });
     })

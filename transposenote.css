@@ -263,7 +263,7 @@
   @media screen and (max-width: 1024px) and (min-width: 584px) {
 
     .containerd {
-      width: 400px;
+      width: 600px;
       height: 600px;
       background-color: rgba(222, 222, 222, .5);
       border: none;

@@ -1,6 +1,6 @@
 notex = {
 
-  "hpd": {
+  "happybirthday": {
     "note": ["gg", "a", "g", "c", "b", "-", "-", "-", "gg", "a", "g", "d", "c", "-", "-", "-", "gg", "e", "d", "c",
       "b", "a", "-", "-", "ee", "d", "c", "d", "c", "-", "-", "-"
     ],
@@ -112,6 +112,31 @@ notex = {
     ],
     "key": "G",
     "beat": "8",
+    "locale": "nepali"
+  },
+  "dhanashree": {
+    "note": ["f", "-", "ed", "e", "f", "g", "-",
+      "e", "-", "f", "g", "c", "c", "a#",
+      "a", "g", "-", "f", "d#", "d", "cb",
+      "c", "d#", "-", "d", "-", "c", "-",
+      "f", "-", "-", "f", "g", "e", "f",
+      "g", "b", "-", "c", "-", "c", "c",
+      "F", "F", "-", "F", "ED", "C", "CD",
+      "B", "-", "-", "C", "DE", "D", "-",
+      "c", "-", "-", "b", "-", "b", "-",
+      "c", "-", "cd", "c", "ba", "ga", "gf",
+      "g", "b", "-", "c", "-", "D#", "d",
+      "c", "a#", "-", "a", "g", "ga", "gf"
+    ],
+    "key": "G",
+    "beat": "7",
+    "locale": "newari"
+  },
+  "sakiiyeho": {
+    "note": ["d", "d", "-", "e", "g", "g", "-", "a", "-", "a", "a", "-", "g", "b", "a", "-", "-", "-", "-", "-", "-", "a", "-", "a", "g", "b", "a", "g", "e", "-", "d", "d", "-", "-", "-"],
+    "note2": ["eg", "gag", "e", "-", "eg", "gag", "e", "-", "eg", "g", "ge", "eg", "ed", "dd", "d", "-"],
+    "key": "D",
+    "beat": "7",
     "locale": "nepali"
   },
   "twokntwo": {
@@ -254,7 +279,7 @@ notex = {
     "locale": "english"
   },
   "titanic": {
-    "note": ["f", "f", "f", "f", "e", "f", "f", "e", "f", "g", "a", "g", "f", "f", "f", "f", "e", "f", "f", "c"],
+    "note": ["f", "-", "f", "f", "-", "f", "-", "e", "-", "f", "-", "-", "f", "-", "e", "-", "f", "-", "-", "-", "g", "a", "-", "-", "g", "-", "-", "-", "f", "-", "f", "f", "-", "f", "-", "e", "-", "f", "-", "-", "f", "-", "c", "-", "-", "-", "-", "-", "f", "-", "-", "-", "g", "-", "-", "-", "c", "C", "-", "-", "b", "a", "g"],
     "key": "G",
     "beat": "8",
     "locale": "english"
@@ -276,9 +301,9 @@ notex = {
     "beat": "8",
     "locale": "english"
   },
-  "sannani_D": {
+  "sannani": {
     "note": ["c-cc", "cc", "cc", "g-gb", "ag", "fe", "dc", "-", "c-ef", "g", "cf", "g", "", "ef", "g-gb", "ag", "-", "c-cc", "c-c", "cc", "g-gb", "a-g", "f-e", "d", "c", "gg", "bc", "e", "e", "ed", "cd", "f", "f", "aa", "a", "a", "a#", "ag", "ff", "f", "e", "c-cc", "c", "c", "cded", "cb", "ca", "aa", "a", "a", "a", "a#ag", "agf", "ff", "f", "ga", "d", "de", "dc", "ag", "g", "cc", "c", "b", "d", "-e", "dc", "ab", "f", "ff", "f", "gbag", "fd", "de", "dc", "ag", "d", "gg", "e", "d", "c", "-", "-", "-"],
-    "key": "G",
+    "key": "D",
     "beat": "8",
     "locale": "nepali"
   },
@@ -431,13 +456,13 @@ notex = {
     "beat": "8",
     "locale": "hindi"
   },
-  "terebin_C": {
+  "terebin": {
     "note": ["cb", "cb", "cb", "cb", "cb", "cb", "cb", "cd", "cde", "def", "ed", "cb", "cb", "cb", "cb", "cb", "cb", "cb", "cbc", "ed",
       "c", "b", "g", "-", "-", "-", "-", "-ag", "f", "e", "g", "-", "-", "-", "-", "-", "f", "a", "c", "b", "-", "-", "-", "-", "f", "a", "c", "b", "-", "-", "-", "-", "g", "a", "g", "e", "d", "e", "f", "e", "-", "-", "-", "-", "g", "gg", "gg", "g", "gg", "gg", "e", "f", "g", "cb", "cb", "cd", "f", "ff", "ff", "f", "ff", "ff", "f", "a",
       "b", "cb", "ag", "fe", "b", "c", "g", "f", "e", "-", "-", "-", "-", "-", "-", "-",
       "e", "f", "g", "a#", "a", "-", "-", "-", "c", "e", "f", "a", "g", "-", "-", "-", "e", "f", "g", "a#", "a", "-", "-", "-", "b", "cb", "a", "b", "c", "-", "-", "-"
     ],
-    "key": "G",
+    "key": "C",
     "beat": "8",
     "locale": "hindi"
   },
@@ -464,7 +489,7 @@ notex = {
     "beat": "8",
     "locale": "hindi"
   },
-  "piyabole_C": {
+  "piyabole": {
     "note": ["cb", "d", "-", "-", "de", "d", "-", "-",
       "cb", "d", "-", "-", "fd", "e", "-", "-",
       "cb", "d", "-", "-", "ef", "e", "-", "-",
@@ -478,7 +503,7 @@ notex = {
       "g", "-e", "d", "d", "g", "-e", "d", "d",
       "bd", "b", "c", "fe", "-", "-", "-", "-"
     ],
-    "key": "G",
+    "key": "C",
     "beat": "8",
     "locale": "hindi"
   },
@@ -528,9 +553,9 @@ notex = {
     "beat": "8",
     "locale": "hindi"
   },
-  "manakihum_Gs": {
+  "manakihum": {
     "note": ["de", "-d", "e", "dc", "de", "-d", "e", "-", "de", "-d", "e", "ag", "e", "d", "-", "-", "c", "b", "a", "b", "c", "e", "-", "-", "d", "f", "e", "-", "e", "ed", "g", "f", "f", "e", "d", "-", "e", "f", "a", "e", "de", "-", "-", "dc", "cd", "cba", "fa", "ag", "g", "df", "fe", "-", "c", "b", "a", "b", "c", "g", "-a", "fe", "ga", "gaa", "ga", "gaa", "bb", "c", "ba", "ag", "g", "c", "ag", "f", "g", "c", "ag", "dcag", "cb", "ga", "g", "-", "gaa", "gaa", "gcc", "a", "b", "dc", "b", "ba", "ag", "ag", "gg", "-"],
-    "key": "G",
+    "key": "G#",
     "beat": "8",
     "locale": "hindi"
   },
@@ -559,7 +584,7 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "parelima_E": {
+  "parelima": {
     "note": ["-", "e", "e", "g", "f", "-", "-", "-",
       "-", "f", "f", "g", "g", "-", "ed", "c",
       "-", "g", "e", "d", "c", "-", "a", "g",
@@ -575,7 +600,7 @@ notex = {
       "c", "d", "g", "e", "c", "-g ", "f", "e",
       "c", "d", "c", "c", "ga", "c", "-", "-", "ed", "c", "-", "-", "c", "g", "a", "g", "ed", "c", "-", "-", "c", "b", "g", "a", "g", "edc", "-", "-", "ee", "edc", "-", "-", "gf", "e", "fe", "d", "ga", "bc", "bc", "d", "e", "c", "-", "-", "-", "c", "cd", "ec", "ag", "ga", "cbc", "d"
     ],
-    "key": "G",
+    "key": "E",
     "beat": "8",
     "locale": "nepali"
   },
@@ -589,6 +614,30 @@ notex = {
       "c", "-d", "f", "ga", "g", "-f", "d", "-",
       "-g", "gf", "-g", "gf", "d", "dc", "bc", "c",
       "c", "-", "-", "-", "-", "-", "-", "-"
+    ],
+    "key": "G",
+    "beat": "8",
+    "locale": "nepali"
+  },
+  "sorathi": {
+    "note": [
+      "c", "-", "-", "b", "a", "b", "a", "-",
+      "g", "-", "a", "c", "d", "e", "g", "-",
+      "a", "g", "a", "g", "-", "e", "d", "-",
+      "c", "c", "d", "e", "d", "g", "e", "-",
+      "d", "-", "c", "c", "-", "-", "-", "-",
+      "e", "g", "a", "b", "a", "b", "a", "-",
+      "ga", "c", "b", "a", "-", "gf", "e", "-",
+      "c", "c", "d", "e", "d", "g", "e", "-",
+      "d", "-", "c", "c", "-", "-", "-", "-",
+      "c", "-", "-", "a", "-", "b", "a", "-",
+      "g", "g", "e", "g", "a", "c", "c", "-",
+      "b", "g", "a", "g", "-", "e", "d", "-",
+      "c", "c", "d", "e", "d", "g", "e", "-",
+      "d", "-", "c", "c", "-", "-", "-", "-",
+      "g", "a", "c", "-", "c", "d", "e", "g", "a", "-", "g", "f", "e", "-", "d", "-", "e", "ea", "g", "-", "e", "c", "d", "e", "-", "c", "c", "c", "-", "-", "-",
+      "-", "-", "-", "-", , "-", "-", "-", "-",
+      "e", "ed", "c", "-", "d", "e", "g", "a", "c", "-", "-", "-", "-", "-", "-", "c", "-", "d", "-", "c", "b", "a", "g", "a", "-", "g", "f", "e", "-", "d", "-", "e", "-", "g", "a", "c", "b", "a", "g", "a", "-", "g", "f", "e", "-", "d", "-", "e", "ea", "g", "-", "e", "-", "c", "d", "e", "-", "c", "c", "c", "-", "-", "-"
     ],
     "key": "G",
     "beat": "8",
@@ -664,7 +713,7 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "hekancha_C": {
+  "hekancha": {
     "note": ["d", "-c", "dc", "b", "-", "-", "-", "-",
       "c", "-b", "cb", "a", "-", "-", "-", "-",
       "d", "-c", "dc", "b", "c", "-b", "cb", "a",
@@ -811,7 +860,7 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "lukkichupi_Gs": {
+  "lukkichupi": {
     "note": ["ed", "dc", "-c", "d", "da", "-", "-", "-",
       "ga-c", "c", "-", "-", "cd", "c", "e", "-",
       "-", "-", "eg", "eg", "-ga", "g", "ed", "eadde", "e", "ffe", "-d", "c", "aa", "-", "ac", "dc", "d",
@@ -820,7 +869,7 @@ notex = {
       "c", "-d", "d", "", "dc", "de", "d", "dc", "a", "ag", "ga", "c", "-e", "dc", "cd", "fe", "-", "g",
       "g", "g", "g", "ga", "ag", "fe", "f", "ga", "-ga", "g", "ed", "c", "a", "-", "-"
     ],
-    "key": "G",
+    "key": "Gs",
     "beat": "8",
     "locale": "nepali"
   },
@@ -1358,9 +1407,9 @@ notex = {
     "beat": "8",
     "locale": "newari"
   },
-  "mannjigu_E": {
+  "mannjigu": {
     "note": ["f", "d", "b", "d", "b", "g", "f", "g", "a", "-", "-", "-", "ef", "de", "cd", "b", "cb", "ga", "bd", "-", "ef", "de", "cd", "b", "cb", "ag", "a", "-", "ae", "-f", "eed", "ed", "ccb", "agba", "a", "-", "-cd", "eg", "ga", "fede", "cdc", "ac", "c", "-", "gag", "aca", "ad", "-", "aca", "cdc", "de", "-", "gaag", "acca", "ad", "-", "acca", "cddc", "de", "-", "ef", "gc", "b", "-", "cbg", "feg", "e", "-", "ef", "gc", "b", "-", "bag", "fg", "a", "-", "ef", "ga", "gg", "fe", "ef", "ga", "gg", "fe", "ea", "aa", "gag", "fe", "cdc", "ac", "c", "-"],
-    "key": "G",
+    "key": "E",
     "beat": "8",
     "locale": "newari"
   },
@@ -1370,9 +1419,9 @@ notex = {
     "beat": "8",
     "locale": "newari"
   },
-  "yosanmayo_C": {
+  "yosanmayo": {
     "note": ["ef", "ga", "gg", "g", "gf", "ab", "aa", "a", "ef", "gbab", "gg", "g", "fg", "acbc", "aa", "a", "ab", "cd", "cc", "c", "ab", "cede", "cc", "c", "ccc", "cg", "cccc", "cg", "ccc", "cg", "cccc", "c", "-c", "-c", "cb", "ag", "f", "ed", "eg", "-", "-g", "-f", "ee", "d", "ba", "bdd", "c", "c", "cdef", "defg", "efga", "fgab", "eed", "eed", "eed", "cb", "aaa", "bd", "ccc", "c", "-ce", "ed", "e", "g", "-ag", "ed", "c", "ag", "-ce", "ed", "e", "g", "ag", "ed", "c", "c", "gac", "-c", "dc", "dc", "gac", "c", "dd", "c", "gac", "-c", "dc", "dc", "gac", "-c", "ef", "g", "cc", "cc", "bcdc", "ba", "-ab", "cd", "cb", "a", "cce", "dde", "c", "d", "gg", "ag", "a", "a", "ba", "bd", "b", "a", "bd", "d", "cc", "c", "ab", "cd", "cb", "cba", "ab", "cd", "c", "c", "ce", "ed", "e", "def", "ef", "ed", "c", "b", "gb", "bb", "-ce", "de", "dc", "c", "b", "bag", "ggb", "ag", "g", "g", "fg", "a", "g", "g", "fg", "bd", "c", "c"],
-    "key": "G",
+    "key": "C",
     "beat": "8",
     "locale": "newari"
   },
@@ -1558,11 +1607,11 @@ notex = {
     "beat": "8",
     "locale": "hindi"
   },
-  "piratikomitho_Gs": {
+  "piratikomitho": {
     "note": ["gcc", "d", "ef", "ed", "e", "-", "d", "e", "gcc", "d", "ef", "ec", "d", "-", "-", "g", "-d", "b", "gg", "ag", "-d", "b", "ga", "ag", "ga", "bc", "dg", "ed", "e", "-", "d", "e", "g", "ed", "cd", "e", "dc", "dc", "c", "-", "ba", "-b", "e", "-", "ba", "-b", "e", "-", "bg", "-b", "d", "-", "bg", "ad", "c", "-", "cdef", "ed", "ed", "-", "cd", "ef", "ed", "ed", "-", "-", "-", "-",
       "b", "-", "-", "-", "aba", "gab", "a", "ge", "-", "-", "-", "-", "b", "-", "-", "-", "abag", "agf", "e", "-", "-", "-", "-", "-", "eg", "-", "gfag", "fef", "dcd", "bab", "fga", "a", "df", "gb", "dcd", "cbc", "gag", "fgf", "e", "-", "gc-g", "c", "ad-a", "d", "be-b", "e", "-ge", "dc", "gc-g", "c", "ad-a", "d", "be-b", "e", "-eg", "ab", "db", "ag", "ab", "ad", "ca", "ge", "e", "-"
     ],
-    "key": "G",
+    "key": "Gs",
     "beat": "8",
     "locale": "nepali"
   },
@@ -1677,20 +1726,20 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "gairikhet_Gs": {
+  "gairikhet": {
     "note": ["cc-c", "ec", "c-c", "ec", "aa-a", "ca", "aac", "age", "g-ga", "cda", "ac", "age", "gc", "ede", "cede", "cdc", "c", "-", "-", "e", "a", "-", "-", "g", "d", "-", "-", "e", "c", "-", "-", "-", "gac", "ag", "ga", "ed", "e", "-", "-", "-", "dd", "dca", "ac", "ded", "c", "-", "-", "-", "ff", "edd", "dg", "fee", "ff", "edd", "dg", "fee", "ggg", "efg", "-", "-", "ac", "d-e", "de", "cd", "a-c", "-", "-", "-", "ga", "cg", "a", "-", "ga", "cg", "a", "-", "gc", "ag", "ede", "dc", "c", "-", "-", "-", "a", "ce", "d", "-", "d", "ea", "g", "-", "g", "a", "c", "d", "e", "de", "g", "-", "ee", "eg", "ed", "dca", "ce", "ded", "c", "c", "dd", "de", "ca", "ee", "gg", "ed", "c", "c", "-g", "ga", "a", "ag", "-a", "ac", "c", "ca", "a", "ac", "de", "cd", "c", "cb", "ab", "ag", "g#", "-g", "d#", "dc", "c", "de", "-e", "dc", "a", "cd", "ed", "cd", "c", "-", "-", "-", "de", "ga", "aa", "age", "eg", "a-g", "e-g", "g", "gag", "age", "ded", "edc", "ce", "ded", "c", "c", "cd", "efed", "c-d", "efed", "cd", "efed", "c", "-", "g-a", "bcba", "g-f", "decd", "g-a", "bagf", "g", "-", "ee", "ee", "ded", "ca", "cde", "dc", "a", "a", "ga", "cd", "ed", "dc"],
-    "key": "G",
+    "key": "G#",
     "beat": "8",
     "locale": "nepali"
   },
-  "kohautimi_D": {
+  "kohautimi": {
     "note": ["c", "de", "ee", "-dc", "c", "d", "cc", "-", "e", "gg", "g", "g", "gg", "fg", "fe", "e", "ef", "ga", "a-a", "aa", "cb", "ag", "g-g", "g", "gg", "ab", "b", "ba", "gg", "c", "c", "c", "gg", "gb", "b", "ba", "gg", "fe", "e", "d", "cd", "e-d", "c", "c", "e", "g", "-fe", "d", "d", "d", "f-e", "dc", "e", "g", "g", "g", "f", "a", "a", "a", "g", "b", "b", "ba", "ba", "b", "c", "-", "cb", "g", "a", "a", "a", "b", "a", "g", "e", "g", "fe", "d", "-", "d", "dc", "e", "d", "-", "-", "-", "-", "e", "c", "f", "-", "-", "ed", "c", "b", "-", "-", "-", "b", "-", "c", "-"],
-    "key": "G",
+    "key": "D",
     "beat": "8",
     "locale": "nepali"
   },
   "reshamfiriri": {
-    "note": ["c", "cd", "e", "A", "G", "-", "-", "e",
+    "note": ["c", "cd", "e", "A", "D", "-", "-", "e",
       "G", "GA", "G", "e", "d", "-e", "de", "dc",
       "c", "cd", "e", "A", "G", "Gf", "ed", "e",
       "d", "dc", "a", "d", "c", "-", "-", "-",
@@ -1872,7 +1921,7 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "zarazara_D": {
+  "zarazara": {
     "note": ["e", "a", "-", "gab", "gab", "-", "g", "-",
       "b", "-", "-", "-", "-", "-", "-", "-",
       "c", "d", "e", "-", "d", "c", "b", "-",
@@ -1912,7 +1961,7 @@ notex = {
       "-ea", "a", "e", "-", "-eg", "g", "d", "-",
       "de", "f", "f", "e", "dc", "b", "c", "b"
     ],
-    "key": "G",
+    "key": "D",
     "beat": "8",
     "locale": "nepali"
   },
@@ -2127,9 +2176,9 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "mussuka_Ds": {
+  "mussuka": {
     "note": ["gab", "cd", "", "edb", "edb", "edb", "edb", "db", "ad", "c", "-", "cba", "cba", "cba", "cba", "-b", "ag", "a", "aa", "aa", "bag", "aad", "ba", "g", "age", "-bb", "b", "ab", "ag", "a", "ad", "da", "b", "-b", "bb", "ab", "ag", "a", "ad", "da", "-", "-g", "gg", "ga", "cb", "a", "cb", "a", "gf", "fg", "a", "gf", "g", "bc", "ba", "ga", "e", "-", "fg", "a", "-", "bc", "b", "-", "de", "-d", "cb", "cba", "bag", "ab", "cd", "b", "-", "-dd", "dd", "cb", "ab", "-d", "dd", "cb", "ab", "-c", "cc", "cd", "ed", "d", "ed", "b", "-", "-g", "gg", "ga", "cb", "a", "cb", "a", "gf", "fg", "a", "gf", "g", "d", "-d", "cb", "c", "-c", "ba", "b", "-b", "ag", "a", "-", "-", "-g", "gg", "ga", "cb", "a", "-", "ad", "cd", "-g", "gg", "ga", "gf", "g", "-", "-", "-", "", "-b", "bb", "ab", "a", "-b", "bb", "ab", "a", "-c", "cc", "c", "-", "-g", "gg", "ga", "cb", "a", "ab", "a", "gf", "fg", "a", "gf", "g"],
-    "key": "G",
+    "key": "D#",
     "beat": "8",
     "locale": "nepali"
   },
@@ -2255,6 +2304,12 @@ notex = {
 }
 
 /*
+asd=notex["temp2"].note
+Object.keys(asd).forEach(asdd=>{
+console.log(asd[asdd])
+})
+
+
 tiririmurali
 akancha
 ratorachandra

@@ -205,14 +205,15 @@
     var cursongtwo = "";
     translate.addEventListener("click", () => {
       // translates(eval(songs.value))
-      translates(totranspose)
+      // translates(totranspose, 8)
+      transpose(totranspose, eval("Nepnotes"), 8)
     });
     songstwoli.forEach(songl => {
       songl.addEventListener("click", (e) => {
         songlid = songl.id
         document.querySelector("#titlename").innerHTML = songlid
         songlid2 = songlid
-        alert("herum" + eval(songlid2.replace('.note', '.beat')), songlid);
+        // alert("herum" + eval(songlid2.replace('.note', '.beat')), songlid);
         songlid.replace("note.", "")
         if (cursongtwo == "") {
           cursongtwo = songlid;
@@ -222,28 +223,126 @@
         }
         songl.className = "active"
         // alert("herum" + eval(songlid2.replace('.note', '.key')));
-        transpose(eval(songlid), eval(songkey.value + "key"))
+        transpose(eval(songlid), eval(songkey.value + "key"), eval(songlid.replace(".note", ".beat")))
       });
     })
     document.querySelector("#notesearch").addEventListener("keyup", (e) => {
       noteserchval = document.querySelector("#notesearch").value;
-      transpose(eval("notex." + noteserchval.replaceAll(" ", "") + ".note"), eval(songkey.value + "key"))
+      notesearched = noteserchval.replaceAll(" ", "")
+      transpose(eval("notex." + notesearched + ".note"), eval(songkey.value + "key"), eval("notex." + notesearched +
+        ".beat"))
     })
     songs.addEventListener("change", () => {
       // a = song.value;
       // alert("herum" + a.replace('.note', '.key'));
-      document.querySelector("#titlename").innerHTML = songs.value
+      document.querySelector("#titlename").innerHTML = (songs.value).replace(".note", "")
       // songkey.value=""
-      transpose(eval(songs.value), eval(songkey.value + "key"))
+      transpose(eval(songs.value), eval(songkey.value + "key"), eval((songs.value).replace(".note", ".beat")))
     });
     songkey.addEventListener("change", () => {
       document.querySelector("#titlename").innerHTML = songs.value
-      transpose(eval(songs.value), eval(songkey.value + "key"))
+      transpose(eval(songs.value), eval(songkey.value + "key"), eval((songs.value).replace(".note", ".beat")))
     });
 
     var totranspose = [];
 
-    function translates(note) {
+    function transpose(note, key, beat) {
+      console.log("html", note, key)
+
+      newscale = [];
+      for (i = 0; i < note.length; i++) {
+        if (note[i].length >= 2 && note[i].length < 9) {
+          // if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4 || note[i].length == 5) {
+          notej = [];
+          let notei;
+          if (note[i].includes("#")) {
+            notei = splitnotes(note[i])
+          } else {
+            notei = note[i].split("")
+          }
+          console.log("notei:" + notei, note[i])
+          for (z = 0; z < notei.length; z++) {
+            // notei = breakdown of "cdef" to "c","d"
+            Ckey.forEach((ckey, index) => {
+              //def=> converted to d#ff# if key cskey
+              if (notei[z].toLowerCase() == ckey) {
+                // console.log(Ckey[x], notei[z], key[x])
+                notej.push(key[index])
+              }
+            })
+          }
+          // console.log("my length" + note[i].length, note[i]);
+          // console.log(notej + "conjoined piece")
+          const searchRegExp = /,/g;
+          const replaceWith = '';
+          const result = notej.join().replace(searchRegExp, replaceWith);
+          // console.log(result)
+          newscale.push(result);
+
+        } else {
+          // onee transpose C=>D
+          Ckey.forEach((ckey, index) => {
+            if (note[i].toLowerCase() == ckey) {
+              // console.log(note[i].toLowerCase(), i, Ckey[j], j)
+              // console.log(key[j], newscale)
+              newscale.push(key[index]);
+            }
+          })
+        }
+      }
+      totranspose = newscale;
+      maketable(beat);
+      tabledisplay(newscale, beat);
+      return newscale;
+    }
+
+    function tabledisplay(na, beat) {
+      console.log("html");
+
+      // maketable();
+      count = 0;
+      tbody = document.querySelector('.tbody');
+      let tr;
+      for (i = 0; i < na.length; i++) {
+        if (i % beat == 0) {
+          tr = document.createElement('tr');
+        }
+        let td = document.createElement('td');
+        td.innerHTML = na[i];
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+      }
+    }
+
+    function maketable(numoftab) {
+      console.log("html", numoftab)
+
+      body = document.querySelector('.list');
+      body.innerHTML = ""
+      table = document.createElement('table');
+      table.className = "table table-hover"
+      thead = document.createElement('thead');
+      thead.className = "thead bg-dark text-light"
+      tbody = document.createElement('tbody');
+      tbody.className = "tbody"
+      theadtr = document.createElement('tr');
+      var tds = [];
+      for (var i = 0; i < numoftab; i++) {
+        tds[i] = document.createElement("td");
+        tds[i].innerHTML = i + 1;
+      }
+      table.prepend(tbody)
+      for (var i = (numoftab - 1); i >= 0; i--) {
+        theadtr.prepend(tds[i])
+      }
+      thead.prepend(theadtr)
+      table.prepend(thead)
+      body.prepend(table)
+    }
+
+
+    // to delete
+    function translates(note, beat) {
       // to nepali
       console.log("html")
       let newscale = [];
@@ -272,132 +371,37 @@
           const result = notej.join().replace(searchRegExp, replaceWith);
           newscale.push(result);
         }
-        /*
-                if ((note[i].length == 2 || note[i].length == 3 || note[i].length == 4) && note[i].includes("#")) {
-                  notej = [];
-                  let splitednotes = splitnotes(note[i]);
+        //
+        //         if ((note[i].length == 2 || note[i].length == 3 || note[i].length == 4) && note[i].includes("#")) {
+        //           notej = [];
+        //           let splitednotes = splitnotes(note[i]);
 
 
-                  for (let z = 0; z < splitednotes.length; z++) {
-                    for (let x = 0; x < Ckey.length; x++) {
-                      debugger
-                      if (splitednotes[z] == Ckey[x]) {
-                        console.log(Ckey[x], splitednotes[z], Nepnotes[x])
-                        notej.push(Nepnotes[x])
-                      }
-                    }
-                  }
-                  console.log(notej)
-                }
-         */
-        for (j = 0; j < Nepnotes.length; j++) {
-          if (note[i] == Ckey[j]) {
-            // console.log(note[i], Nepnotes[j])
-            newscale.push(Nepnotes[j]);
+        //           for (let z = 0; z < splitednotes.length; z++) {
+        //             for (let x = 0; x < Ckey.length; x++) {
+        //               debugger
+        //               if (splitednotes[z] == Ckey[x]) {
+        //                 console.log(Ckey[x], splitednotes[z], Nepnotes[x])
+        //                 notej.push(Nepnotes[x])
+        //               }
+        //             }
+        //           }
+        //           console.log(notej)
+        //         }
+        //
+        else {
+          for (j = 0; j < Nepnotes.length; j++) {
+            if (note[i] == Ckey[j]) {
+              // console.log(note[i], Nepnotes[j])
+              newscale.push(Nepnotes[j]);
+            }
           }
         }
       }
       // hello
-      maketable();
-      tabledisplay(newscale);
+      maketable(beat);
+      tabledisplay(newscale, beat);
       // return newscale;
-    }
-
-    function transpose(note, key) {
-      console.log("html")
-
-      newscale = [];
-      for (i = 0; i < note.length; i++) {
-        if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4) {
-          notej = [];
-          notei = note[i].split("")
-          // console.log(notei, note[i])
-          for (z = 0; z < notei.length; z++) {
-            for (x = 0; x < Ckey.length; x++) {
-              if (notei[z].toLowerCase() == Ckey[x]) {
-                // console.log(Ckey[x], notei[z], key[x])
-                notej.push(key[x])
-              }
-            }
-          }
-          // console.log("my length" + note[i].length, note[i]);
-          // console.log(notej + "conjoined piece")
-          const searchRegExp = /,/g;
-          const replaceWith = '';
-          const result = notej.join().replace(searchRegExp, replaceWith);
-          newscale.push(result);
-
-        }
-        for (j = 0; j < Ckey.length; j++) {
-          if (note[i].toLowerCase() == Ckey[j]) {
-            newscale.push(key[j]);
-          }
-        }
-      }
-      totranspose = newscale;
-      maketable();
-      tabledisplay(newscale);
-      return newscale;
-    }
-
-    function tabledisplay(na) {
-      console.log("html");
-
-      // maketable();
-      count = 0;
-      tbody = document.querySelector('.tbody');
-      for (i = 0; i < na.length; i++) {
-        if (i % 8 == 0) {
-          tr = document.createElement('tr');
-        }
-        td = document.createElement('td');
-        td.innerHTML = na[i];
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-      }
-    }
-
-    function maketable() {
-      console.log("html")
-
-      body = document.querySelector('.list');
-      body.innerHTML = ""
-      table = document.createElement('table');
-      table.className = "table table-hover"
-      thead = document.createElement('thead');
-      thead.className = "thead bg-dark text-light"
-      tbody = document.createElement('tbody');
-      tbody.className = "tbody"
-      theadtr = document.createElement('tr');
-      td1 = document.createElement('td');
-      td1.innerHTML = "1";
-      td2 = document.createElement('td');
-      td2.innerHTML = "2";
-      td3 = document.createElement('td');
-      td3.innerHTML = "3";
-      td4 = document.createElement('td');
-      td4.innerHTML = "4";
-      td5 = document.createElement('td');
-      td5.innerHTML = "5";
-      td6 = document.createElement('td');
-      td6.innerHTML = "6";
-      td7 = document.createElement('td');
-      td7.innerHTML = "7";
-      td8 = document.createElement('td');
-      td8.innerHTML = "8";
-      table.prepend(tbody)
-      theadtr.prepend(td8)
-      theadtr.prepend(td7)
-      theadtr.prepend(td6)
-      theadtr.prepend(td5)
-      theadtr.prepend(td4)
-      theadtr.prepend(td3)
-      theadtr.prepend(td2)
-      theadtr.prepend(td1)
-      thead.prepend(theadtr)
-      table.prepend(thead)
-      body.prepend(table)
-
     }
   </script>
 </body>

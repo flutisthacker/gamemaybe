@@ -2299,7 +2299,34 @@ notex = {
     "key": "F",
     "beat": "8",
     "locale": "newari"
-  }
+  },
+  "balamyeju":{"note":[
+"Gg","fd","dg","-","g","f","d","ba","ff","ga","gd","g",
+"G","b","d","g",
+"Gg","ff","dd","ba","ff","ga","gg","g",
+"Cc","cb","ab","ag","ff","ga","gg","g",
+"Bc","df","d","ded","bc","df","dd","d",
+"Ff","ga","gg","g",
+"Ga","gd","ga","gd","ga","gb","ga","g",
+"D","f","b","d","gf","ed","cb","ag",
+"G","f","d","bg","ff","ga","gg","g",
+"G","b","d","g","ga","bc","d","-",
+"Df","ga","gg","gagf","dg","ga","g","g",
+"Dff","gaa","ga","gagf","df","ga","ga","g",
+"Dgg","fd","cc","ag","ff","ga","gg","g",
+"Cc","cb","ab","ag","ff","ga","gg","g",
+"Gf","gaa","gf","dfd","","gf","gaa","g","fg",
+"Gf","gd","gf","gd","gf","ga","gg","g",
+"Dggg","ffff","dddd","ba","ff","ga","gg","g",
+"Dgg","gg","df","ff","ff","ga","gg","g",
+"Dg","ag","dg","bg","gf","ed","cb","ag",
+"G","b","d","g"
+],
+"key":"A",
+"beat":"8",
+"locale": "newari"
+}
+
 
 }
 
@@ -2393,6 +2420,8 @@ notexx = {
 Object.keys(notexx).forEach(note => {
   notex[`${note}`] = notexx[`${note}`]
 })
+
+notex["last"]="End";
 
 var songList = Object.keys(notex);
 // note[songList[12]].note

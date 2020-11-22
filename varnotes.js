@@ -121,11 +121,11 @@ notex = {
       "c", "d#", "-", "d", "-", "c", "-",
       "f", "-", "-", "f", "g", "e", "f",
       "g", "b", "-", "c", "-", "c", "c",
-      "F", "F", "-", "F", "ED", "C", "CD",
-      "B", "-", "-", "C", "DE", "D", "-",
+      "f", "f", "-", "f", "ed", "c", "cd",
+      "B", "-", "-", "c", "de", "d", "-",
       "c", "-", "-", "b", "-", "b", "-",
       "c", "-", "cd", "c", "ba", "ga", "gf",
-      "g", "b", "-", "c", "-", "D#", "d",
+      "g", "b", "-", "c", "-", "d#", "d",
       "c", "a#", "-", "a", "g", "ga", "gf"
     ],
     "key": "G",
@@ -391,7 +391,7 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "untamed_G": {
+  "untamed": {
     "note": ["e", "-", "c", "a", "b", "g", "e", "-", "a", "bc", "d", "g", "a", "-", "-", "-", "e", "-", "c", "a", "b", "g", "e", "fg", "a", "-", "dc", "bc", "b", "-", "-", "-", "cd", "e", "d", "cb", "ca", "b", "a", "g", "cd", "ef", "g", "d", "e", "-", "-", "-",
       "d", "eg", "c", "-", "bc", "e", "a", "-", "g", "g", "e", "c", "cd", "ed", "eg", "a", "-", "-", "-", "-", "eg", "a", "c", "b", "a", "g", "e", "-dg", "e", "ab", "c", "ab", "ag", "e", "-", "-", "fg", "a", "c", "b", "a", "g", "e", "eb", "a", "ag", "ac", "b", "g", "a", "-", "-",
       "c", "-", "-", "dg", "e", "-", "-", "-", "c", "-", "-", "da", "g", "-", "-", "g", "c", "-", "-", "dg", "e", "-", "e", "ca", "d", "-", "-", "-", "-", "-", "cd", "ag", "c", "-", "-", "-"
@@ -433,9 +433,9 @@ notex = {
     "beat": "8",
     "locale": "hindi"
   },
-  "jasnebahara_A": {
+  "jasnebahara": {
     "note": ["cc", "ded", "ccd", "ag", "cc", "ded", "cc", "a", "c-c", "d", "c-c", "a", "cd", "cd", "cd", "cd", "ce", "de", "dc", "cc", "c", "c", "d", "-", "ce", "de", "dc", "cc", "c", "c", "a", "-", "ac", "cd", "d", "dc", "ac", "cd", "d", "e", "dc", "ag", "g", "-", "-", "-", "-", "-", "ac", "cd", "-e", "-", "ga", "-", "c", "-", "-", "d", "e", "-", "b", "b", "ag", "gg", "g", "g", "a", "-", "ad", "cb", "ag", "gg", "g", "ag", "e", "-", "ef", "g", "g", "a", "a", "ac", "bd", "ba", "ag", "g", "-", "-", "b", "-", "d", "-", "g", "fd", "c", "-", "bc", "ab", "c", "-", "ab", "c", "f", "-", "-", "-", "-gag", "fe", "ed", "ef", "e", "-", "-", "-", "-", "-", "ef", "ga", "a", "a", "ab", "ac", "c", "-", "ef", "ga", "fg", "dc", "bc", "ab", "c", "-", "a", "a", "b", "b", "d", "d", "e", "-", "d", "c", "-", "-", "de", "eee", "de", "eee", "d", "ee", "dcdc", "a-", "gacc", "-", "bdb", "c", "bdb", "c", "bag", "g", "ga", "fg", "-g", "ge", "dc", "-a", "cc", "-"],
-    "key": "G",
+    "key": "A",
     "beat": "8",
     "locale": "hindi"
   },
@@ -747,7 +747,20 @@ notex = {
       "gg", "g", "a", "a", "aa", "a", "b", "a",
       "cc", "c", "dcd", "dcd", "dc", "cc", "a", "g",
       "bb", "d", "-", "c", "-", "-", "-", "-",
-      "ggg", "aaa", "bbb", "c", "cgc", "dcd", "ec", "d", "c", "c", "a", "g", "e", "g", "a", "g"
+      "ggg", "aaa", "bbb", "c", "cgc", "dcd", "ec", "d", "c", "c", "a", "g", "e", "g", "a", "g",
+    "e","gg","g","gg","gg","g","a","g",
+    "f","aa","a","aa","aa","ab","a","-",
+    "e","gg","g","gg","gg","g","f","e",
+    // dancing melody
+    "e","d#e","e","d#e","e","cbdc","-","g","f","ef","f","ef","g","ed","ef",
+    "gc","e","de","e","de","f","cb","dc","c","de","c","ga","bc","d","efe","d","d","c","b","c",
+    "a","ga","a","ga","fe","gf ga","bc","d","efe","g","f","d","c  c","b","c",
+// the bridge
+,"g","e","e","eg","f","f","d","-","f","d","d","da","g","f","g","-",
+"g","e","eg","cb","a","g","f","-","e","g","f","b","d","c","-",
+"g","e","e","eg","f","f","d","-","f","d","d","da","g","f","g","-",
+"g","e","eg","cb","a","g","f","-","d","e","f","b","d","cb","c","-"
+
     ],
     "key": "G",
     "beat": "8",
@@ -1599,7 +1612,7 @@ notex = {
     "beat": "8",
     "locale": "newari"
   },
-  "thankyou_G": {
+  "thankyou": {
     "note": [
       "e", "ed", "fe", "ed", "fe", "ed", "fed", "cb", "b", "bc", "d", "cc", "b", "-", "-", "-", "e", "ed", "fe", "ed", "fe", "ed", "fed", "cb", "b", "bc", "d", "gg", "a", "-", "-", "-", "g", "-", "ab", "a", "-", "bc", "b", "-", "ag", "a", "-", "a", "-", "fg", "a", "-", "ga", "g", "-", "-", "ag", "f", "g", "a", "fe", "d", "f", "e", "ed", "c", "d", "c", "ba", "b", "-", "-"
     ],
@@ -1615,19 +1628,19 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "mohabatein_A": {
+  "mohabatein": {
     "note": ["ae", "ded", "cd", "db", "gd", "cdc", "bb", "ca", "cb", "aba", "-", "-", "ba", "gag", "-", "-", "ee", "ec", "cc", "d", "e", "b", "a", "-", "-"],
-    "key": "G",
+    "key": "A",
     "beat": "8",
     "locale": "hindi"
   },
-  "meresamne_G": {
+  "meresamne": {
     "note": ["cd", "-e", "c", "c", "c", "a", "d", "d", "cd", "-e", "c", "c", "c", "a", "c", "c", "gg", "e", "-d", "e", "c", "-f", "fe", "f", "ca", "a", "a", "cd", "edc", "c", "c", "c", "cd", "-g", "-g", "ag", "fe", "ed", "g", "g", "g", "gd", "dd", "e", "ag", "fe", "ee", "cd", "f", "bc", "d", "dd", "f", "ed", "d", "-d", "g", "f", "e", "de", "d", "c", "c"],
     "key": "G",
     "beat": "8",
     "locale": "nepali"
   },
-  "mekoiaisa_G": {
+  "mekoiaisa": {
     "note": ["cdc", "ee", "ec", "dd", "c", "ee", "c", "dd", "-c", "a", "-", "b", "-b", "c", "-", "-", "g", "ge", "fe", "-g", "gg", "ge", "fe", "-", "g-g", "aa", "ef", "ef", "ed", "-", "-", "-", "g", "ef", "ga", "ba", "ga", "g", "-", "-", "g", "ef", "ga", "ga", "gd", "-", "-", "-"],
     "key": "G",
     "beat": "8",
@@ -1720,9 +1733,9 @@ notex = {
     "beat": "8",
     "locale": "nepali"
   },
-  "nasalutimro_F": {
+  "nasalutimro": {
     "note": ["ee", "e", "dd", "cc", "b", "-", "-", "bc", "dd", "dd", "cc", "bb", "a", "-", "-", "-", "aa", "a", "ab", "c", "aa", "ag", "ab", "c", "aa", "ab", "dd", "cc", "b", "-", "-", "-", "abcb", "abcb", "ac", "ba", "b", "d", "c", "b", "bcdc", "bcdc", "bd", "cb", "a", "e", "b", "a", "aa", "ag", "ab", "c", "aa", "g", "ag", "e", "gg", "ge", "ga", "b", "dd", "f", "de", "e"],
-    "key": "G",
+    "key": "F",
     "beat": "8",
     "locale": "nepali"
   },
@@ -2165,7 +2178,7 @@ notex = {
     "locale": "nepali"
   },
   "herakancha": {
-    "note": ["g", "-", "-", "-", "ED", "CE", "DC", "BA", "G", "B", "-", "-", "DC", "BD", "CB", "AG", "f", "A", "-", "-", "CB", "AC", "BA", "gf", "e", "g", "-", "a", "ga", "ga", "g", "-", "g", "cb", "a", "-", "f", "ba", "g", "-", "ga", "fg", "ef", "de", "cd", "ef", "ga", "bc", "g", "c", "-", "cd", "g", "c", "ba", "gf", "d", "g", "-", "ab", "gb", "ag", "fe", "de", "c", "f", "-", "fg", "c", "f", "ed", "cd", "b", "d", "-", "de", "c", "fe", "de", "dc", "eg", "gf", "ed", "cd", "e", "g", "g", "-", "eg", "gf", "ed", "cd", "e", "ag", "a", "-", "f", "fa", "a", "ac", "f", "fa", "a", "a", "g", "ba", "g", "ba", "g", "g", "g", "-"],
+    "note": ["g", "c", "-", "-", "ED", "CE", "DC", "BA", "G", "B", "-", "-", "DC", "BD", "CB", "AG", "f", "A", "-", "-", "CB", "AC", "BA", "gf", "e", "g", "-", "a", "ga", "ga", "g", "-", "g", "cb", "a", "-", "f", "ba", "g", "-", "ga", "fg", "ef", "de", "cd", "ef", "ga", "bc", "g", "c", "-", "cd", "g", "c", "ba", "gf", "d", "g", "-", "ab", "gb", "ag", "fe", "de", "c", "f", "-", "fg", "c", "f", "ed", "cd", "b", "d", "-", "de", "c", "fe", "de", "dc", "eg", "gf", "ed", "cd", "e", "g", "g", "-", "eg", "gf", "ed", "cd", "e", "ag", "a", "-", "f", "fa", "a", "ac", "f", "fa", "a", "a", "g", "ba", "g", "ba", "g", "g", "g", "-"],
     "key": "G",
     "beat": "8",
     "locale": "nepali"
@@ -2246,7 +2259,9 @@ notex = {
     "locale": "japanese"
   },
   "lakhe": {
-    "note": ["c", "f", "e", "f", "g", "-", "-", "-", "a", "b", "c", "d", "c", "b", "-", "a", "-", "g", "-f", "e", "-", "-"],
+    "note": ["-","-","-","c", "f", "e", "f", "g", "-", "-","a", "b", "c", "d", "c", "b", "-", "a", "-", "g", "-f", "e", "-", "-",
+  "c","e","d","-c","d","-","-","d","e","f","g","f","e","-","c","-","de","fe","d","-","-","b","c","d","cb","c","-","-","g","-","a","b","c","d","-","c","b","c","-b","c","-","-","a","b","c","d","c","b","-","a","-","g","-f","g","-","-","e","-","e","-f","g","-","-","a","b","c","d","c","b","-","a","-","g","-f","e","-","-","c","e","d","-c","d","-","-","d","e","f","g","f","e","-","c","-","de","fe","d","-","-","b","c","d","cb","c","-","-"
+  ],
     "key": "G",
     "beat": "7",
     "locale": "newari"
@@ -2357,6 +2372,7 @@ notex = {
       "-","G","-","fe","f","de","cc","c"
 ,"E","-","dc","b","ab","a","aa","a"
 ,"D","-","cb","a","ac","cc","c"
+,"E","-","dc","b","ab","c","cc","c"
    ],
     "key":"G",
     "beat":"8",
@@ -2455,16 +2471,16 @@ notex = {
 "ratorachandra":
     {"note":[
 "C","c","bc","-b","dc","c","-","-",
-"Bc","d","cb","ab","ag","g","-f","a",
-"A","a","ga","-f","gd","d","-","-",
-"Bc","dg","fe","de","dc","d","-","-",
-"C","c","bc","-b","dc","c","-","-",
+"bc","d","cb","ab","ag","g","-f","a",
+"a","a","ga","-f","gd","d","-","-",
+"bc","dg","fe","de","dc","d","-","-",
+"c","c","bc","-b","dc","c","-","-",
 "-","-","-","ce","g","-e","g","-e",
-"Ga","ge","d","-d","f","-d","f","-d",
-"Fg","fd","c","-",
-"Cb","ad","fe","dcdc","c","-","-","-","-",
-"F","f","ef","-e","gf","f","-","-",
-"G","g","fg","-f","ag","g","-","-",
+"ga","ge","d","-d","f","-d","f","-d",
+"fg","fd","c","-",
+"cb","ad","fe","dcdc","c","-","-","-","-",
+"f","f","ef","-e","gf","f","-","-",
+"g","g","fg","-f","ag","g","-","-",
 "A#","a#","ab","-","a","cb","b","-","-",
 "C","c","bc","-b","dc","c","-","-",
 "Eg","eg","-e","-f","d","-","-","-",
@@ -2477,33 +2493,566 @@ notex = {
     "key":"G",
     "beat":"8",
     "locale": "nepali"
-    }
+  },
+  "Yabanyagachwo":
+      {"note":[
+"-","cd","-f","f","g","ga#","ab","gf",
+"G","-f","de","dc","-","cd","-f","f",
+"G","ga#","ab","gf","g","-","-","-",
+"-","gc","-c","dc","a#","a#a","g","fd","-","df","-g","f","de","dc","cb","ab",
+"C","-","-","-",
+"‐","fg","-b","b","c","cd","-","cb",
+"C","-","-","-","ga#","-g","fg","-f",
+"-","fg","-b","b","c","cd","-","cb","c","-","-","-",
+"Cb","gb","ag","ag","gf","dg","fd","fd","c","-","d","f","g","-","-","-",
+"-","fg","-b","b","c","cd","-c","b","c","-","-","-","ga#","-g","f","-",
+"-","d","-d","d","d","-d","-","-","ed","c","b","c","-","cg","bcd",
+"-","ed","c","b","c","-","c","-",
+"-","gc","-c","dc","a#","a#g","g","f","g","-f","d","dc"      ],
+      "key":"C",
+      "beat":"8",
+      "locale": "newari"
+      }
+      ,"Sumadugutak":{"note":[
+"-","ab","-d","-d","eg","-f","-e","e","-","-","-","ef","df","ed","cb","a","-","eg","-a","b","ab","-g","e","de","-","de","-d","-c","d","e","-","-"
+,
+"Dc","ba","-","-"
+,
+"-e","ea","a","-a","ga","ag","e","e","-","ef","-g","a","g","gf","e","-","-","ae","-e","-e","e","e","fe","ff","d","-d","f","-d","c","cb","c","-a","-","ab","bd","e","-g","gf","fe","e","-","-","ef","df","ed","cb","ca","e","-","-","-",
+"-","eg","-a","b","c","-e","cd","b","-","cb","-a","g","f","-b","ab","-","-","eg","-a","b","c","-e","cd","b","bc","dc","bc","ab","cb","ab","a","-",
+"a","-g","e","-","g","-e","d","-","c","-d","-","e","g","ag","e","-","d","-","-","ed","c","-","-","dc","b","-","-","cb","a","-","-","-","c","cd","b","-","c","cd","b","-","ed","cb","a","-","ed","ca","cd","e"
+],
+      "key":"G",
+      "beat":"8",
+      "locale": "newari"
+      },
+      "Deuraliukali":{"note":[
+"Gag","c","gag","edc","gag","c","gag","edc","ded","g","ded","c","ded","g","ded","c","ccc","eee","ff","e","ccc","eee","ff","e","dd","cb","dd","d","cce","dcb","c","cb","cce","dcb","c","-","gg","bb","cc","c","gg","ffe","ee","e","cd","e","ef","ed","cb","c","cd","cb","ag","a","ag","ab","cd","ed","cb","c","ef","a","ag","fg","ab","c","ca","ģ","c","cd","ed","cb","c","cd","c","cb","a","ag","fg","ab","c","ca","g","cb","a","ag","ab","cd","ed","cb","c","-"
+      ],
+      "key":"G",
+      "beat":"8",
+      "locale": "nepali"
+      },
+"Likkawoya":  {"note":[
+  "Gc","cg","cc","-","ece","-","geg","-"
+  ,"Eg","ge","cc","-","gabc","defg","c","gc"
+  ,"Gc","-c","a#a","gf","g","gf","ed","edc","cd","gg","ga","gf","ee","dc","c","-","gc","-c","-c","-c"
+  ,"Ga","cc","-c","cb","abb","ag"
+  ,"Ga","gf","ed","d","g","gc","g","gc","cd","gg","g","-","-g","ga","f","ed","ed","c"
+  ,"Gb","c","gb","c","decd","bcab","cc","-"
+  ,"A-a#","ac","a#a","gf","a#a#","aa","g","-"
+  ,"Gg","af","ee","d","gg","ed","c","-"
+  ,"Ge","ga","g","c","ge","ga","g","-"
+  ,"Cb","ag","eg","ab","c","c"
+  ,"Cce","cce","dc","ba","gd","c","c","-","-","eeg","fe","-","-"
+  ,"Eeg","fe","-","-"
+  ,"Ee","ed","ed","cb","aa","dd","c","-"
+  ,"D","dg","d","dg","ee","ed","ed","cb","aa","dc","c","-","c","cg","c","cg"
+  ,"Cd","gg","g","-","-g","ga","f","ed","ed","c"
+  ,"Cdef","gabc","ga","ga","cc","-d","bb","ag","g","-"
+  ,"C-g","gg","ga","gf","ee","dc","c","-","gg","ga","g","c","gg","ga","g","-"
+  ,"Ccg","gg","a","f","eed","ce","d","-"
+  ,"Ccg","gg","a","f","cdef","gabc","cdef","gabc"
+  ,"-c","-c","-c","-c","-c","-c","gf","e","cc","cg","cc","cg","cc","cg","gf","e"
+ ],
+  "key":"C",
+  "beat":"8",
+  "locale": "newari"
 }
-
-
-/*
-  {"note":[
+, "Sochnasake":{"note":[
+  "Fg","fd","d","cb","cd","-","d","-"
+  ,"B","cd","b","a","g","a","-","-"
+  ,"Ff","gg","g","ag","ff","a","gg","-"
+  ,"-","-","-","de","de","eg","edcb","ad"
+  ,"Dd","-","-","-"
+  ,"D","db","ab","bg","g","g","gag","fg","d","db","ab","bg","g","g","a","gg"
+  ,"G","fg","fg","ge","e","ee","ef","ed#"
+  ,"Eef","gf","ef","ed","ce","d","cb","-"
+  ,"B","bc","ba","a","-","gf","g","-"
+  ,"‐","-","b","-","-","-","-","-"
+  ,"Da","ga","-","-","c","b","-","-"
+  ,"Da","ga","-","-","g","f","g","-"
+  ,"D","e","de","-","e","-","e","g"
+  ,"C","b","d","-","-","e","d","-"
+ ],
+  "key":"D",
+  "beat":"8",
+  "locale": "nepali"
+  }
+  , "Manjigu":{"note":[
+"F","d","b","d","b","g","f","g","a","-","-","-",
+"Ef","de","cd","b","cb","ga","bd","-","ef","de","cd","b","cb","ag","a","-","ae","-f","eed","ed","ccb","agba","a","-",
+"-cd","eg","ga","-fede","cdc","ac","c","-",
+"Gag","aca","ad","-","aca","cdc","de","-",
+"Gaag","acca","ad","-","acca","cddc","de","-",
+"Ef","gc","b","-","cbg","fg","e","-",
+"Ef","gc","b","-","bag","fg","a","-",
+"Ef","ga","gg","fe","ef","ga","gg","fe",
+"Ea","aa","gag","fe","cdc","ac","c","-"    ],
+    "key":"E",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "Jeenajeena":{"note":[
+"E","-","f","-","d","-","e","-",
+"Cd","e","-","f","ge","ge","-","c",
+"Eg","ga","-g","a","-g","ab","ag","g",
+"Eg","ga","-g","ag","ec","d","-","-",
+"Eg","ga","-g","a","-g","ab","ag","g",
+"Cc","c","-b","ga","ag","g","-g","ed",
+"Cd","de","de","cd","de","-","-g","ed","cd","ea","ga","g","ec","d","-","-",
+"-e","ga","ge","dc","-g","a","ge","dc",
+"C","a","c","a","-g","ag","ed","de",
+"-g","a","ge","dc","-g","a","ge","gc","bg","a","e","-",
+"Dcb","g","d","-",
+"E","ed","cb","bc","cd","-","-","-",
+"E","ed","cb","bc","cd","-","-","-",
+"Ee","ga","ge","dc","-g","a","ge","dc",
+"E","ed","cb","bc","cd","-","-","-",
+"E","ed","cb","bc","dg","e","-","-",
+"Ee","f","fg","a","fe","d","-","-"
+      ],
+      "key":"F",
+      "beat":"8",
+      "locale": "nepali"
+      }
+  , "Utpatti":{"note":[
+"A","-","-","-","a","-","-","-G"
+,"-","-","-","-","-","-","-A"
+,"-","-","-","a","-","-","-Ga"
+,"-","-","-","-","-","-","-Aa"
+,"a","cbc","dcd","aa","a","cbc","dcdAa"
+,"a","cbc","dcd","a","a","-","-Eg"
+,"a","-","-","-","-","-","bB"
+,"g","-","-","-","-","-","-Eg"
+,"a","-","-","-","-","-","-Eg"
+,"a","-","-","-","-","-","bB"
+,"g","-","-","-","-","-","-Efe"
+,"d","-","-","de","a","-","--","-","-","-C",
+"c"
+,"ca","cc","ca","cc","ca","cd","dCc"
+,"ca","cc","ca","cc","ca","ca","aAcef"
+,"ec","eca","dbg","acef","eca","dAcef"
+,"ec","eca","dbg","efe","cac","dbc","aA"
+,"ed","g","ea","g","ed","b","abA"
+,"ed","g","ea","g","ed","bc","baAaa"
+,"aaa","a","-","fff","fff","f","-Ggg"
+,"ggg","g","-","aaa","aaa","a","-","Ab"
+,"c","-d","b","-c","a","-g","e","Ab"
+,"c","-d","b","-c","ag","ec","a",
+],    "key"
+:"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+  , "daksibeyyama":{"note":[
+"b","a","bd","cd","b","-a","-f","g",
+"e","d","cd","bc","d","-","b","c",
+"e","ee","c","d","f","ff","d","f",
+"g","c","b","a","g","-","b","c",
+"d","dd","f","f","g","gg","g","-",
+"d","dc","-b","c","a","-","-","-",
+"d","dc","-b","g","-f","fg","e","-",
+"c","d","fe","-a","g","-","-","-",
+"d","dd","f","f","g","gg","g","-",
+"d","-c","ce","d","c","-b","ab","g",
+"-","f","gb","ab","c","-","-","-",
+"-","d","-c","b","a","g","f","-",
+"-","d","-f","f","g","-","-","-",
+"-","d","-f","f","g","-","-","-",
+"-","d","-f","ef","g","g","g","-",
+"-","ag","-f","d","f","ba","g","-",
+"-","fg","-a","d","de","ed","cb","a",
+"-","cb","-a","g","g","-","g","-",
+"d","d","b","c","d","d","d","c",
+"c","ce","e","ef","e","ed","d","-",
+"-","gf","-e","d","e","-","e","-",
+"-","fe","-b","-c","d","-","d","-",
+"d","gf","fd","dc","bb","-a","g","a",
+"bb","-a","g","f","g","-","-","-",
+"fd","fg","af","ac","g","-","-","-",
+"fa","gf","dc","ag","f","-","-","-",
+"fd","fg","af","ac","f","-","-","-",
+"dg","fd","ca","gf","g","-","-","-",
+"-","b","ag","-f","g","-f","df","d",
+"-","b","ag","-f","g","-","-","-"
+],
+"key":"C",
+ "beat":"8",
+  "locale": "newari"
+  }
+  , "thehangingtree":{"note":[
+"-g","a","-c","d","ga","a","ag","e","-g","a","ac","d",
+"ga","a","ag","a",
+"e","dc","dc","a",
+"ga","a","ag","e",
+"-g","a","-c","d","ga","a","ag","a",
+"","-g","a","-c","d","ee","dc","a","-",
+"-g","a","ac","d",
+"ee","dc","a","-",
+"e","ge","dc","a",
+"ga","a","ag","e",
+"-g","a","-c","d","ga","a","ag","a"
+],
+    "key":"C",
+    "beat":"8",
+    "locale": "Folkenglish"
+    }
+    , "gohanwistle":{"note":[
+"c","ag","f","ga","c","ag","f","-","c","ag","f","ga","d","-","-",
+"-c","ag","f","ga","c","ag","f","-","d","ag","f","ga","d","-","-",
+"-g","-d","c","-","dc","dc","-a","-","g","a","ca","gd","f","-","-","-"
+    ],
+      "key":"A#",
+      "beat":"8",
+      "locale": "japanese"
+      }
+, "narutotheme":{"note":[
+"a","-","-","-","bag","e","-","-","-ga","d","-","-",
+"cd","ca","-","bg",
+"a","-","-","-","bag","e","-","-","-ga","d","-","-",
+"a","e","-dc","a","e","-e","ga","-cb","a","gae","ded","b",
+"a","e","-dc","a","e","-e","ga","-cb","a","gae","g","a"
+],
+"key":"C",
+"beat":"8",
+"locale": "japanese"
+}
+, "chyangbahoi":{"note":[
+"a","a","d","-","c","c","a","-",
+"a","aa","d","-","c","c","a","-",
+"a","cb","ab","ag","a","ag","e","-",
+"a","-a","a","g","a","-a","a","g",
+"a","-a","a","g","a","a","a","-",
+"c","cb","ab","ag","a","ag","e","-",
+"c","cb","ab","ag","a","a","a","-",
+"a","cd","f","ef","d","ed","c","a","c","dc","d","d","-","-","-","-",
+"a","cd","f","ef","d","ed","c","a","d","dd","c","cc","a","ag","e","-",
+"a","ag","e","g","ac","ag","a","-",
+"d","dc","a","c","de","dc","d","-",
+"a","ag","e","g","ac","ag","a","-",
+"a","ag","e","g","ac","ag","a","-","e","-d","e","dc","d","-c","d","ca","e","-g","a","cb","g","a","a","-",
+"a","ag","ac","dc","ab","ag","e","g","a","ag","ac","dc","a","a","a","-",
+"a","ge","g","ed","e","dc","d","ba","ac","dc","a","g","a","a","a","-",
+"e","ed","e","g","a","ag","a","c","d","dc","de","dc","ac","ag","a","-"
+],
+"key":"G",
+"beat":"8",
+"locale": "nepali"
+}
+, "myaapsaswe":{"note":[
+"-","c","d","e","c","dc","a","ag",
+"-","ga","c","d","e","cd","-d","d",
+"-","dg","-","-","f","-","e","d",
+"-","d","g","f","e","de","-","ee",
+"-","ee","e","f","e","e","d","d",
+"-","ba","b","c","c","-","d","e",
+"c","cg","g","ga","f","-","e","d",
+"f","-","e","d","c","-","-","-",
+"a","e","d","c","b","d","c","-",
+"a","e","d","c","b","e","d","-",
+"dg","fg","ef","dc","b","d","c","-",
+"c","f","e","de","b","d","c","-",
+"cc","dc","c","dc","cc","dc","c","dc",
+"dc","a","dc","g","dc","a","dc","g","cg","fg","fe","d","dg","fg","ef","de",
+"c","b","a","g","ga","c","-","e",
+"c","ed","c","-","cd","e","-","ga","g","ag","-",
+"-","c","b","-","-","-","-","-","-",
+"ga","ca","ab","cb","cd","cd","c","-",
+"c","b","-","-","-","-","-","-",
+"g","a","c","d","c","b","c","-",
+"c","b","a","g","b","a","g","e",
+"ga","bc","de","fg","d","-","c","-",
+"ga","cb","fg","fe","e","d","c","-",
+"ga","cd","c","-","-","-","-","-",
+"cd","eg","f","-","-","-","-","-",
+"e","eg","f","fg","e","ed","d","d",
+"c","b","a","b","c","-","-","-",
+"cc","dc","c","dc","cc","dc","c","dc"],
+  "key":"G",
+  "beat":"8",
+  "locale": "newari"
+  }
+  , "matinayapukhu":{"note":[
+"cg","gg","gg","abc","cb","ag","ga","fe",
+"ed","ec","db","ca","gg","aa","cc","bca",
+"eeg","f","bcab","c","egfg","d","bcab","c",
+"ee","ee","ff","ed","cc","de","dc","c",
+"e","-c","d","-","e","-d","c","-",
+"cg","gg","gg","ac","cb","ag","ga","fe",
+"e-eg","fg-e","c-ce","de-b","aba","gag","fgf","edc",
+"cg","gg","gaab","agfe","ab","ce","dcbc","abc",
+"ce","-f","ed","cbab","cd","-e","c","-",
+"cg","-a","gafg","g","cf","-g","fgde","c",
+"ecc","daa","cgg","abc","ecc","daa","abcd","fe",
+"ec","db","cc","de","ec","db","cdc","-",
+"ef","ef","ee","c","b-a","cb","cede","c","cd","gfg","bc","-","de-g","fgef","de","-"  ],
+  "key":"B",
+  "beat":"8",
+  "locale": "newari"
+  }
+  , "simakacha":{"note":[
+"cd","ea","-a","a","cd","ea","-a","a",
+"a","d","a","-","ef","ga","e","-",
+"a","d","a","-","ag","fe","d","-",
+"aa","bcba","-g","fe","def","e","d","-",
+"aa","ff","dd","de","de","fg","ae","-",
+"aa","ff","dd","de","ccd","dd","d","-",
+"","cd","ea","-a","a","cd","ea","-a","a",
+"bba","ba","d","-","aab","ag","fe","-",
+"eef","de","a","-","cd","ec","d","-",
+"dd","dd","dd","ab","dd","dd","d","-",
+"dd","cc","bb","bb","ge","ga","b","-",
+"cc","bb","aa","aa","ee","fg","a","-",
+"a","d","ad","ag","fg","ab","a","-",
+"efe","dc","d","-","efe","dc","d","-",
+"cdc","ba","b","-","ge","fg","a","-",
+"cd","efed","-efe","d","cd","efed","-","-"  ],
+  "key":"C",
+  "beat":"8",
+  "locale": "newari"
+  }
+  , "ganawonetyena":{"note":[
 
   ],
   "key":"G",
   "beat":"8",
-  "locale": "nepali"
+  "locale": "newari"
   }
+  , "mangaldhun":{"note":[
+    "d","-","e","f","g","ga",
+    "f","-","e","d","ef","ed",
+    "c","-","b","a","ga","b",
+    "c","d","b","c","-","bc",
+    "c","c","c","e","c","ef","g","-","a","b","c","-",
+    "b","ab","a","g","ga","f",
+    "e","de","d","c","-","bc",
+    "g","-","-","a","-","b",
+    "c","-","-","e","d","c",
+    "c","b","d","c","-","c",
+    "b","-","a","ga","b","a",
+    "g","-","g","f","e","ef",
+    "g","-","a","b","c","-",
+    "b","-","a","g","ga","f",
+    "e","-","d","c","-","bc",
+    "g","-","-","ga","b","a",
+    "g","-","f","","e","-","-",
+    "d","e","d","de","f","f",
+    "e","-","d","c","-","cd",
+    "b","-","c","d","-","-",
+    "d","e","d","de","f","f",
+    "e","de","d","c","b","d",
+    "c","-","c","c","-","cd"],
+  "key":"G",
+  "beat":"6",
+  "locale": "nepali"
+}
+, "arbajo":{"note":[
+  "g","a","b","a","g","a","b","-",
+  "g","a","b","a","g","a","g","-",
+    "b","c","d","c","b","c","d","-",
+    "b","c","d","c","b","c","b","-",
+    "g","a","b","c","d","-a","b","-",
+    "g","a","b","c","d","-a","g","-",
+    "g","gab","c","cag","f","ga","ge","cg","gac","c","cag","f","ga","ge","gd","-cd","e","-de","g","f-c","dc","abd","-cd","e","-de","g","e-c","dcd","ed"],
+    "key":"G#",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "chyanteghoda":{"note":[
+"aa","aag","ddd","ec",
+"a","-g","-f","e","-","-","-",
+"a","-eg","a","-eg","a","-eg","a","-eg",
+"ageg","ageg","ageg","ageg","a-ga","a-ga","a-ga","a-ga",
+"ae","ca","ea","ge","dedc","dedc","dedc","dedc",
+"d","-ac","d","-ac","d","-ac","d","-ac",
+"dedc","dedc","dedc","dedc",
+"a","a","g","e","d","g","e","c",
+"aa","-cd","aa","-cd",
+"adcd","adcd","adcd","adcd",
+"a","aa","a","-",
+"e","a","g","-e","ga","cec","a","-",
+"e","a","g","-e","de","ag","e","-",
+"g","a-c","c","-a","de","ag","e-d",
+"c-d","eg","a","a","ded","cec","a","-",
+"cacd","edeg","acag","gage",
+"eged","ce","a","-",
+"-a","ce","-a","ce",
+"-d","bd","ae","ce",
+"-g","ed","cd","ca","dd","ec","a","-eg"],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "divinity":{"note":[
+"a","-","-","abc","f","-","-","-",
+"a","-","-","abc","d","-","-","-"
+    ],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "gameofthrones":{"note":[
+      "cd","e","a","cd","e","a",
+      "e","-","-","a","-","-","-cd","e","-","a","-","cd","b","-","-",
+      "ga","b","e","ga","b","e",
+      "d","-","-","g","-","-","cb","d","-","g","-","cb","a","-","-","fg","a","e","fg","a","e",
+      "d","-","-","g","-","-","b","c","b","g","a","-",
+      "-a","-","-","-","-","-","g","-","-","-","-","-",
+      "a","-","-","-","-","-","e","-","-","-","-","-",
+      "g","-","-","-","-","-","c","-","-","b","-g","-",
+      "a","-","-","-","-","-"],
+    "key":"G",
+    "beat":"6",
+    "locale": "nepali"
+    }
+    , "jharana":{"note":[
+      "efgc","-g-f","ef","gc",
+      "efgd","-g-f","ef","gd",
+      "efge","-g-f","ef","gf",
+      "fecg","fecg","cefg","cefe","c","-","-",
+      "-dg","-f","-e","-d","d","-e","-","c",
+      "dg","-f","-e","-d","d","-","-","-",
+      "dg","-f","-e","-d","d","-e","-","c",
+      "dg","-f","-e","-d","c","-","-","-",
+      "cbab","c","baga","b","agfg","a","gfeg","g",
+      "cbab","c-ba","gab-","agfa","g","-","-","-",
+      "bc","db","-g","-e","ac","ef","-","-",
+      "-","ec","-a","-g","bd","-","-","-",
+      "bc","db","-g","-e","ac","ef","-","-",
+      "-","fe","-c","-a","g","-","-","-"
+],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "planetnepal":{"note":[
+      "gc","dg","cd","gc","d","-","-","-","c","-","-","-",
+      "gc","dg","cd","gc","d","-","-","-g","fe","dc","-","-",
+      "-","-","-","-",
+      "c-c","-c","a#a","a#c",
+      "c-c","-c","a#a","a#",
+      "c-c","-c","a#a","a#c",
+      "c-c","-c","a#a","g",
+      "c","-","-","-",
+      "a#","-","-","-",
+      "a","-","-","-","-","-","-",
+      "-c","-g","-","-","-","-","fe","dc",
+      "d","-g","-","-","-","-","fe","dc",
+      "d","-g","-","-","-","-","fe","dc",
+      "c","-g","-","-","-","-","-","-",
+      "c","-g","-","-","-","-","fe","dc",
+      "d","-g","-","-","-","-","fe","dc",
+      "d","-g","-","-","-","-","fe","dc",
+      "c","-c","-","-","-","-","-","-"
+      ],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "romance":{"note":[
+"-","g","c","b","g","e","c","b","d","-","-","-","e","-","-","-",
+"-","g","c","b","g","e","c","b","d","-","-","-","c","-","-","-",
+"-","b","c","d","-","b","c","d","-","c","b","c","-","c","b","c",
+"-","eg","-g","b","b","-","c","-","-","bc","-e","d","c","-b","g",
+"-","g","b","c","e","d","-","-","-","ed","-c","b","c","-","-","-",
+"-","g","b","c","-","b","c","d","b","c","e","-","-","c","b","c",
+"-","g","b","c","g","e","c","b","d","-","-","-","c","-","-","-",
+"ec","cc","db","bb","cb","g","ed","c"    ],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "silu":{"note":[
+      "g","ga","c","-","cd","cb","a","ga","f","e","d","eg","a","cb","a","ga","f","e","d","-","c","-","cd","cb","ab","ga","c","-","-","cd","e","g","a","-","ga","gf","e","g","f","e","cd","fe","d","-","c","-","cd","cb"
+    ],
+    "key":"G",
+    "beat":"6",
+    "locale": "nepali"
+    }
+    , "sakyonani":{"note":[
+      "cc","cc","cc","de","dc","b","a","-","b","b","a","b","ag","ed","e","dc","a","c","c","-"
+    ],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "chandi":{"note":[
+      "c","a","g","e","cd","ec","d","-",
+      "c","a","g","e","cd","ed","c","-",
+      "g","ac","a","g","ga","ce","d","-",
+      "ga","ce","d","-","d","eg","ed","ca",
+      "cd","cc","c","-",
+      "d","cb","a","d","cc","cc","c","-"],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "damai":{"note":[
+      "-","bc","b","a","b","de","f","f",
+      "-","de","f","ed","e","ed","ef","e",
+      "-","de","f","ed","c","ba","b","d",
+      "c","-","-","-"
+    ],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+    , "sherbu":{"note":[
+      "c","a#","c","d#","c","-","a#","ca#","g","-","-","-","-","-","-","-",
+      "g","-","c","a#g","f","-","f","a#","a#","g","g","f","d#f","d#","c","-","c","a#","f","a#","g","-","-","-","-","-","-","-"
+    ],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
+  }
+
+
+    /*
+    , "":{"note":[
+
+    ],
+    "key":"G",
+    "beat":"8",
+    "locale": "nepali"
+    }
 asd=notex["temp2"].note
 Object.keys(asd).forEach(asdd=>{
 console.log(asd[asdd])
 })
 
-
-tiririmurali
-akancha
-ratorachandra
-dimidimi
-mohanilagla
 kussumerumal
-simakacha
+chakhuncha
+saparukhunu
+aawaigu
+lyasemyeju
+krishnaflute
+puwachanipucha
+musunhila
+kunmandir
+
+gaugaubata
+dhimal
 
 
+hidamerabhai
+jaalma
+himalayan road
+loksahantidhun
+kaalhonaho
+beethoveen
+naulo bihani
+mangaldhun
+
+lyamhamadaju
+
+dyayata
+jayenamoshree
+wamayawa
+maalshree
+ghantaghar
+phoolkothunga
 
 tumhekoi
 e","-","-","-","edc","edc","cde","ede","ac","a","g#","a","edc","ded","c","-","-","-","-","b c  - - d g ca

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    display:grid;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    grid-template-columns: auto;
+  }
+  textarea{
+    height:50vh;
+    font-size: 2rem;
+  }
+  input{
+height:40px;
+width:200px;
+padding:2px 5px;
+  }
+  div{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    /* grid-template-rows: auto; */
+
+  }
+</style>
+<body>
+  <div>
+    <input type="text" name="" placeholder="key" value="name" id="naam">
+    <input type="text" name="" placeholder="key" value="G" id="key">
+    <input type="text" name="" placeholder="beat" value="8" id="beat">
+    <input type="text" name="" placeholder="locale" value="nepali" id="locale">
+  </div>
+  <textarea name="" id="takenote" cols="30" rows="10"></textarea>
+  <textarea name="" id="givenote" cols="30" rows="10"></textarea>
+</body>
+<script>
+ var takenote= document.querySelector("#takenote")
+ var givenote= document.querySelector("#givenote")
+ takenote.addEventListener("keypress",()=>{
+  if(takenote.value.includes("+")){
+    initailvalue=takenote.value
+    initailvalue=initailvalue.replaceAll("	"," ");
+    initailvalue=initailvalue.replaceAll("/n"," ");
+    initailvalue=initailvalue.replaceAll("d","f");
+    initailvalue=initailvalue.replaceAll(";f","c");
+    initailvalue=initailvalue.replaceAll("k","g");
+    initailvalue=initailvalue.replaceAll("u","e");
+    initailvalue=initailvalue.replaceAll("w","a");
+    initailvalue=initailvalue.replaceAll("/]","d");
+    initailvalue=initailvalue.replaceAll("lg","b");
+    initailvalue=initailvalue.replaceAll("–","-");
+    initailvalue=initailvalue.replaceAll("+","");
+    initailvalue=initailvalue.replaceAll("≥","");
+  takenote.value=initailvalue
+  }
+  var ass=`,"${document.querySelector("#naam").value}": {
+     "note": ["${
+      takenote.value.replaceAll(" ",`","`)
+        }"],
+        "key": "${document.querySelector("#key").value}",
+        "beat": "${document.querySelector("#beat").value}",
+        "locale": "${document.querySelector("#locale").value}"
+      }`
+    givenote.value= ass
+    })
+
+ givenote.addEventListener("keypress",()=>{
+  asd=JSON.parse(`{${givenote.value}}`)
+  document.querySelector("#key").value= asd.nepalesedhun.key
+  document.querySelector("#takenote").value= asd.nepalesedhun.note
+  document.querySelector("#locale").value= asd.nepalesedhun.locale
+  document.querySelector("#beat").value= asd.nepalesedhun.beat
+  document.querySelector("#naam").value= Object.keys(asd)[0]
+})
+</script>
+</html>

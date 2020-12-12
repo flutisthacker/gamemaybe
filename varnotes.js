@@ -3314,7 +3314,136 @@ notex = {
            "beat": "6",
            "locale": "irish"
          }
-    } //end
+  ,"behtihawa": {
+     "note": ["ce","ee","ef","d","e","-","-","-","cd","dd","fe","c","d","-","-","-","bc","bg","ga","fg","dd","ddd","cd","dg","ed","c"
+      ],
+        "key": "G",
+        "beat": "8",
+        "locale": "hindi"
+      }
+      ,"terebina": {
+        "note": ["bc","ef","ec","ec","bb","ag","dd","b","dd","dc","bg","bba","abc","dded","ca","bccb",""
+        ,"ee","dd","e","-","ee","dd","e","-","ee","ec","eec","-"
+        ,"bd","fe","-","-","cc","ed","-","cde","f","ed","d","dd","e","dd","cb","ab","ca","b","bcd"
+      ],
+           "key": "G",
+           "beat": "8",
+           "locale": "nepali"
+         }
+         ,"mainrahoon": {
+          "note": ["g","-g","f","-d","e","-","g","e","-","cb","d","d","ed","c","d","de"
+          ,"ga","ba","a","-b","g","d","de","-","ef","ed","d","-e","c","g","ga","-"],
+             "key": "G",
+             "beat": "8",
+             "locale": "nepali"
+           }
+    ,"mermaid": {
+     "note": ["g","-e","dc","cde","a","ge","dc","cde","a","-","-","dc","b","-","-","-","ega","c","ega","c","ega","ega","d","ega","d","ega","ega","e","dc-d","ca-c","ag","ea","g","eega","cac","eega","dcd","eega","edc","dca","cag","ea","g",""
+      ],
+        "key": "G",
+        "beat": "8",
+        "locale": "nepali"
+      }
+      ,"gayatrimantra": {
+     "note": ["e","e","de","ge","eee","e","gd","d","bd","dde","bdd","-","bb","de","dc","cc","g","g","gg","gg","ggg","a","bag","g","ee","gag","edd","-","cc","dde","dc","c"
+      ],
+        "key": "G",
+        "beat": "8",
+        "locale": "nepali"
+      }
+      ,"ganeshvajan": {
+        "note": ["cc","dd","ee","ee","ee","fe","de","d","bb","cb","dd","dc","ee","dc","c","c"
+         ],
+           "key": "G",
+           "beat": "8",
+           "locale": "nepali"
+         }
+      ,"taarifkarun": {
+      "note": ["-e","eed","eed","ee","-d","ddc","ddc","dd","ec","d","de","g","g","ab","g","-","ab","g","-","ed","-f","e","c","-"
+        ],
+          "key": "G",
+          "beat": "8",
+          "locale": "nepali"
+        }
+      ,"pankopat": {
+      "note": ["c","da","c","-","cc","cg","ed","e","c","d","a","-","cc","d","a","c","c","-","-","-"
+        ],
+          "key": "G",
+          "beat": "8",
+          "locale": "nepali"
+        }
+      ,"chiyachhaneko": {
+      "note": ["cd","c","a","cdd","d-d","eg","dd","ca","cd","c","c","c","c","ga","c","c"
+        ],
+          "key": "F#",
+          "beat": "8",
+          "locale": "nepali"
+        }
+      ,"ghaskatne": {
+        "note": ["cd","cc","ddg","g","aga","ged","dc","dg","ede","dca","c","c","cc","cd","c","c","dd","dg","g","-","aga","ge","dc","ddg","ede","dca","c","c"
+          ],
+            "key": "G",
+            "beat": "8",
+            "locale": "nepali"
+          }
+      ,"galbandichyatiyo": {
+        "note": ["e","ea","g","ged","ee","c","ce","d","e","ea","g","ged","dd","c","c","c","c","-","ga","c","c","e","ea","g"
+          ],
+            "key": "G",
+            "beat": "8",
+            "locale": "nepali"
+          }
+      ,"hariyodada": {
+        "note": ["ccc","ee","g","ed","ee","dc","cc","-","eef","gf","ee","-","eefe","dc","cg","-"
+          ],
+            "key": "G",
+            "beat": "8",
+            "locale": "nepali"
+          }
+          ,"eutamanche": {
+     "note": ["gg","ded","e","-","fe","dc","defe","d","ddc","ded","c","a","fe","d","c","-","ccb","ag","a","-","ga","ff","ded","c","cd","dg","g","ba","ga","f","f","-","c","cb","ag","ea","-","ba","bag","g","ga","be","dc","ba","ge","cb","a","-","-","-","g","gg","ag","e","d","d","d"
+      ],
+        "key": "G",
+        "beat": "8",
+        "locale": "nepali"
+      }
+      ,"aayehomere": {
+        "note": ["c","ce","ded","cb","ab","ce","ded","cbc","gg","gb","aba","gfg","fe","def","-","-","-","-","-","-","gg","gb","aba","gfe","ef","dd","ff","edd","g","-f","ef","-f","ded","cb","c","-","gb","bb","ba","bcc","ee","ef","gagf","ed","df"
+         ],
+           "key": "G",
+           "beat": "8",
+           "locale": "hindi"
+         }
+         ,"sannuekpal": {
+          "note": ["ee","eee","ede","cd","ee","eee","ede","cd","ad","de","dcc","ca","ad","de","dcc","ca","cd","egg","gac","ga","cd","egg","gac","ga","cc","c","c","cg","ccde","ef","f","gf","ee","eg","-"
+           ],
+             "key": "G",
+             "beat": "8",
+             "locale": "hindi"
+           }
+           ,"hero": {
+            "note": ["ae","fe","fe","ca","c","-b","a","-","ae","fe","fe","ca","c","-b","a","-","acc","b","de","f","fa","g","fe","d"
+             ],
+               "key": "E",
+               "beat": "8",
+               "locale": "hindi"
+             }
+          ,"meremeheboob": {
+          "note": ["ab","ce","de","dc","ba","ga","ag","b","ab","cb","a","-","ab","ba","g","-","fg","ef","aag","bba","ab","ce","de","-","c","cb","dc","c","ba","b","ba","c","cb","dc","c","ba","b","ba","d","dc","eed","ba","bba","e","eg","fed","d","df","ed","dc","c","c","ede","edcb","dc","bba"
+            ],
+              "key": "D",
+              "beat": "8",
+              "locale": "hindi"
+            }
+            ,"surajhuamadham": {
+              "note": ["ea","ae","ge","-","ab","cba","bg","-","ea","eg","e","-","ab","cba","bg","-","aa","ag","a","bb","e","g","aa","-","aa","bg","a","bb","e","g","aa","-","b","-","bb","ga","b","bd","bg","aa","a","-","-","-","cc","b","-","ag","bb","ga","b","bd","bg","aa","a","-"
+               ],
+                 "key": "G",
+                 "beat": "8",
+                 "locale": "nepali"
+               }
+        } //end
+
 
 /*
 b≥

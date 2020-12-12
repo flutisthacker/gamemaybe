@@ -17,17 +17,46 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 
+<style>
+  .text {
+    font-size: 35px;
+    color: lightgreen;
+    text-align: center;
+    line-height: 1em;
+  }
 
+  .line {
+    background: #aaff12;
+    height: 4px;
+    border-radius: 4px;
+    width: 0%;
+    position: fixed;
+    top: 0px;
+    left: 0;
+  }
+  .line2 {
+    background: #aa1f12;
+    border-radius: 4px;
+    width: 4px;
+    height: 0%;
+    position: fixed;
+    top: 0px;
+    left: 0;
+  }
+
+</style>
 <body>
 
+  <div class="toggle" id="toggle">
+    <i class="fa fa-folder-open"></i>
+  </div>
+  <div class="line" id="scrollIndicator"></div>
+  <div class="line2" id="scrollIndicator2"></div>
   <div id="menu" class="menu">
     <div class="select">
       <ul id="songstwo">
       </ul>
     </div>
-  </div>
-  <div class="toggle" id="toggle">
-    <i class="fa fa-folder-open"></i>
   </div>
   <div class="containerd">
     <div class="title">
@@ -53,14 +82,42 @@
         <option value="As">A#</option>
         <option value="B">B</option>
       </select>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        <i class="fa fa-camera"></i>
-      </button>
+
       <button id="translate" class="add">translate</button>
       <button id="staff" class="add">staff</button>
     </div>
-    <div class="list" id="capture"></div>
+    <div class="list" id="capture"></div>x
   </div>
+<div class="mutt d-flex">
+        <button type="button" class="btn btn-primary fixRight" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-camera"></i>
+      </button>
+    <button type="button" class="btn btn-primary fixRight posR" data-toggle="modal" data-target="#exampleModal2">
+    <i class="fa fa-phone"></i>
+  </button>
+</div>
+
+
+  <div class="modal fade bd-example-modal-lg" id="exampleModal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Capture</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <iframe src="tranpose2t.html" frameborder="0" width="750px" height="500px"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -79,6 +136,21 @@
       </div>
     </div>
   </div>
+  <script>
+    document.querySelector("#songstwo").addEventListener("scroll", moveSCrollIndicator)
+
+    const scrollIndicatorElt = document.getElementById("scrollIndicator")
+    const scrollIndicatorEltw = document.getElementById("scrollIndicator2")
+    const maxHeight =  11918 - 606;
+    // const maxHeight =  document.querySelector("#songstwo").scrollHeight - window.innerheight ;
+
+
+    function moveSCrollIndicator(e) {
+      const percentage = (( document.querySelector("#songstwo").scrollTop) / maxHeight) * 100;
+      scrollIndicatorElt.style.width = percentage + "%";
+      scrollIndicatorEltw.style.height = percentage + "%";
+    }
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -118,7 +190,7 @@
   <script>
     document.addEventListener("keyup", (e) => {
       if (e.keyCode == 67 && e.keyCode == 16) {
-        console.log(e.key, songs.value)
+        // console.log(e.key, songs.value)
         html2canvas(document.querySelector("#capture")).then(canvas => {
           document.body.appendChild(canvas)
           // $('.modal-body').append(canvas)
@@ -206,14 +278,20 @@
     translate.addEventListener("click", () => {
       // translates(eval(songs.value))
       // translates(totranspose, 8)
-      transpose(totranspose, eval("Nepnotes"), 8)
-    });
+      console.log("totbeat"+totbeat)
+      try{
+        transpose(totranspose, eval("Nepnotes"), totbeat)
+      }
+      catch(e){
+        console.log(e)
+      }    });
     songstwoli.forEach(songl => {
       songl.addEventListener("click", (e) => {
         songlid = songl.id
-        document.querySelector("#titlename").innerHTML = songlid
         songlid2 = songlid
         // alert("herum" + eval(songlid2.replace('.note', '.beat')), songlid);
+        document.querySelector("#titlename").innerHTML =songlid2.replace("notex.", "").replace(".note","")
+        document.querySelector("#notesearch").value=songlid2.replace("notex.", "").replace(".note","")
         songlid.replace("note.", "")
         if (cursongtwo == "") {
           cursongtwo = songlid;
@@ -221,16 +299,29 @@
           document.getElementById(cursongtwo).className = "";
           cursongtwo = songlid;
         }
+        alert("key" + eval(songlid2.replace('.note', '.key')),songl.className);
         songl.className = "active"
         // alert("herum" + eval(songlid2.replace('.note', '.key')));
+      try{
         transpose(eval(songlid), eval(songkey.value + "key"), eval(songlid.replace(".note", ".beat")))
+      }
+      catch(e){
+        console.log(e)
+      }
       });
     })
     document.querySelector("#notesearch").addEventListener("keyup", (e) => {
-      noteserchval = document.querySelector("#notesearch").value;
-      notesearched = noteserchval.replaceAll(" ", "")
-      transpose(eval("notex." + notesearched + ".note"), eval(songkey.value + "key"), eval("notex." + notesearched +
-        ".beat"))
+      if (e.keyCode == 13) {
+        noteserchval = document.querySelector("#notesearch").value;
+        notesearched = noteserchval.replaceAll(" ", "")
+        songstwoli.forEach(songl => {
+        songl.className="";
+        });
+        document.getElementById(`notex.${notesearched}.note`).className ="active"
+        transpose(eval("notex." + notesearched + ".note"), eval(songkey.value + "key"), eval("notex." +
+          notesearched +
+          ".beat"))
+      }
     })
     songs.addEventListener("change", () => {
       // a = song.value;
@@ -245,11 +336,15 @@
     });
 
     var totranspose = [];
+    var totbeat ;
 
     function transpose(note, key, beat) {
       console.log("html", note, key)
 
       newscale = [];
+      //       if(cd="A"){
+      // nepali ma add+
+      // }
       for (i = 0; i < note.length; i++) {
         if (note[i].length >= 2 && note[i].length < 9) {
           // if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4 || note[i].length == 5) {
@@ -291,6 +386,7 @@
         }
       }
       totranspose = newscale;
+      totbeat=beat
       maketable(beat);
       tabledisplay(newscale, beat);
       return newscale;
@@ -312,6 +408,46 @@
         tr.appendChild(td);
         tbody.appendChild(tr);
       }
+    }
+
+    function hearme() {
+      navigator.mediaDevices.getUserMedia({
+          audio: true
+        }).then(function (localStream) {
+          var audioContext = new(window.AudioContext || window.webkitAudioContext)();
+
+          var input = audioContext.createMediaStreamSource(localStream);
+          var analyser = audioContext.createAnalyser();
+          var scriptProcessor = audioContext.createScriptProcessor();
+          // Some analyser setup
+          analyser.smoothingTimeConstant = 0;
+          analyser.fftSize = 64;
+
+          input.connect(analyser);
+          analyser.connect(scriptProcessor);
+          scriptProcessor.connect(audioContext.destination);
+          var getAverageVolume = function (array) {
+            var length = array.length;
+            var values = 0;
+            var i = 0;
+            for (; i < length; i++) {
+              values += array[i];
+            }
+            return values / length;
+          };
+          var onAudio = function () {
+            var tempArray = new window.Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(tempArray);
+            // console.log(tempArray)
+            var latestFrequency = (getAverageVolume(tempArray));
+            //use latestFrequency
+            // console.log(latestFrequency)
+          };
+          scriptProcessor.onaudioprocess = onAudio;
+        })
+        .catch(function () {
+          //Handle error
+        });
     }
 
     function maketable(numoftab) {
@@ -338,70 +474,6 @@
       thead.prepend(theadtr)
       table.prepend(thead)
       body.prepend(table)
-    }
-
-
-    // to delete
-    function translates(note, beat) {
-      // to nepali
-      console.log("html")
-      let newscale = [];
-      for (i = 0; i < note.length; i++) {
-        if ((note[i].length == 2 || note[i].length == 3 || note[i].length == 4)) {
-          notej = [];
-          if (note[i].length >= 2 && note[i].includes("#")) {
-            notei = splitnotes(note[i])
-          } else {
-            notei = note[i].split("")
-          }
-          // console.log(notei, note[i])
-          for (let z = 0; z < notei.length; z++) {
-            for (let x = 0; x < Ckey.length; x++) {
-              if (notei[z] == Ckey[x]) {
-                // console.log(Ckey[x], notei[z], Nepnotes[x])
-                notej.push(Nepnotes[x])
-              }
-            }
-          }
-          console.log("my length" + note[i].length, note[i]);
-
-          console.log(notej)
-          const searchRegExp = /,/g;
-          const replaceWith = '';
-          const result = notej.join().replace(searchRegExp, replaceWith);
-          newscale.push(result);
-        }
-        //
-        //         if ((note[i].length == 2 || note[i].length == 3 || note[i].length == 4) && note[i].includes("#")) {
-        //           notej = [];
-        //           let splitednotes = splitnotes(note[i]);
-
-
-        //           for (let z = 0; z < splitednotes.length; z++) {
-        //             for (let x = 0; x < Ckey.length; x++) {
-        //               debugger
-        //               if (splitednotes[z] == Ckey[x]) {
-        //                 console.log(Ckey[x], splitednotes[z], Nepnotes[x])
-        //                 notej.push(Nepnotes[x])
-        //               }
-        //             }
-        //           }
-        //           console.log(notej)
-        //         }
-        //
-        else {
-          for (j = 0; j < Nepnotes.length; j++) {
-            if (note[i] == Ckey[j]) {
-              // console.log(note[i], Nepnotes[j])
-              newscale.push(Nepnotes[j]);
-            }
-          }
-        }
-      }
-      // hello
-      maketable(beat);
-      tabledisplay(newscale, beat);
-      // return newscale;
     }
   </script>
 </body>

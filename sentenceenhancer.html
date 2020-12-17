@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<input type="text" id="takesentence">
+<p class="myanswer"></p>
+<script>
+tksentence= document.querySelector("#takesentence");
+
+tksentence.addEventListener("keypress", (e)=>{
+  if(e.keyCode==13){
+    extendsentence(tksentence.value)
+  }
+})
+
+
+function extendsentence(sent,tk){
+  sents=sent.split(" ")
+  highest=0;
+  sents.forEach(send => {
+    if(send.length>highest){
+    highest = send.length
+    }
+  });
+  console.log(highest)
+  console.log(sents)
+
+  var myArr=[];
+  let ssend="";
+  sents.forEach(send =>{
+    for(i = send.length; i<highest; i++){
+      ssend += send[0]
+    }
+    ssend+= send;
+    myArr.push(ssend)
+    console.log(ssend)
+    ssend="";
+  });
+
+document.querySelector(".myanswer").innerHTML =   myArr.join(" ")
+}
+</script>
+</body>
+</html>

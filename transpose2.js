@@ -1,135 +1,249 @@
-var Ckey = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "-"];
-var Nepnotes = ["सा", "रेे।", "रे", "ग|", "ग", "म", "म।", "प", "ध।", "ध", "नि।", "नि", "-"];
-var Cskey = ["c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "-"];
-var Dkey = ["d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "-"];
-var Dskey = ["d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "-"];
-var Ekey = ["e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "-"];
-var Fkey = ["f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "-"];
-var Fskey = ["f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "-"];
-var Gkey = ["g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "-"];
-var Gskey = ["g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "-"];
-var Akey = ["a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "-"];
-var Askey = ["a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "-"];
-var Bkey = ["b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "-"];
+abcd = "c#d#f#"
+console.log(splitnotes(abcd));
 
-// songs = document.querySelector("#songs");
-// songkey = document.querySelector("#songkey");
-// translate = document.querySelector("#translate");
-// Ckey.map(key => console.log(`${key} is the natural key`))
+function splitnotes(abcd) {
+  defg = [];
+  bcde = abcd.split("")
+  bcde.forEach((cdef, index) => {
+    if (cdef.includes("#")) {
+      defg.push(index)
 
-// translate.addEventListener("click", () => {
-//   // translates(eval(songs.value))
-//   translates(totranspose)
-// });
-// songs.addEventListener("change", () => {
-//   transpose(eval(songs.value), eval(songkey.value + "key"))
-// });
-// songkey.addEventListener("change", () => {
-//   transpose(eval(songs.value), eval(songkey.value + "key"))
-// });
-
-var totranspose = [];
-
-function translates(note) {
-  // to nepali
-  let newscale = [];
-  for (i = 0; i < note.length; i++) {
-    if ((note[i].length == 2 || note[i].length == 3 || note[i].length == 4) && !note[i].includes("#")) {
-      notej = [];
-      notei = note[i].split("")
-      console.log(notei, note[i])
-      for (z = 0; z < notei.length; z++) {
-        for (x = 0; x < Ckey.length; x++) {
-          if (notei[z] == Ckey[x]) {
-            console.log(Ckey[x], notei[z], Nepnotes[x])
-            notej.push(Nepnotes[x])
-          }
-        }
-      }
-      console.log("my length" + note[i].length, note[i]);
-
-      console.log(notej)
-      const searchRegExp = /,/g;
-      const replaceWith = '';
-      const result = notej.join().replace(searchRegExp, replaceWith);
-      newscale.push(result);
     }
+  })
 
-    for (j = 0; j < Nepnotes.length; j++) {
-      if (note[i] == Ckey[j]) {
-        console.log(note[i], Nepnotes[j])
-        newscale.push(Nepnotes[j]);
+  for (j = 0; j < bcde.length; j++) {
+    for (i = 0; i < defg.length; i++) {
+      if (j == defg[i]) {
+        bcde[j - 1] = bcde[j - 1] + bcde[defg[i]]
       }
     }
   }
-  // hello
-  return newscale;
-  // tabledisplay(newscale);
+
+  w = 0;
+  for (i = 0; i < defg.length; i++) {
+    bcde.splice(defg[i] - w, 1)
+    w++;
+  }
+  return bcde.join().split(",");
+  // return bcde.join().split(", ,");
 }
 
-function transpose(note, key) {
+
+const Ckey = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "-"];
+const Nepnotes = ["सा", "रेे।", "रे", "ग|", "ग", "म", "म।", "प", "ध।", "ध", "नि।", "नि", "-"];
+const Newanotes = ["न", "माे।", "माे", "बा।", "बा।", "गे", "म।", "साे", "ध।", "रा", "नि।", "क", "-"];
+const solfege = ["do", "re।", "re", "mi।", "mi", "fa", "so।", "so", "la।", "la", "ti।", "ti", "-"];
+const Cskey = ["c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "-"];
+const Dkey = ["d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "-"];
+const Dskey = ["d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "-"];
+const Ekey = ["e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "-"];
+const Fkey = ["f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "-"];
+const Fskey = ["f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "-"];
+const Gkey = ["g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "-"];
+const Gskey = ["g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "-"];
+const Akey = ["a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "-"];
+const Askey = ["a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "-"];
+const Bkey = ["b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "-"];
+
+songs = document.querySelector("#songs");
+songstwoli = document.querySelectorAll("#songstwo li");
+songkey = document.querySelector("#songkey");
+translate = document.querySelector("#translate");
+// Ckey.map(key => console.log(`${key} is the natural key`))
+var cursongtwo = "";
+translate.addEventListener("click", () => {
+  console.log("totbeat"+totbeat)
+  try{
+    transpose(totranspose, eval("Nepnotes"), totbeat)
+  }
+  catch(e){
+    console.log(e)
+  }    });
+songstwoli.forEach(songl => {
+  songl.addEventListener("click", (e) => {
+    songlid = songl.id
+    songlid2 = songlid
+    document.querySelector("#notesKey").innerText =eval(songlid2.replace(".note",".key"))
+    document.querySelector("#titlename").innerHTML =songlid2.replace("notex.", "").replace(".note","")
+    document.querySelector("#notesearch").value=songlid2.replace("notex.", "").replace(".note","")
+    songlid.replace("note.", "")
+    if (cursongtwo == "") {
+      cursongtwo = songlid;
+    } else {
+      document.getElementById(cursongtwo).className = "";
+      cursongtwo = songlid;
+    }
+    songl.className = "active"
+  try{
+    transpose(eval(songlid), eval(songkey.value + "key"), eval(songlid.replace(".note", ".beat")))
+  }
+  catch(e){
+    console.log(e)
+  }
+  });
+})
+
+function supriseme(){
+  notexkey=Object.keys(notex);
+  var surprise=Math.random() * notexkey.length
+  songstwo.childNodes[parseInt(surprise)].click()
+}
+
+
+document.querySelector(".fa-gift").addEventListener("click", ()=>{supriseme()});
+document.querySelector("#notesearch").addEventListener("keyup", (e) => {
+  if (e.keyCode == 13) {
+    noteserchval = document.querySelector("#notesearch").value;
+    notesearched = noteserchval.replaceAll(" ", "")
+    songstwoli.forEach(songl => {
+    songl.className="";
+    });
+    document.getElementById(`notex.${notesearched}.note`).className ="active"
+
+    document.querySelector("#notesKey").innerText =eval(`notex.${notesearched}.key`)
+    document.querySelector("#titlename").innerHTML =notesearched
+
+
+    transpose(eval("notex." + notesearched + ".note"), eval(songkey.value + "key"), eval("notex." +
+      notesearched +
+      ".beat"))
+  }
+})
+songs.addEventListener("change", () => {
+  // a = song.value;
+  document.querySelector("#titlename").innerHTML = (songs.value).replace(".note", "")
+  // songkey.value=""
+  transpose(eval(songs.value), eval(songkey.value + "key"), eval((songs.value).replace(".note", ".beat")))
+});
+songkey.addEventListener("change", () => {
+  document.querySelector("#titlename").innerHTML = songs.value
+  transpose(eval(songs.value), eval(songkey.value + "key"), eval((songs.value).replace(".note", ".beat")))
+});
+
+var totranspose = [];
+var totbeat ;
+
+function transpose(note, key, beat) {
+  console.log("html", note, key)
+
   newscale = [];
+  //       if(cd="A"){
+  // nepali ma add+
+  // }
   for (i = 0; i < note.length; i++) {
-    if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4) {
+    if (note[i].length >= 2 && note[i].length < 9) {
+      // if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4 || note[i].length == 5) {
       notej = [];
-      notei = note[i].split("")
-      console.group("1111")
-      console.log(notei, note[i])
-      for (z = 0; z < notei.length; z++) {
-        for (x = 0; x < Ckey.length; x++) {
-          console.log(notei[z].toLowerCase())
-          if (notei[z].toLowerCase() == Ckey[x]) {
-            // console.log(Ckey[x], notei[z], key[x])
-            notej.push(key[x])
-          }
-        }
+      let notei;
+      if (note[i].includes("#")) {
+        notei = splitnotes(note[i])
+      } else {
+        notei = note[i].split("")
       }
-      console.log("my length" + note[i].length, note[i]);
-      console.log(notej + "conjoined piece")
+      console.log("notei:" + notei, note[i])
+      for (z = 0; z < notei.length; z++) {
+        // notei = breakdown of "cdef" to "c","d"
+
+        Ckey.forEach((ckey, index) => {
+          //def=> converted to d#ff# if key cskey
+          if (notei[z].toLowerCase() == ckey) {
+            // console.log(Ckey[x], notei[z], key[x])
+            notej.push(key[index])
+          }
+        })
+      }
+      // console.log("my length" + note[i].length, note[i]);
+      // console.log(notej + "conjoined piece")
       const searchRegExp = /,/g;
       const replaceWith = '';
       const result = notej.join().replace(searchRegExp, replaceWith);
+      // console.log(result)
       newscale.push(result);
 
-    }
-    for (j = 0; j < Ckey.length; j++) {
-      if (note[i] == Ckey[j]) {
-        newscale.push(key[j]);
-      }
+    } else {
+      // onee transpose C=>D
+      newscale.push(key[Ckey.indexOf((note[i].toLowerCase()))]);
+
+      // Nepnotes[Ckey.indexOf(note[i])]
+/*           Ckey.forEach((ckey, index) => {
+        if (note[i].toLowerCase() == ckey) {
+          // console.log(note[i].toLowerCase(), i, Ckey[j], j)
+          // console.log(key[j], newscale)
+          newscale.push(key[index]);
+        }
+      }) */
+
+
     }
   }
   totranspose = newscale;
-  // tabledisplay(newscale);
+  totbeat=beat
+  maketable(beat);
+  tabledisplay(newscale, beat);
+  ifrdocument.querySelector("#givenote").innerText=totranspose
   return newscale;
 }
 
-function tabledisplay(na) {
-  maketable();
+function tabledisplay(na, beat) {
+  console.log("html");
+
+  // maketable();
   count = 0;
   tbody = document.querySelector('.tbody');
+  let tr;
   for (i = 0; i < na.length; i++) {
-    if (i % 8 == 0) {
+    if (i % beat == 0) {
       tr = document.createElement('tr');
     }
-    td = document.createElement('td');
+    let td = document.createElement('td');
     td.innerHTML = na[i];
     tr.appendChild(td);
     tbody.appendChild(tr);
   }
 }
 
-function maketable() {
-  //     <table class="table table-hover">
-  //   <thead class="thead thead-dark">
-  //     <tr>
-  //       <td>1</td>
-  //       <td>2</td>
-  //       <td>3</td>
-  //       <td>4</td>
-  //     </tr>
-  //   </thead>
-  //   <tbody class="tbody"></tbody>
-  // </table>
+function hearme() {
+  navigator.mediaDevices.getUserMedia({
+      audio: true
+    }).then(function (localStream) {
+      var audioContext = new(window.AudioContext || window.webkitAudioContext)();
+
+      var input = audioContext.createMediaStreamSource(localStream);
+      var analyser = audioContext.createAnalyser();
+      var scriptProcessor = audioContext.createScriptProcessor();
+      // Some analyser setup
+      analyser.smoothingTimeConstant = 0;
+      analyser.fftSize = 64;
+
+      input.connect(analyser);
+      analyser.connect(scriptProcessor);
+      scriptProcessor.connect(audioContext.destination);
+      var getAverageVolume = function (array) {
+        var length = array.length;
+        var values = 0;
+        var i = 0;
+        for (; i < length; i++) {
+          values += array[i];
+        }
+        return values / length;
+      };
+      var onAudio = function () {
+        var tempArray = new window.Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(tempArray);
+        // console.log(tempArray)
+        var latestFrequency = (getAverageVolume(tempArray));
+        //use latestFrequency
+        // console.log(latestFrequency)
+      };
+      scriptProcessor.onaudioprocess = onAudio;
+    })
+    .catch(function () {
+      //Handle error
+    });
+}
+
+function maketable(numoftab) {
+  console.log("html", numoftab)
 
   body = document.querySelector('.list');
   body.innerHTML = ""
@@ -140,33 +254,16 @@ function maketable() {
   tbody = document.createElement('tbody');
   tbody.className = "tbody"
   theadtr = document.createElement('tr');
-  td1 = document.createElement('td');
-  td1.innerHTML = "1";
-  td2 = document.createElement('td');
-  td2.innerHTML = "2";
-  td3 = document.createElement('td');
-  td3.innerHTML = "3";
-  td4 = document.createElement('td');
-  td4.innerHTML = "4";
-  td5 = document.createElement('td');
-  td5.innerHTML = "5";
-  td6 = document.createElement('td');
-  td6.innerHTML = "6";
-  td7 = document.createElement('td');
-  td7.innerHTML = "7";
-  td8 = document.createElement('td');
-  td8.innerHTML = "8";
+  var tds = [];
+  for (var i = 0; i < numoftab; i++) {
+    tds[i] = document.createElement("td");
+    tds[i].innerHTML = i + 1;
+  }
   table.prepend(tbody)
-  theadtr.prepend(td8)
-  theadtr.prepend(td7)
-  theadtr.prepend(td6)
-  theadtr.prepend(td5)
-  theadtr.prepend(td4)
-  theadtr.prepend(td3)
-  theadtr.prepend(td2)
-  theadtr.prepend(td1)
+  for (var i = (numoftab - 1); i >= 0; i--) {
+    theadtr.prepend(tds[i])
+  }
   thead.prepend(theadtr)
   table.prepend(thead)
   body.prepend(table)
-
 }

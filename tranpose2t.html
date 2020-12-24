@@ -88,24 +88,27 @@ return changed;
       initailvalue = initailvalue.replaceAll("≥", "");
       takenote.value = initailvalue
     }
+    else if(!takenote.value.includes(`","`)){
+      takenote.value=takenote.value.replaceAll(",",'","')
+    }
     var ass = `,"${document.querySelector("#naam").value}": {
-     "note": ["
-     ${takenote.value.replaceAll(" ",`","`)}"
-      ],
-        "key": "${document.querySelector("#key").value}",
-        "beat": "${document.querySelector("#beat").value}",
-        "locale": "${document.querySelector("#locale").value}"
+      "note": ["${takenote.value.replaceAll(" ",`","`)}"],
+      "key": "${document.querySelector("#key").value}",
+      "beat": "${document.querySelector("#beat").value}",
+      "locale": "${document.querySelector("#locale").value}"
       }`
     givenote.value = ass
   })
 
   givenote.addEventListener("keypress", () => {
     asd = JSON.parse(`{${givenote.value}}`)
-    document.querySelector("#key").value = asd.nepalesedhun.key
-    document.querySelector("#takenote").value = asd.nepalesedhun.note
-    document.querySelector("#locale").value = asd.nepalesedhun.locale
-    document.querySelector("#beat").value = asd.nepalesedhun.beat
-    document.querySelector("#naam").value = Object.keys(asd)[0]
+    keys=Object.keys(asd)[0]
+    document.querySelector("#key").value = asd[keys].key
+    allkeys=asd[keys].note
+    document.querySelector("#takenote").value =allkeys.toString().replaceAll(","," ")||allkeys.toString()
+    document.querySelector("#locale").value = asd[keys].locale
+    document.querySelector("#beat").value = asd[keys].beat
+    document.querySelector("#naam").value = keys
   })
 </script>
 

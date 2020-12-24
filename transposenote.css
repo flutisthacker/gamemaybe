@@ -44,6 +44,20 @@
     outline: none;
   }
 
+  .fixRight{
+    position:fixed;
+    bottom:0;
+    right:0;
+  }
+  .posR{
+    bottom:40px;
+  }
+  .posRR{
+    bottom:80px;
+  }
+  .d-flex{
+    display:flex;
+  }
   @media screen and (max-width:584px) {
 
     .containerd {

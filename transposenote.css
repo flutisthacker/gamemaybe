@@ -61,8 +61,8 @@
   @media screen and (max-width:584px) {
 
     .containerd {
-      width: 400px;
-      height: 600px;
+      width: 95%;
+      height: 80%;
       background-color: rgba(222, 222, 222, .5);
       border: none;
       border-radius: 20px;
@@ -201,7 +201,7 @@
       top: 0;
       width: 40vw;
       height: 100vh;
-      background-color: #8f928f80;
+      background-color: #5f9c5fd7;
       transform: translateX(-101%);
       will-change: transform;
       transform: all .2s ease-in;

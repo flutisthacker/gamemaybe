@@ -1139,7 +1139,7 @@ notex = {
   },
   "palpal": {
     "note": ["ga","ded","ded","ded","ded","cad","c","cd","c","cd","c","-","c","d","e","f","fg","f","fg","f","gf","e","df","e","ef","e","ef","e","edc","ad","c","c","ca","b","a","ag","c","de","d","-","dd","ef","e","-","c","de","d","c","aa","d","bc","-","g","a","e","d","de","d","de","d","ed","c","ad","c","cd","c","cd","c"],
-    "key": "notfixed",
+    "key": "C",
     "beat": "8",
     "locale": "hindi"
   },
@@ -1204,8 +1204,14 @@ notex = {
     "key": "G",
     "beat": "8",
     "locale": "newari"
-  },
-  "rajamati": {
+  }
+  ,"swegumann": {
+    "note": ["f","-","-","-","e","-","-","-","d","-","-","-c","ac","d","e","f","-","-","-","e","-","-","-","d","-","-","-","-","-","-","-","-","ad","ea","-e","d","gd","f","-e","d","-","d","f-f","e","de","a","-c","d","edcd","e-f","-e","-","-","-","-","-","-","g","f-e","d","d","c","-c","d","db","-","-","-","-","-","-","-","f","f","-","-e","d","-c","-a","cd","ed","d","-","-","-","-","-","-","f","f","-","-e","d","-c","-a","-cd","fe","e","-","-","-","-","-","-","de","ac","d","-c","e","d","d","-","-","fe","-g","a","g","-","f","f","-","ge","fd","c","d","g","e","-","-","g-e","g","e","g","-","e","dc","-","cd","a","c","d","g","e","d","d","-","-","-","-","-","-","-","-","d","fg","b","gb","ab","b","b","-","c","ba","f","g","ba","-a","-","-","b","ab","a","b","-","a","gf"],
+    "key": "F",
+    "beat": "8",
+    "locale": "newari"
+    }
+  ,"rajamati": {
     "note": ["G", "-G", "-", "C", "G", "-G", "-", "G",
       "G", "-G", "-", "C", "G", "-G", "-", "-",
       "-", "gA", "-C", "C", "C", "C", "DE", "CD",
@@ -3628,7 +3634,7 @@ notex = {
         "locale": "newari"
         }
       ,"asantwaya": {
-        "note": ["-","f","-f","f","f","fg","g","g","-","ga","-c","c","b","-","a","g","-","gf","-f","f","f","fg","g","g","-","ga","-c","-c","b","-","a","g","","-","ga","-c","-c","b","-","a","g","ga","acc","bbb","ag","gaa","gf","e","de","cd","ee","d","cb","c","-"],
+        "note": ["-","f","-f","f","f","fg","g","g","-","ga","-c","c","b","-","a","g","-","gf","-f","f","f","fg","g","g","-","ga","-c","-c","b","-","a","g","-","ga","-c","-c","b","-","a","g","ga","acc","bbb","ag","gaa","gf","e","de","cd","ee","d","cb","c","-"],
         "key": "G",
         "beat": "8",
         "locale": "newari"
@@ -3767,8 +3773,8 @@ notex = {
         "locale": "English"
         }
       ,"mellow": {
-        "note": ["c","cd","e","c","cd","e","c","cd","c","b","a","g","ga","ca","c","cbag","edc"],
-        "key": "C",
+        "note": ["c","cd","e","c","cd","e","c","cd","c","e","d","c","b","a","g","ga","ca","c","cbag","edc"],
+        "key": "B",
         "beat": "8",
         "locale": "nepali"
         }
@@ -3784,6 +3790,36 @@ notex = {
         "beat": "8",
         "locale": "nepali"
         }
+      ,"samjhibaschu": {
+        "note": ["ed","e","-","g","-","-","ed","e","a","-","g","-","gg","ga","ga","g","ag","a","c","-","-","-","a","-","-","g","gg","aa","a","ff","ga","g","-","-"],
+        "key": "E",
+        "beat": "8",
+        "locale": "nepali"
+        }
+        ,"dearcomrade": {
+          "note": ["cc","ced","fe","dbc","cc","ced","f","g","cc","ga","fe","bc","c","cc","ced","f","dbdc","bce","d","f","g","cc","ga","fe","ded","f","gg","gag","fe","bc","de","de","bc","g","f","e","bc","e","g"],
+          "key": "G",
+          "beat": "8",
+          "locale": "telegu"
+          }
+        ,"mohmohkdhaage": {
+          "note": ["ed-e", "d-ed", "ed-c", "bg","ed-e", "d-ed", "ed-e", "-","efg","c-bg","efg","c","bd","ee-e","e-fd","cb","bd","gd-e","d-cb","c","-e","d","-e","d","-e","d","-","-","-g","fee","ffff","ga","-","-","-gf","ge","-g","fee","ffff","ga","b","ba","c-ba","g","-","-","-","-","-g","bc","-","-ee","dc","-dc","bc","a","-","ga","b-a","g","-f","gf","e","-","dc","dc","-","c","dc","c","dg","fe","de","c","-","c","dc","c","dg","fe","de","c","-","c","dc","c","dg","fe","de","c","-","c","dc","c","dc","-","b-d","e-g","a","c","b","gg","d","e","d","cc","-","-","c","b","g","gg","gb","c","d","-","dc","cd","eg","-d","bc","-","-","-","b-d","e-g","a","c","b","gg","f","g","f","ee","-","-","g","-f","e-f","e","e","f-g","a","-","gf","ge","b","bb","ba","ac","b","a","g","-","-","-","cf","efg","a","-ga","b","ag","ag","-","fd","ef","e","d","ed","ac","e","-","cf","efg","a","-ga","c","ag","ag","-","fed","edc","ab","cd","ef","ga","g","-","efg","bc","e","-","c","-","d","-","b","-","ab","cd","ab","cd","abcd","cbag","fgag","edc","aa","aa","aa","aa","cc","cc","cc","cc","dd","dd","dd","dd","ff","ff","ff","ff","fg","fg","cbag","fgag","c","cbag","fgag","c","cbag","fgag","c","-","-","-"],
+          "key": "D",
+          "beat": "8",
+          "locale": "hindi"
+          }
+        ,"aakhaedui": {
+          "note": ["c","-","g","-","","-","f","g","cb","cg","cb","ab","d","-","cb","ag","g","g","eg","c","g"],
+          "key": "G",
+          "beat": "8",
+          "locale": "nepali"
+          }
+        ,"life": {
+          "note": ["aed","ed","cdcb","cbag","ab","cd","cb","ag","a","-b","c","ba","g","-a","b","ag","f","-g","a","gf","e","-","abcb","abcb","-e","f","-b","-","-","a","-","-","f","e","b","c","f","-","-","-","e","-","-","-","ef","b","ag","f","-","-","fg","a","gf","e","-","-","gee","ee","gff","ff","ggg","gg","gfed","fedc","edcb","cbag","gee","ee","ed","cn","gff","ff","fe","dc","ggg","gg","gf","ed","e","-","-","-","a","-b","cf","ed","d","-","-","-","g","-a","be","dc","c","-","-","-"],
+          "key": "G",
+          "beat": "8",
+          "locale": "nepali"
+          }
     } //end
 
 
@@ -3988,7 +4024,7 @@ songList.forEach((song, index) => {
   songstwo.append(li)
 })
 
-
+listofmysongs= ["sayathari","maitighar","sherbu","yakwalk","jhamjham","nakkalilai","daichachi","tiririmurali","akancha","ratorachandra","simsimepani","dimidimi","mohanilagla","kussumerumal","mhigachimthya","tihar","hyangusinha","simakacha","changumatina","pariwartan","herakancha","naulobihani","titanic","sanginraag","ukaliorali","krishnavajan","jilachhama","tysitya","likkawoya","utsav","kalhona","sawanikhola","sarangiretaula","papihera","bottlekopani","hidamerabhai","aatamama","yosanmayo","hekancha","kehimitho","voiceofyouth","himalayanroad","farewelltoireland","kunmandirma","parelima","daksebeyyoma","arbajo","bajhokhet","zara","zara","thinkingoutloud","thousandyears","planetnepal","yankeedoodle","mussukkahasne","krishnalila","kanchioekanchi","musunhila","aawaigu","jeenajeena","samjhawan","lekakahami","kids","tmletahaina","lovestory","lovemelikeyoudo","sunraha","emptyness","saparukhunu","balabala","myaapsa","dheeradheera"]
 
 
 // ef ed "gg"

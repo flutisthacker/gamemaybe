@@ -124,7 +124,7 @@ var totranspose = [];
 var totbeat ;
 
 function transpose(note, key, beat) {
-  console.log("html", note, key)
+  // console.log("html", note, key)
 
   newscale = [];
   //       if(cd="A"){
@@ -133,14 +133,14 @@ function transpose(note, key, beat) {
   for (i = 0; i < note.length; i++) {
     if (note[i].length >= 2 && note[i].length < 9) {
       // if (note[i].length == 2 || note[i].length == 3 || note[i].length == 4 || note[i].length == 5) {
-      notej = [];
-      let notei;
-      if (note[i].includes("#")) {
+        notej = [];
+        let notei;
+        if (note[i].includes("#")) {
         notei = splitnotes(note[i])
       } else {
         notei = note[i].split("")
       }
-      console.log("notei:" + notei, note[i])
+      // console.log("notei:" + notei, note[i])
       for (z = 0; z < notei.length; z++) {
         // notei = breakdown of "cdef" to "c","d"
 
@@ -157,7 +157,7 @@ function transpose(note, key, beat) {
       const searchRegExp = /,/g;
       const replaceWith = '';
       const result = notej.join().replace(searchRegExp, replaceWith);
-      // console.log(result)
+      console.log("result"+result)
       newscale.push(result);
 
     } else {
@@ -185,7 +185,7 @@ function transpose(note, key, beat) {
 }
 
 function tabledisplay(na, beat) {
-  console.log("html");
+  // console.log("html");
 
   // maketable();
   count = 0;
@@ -243,27 +243,39 @@ function hearme() {
 }
 
 function maketable(numoftab) {
-  console.log("html", numoftab)
+  // console.log("html", numoftab)
 
   body = document.querySelector('.list');
   body.innerHTML = ""
   table = document.createElement('table');
+  table.id="capture"
   table.className = "table table-hover"
   thead = document.createElement('thead');
-  thead.className = "thead bg-dark text-light"
+  thead.className = "thead table-dark text-light"
+  trsname = document.createElement("tr");
+  tdsname = document.createElement("td");
+  tdsname.setAttribute("colspan","8")
+  tdsname.className="table-dark text-info text-center"
+  tdsname.innerHTML = `${notesearched}[${notex[notesearched].key}]`;
+  trsname.append(tdsname)
+  thead.append(trsname)
+  table.append(thead)
+  body.append(table)
+
   tbody = document.createElement('tbody');
   tbody.className = "tbody"
   theadtr = document.createElement('tr');
   var tds = [];
+
   for (var i = 0; i < numoftab; i++) {
     tds[i] = document.createElement("td");
     tds[i].innerHTML = i + 1;
   }
-  table.prepend(tbody)
-  for (var i = (numoftab - 1); i >= 0; i--) {
-    theadtr.prepend(tds[i])
+  table.append(tbody)
+  for (var i = 0; i <= (numoftab - 1); i++) {
+    theadtr.append(tds[i])
   }
-  thead.prepend(theadtr)
-  table.prepend(thead)
-  body.prepend(table)
+  thead.append(theadtr)
+  table.append(thead)
+  body.append(table)
 }

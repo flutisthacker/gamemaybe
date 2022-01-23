@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gradient</title>
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/flutisthacker/resources/master/gradient.css">
+  <link rel="stylesheet" href="../g../resources/perfect.css">
+</head>
+<style>
+  body {
+    transition: background 2s ease;
+    flex-direction: column !important;
+  }
+
+  .centerize-flex {
+    transform: scale(1);
+    margin: 30px;
+  }
+
+  .text {
+    resize: both;
+    overflow: auto;
+
+    /* white-space: nowrap; */
+    /* text-overflow: clip; */
+    padding: 20px;
+    column-count: 3;
+    column-width: 100px;
+    column-span: all;
+    column-rule: 1px dashed lightblue;
+    column-gap: 20px;
+  }
+
+  .colors {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .colorchoose {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<body>
+  <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic alias in nostrum dicta, fugiat ut
+    pariatur tempora inventore laborum ratione accusamus dolorum consectetur ea, molestias quaerat temporibus quo omnis
+    reiciendis!
+    Necessitatibus aliquid rerum nostrum odio deserunt ab itaque animi quam, dolorem placeat, inventore porro! Culpa
+    sed, similique odit esse provident doloribus quidem voluptas? Incidunt adipisci autem, quae beatae eius eligendi.
+    Debitis iste praesentium odit doloremque voluptatem architecto, quos maiores? Ratione, amet nostrum illum beatae
+    molestias magnam ad quis minus voluptatum quia tempora nesciunt aperiam assumenda soluta temporibus impedit
+    provident itaque.
+    Ab recusandae cupiditate odio illum dolorum adipisci assumenda qui in at mollitia, molestias, animi consequatur,
+    quos nam laboriosam. Obcaecati amet minima natus ipsam mollitia impedit perferendis consequuntur totam facere omnis.
+    At ratione, voluptatibus ad impedit aliquam ut fuga, eius laboriosam praesentium voluptatem amet sequi iure
+    corrupti! Error quis alias minus ratione dolorum dolor soluta nam, at aliquid fuga quidem modi?
+    Voluptates, quae corporis, nemo sint dolorum cumque tempora quod id cupiditate expedita molestias pariatur atque
+    distinctio assumenda sapiente esse hic officia sequi sed? Vel debitis nam ut facere ducimus! Non!
+  </div>
+  <div class="centerize-flex colors">
+    <div class="colorchoose">
+      <input type="color" name="" id="color1">
+      <input type="color" name="" id="color2">
+      <input type="color" name="" id="color3">
+    </div>
+    <div class="centerize-flex ranges">
+      <input type="range" class="form-control" class="form-control" class="form-control" name="" min="0" max="100"
+        value="33" id="crange1">
+      <input type="range" class="form-control" class="form-control" class="form-control" name="" min="0" max="100"
+        value="33" id="crange2">
+      <input type="range" class="form-control" class="form-control" class="form-control" name="" min="0" max="100"
+        value="33" id="crange3">
+    </div>
+  </div>
+  <div class="centerize-flex selects">
+    <select name="" class="form-control" id="gtype">
+      <option value="non">non</option>
+      <option value="linear">linear</option>
+      <option value="radial">radial</option>
+      <option value="conic">conic</option>
+    </select>
+    <select name="" class="form-control" id="rtype">
+      <option value="non">radial</option>
+      <option value="circle">circle</option>
+      <option value="ellipse">ellipse</option>
+      <option value="farthest">far</option>
+      <option value="closest">close</option>
+    </select>
+    degree<input type="range" class="form-control" class="form-control" class="form-control" name="" min="0" max="100"
+      value="33" id="degree">
+    <input type="checkbox" value="repeating" name="" id="repeating">repeating
+  </div>
+
+</body>
+<script src="generatecolor.js"></script>
+<script>
+  color1 = document.querySelector("#color1")
+  degree = document.querySelector("#degree")
+  color2 = document.querySelector("#color2")
+  color3 = document.querySelector("#color3")
+  color1.value = generatecolor();
+  color2.value = generatecolor();
+  color3.value = generatecolor();
+  gtype = document.querySelector("#gtype")
+  rtype = document.querySelector("#rtype")
+  repeating = document.querySelector("#repeating")
+  crange1 = document.querySelector("#crange1")
+  crange2 = document.querySelector("#crange2")
+  crange3 = document.querySelector("#crange3")
+  console.log(color1.value, color2.value, color3.value, crange1.value, crange2.value, crange3.value, gtype.value)
+  gtype.addEventListener("change", applygradient)
+  rtype.addEventListener("change", applygradient)
+  color1.addEventListener("change", applygradient)
+  color2.addEventListener("change", applygradient)
+  color3.addEventListener("change", applygradient)
+  repeating.addEventListener("change", applygradient)
+  crange1.addEventListener("change", applygradient)
+  crange2.addEventListener("change", applygradient)
+  crange3.addEventListener("change", applygradient)
+  degree.addEventListener("change", applygradient)
+
+
+  function applygradient() {
+    let abc = "background: ";
+    if (repeating.checked) {
+      abc += "repeating-"
+    }
+    if (gtype.value == "conic") {
+      abc +=
+        `${gtype.value}-gradient(${color1.value} ${crange1.value}% ,${color2.value} ${crange2.value}%, ${color3.value} ${crange3.value}% );`;
+    }
+    if (gtype.value == "linear") {
+      abc +=
+        `${gtype.value}-gradient(${(degree.value /360)*100}deg,${color1.value} ${crange1.value}% ,${color2.value} ${crange2.value}%, ${color3.value} ${crange3.value}% );`;
+    }
+    if (gtype.value == "radial") {
+      // circle
+      // closest-side at 60% 55%
+      // farthest-side at 60% 55%
+      if (rtype.value == "circle" || rtype.value == "ellipse") {
+        abc +=
+          `${gtype.value}-gradient( ${rtype.value},${color1.value}  ,${color2.value} , ${color3.value} );`;
+      }
+      if (rtype.value == "far") {
+        // farthest-corner
+        abc +=
+          `${gtype.value}-gradient(farthest-side at${crange1.value}% ${crange2.value}%,${color1.value}  ,${color2.value} , ${color3.value});`;
+      }
+      if (rtype.value == "close") {
+        abc +=
+          `${gtype.value}-gradient(closest-side at${crange1.value}% ${crange2.value}%,${color1.value}  ,${color2.value} , ${color3.value}  );`;
+      } else {
+        abc +=
+          `${gtype.value}-gradient(${color1.value} ${crange1.value}% ,${color2.value} ${crange2.value}%, ${color3.value} ${crange3.value}% );`;
+      }
+    }
+    document.body.style = abc;
+    console.log(abc, repeating.value);
+  }
+</script>
+
+</html>

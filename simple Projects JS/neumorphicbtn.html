@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    neumorphicbtn
+
+  </title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+
+</head>
+<style>
+  body {
+    background: #eaeaea;
+    /* background: #fff; */
+
+    flex-direction: column;
+  }
+
+  .neu {
+
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    font-size: 5rem;
+    line-height: 300px;
+    border-radius: 50%;
+    background: repeating-linear-gradient(45deg, #fff, #ccc), repeating-linear-gradient(-45deg, #fff, #ccc);
+    /* background: linear-gradient(-45deg, #fff, #aaa), linear-gradient(-45deg, #aaa, #fff); */
+    box-shadow: -13px -13px -2px gray, 13px 13px 2px gray;
+    /* filter: blur(2px); */
+    /* spread 2px */
+  }
+
+  /* icon
+  0 .2 0 0
+  alpha 20
+  tip
+  90 deg shadow
+  0 4 2 .3 opacity*/
+  .color1 {
+    background: hsl(234, 97%, 30%);
+    width: 100px;
+    height: 100px;
+  }
+
+  .color2 {
+    background: hsl(234, 87%, 40%);
+    width: 100px;
+    height: 100px;
+  }
+
+  .color3 {
+    background: hsl(234, 87%, 50%);
+    width: 100px;
+    height: 100px;
+  }
+
+  .color4 {
+    background: hsl(234, 87%, 60%);
+    width: 100px;
+    height: 100px;
+  }
+
+  .color5 {
+    background: hsl(234, 97%, 70%);
+    width: 100px;
+    height: 100px;
+  }
+</style>
+<style>
+  .neus {
+    width: 250px;
+    height: 250px;
+    background-color: #eaeaea;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    transition: box-shadow 1s ease;
+    box-shadow: none;
+
+  }
+
+  .neu2:hover {
+    box-shadow: inset 10px 14px 25px rgba(197, 197, 197, .9), inset -10px -14px 25px rgb(255, 255, 255);
+  }
+
+  .neu3:hover {
+    box-shadow: inset 10px 14px 25px rgba(197, 197, 197, .9), inset -10px -14px 25px #ffffff;
+
+  }
+
+  .neu4 {
+    filter: drop-shadow(10px 15px 20px rgba(158, 158, 158, .4)) drop-shadow(-10px -14px 25px #ffffff);
+  }
+
+  .neu5 {
+    border-radius: 50%;
+    background: linear-gradient(-45deg, #dddddd, #ffffff);
+    filter: drop-shadow(-10px -14px 25px rgba(255, 255, 255, .8)) drop-shadow(10px 15px 28px rgba(158, 158, 158, .4));
+  }
+
+  .neu6:hover {
+    box-shadow: inset 10px 14px 25px rgba(197, 197, 197, .9), inset -10px -14px 25px #ffffff;
+  }
+
+  .newdiv {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .neucircle {
+    width: 434px;
+    height: 448px;
+    border-radius: 50%;
+    /* background: linear-gradient(-45deg, #dddddd, #ffffff); */
+    background: #93ff60;
+  }
+
+  .neucircle::before {
+    content: "";
+    width: inherit;
+    border-radius: 50%;
+    height: inherit;
+    position: absolute;
+    background: #ffb660;
+
+  }
+
+  .neucircle::after {
+    content: "";
+    width: inherit;
+    border-radius: 50%;
+    height: inherit;
+    position: absolute;
+    background: #bd68ff;
+    z-index: -1;
+  }
+
+  .neucircle:hover {
+    width: 420px;
+    height: 430px;
+  }
+
+  .neucircle:hover::before {
+    width: 400px;
+    height: 410px;
+  }
+
+  .neucircle:hover:after {
+    width: 410px;
+    height: 420px;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+</style>
+<style>
+  .neuneu {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    font-size: 5rem;
+    line-height: 300px;
+    border-radius: 50%;
+    box-shadow: inset 4px 4px 8px #f7f7fa, inset -4px -4px 8px #dfdfe8, inset 4px 4px 8px #dfdfe8, inset -4px -4px 8px #f7f7fa;
+    filter: drop-shadow(8p 8px 8px #dfdfe8, -8p -8px 8px #f7f7fa)
+  }
+
+  /* https://www.instagram.com/p/CCWTsnFh7yo/ */
+</style>
+
+<body>
+  <div class="neu">
+    <i class="fa fa-bell"></i>
+  </div>
+  <div class="newdiv center">
+    <div class="neus neu2"></div>
+    <div class="neus neu3">
+    </div>
+    <div class="neus neu4">
+      <div class="neus neu3"></div>
+    </div>
+    <div class="neus neu5"></div>
+    <div class="neus neu6"></div>
+  </div>
+  <div class="neus neucircle center">
+    <div class="neu neu5"></div>
+  </div>
+
+  <div class="color1"></div>
+  <div class="color2"></div>
+  <div class="color3"></div>
+  <div class="color4"></div>
+  <div class="color5"></div>
+
+</body>
+
+</html>

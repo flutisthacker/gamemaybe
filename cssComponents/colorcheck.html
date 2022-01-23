@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  #takecolor {
+    background: transparent;
+    color: white;
+    padding: 20px;
+    width: 620px;
+    outline: none;
+    border: 2px solid;
+    border-radius: 15px;
+
+  }
+
+  #takecolor:focus {
+    border: green 2px solid;
+  }
+</style>
+
+<body>
+  <input type="text" placeholder="Enter color HEX: #000" id="takecolor">
+
+  <span id="caps-message"><i class="fa fa-alert"></i>caps lock is on</span>
+
+</body>
+<script>
+  const capsmessage = document.querySelector("#caps-message");
+  window.addEventListener("keyup", e => {
+    if (event.getModifierState("CapsLock")) {
+      capsMessafe.style.display = "flex"
+    } else {
+      capsMessafe.style.display = "none"
+    }
+  })
+
+
+  takecolor = document.querySelector("#takecolor");
+  takecolor.addEventListener("keyup", (e) => {
+    if (takecolor.value.includes("#")) {
+      console.log(takecolor.value, invertcolor(takecolor.value))
+      takecolor.style.borderColor = `${ (invertcolor(takecolor.value)).toString()}`;
+      document.body.style = "background:" + takecolor.value
+    } else if (takecolor.value.length > 9) {
+      takecolor.value = ""
+    } else {
+      takecolor.style = "color: red";
+    }
+  })
+
+
+  function invertcolor(color) {
+    // var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
+    var b = color.toString().split("");
+    hexnumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+    hexinverse = ["f", "e", "d", "c", "b", "a", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"];
+    var myIndex = [];
+    var myhexcolor = [];
+    var newcolor = "#";
+    // console.log(b)
+    for (var i = 1; i < b.length; i++) {
+      for (var j = 0; j < hexnumber.length; j++) {
+        if (b[i] == hexnumber[j]) {
+          myIndex.push(j);
+          myhexcolor.push(hexinverse[j]);
+          newcolor += hexinverse[j];
+          // console.log(j, b[i], hexnumber[j])
+        }
+      }
+    }
+    myhexcolor.unshift("#");
+    return newcolor;
+  }
+</script>
+
+</html>

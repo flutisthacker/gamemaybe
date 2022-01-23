@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app='kudo'>
+<head>
+
+</head>
+<style>
+.crmdiv{
+display:flex;
+flex-direction:column;
+margin:30px;
+padding:20px;
+}
+input{
+margin-bottom:10px;
+}
+</style>
+<body>
+<div class="crmdiv">
+Name
+<input type="text" id="crmname">
+email
+<input type="text" id="crmemail">
+phone
+<input type="text" id="crmphone">
+website
+<input type="text" id="crmwebsite">
+address
+<input type="text" id="crmaddress">
+customer type
+<input type="text" id="crmcustomerType">
+date 
+<input type="text" id="crmdate">
+
+<button onClick="addMe">click</button>
+
+</div>
+<script>
+function addMe(){
+name=document.querySelector("#crmname").value
+email=document.querySelector("#crmemail").value
+phone=document.querySelector("#crmphone").value
+web=document.querySelector("#crmwebsite").value
+addr=document.querySelector("#crmaddress").value
+customerType=document.querySelector("#crmcustomerType").value
+dated=document.querySelector("#crmdate").value
+
+getCRM=localStorage.getItem("CRM")
+getParseCRM=JSON.parse(getCRM)
+num=Object.keys(getParseCRM).length
+getParseCRM[`crm${num+1}`]+={
+"crm2":{
+"name":name,
+"email":email,
+"phone":phone,
+"website":web,
+"address":addr,
+"customerType":customerType,
+"date":dated
+}
+}
+localStorage.setItem("CRM",JSON.stringify(getParseCRM))
+
+
+}
+
+
+</script>
+</body>
+</html>

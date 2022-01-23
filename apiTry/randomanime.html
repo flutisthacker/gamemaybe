@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="searchanime">
+    <table>
+        <tbody class="myanime"></tbody>
+    </table>
+    <div class="mymanga"></div>
+<script src="jsFunction.js"></script>
+    <script>
+
+hello();
+hello2();
+
+document.querySelector("#searchanime").addEventListener("keypress",(e)=>{
+    if(e.keyCode==13){
+        hello3()
+    }
+})
+// https://jikan.docs.apiary.io/#reference/0/search
+
+async function hello3(){
+    mysearch=document.querySelector("#searchanime").value
+        mysearch.replace(" ","%20")
+        acd=await fetchAPI(`https://api.jikan.moe/v3/search/manga?q=${mysearch}&page=1`)
+        console.log(acd)
+}
+    async function hello(){
+    abcd=[ 'mal_id', 'url', 'image_url', 'trailer_url', 'title', 'title_english', 'title_japanese', 'title_synonyms', 'type', 'source', 'episodes', 'status', 'airing', 'aired', 'duration', 'rating', 'score', 'scored_by', 'rank', 'popularity', 'members', 'favorites', 'synopsis', 'background', 'premiered', 'broadcast', 'related', 'producers', 'licensors', 'studios', 'genres', 'explicit_genres', 'demographics', 'themes', 'opening_themes', 'ending_themes', 'external_links']
+    randomNum=Math.floor(Math.random()*450)
+    aca=await fetchAPI(`https://api.jikan.moe/v3/anime/${randomNum}`)
+    aca=JSON.parse(aca)
+    abcd.forEach((acc)=>{
+        if(acc=="image_url"){
+            document.querySelector(".myanime").innerHTML+=`<img src='${aca[acc]}' alt="url" width="500px" height="500px">`
+        }
+        // else if(acc.includes("url")){
+        //     document.querySelector(".myanime").innerHTML+= `<a href="${aca[acc]}">${acc}</a>` + "</br>"
+        // }
+        else{
+            document.querySelector(".myanime").innerHTML+= `<tr><td>${acc} </td><td>${aca[acc]} </td></tr>`
+        }
+    })
+    }
+
+    async function hello2(){
+    abcd=[ 'mal_id', 'url', 'image_url', 'trailer_url', 'title', 'title_english', 'title_japanese', 'title_synonyms', 'type', 'source', 'episodes', 'status', 'airing', 'aired', 'duration', 'rating', 'score', 'scored_by', 'rank', 'popularity', 'members', 'favorites', 'synopsis', 'background', 'premiered', 'broadcast', 'related', 'producers', 'licensors', 'studios', 'genres', 'explicit_genres', 'demographics', 'themes', 'opening_themes', 'ending_themes', 'external_links']
+    randomNum=Math.floor(Math.random()*450)
+    aca=await fetchAPI(`https://api.jikan.moe/v3/manga/${randomNum}`)
+    aca=JSON.parse(aca)
+    abcd.forEach((acc)=>{
+        if(acc=="image_url"){
+            document.querySelector(".mymanga").innerHTML+=`<img src='${aca[acc]}' alt="url" width="500px" height="500px">`
+        }
+        // else if(acc.includes("url")){
+        //     document.querySelector(".myanime").innerHTML+= `<a href="${aca[acc]}">${acc}</a>` + "</br>"
+        // }
+        else{
+            document.querySelector(".mymanga").innerHTML+= acc+":"+JSON.stringify(aca[acc]) + "</br>"
+        }
+    })
+    }
+
+
+    </script>
+</body>
+</html>

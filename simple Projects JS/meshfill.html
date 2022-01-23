@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    background-color: #16161d;
+  }
+
+  .square {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px;
+    width: 1000px;
+    height: 1000px;
+    transform: scale(.7) translate(50%, 50%) rotate(-45deg);
+  }
+
+  .rectangle {
+    width: 500px;
+    height: 500px;
+    transform: scale(2) translate(60%, -40%);
+    filter: blur(50px);
+    filter: brightness(20%);
+    opacity: 0;
+
+  }
+
+  .square1 {
+    width: 500px;
+    height: 500px;
+    filter: blur(50px);
+    background: #b8d8f9;
+  }
+
+  .square2 {
+    width: 500px;
+    height: 500px;
+    filter: blur(50px);
+    background: #aa48d9;
+  }
+
+  .square3 {
+    width: 500px;
+    height: 500px;
+    background: #fff98f;
+    filter: blur(50px);
+  }
+
+  .square4 {
+    width: 500px;
+    height: 500px;
+    filter: blur(50px);
+    background: #f7a194;
+  }
+</style>
+
+<body>
+  <div class="square">
+    <div class="square1"></div>
+    <div class="square2"></div>
+    <div class="square3"></div>
+    <div class="square4"></div>
+  </div>
+  <div class="rectangle"></div>
+</body>
+
+</html>

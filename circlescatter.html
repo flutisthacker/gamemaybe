@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .wholeDiv{
+        width:100%;
+        height:100vh;
+        overflow: hidden;
+        position: relative;
+    }
+    .circle{
+        position: absolute;
+        border-radius: 50%;
+    }
+</style>
+<body>
+    <div class="wholeDiv">
+    </div>
+    <script src="./cssComponents/generatecolor.js"></script>
+    <script>
+        let colorHEx=`${generatecolor()}`
+        for(i=1;i<=5;i++){
+            randomCircle(i)
+        }
+        console.log(colorHEx)
+        function randomCircle(i){
+            circle=document.createElement("div")
+            size=randomSize()+"px"
+            circle.style.width =size
+            circle.style.height =size
+            circle.className="circle"
+            circle.style.backgroundColor=colorHEx;
+            if(i%2==0){
+                circle.style.top=`${randomSize()*2}px`
+                circle.style.left=`${randomSize()*2}px`
+            }else{
+                circle.style.bottom=`${randomSize()*2}px`
+                circle.style.right=`${randomSize()*2}px`
+            }
+            document.querySelector(".wholeDiv").appendChild(circle)
+        }
+        function randomSize(){
+            return Math.floor(Math.random()*300);
+        }
+
+
+    </script>
+</body>
+</html>

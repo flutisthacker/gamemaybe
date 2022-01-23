@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .q-header,
+  .t-header,
+  .e-header,
+  #qualificationAdd,
+  #experienceAdd,
+  #skillAdd,
+  #trainingAdd {
+    display: flex;
+    flex-direction: row;
+  }
+</style>
+
+<body>
+  <div class="row">
+    <div class="normal_desc col-lg-6">
+      <div class="form-group">
+        <label for="name">name</label><input type="text" class="form-control" name="name" id="name">
+      </div>
+      <div class="form-group">
+        <label for="email">email</label><input type="email" class="form-control" name="email" id="email">
+      </div>
+      <div class="form-group">
+        <label for="phone">phone</label><input type="tel" class="form-control" name="phone" id="phone">
+      </div>
+      <div class="form-group">
+        <label for="text">location</label><input type="tel" class="form-control" name="location" id="location">
+      </div>
+
+    </div>
+    <div class="col-lg-6">
+      <div class="qualifications">
+        <div class="q-header container">
+          <button class="btn btn-primary" id="q_add">
+            <i class="fa fa-plus"></i>
+          </button>
+          Qualifications
+          <button class="btn btn-primary" id="q_minus">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+        <div id="qualificationAdd"></div>
+      </div>
+      <div class="experiences">
+        <div class="e-header container">
+          <button class="btn btn-primary" id="e_add">
+            <i class="fa fa-plus"></i>
+          </button>
+          experiences
+          <button class="btn btn-primary" id="e_minus">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+        <div id="experienceAdd"></div>
+
+      </div>
+      <div class="skills">
+        <div class="s-header container">
+          <button class="btn btn-primary" id="s_add">
+            <i class="fa fa-plus"></i>
+          </button>
+          skills
+          <button class="btn btn-primary" id="s_minus">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+        <div id="skillAdd"></div>
+
+      </div>
+      <div class="trainings">
+        <div class="t-header container">
+          <button class="btn btn-primary" id="t_add">
+            <i class="fa fa-plus"></i>
+          </button>
+          trainings
+          <button class="btn btn-primary" id="t_minus">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+        <div id="trainingAdd"></div>
+
+      </div>
+      <button class="btn btn-success submit">Submit</button>
+    </div>
+  </div>
+</body>
+<script>
+  document.querySelector(".submit").addEventListener("click", (e) => {
+    let name = document.querySelector("#name")
+    let email = document.querySelector("#email")
+    let phone = document.querySelector("#phone")
+    let location = document.querySelector("#location")
+    let qualification = document.querySelectorAll(".qualification")
+    let experience = document.querySelectorAll(".experience")
+    let training = document.querySelectorAll(".training")
+    let skill = document.querySelectorAll(".skill")
+    mycv = {
+      "name": name.value,
+      "email": email.value,
+      "phone": phone.value,
+      "location": location.value,
+      "qualifications": {},
+      "trainings": {},
+      "skills": {},
+      "experiences": {}
+    }
+    /*
+    time title where description */
+    let qAdd = document.querySelector("#qualificationAdd").childNodes
+    //document.querySelector("#qualificationAdd").childNodes[0].childNodes[0].lastChild.value
+    // qAdd.forEach(qct => {
+    //   (qct.childNodes).forEach(qualify => {
+    //     debugger
+    //     mycv["qualifications"][qualify.parentNode.className][qualify.className] = qualify.lastChild.value;
+    //   });
+    // });
+    qualification.forEach((qualify, index) => {
+      mycv["qualifications"][qualify.id] = qualify.value;
+    });
+    experience.forEach(exp => {
+      mycv["experiences"][exp.id] = exp.value;
+    });
+    training.forEach(train => {
+      mycv["trainings"][train.id] = train.value;
+    });
+    skill.forEach(skl => {
+      mycv["skills"][skl.id] = skl.value;
+    });
+    console.log(mycv);
+
+  })
+  var qCount = 1;
+  var eCount = 1;
+  var tCount = 1;
+  var sCount = 1;
+  document.querySelector("#s_add").addEventListener("click", (e) => {
+    sCount++;
+    let div = document.createElement("div");
+    div.className = "skill" + qCount;
+
+    let sdesc = document.createElement("div");
+    sdesc.className = "s-desc" + sCount;
+    let sdlabel = document.createElement("label")
+    let sdinput = document.createElement("input")
+    sdinput.id = "s-desc" + sCount;
+    sdinput.setAttribute("placeholder", "Description")
+    sdinput.className = "skill s-desc";
+
+    let stime = document.createElement("div");
+    stime.className = "s-time" + sCount;
+    let stlabel = document.createElement("label")
+    let stinput = document.createElement("input")
+    stinput.id = "s-time" + sCount;
+    stinput.setAttribute("placeholder", "Time")
+    stinput.className = "skill s-time";
+
+    let swhere = document.createElement("div");
+    swhere.className = "s-where" + sCount;
+    let swlabel = document.createElement("label")
+    let swinput = document.createElement("input")
+    swinput.id = "s-where" + sCount;
+    swinput.setAttribute("placeholder", "Location")
+    swinput.className = "skill s-where";
+
+    sdesc.append(sdlabel)
+    sdesc.append(sdinput)
+    div.append(sdesc);
+
+    stime.append(stlabel)
+    stime.append(stinput)
+    div.append(stime);
+
+    swhere.append(swlabel)
+    swhere.append(swinput)
+    div.append(swhere);
+    document.querySelector("#skillAdd").append(div);
+
+  })
+  document.querySelector("#s_minus").addEventListener("click", (e) => {
+    sCount--;
+    let skill = document.querySelectorAll(".skill")
+    skill.forEach(ski => {
+      ski.removeChild(ski.lastChild);
+    })
+  })
+  document.querySelector("#q_add").addEventListener("click", (e) => {
+    qCount++;
+    let div = document.createElement("div");
+    div.className = "qualification" + qCount;
+
+    let qdesc = document.createElement("div");
+    qdesc.className = "q-desc" + qCount;
+    let qdlabel = document.createElement("label")
+    qdlabel.innerText = "Description"
+    let qdinput = document.createElement("input")
+    qdinput.id = "q-desc" + qCount;
+    qdinput.setAttribute("placeholder", "Description")
+    qdinput.className = "qualification q-desc";
+
+    let qtime = document.createElement("div");
+    qtime.className = "q-time" + qCount;
+    let qtlabel = document.createElement("label")
+    qtlabel.innerText = "time"
+    let qtinput = document.createElement("input")
+    qtinput.id = "q-time" + qCount;
+    qtinput.setAttribute("placeholder", "Time")
+    qtinput.className = "qualification q-time";
+
+    let qwhere = document.createElement("div");
+    qwhere.className = "q-where" + qCount;
+    let qwlabel = document.createElement("label")
+    qwlabel.innerText = "Location"
+    let qwinput = document.createElement("input")
+    qwinput.id = "q-where" + qCount;
+    qwinput.setAttribute("placeholder", "Location")
+    qwinput.className = "qualification q-where";
+
+    qdesc.append(qdlabel)
+    qdesc.append(qdinput)
+    div.append(qdesc);
+
+    qtime.append(qtlabel)
+    qtime.append(qtinput)
+    div.append(qtime);
+
+    qwhere.append(qwlabel)
+    qwhere.append(qwinput)
+    div.append(qwhere);
+    document.querySelector("#qualificationAdd").append(div);
+
+  })
+  document.querySelector("#q_minus").addEventListener("click", (e) => {
+    qCount--;
+    let qualifications = document.querySelector(".qualifications")
+    qualifications.removeChild(qualifications.lastChild);
+  })
+  document.querySelector("#e_add").addEventListener("click", (e) => {
+
+    eCount++;
+    let div = document.createElement("div");
+    div.className = "experience" + eCount;
+    let label = document.createElement("label")
+    let input = document.createElement("input")
+    input.id = "experience" + eCount;
+    input.className = "experience";
+    div.append(label)
+    div.append(input)
+    document.querySelector(".experiences").append(div);
+
+  })
+  document.querySelector("#e_minus").addEventListener("click", (e) => {
+    eCount--;
+    let experiences = document.querySelector(".experiences")
+    experiences.removeChild(experiences.lastChild);
+  })
+  document.querySelector("#t_add").addEventListener("click", (e) => {
+    tCount++;
+    let div = document.createElement("div");
+    div.className = "training" + tCount;
+    let label = document.createElement("label")
+    let input = document.createElement("input")
+    input.id = "training" + tCount;
+    input.className = "training";
+    div.append(label)
+    div.append(input)
+    document.querySelector(".trainings").append(div);
+
+  })
+  document.querySelector("#t_minus").addEventListener("click", (e) => {
+    tCount--;
+    let trainings = document.querySelector(".trainings")
+    trainings.removeChild(trainings.lastChild);
+  })
+</script>
+
+</html>

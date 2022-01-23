@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="preload" as="style" href="../resources/perfect.css"> -->
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+
+<style>
+  .inputslider {
+    padding: 20px;
+    width: 80%;
+    background: red;
+    margin: 10px;
+    transition: width 2s ease;
+    border-radius: 35px;
+  }
+
+  .inputslider::-webkit-progress-bar {
+    background-color: red;
+  }
+
+  .line {
+    width: 50%;
+    height: 10px;
+    background: gray;
+    border-radius: 5px;
+    margin: 50px auto;
+    position: relative;
+  }
+
+  .line::before,
+  .line::after {
+    content: "";
+    width: 50%;
+    height: 10px;
+    background: gray;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: absolute;
+  }
+
+  .line::before {
+    top: 30px;
+    left: 25%;
+
+  }
+
+  .line::after {
+    top: -30px;
+    left: 25%;
+
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="card text-dark" style="width: 18rem;" data-user="75" data-speed="55" data-device="25">
+          <div class="card-body">
+            <h5 class="card-title  text-center">Basic</h5>
+            <p class="card-text">
+              <div class="line"></div>
+            </p>
+            <a href="#" class="btn  btn-block btn-primary">5$</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card text-dark" style="width: 18rem;" data-user="50" data-speed="40" data-device="60">
+          <div class="card-body">
+            <h5 class="card-title  text-center">PRO</h5>
+            <p class="card-text">
+              <div class="line"></div>
+            </p>
+            <a href="#" onclick="void(0)" class="btn  btn-block btn-primary">10$</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card text-dark" style="width: 18rem;" data-user="99" data-speed="35" data-device="75">
+          <div class="card-body">
+            <h5 class="card-title  text-center">Card Premium</h5>
+            <p class="card-text">
+              <div class="line"></div>
+            </p>
+            <a href="#" class="btn  btn-block btn-primary">20$</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <h1 class="text-center text-uppercase mt-2 mb-2">User charge</h1>
+        <div class="col-lg-12">
+          <div type="range" name="" class="inputslider" id="suser" data-value="0%">
+            <label for="">Users</label>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div type="range" name="" class="inputslider" id="sdevice" data-value="0%">
+            <label for="">Devices</label>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div type="range" name="" class="inputslider" id="sspeed" data-value="0%">
+            <label for="">Speed</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".card").forEach((card) => {
+      card.addEventListener("click", () => {
+        console.log("hello")
+        duser = card.getAttribute("data-user")
+        ddevice = card.getAttribute("data-device")
+        dspeed = card.getAttribute("data-speed")
+
+        document.querySelector("#suser").setAttribute("style", `width:${duser}%`)
+        document.querySelector("#sdevice").setAttribute("style", `width:${ddevice}%`)
+        document.querySelector("#sspeed").setAttribute("style", `width:${dspeed}%`)
+      })
+    })
+  </script>
+
+  <script>
+    async function printUrl(url) {
+      // printUrl('http://numbersapi.com/random/year?json')
+      // printUrl('http://api.citybik.es/v2/networks')
+      // printUrl('http://api.tvmaze.com/search/shows?q=girls')
+      // printUrl('https://api.oceandrivers.com/static/resources.json')
+      // printUrl('Example: http://api.tvmaze.com/lookup/shows?tvrage=24493')
+      // printUrl('Example: http://api.tvmaze.com/lookup/shows?thetvdb=81189')
+      // printUrl('Example: http://api.tvmaze.com/lookup/shows?imdb=tt0944947')
+      // printUrl('http://api.open-notify.org/astros.json?callback=?')
+      // const url = `https://www.instagram.com/samanmaharjan/?__a=1`;
+      await getData(url)
+    }
+    async function getData(url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+      document.querySelector("putjson").innerText = data;
+      return data
+    }
+  </script>
+</body>
+
+</html>

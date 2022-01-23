@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>to do manga
+  </title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  body {
+    justify-content: start;
+    align-items: flex-start;
+  }
+</style>
+
+<body>
+  <div class="container ">
+    <table class="table table-hover table-striped text-light">
+      <thead>
+        <tr>
+          <th scope="col">id
+          </th>
+          <th scope="col">name
+          </th>
+          <th scope="col">hero
+          </th>
+          <th scope="col">status
+          </th>
+          <th scope="col">type
+          </th>
+          <th scope="col">number
+          </th>
+          <th scope="col">Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button type="button" class="btn btn-primary border-circle" data-toggle="modal" data-target="#exampleModal">
+    +
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark" id="exampleModalLabel">Inupt form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="text-dark">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Name</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Anime name">
+                </div>
+
+              </div>
+              <div class="col-lg-5">
+                <div class="form-group">
+                  <label for="exampleFormControlInput2">Protagonist</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Protagonist name">
+                </div>
+
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="exampleFormControlInput3">Reached</label>
+                  <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="123">
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Status</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option value="watched">Watched</option>
+                <option value="watching">Watching</option>
+                <option value="unwatched">Unwatched</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect2">Type</label>
+              <select class="form-control" id="exampleFormControlSelect2">
+                <option value="anime">Anime</option>
+                <option value="series">Series</option>
+                <option value="manga">Manga</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Choose image</label>
+              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <!-- <div class="form-group">
+              <label for="exampleFormControlTextarea1">Example textarea</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div> -->
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary putme">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark" id="exampleModalLabel">Edit form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="text-dark">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <input type="hidden" class="form-control" id="editid" placeholder="Anime name">
+                </div>
+                <div class="form-group">
+                  <label for="editFormControlInput1">Name</label>
+                  <input type="text" class="form-control" id="editFormControlInput1" placeholder="Anime name">
+                </div>
+
+              </div>
+              <div class="col-lg-5">
+                <div class="form-group">
+                  <label for="editFormControlInput2">Protagonist</label>
+                  <input type="text" class="form-control" id="editFormControlInput2" placeholder="Protagonist name">
+                </div>
+
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="editFormControlInput3">Reached</label>
+                  <input type="number" class="form-control" id="editFormControlInput3" placeholder="123">
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="editFormControlSelect1">Status</label>
+              <select class="form-control" id="editFormControlSelect1">
+                <option value="watched">Watched</option>
+                <option value="watching">Watching</option>
+                <option value="unwatched">Unwatched</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="editFormControlSelect2">Type</label>
+              <select class="form-control" id="editFormControlSelect2">
+                <option value="anime">Anime</option>
+                <option value="series">Series</option>
+                <option value="manga">Manga</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="editFormControlFile1">Choose image</label>
+              <input type="file" class="form-control-file" id="editFormControlFile1">
+            </div>
+            <!-- <div class="form-group">
+              <label for="exampleFormControlTextarea1">Example textarea</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div> -->
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary updateme">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var count = 0;
+    const fileSelector = document.getElementById('exampleFormControlFile1');
+    fileSelector.addEventListener('change', (event) => {
+      const fileList = event.target.files;
+      console.log(fileList);
+      console.log(event.target.FileReader);
+    });
+    document.querySelector(".putme").addEventListener("click", () => {
+      animename = document.querySelector("#exampleFormControlInput1").value
+      hero = document.querySelector("#exampleFormControlInput2").value
+      reached = document.querySelector("#exampleFormControlInput3").value
+      status = document.querySelector("#exampleFormControlSelect1").value
+      type = document.querySelector("#exampleFormControlSelect2").value
+      image = document.querySelector("#exampleFormControlFile1").value
+      images = document.createElement("img").srcset = image
+      document.querySelector("body").append(images)
+      count++;
+      addMyDiv(animename, hero, status, type, reached, image)
+    })
+
+    function addMyDiv(animename, hero, status, type, reached, image) {
+      mydetails = {
+        "id": GetMyId(animename, hero, status, type, reached),
+        "anime": animename,
+        "hero": hero,
+        "reached": reached,
+        "status": status,
+        "type": type,
+        "image": image
+      }
+
+      console.log(mydetails)
+      divAdd = `<tr id="container${mydetails.id}">
+      <td id="${mydetails.id}">${count}</td>
+      <td class="anime">${mydetails.anime}</td>
+    <td class="hero">${mydetails.hero}</td>
+    <td class="status">${mydetails.status}</td>
+    <td class="type">${mydetails.type}</td>
+      <td class="reach">${mydetails.reached}</td>
+      <td>  <button class="btn btn-primary" onclick=editme(this) id="edit${mydetails.id}">Edit</button>
+  <button class="btn btn-secondary" onclick=trashme(this) id="trash${mydetails.id}">Delete</button>
+</td>
+      </tr>
+      `;
+      document.querySelector("tbody").innerHTML += (divAdd);
+
+    }
+
+    function trashme(a) {
+      const aid = a.id.slice(5)
+      const mycontainer = "#container" + aid
+      removeElement(mycontainer);
+      count--;
+    }
+
+    function editme(a) {
+      aid = a.id.slice(4)
+      const mycontainer = document.querySelector("#container" + aid)
+      intanime = mycontainer.querySelector(".anime").innerText
+      inthero = mycontainer.querySelector(".hero").innerText
+      intstatss = mycontainer.querySelector(".status").innerText
+      inttype = mycontainer.querySelector(".type").innerText
+      intreach = mycontainer.querySelector(".reach").innerText
+      $('#editModal').modal("show")
+      $('#editFormControlInput1').val(intanime)
+      $('#editFormControlInput2').val(inthero)
+      $('#editFormControlInput3').val(intreach)
+      $('#editFormControlSelect1').val(intstatss)
+      $('#editFormControlSelect2').val(inttype)
+      $('#editid').val("#container" + aid)
+    }
+
+    document.querySelector(".updateme").addEventListener("click", () => {
+      animename = document.querySelector("#editFormControlInput1").value
+      hero = document.querySelector("#editFormControlInput2").value
+      reached = document.querySelector("#editFormControlInput3").value
+      status = document.querySelector("#editFormControlSelect1").value
+      type = document.querySelector("#editFormControlSelect2").value
+      image = document.querySelector("#editFormControlFile1").value
+      addMyDiv(animename, hero, status, type, reached, image)
+      removeElement($('#editid').val());
+    });
+
+
+    function removeElement(elementId) {
+      // Removes an element from the document.
+      var element = document.querySelector(elementId);
+      element.parentNode.removeChild(element);
+    }
+
+    function GetMyId(a, b, c, d, e) {
+      const abcd = a.slice(0, 1) + getRandom() + b.slice(0, 1) + getRandom() + c.slice(0, 1) + getRandom() + d.slice(0,
+          1) +
+        getRandom() + e;
+      return abcd;
+    }
+
+    function getRandom() {
+      return Math.floor(Math.random() * 10);
+    }
+
+    function readImage(file) {
+      // Check if the file is an image.
+      if (file.type && file.type.indexOf('image') === -1) {
+        console.log('File is not an image.', file.type, file);
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.addEventListener('load', (event) => {
+        img.src = event.target.result;
+      });
+      reader.readAsDataURL(file);
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

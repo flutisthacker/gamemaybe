@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+
+<style>
+  body {
+    flex-direction: row;
+  }
+
+  .tworoll {
+    background: url("../../dog1.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .roll {
+    width: 800px;
+    height: 800px;
+    /* background: #f61600; */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    position: relative;
+    transition: all .8s ease;
+    overflow: visible;
+    transform-origin: center;
+  }
+
+  .roll1 {
+    width: 400px;
+    height: 800px;
+    background: #fff;
+    transform-origin: bottom;
+    position: absolute;
+    transition: rotateX 1s ease, translateY 2s ease;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 100px;
+    animation: roll1 2s linear;
+
+  }
+
+  .roll2 {
+    width: 400px;
+    height: 800px;
+    /* background: transparent; */
+    background: #000;
+    color: #fff;
+
+    transform-origin: top;
+    position: absolute;
+    transition: rotateX 2s ease, translateY 2s ease, translateZ 2s ease;
+
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 100px;
+    transform: translateZ(-400px) translateY(950px) rotateX(-90deg);
+    animation: roll 2s linear;
+  }
+
+  @keyframes roll {
+    from {
+      transform: translateZ(-600px) translateY(950px) rotateX(-90deg);
+    }
+
+    to {
+      transform: translateY(0px) translateZ(0px) rotateX(0deg);
+    }
+  }
+
+  @keyframes roll1 {
+    from {
+      transform: rotateX(0deg);
+    }
+
+    to {
+      transform: rotateX(90deg) translateY(-950px);
+    }
+  }
+
+  .roll:hover>.roll1 {
+    transform: rotateX(90deg) translateY(-950px);
+  }
+
+  .roll:hover>.roll2 {
+    transform: translateY(0px) translateZ(0px) rotateX(0deg);
+  }
+</style>
+
+<body>
+  <div class="tworoll">
+    <div class="roll">
+      <div class="roll1">Roll me...</div>
+      <div class="roll2">Oh Hello!</div>
+    </div>
+    <!-- <div class="roll">
+      <div class="roll1">Roll me...</div>
+      <div class="roll2">Oh Hello!</div>
+    </div> -->
+  </div>
+</body>
+
+</html>

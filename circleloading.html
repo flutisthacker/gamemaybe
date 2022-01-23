@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  .circle-loading {
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    box-shadow: 5px 5px 10px gray;
+    position: relative;
+    /* transform: rotate(45deg); */
+  }
+
+  .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+
+  }
+
+  .circle1 {
+    top: 0%;
+    left: 45%;
+    /* animation: circledown 2s infinite; */
+  }
+
+  @keyframes circledown {
+    from {
+      top: 0;
+      left: 45%;
+    }
+
+    50% {
+      top: 450px;
+      left: 45%;
+
+    }
+
+    to {
+      top: 0;
+      left: 45%;
+    }
+  }
+
+  .circle2 {
+    top: 45%;
+    left: 450px;
+    /* animation: circleleft 2s infinite; */
+    animation-delay: .25s;
+  }
+
+  @keyframes circleleft {
+    from {
+      left: 450px;
+    }
+
+    50% {
+      left: 0;
+
+    }
+
+    to {
+      left: 450px;
+    }
+  }
+
+  .circle3 {
+    bottom: 15%;
+    right: 15%;
+    /* animation: circlerighttoleft 2s infinite; */
+    animation-delay: .5s;
+  }
+
+  @keyframes circlerighttoleft {
+    from {
+      bottom: 15%;
+      right: 15%;
+    }
+
+    50% {
+      bottom: 75%;
+      right: 75%;
+    }
+
+    to {
+      bottom: 15%;
+      right: 15%;
+    }
+  }
+
+  .circle4 {
+    top: 15%;
+    right: 15%;
+    /* top: 75%;
+    right: 75%; */
+    /* animation: circlerighttoleft2 2s infinite; */
+    animation-delay: .75s;
+
+  }
+
+  @keyframes circlerighttoleft2 {
+    from {
+      top: 75%;
+      right: 75%;
+    }
+
+    50% {
+      top: 15%;
+      right: 15%;
+    }
+
+    to {
+      top: 75%;
+      right: 75%;
+    }
+  }
+
+  .circle5 {
+    /* top: 86%;
+    right: 62%; */
+    top: 4%;
+    right: 28%;
+    /* animation: circlerighttoleft3 2s infinite; */
+    animation-delay: 1s;
+  }
+
+
+  @keyframes circlerighttoleft3 {
+    from {
+      top: 4%;
+      right: 28%;
+
+    }
+
+    50% {
+      top: 86%;
+      right: 62%;
+    }
+
+    to {
+      top: 4%;
+      right: 28%;
+    }
+  }
+
+  .circle9 {
+    top: 0%;
+    left: 25%;
+    width: 250px;
+    height: 250px;
+    background: transparent;
+    animation: goesround 5s infinite;
+    transform-origin: bottom;
+  }
+
+  @keyframes goesround {
+    form {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .circle8 {
+    left: 45%;
+    border: 2px #ffe111 solid;
+    padding: 5px;
+  }
+</style>
+
+<body>
+  <div class="circle-loading">
+    <div class="circle circle9">
+      <!-- <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+      <div class="circle circle4"></div>
+      <div class="circle circle5"></div>
+      <div class="circle circle6"></div>
+      <div class="circle circle7"></div> -->
+      <div class="circle circle8"></div>
+    </div>
+  </div>
+</body>
+
+</html>

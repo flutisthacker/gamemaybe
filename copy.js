@@ -1,4 +1,11 @@
-document.getElementById('inversecol').requestFullscreen().catch((err) => console.log("couldnt open in fullscreen"))
+document.addEventListener("keyup", (e) => {
+  if (e.keyCode == 122) {
+    document.requestFullscreen().catch((err) => console.log("couldnt open in fullscreen"))
+  }
+  if (e.keyCode == 27) {
+    document.requestFullscreen().catch((err) => console.log("couldnt open in fullscreen"))
+  }
+})
 
 function copy() {
   var content = document.getElementById('content').innerHTML;
@@ -27,7 +34,7 @@ function paste() {
   }
   document.querySelector('body').appendChild(textare);
   textare.select()
-  document.execCommand('copy');
+  document.execCommand('paste');
   alert('copied')
   document.querySelector('body').removeChild(textare)
 }

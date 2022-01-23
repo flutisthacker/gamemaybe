@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .rectangle{
+border-radius: 35% 35% 35% 35% / 45% 45% 45% 45%;
+width:200px;
+height:100px;
+box-shadow: inset 35px 0px 35px 0px #171717; 
+box-shadow: inset -35px 0px -35px 0px #494949;  
+background-color: black;
+background: linear-gradient(90deg, #4B4B4B -50%,#111111 90%);
+}
+
+
+
+
+</style>
+<body>
+    <div class="rectangle"></div>
+    <input type="text" name="" id="takeText">
+<label for="" id="answer"></label>
+    <script src="morse.js"></script>
+    <script src="jsFunction.js"></script>
+
+<script>
+    morseTotext=[]
+    textToMorse=[]
+    putInArray(morse,"")
+    
+document.querySelector("#takeText").addEventListener("change",w=>{
+    mytext=    document.querySelector("#takeText").value;
+    textToMorse.indexOf(morseTotext.indexOf(mytext))
+    if(mytext.length == 1){
+        document.querySelector("#answer").innerHTML=textToMorse[morseTotext.indexOf(mytext)]
+    }
+    else{
+        document.querySelector("#answer").innerHTML=morseTotext[textToMorse.indexOf(mytext)]
+    }
+})
+
+word="you can use the javascript debug terminal to debug node.js"
+function wordsTomorse(){
+    mywords=word.split("")
+    var newWord="";
+    mywords.forEach(mytext=>{
+        newWord+=textToMorse[morseTotext.indexOf(mytext)]
+    })
+    console.log(newWord)
+}
+    function LtodotRtoDash(value){
+        if(value == "left"){return '.'}
+        else if(value == "right"){return '-'}
+    }
+
+    function putInArray(morse,index){
+        Object.keys(morse).forEach(m=>{
+            if(m== "value"){
+                morseTotext.push(morse[m])
+                textToMorse.push(index)
+                console.log(morse[m],index)
+            }
+            if( m == "left"){
+                // index= index+ LtodotRtoDash(m)
+                putInArray(morse[m],(index+ LtodotRtoDash(m)))
+            }
+            if( m == "right"){
+                // index= index+ LtodotRtoDash(m)
+                putInArray(morse[m],(index+ LtodotRtoDash(m)))
+            }
+
+                // if(isObject(morse[m].left)){
+            //     console.log("hello")
+            //     putInArray(morse[m].left)
+            // }
+            // else if(isObject(morse[m].right)){
+            //     console.log("hello")
+            //     putInArray(morse[m].left)
+            // }
+        })
+    }
+</script>
+</body>
+</html>

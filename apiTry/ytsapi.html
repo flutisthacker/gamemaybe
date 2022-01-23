@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="getmovies">click</button>
+    <script>
+        /* 
+        movie_count	The total movie count results for your query	2131
+limit	The limit of results per page that has been set	20
+page_number	The current page number you are viewing	1
+movies
+
+https://yts.mx/api/v2/movie_details.json?movie_id=10	Returns basic information about the movie with ID of 10
+https://yts.mx/api/v2/movie_details.json?movie_id=15&with_images=true&with_cast=true
+        */
+        // https://yts.mx/api/v2/list_movies.json?quality=3D
+        // https://yts.mx/api/v2/list_movies.xml?sort=seeds&limit=15
+
+        // https://yts.mx/api/v2/movie_suggestions.json
+        // https://yts.mx/api/v2/movie_suggestions.json?movie_id=10
+        // https://yts.mx/api/v2/movie_comments.json
+        // https://yts.mx/api/v2/movie_parental_guides.json
+        // https://yts.mx/api/v2/movie_parental_guides.json
+        // https://yts.mx/api/v2/user_details.json
+        // https://yts.mx/api/v2/user_get_key.json
+        // https://yts.mx/api/v2/movie_comments.json?movie_id=10
+        // https://yts.mx/api/v2/movie_reviews.json?movie_id=10
+
+        document.querySelector("#getmovies").addEventListener("click",(async)=>{
+           abcd=  getMovies();
+        })
+        const url = "https://yts.mx/api/v2/list_movies.json"
+        // const url = "https://yts.mx/api/v2/movie_suggestions.json"
+    async function getMovies(){
+        const response = await fetch(url);
+      const data = await response.json();
+        return JSON.stringify(data)
+    }
+    </script>
+</body>
+</html>

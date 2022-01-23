@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.listDigi{
+    display: flex;
+    flex-wrap: wrap;
+}
+    .card{
+        width:220px;
+        height:330px;
+        border: blue 2px solid;
+        padding: 5px;
+    }
+    .card-title{}
+</style>
+<body>
+   <div class="listDigi"></div>   
+    <script src="jsFunction.js"></script>
+<script>
+
+
+// fetch(`https://api-vs.herokuapp.com/vs/v1/`).then((data) => {
+//       let info = data.json();
+//         return info;
+//     }).then((data)=>{
+//       console.log(data)
+//     })
+
+fetch(`https://the-dune-api.herokuapp.com/quotes`).then((data) => {
+      let info = data.json();
+        return info;
+    }).then((data)=>{
+      console.log(data)
+    })
+
+fetch(`https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon Card Game&sortdirection=asc`).then((data) => {
+      let info = data.json();
+        return info;
+    }).then((data)=>{
+      console.log(data)
+    })
+
+fetch(`https://digimon-api.vercel.app/api/digimon`).then((data) => {
+      let info = data.json();
+        return info;
+    }).then((data)=>{
+      console.log(data)
+      displayData(data)
+    })
+
+    fetch(`https://digimon-api.vercel.app/api/digimon/level/rookie`).then((data) => {
+      let info = data.json();
+        return info;
+    }).then((data)=>{
+      console.log(data)
+    })
+    
+    function displayData(datas){
+        datas.forEach(data=>{
+            document.querySelector(".listDigi").innerHTML+=
+            `<div class="card">
+       <h2 class="card-title">${data.name}</h2>
+       <h3 class="card-level">${data.level}</h3>
+       <div class="card-img"><img src="${data.img}" width="200px" height="200px"></div>
+   </div>`
+        })
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    border-radius: 25px;
+    height: 100px;
+    color: #121212;
+    margin-bottom: 20px;
+  }
+
+  .config {
+    left: 10px;
+    background: #e7eaed;
+  }
+
+  .config .con-icon {
+    padding-right: 10px;
+  }
+
+  .con-text h3 {
+    font-size: .9rem;
+    padding-bottom: 5px;
+    pointer-events: none;
+  }
+
+  .con-text {
+    /* opacity: .5; */
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    background: #fff;
+    height: 100px;
+    border-radius: inherit;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .con-text p {
+    font-size: .75rem;
+    opacity: .6;
+    pointer-events: none;
+  }
+
+  .con-icon {
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .remove {
+    color: #111;
+    background: #ec395e;
+    justify-content: flex-end !important;
+    right: 10px;
+  }
+
+  .remove .con-icon {
+    padding-left: 10px;
+  }
+
+  .item button {
+    width: 50%;
+    border: 0px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px;
+    border-radius: inherit;
+    position: absoulte;
+    height: 90px;
+
+  }
+</style>
+
+<body>
+  <div class="item swipe" ontouchstart="handleStart(event)" ontouchmove="handleTouchMove(event)"
+    ontouchend="handleEnd(event)">
+    <button class="config"><span class="con-icon"><i class="fa fa-cog"></i></span></button>
+    <div class="con-text">
+      <h3>landing page</h3>
+      <p>create a landing page with the theme of the dark serie</p>
+    </div>
+    <button class="remove">
+      <span class="con-icon">
+        <bx class="fa fa-trash"></bx>
+      </span>
+    </button>
+  </div>
+
+  <script>
+    function handleTouchMove(evt) {
+      let moveX = Number(evt.target.dataset.x) - evt.touches[0].pageX
+      if (moveX > 130) {
+        moveX = 130
+      }
+      if (moveX > -130) {
+        moveX = -130
+      }
+      evt.target.dataset.move = moveX
+      anime({
+        target: evt.target,
+        translateX: -Number(evt.target.dataset.move),
+        duration: 300
+      })
+    }
+
+    function handleStart(evt) {
+      evt.target.dataset.x - Number(evt.touches[0].pageX) + Number(evt.target.dataset.move || 0)
+    }
+
+    function handleTouchMove(evt) {
+      if (evt.target.dataset.move > 100) {
+        evt.target.dataset.move = 100
+      } else if (evt.target.dataset.move > -100) {
+        evt.target.dataset.move = -100
+      } else {
+        evt.target.dataset.move = 0
+      }
+      const swipes = document.querySelectorAll('.swipe') || []
+
+      swipes.forEach(swipe => {
+        if (swipe.querySelector(".con-text") === evt.target) {
+          return
+        }
+        swipe.querySelector(".con-text").dataset.move = 0
+        swipe.querySelector(".con-text").dataset.x = 0
+        anime({
+          targets: item.querySelector(".con-text"),
+          translateX: 0
+        })
+      })
+      setTimeout(() => {
+        anime({
+          target: evt.target,
+          translateX: -Number(evt.tager.dataset.move)
+        })
+      }, 1)
+    }
+  </script>
+</body>
+
+</html>

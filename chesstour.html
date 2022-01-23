@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chess board</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  .chess {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    /* place-items: center; */
+    grid-template-rows: repeat(8, 1fr);
+    grid-row-gap: 15px;
+    grid-column-gap: 15px;
+    grid-template-columns: repeat(8, 1fr);
+    perspective: 800px;
+    transform: scale(.5);
+  }
+
+  .chess_place {
+    background-color: blue;
+    width: 150px;
+    height: 150px;
+  }
+
+  .white {
+    background: #f1f2f3;
+  }
+
+  .success {
+    background: #109581 !important;
+  }
+
+  .black {
+    background: gray;
+  }
+
+  .knight:before {
+    content: "Knight";
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .pawn::before {
+    content: "pawn";
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+</style>
+
+<body>
+  <h3>knight tour</h3>
+  <div class="chess">
+    <div class="chess_place" id="a1">
+    </div>
+    <div class="chess_place" id="b1"></div>
+    <div class="chess_place" id="c1"></div>
+    <div class="chess_place" id="d1"></div>
+    <div class="chess_place" id="e1"></div>
+    <div class="chess_place" id="f1"></div>
+    <div class="chess_place" id="g1"></div>
+    <div class="chess_place" id="h1"></div>
+    <div class="chess_place" id="a2">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="b2">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="c2">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="d2">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="e2">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="f2">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="g2">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="h2">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="a3"></div>
+    <div class="chess_place" id="b3"></div>
+    <div class="chess_place" id="c3"></div>
+    <div class="chess_place" id="d3"></div>
+    <div class="chess_place" id="e3"></div>
+    <div class="chess_place" id="f3"></div>
+    <div class="chess_place" id="g3"></div>
+    <div class="chess_place" id="h3"></div>
+    <div class="chess_place" id="a4"></div>
+    <div class="chess_place" id="b4"></div>
+    <div class="chess_place" id="c4"></div>
+    <div class="chess_place" id="d4"></div>
+    <div class="chess_place" id="e4"></div>
+    <div class="chess_place" id="f4"></div>
+    <div class="chess_place" id="g4"></div>
+    <div class="chess_place" id="h4"></div>
+    <div class="chess_place" id="a5"></div>
+    <div class="chess_place" id="b5"></div>
+    <div class="chess_place" id="c5"></div>
+    <div class="chess_place" id="d5"></div>
+    <div class="chess_place" id="e5"></div>
+    <div class="chess_place" id="f5"></div>
+    <div class="chess_place" id="g5"></div>
+    <div class="chess_place" id="h5"></div>
+    <div class="chess_place" id="a6"></div>
+    <div class="chess_place" id="b6"></div>
+    <div class="chess_place" id="c6"></div>
+    <div class="chess_place" id="d6"></div>
+    <div class="chess_place" id="e6"></div>
+    <div class="chess_place" id="f6"></div>
+    <div class="chess_place" id="g6"></div>
+    <div class="chess_place" id="h6"></div>
+    <div class="chess_place" id="a7">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="b7">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="c7">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="d7">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="e7">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="f7">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="g7">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="h7">
+      <!-- <p class="c_piece">pawn</p> -->
+    </div>
+    <div class="chess_place" id="a8"></div>
+    <div class="chess_place" id="b8"></div>
+    <div class="chess_place" id="c8"></div>
+    <div class="chess_place" id="d8"></div>
+    <div class="chess_place" id="e8"></div>
+    <div class="chess_place" id="f8"></div>
+    <div class="chess_place" id="g8"></div>
+    <div class="chess_place" id="h8"></div>
+  </div>
+</body>
+<script>
+  document.querySelectorAll(".chess_place").forEach((piece, index) => {
+    /*
+    8 24 40 56
+    16 32 48 64
+    */
+    if (index < 8 || (index >= 16 && index < 24) || (index >= 32 && index < 40) || (index >= 48 && index < 56)) {
+      if (index % 2 == 0) {
+        piece.classList.add("white")
+      } else {
+        piece.classList.add("black")
+      }
+    } else {
+      if (index % 2 == 0) {
+        piece.classList.add("black")
+      } else {
+        piece.classList.add("white")
+      }
+
+    }
+  });
+
+  if (document.querySelectorAll(".clicked").length == 64) {
+    alert("win")
+  }
+  var meroclick = [];
+  document.querySelectorAll(".chess_place").forEach((piece, index) => {
+    piece.addEventListener("click", () => {
+      meroclick.push(piece.id)
+      console.log(meroclick)
+      if (piece.classList.contains("clicked")) {
+        piece.classList.remove("success")
+        piece.classList.remove("clicked")
+        piece.classList.remove("knight")
+      } else {
+        piece.innerHTML = "";
+        piece.classList.add("knight")
+        piece.classList.add("success")
+        piece.classList.add("clicked")
+      }
+    })
+  })
+</script>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="perfect.css">
+</head>
+<style>
+  body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transform: perspective(800px);
+    font-family: 'roboto', sans-serif;
+  }
+
+  .sliced {
+    background: gray;
+    content: attr(data-title);
+    font-size: 10rem;
+    position: relative;
+    text-transform: uppercase;
+    /* text-align: center; */
+    color: #12ae12;
+    overflow: hidden;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+
+  }
+
+  .sliced:before {
+    content: attr(data-title);
+    text-align: center;
+    clip-path: polygon(0 52%, 100% 28%, 100% 58%, 0 76%);
+    /* clip-path: polygon(0 0, 100% 0%, 100% 28%, 0% 52%); */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: gray;
+    transition: transform .5s ease;
+  }
+
+  .sliced:after {
+    z-index: 2;
+    background: gray;
+    content: attr(data-title);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    clip-path: polygon(0 76%, 100% 58%, 100% 100%, 0% 100%);
+  }
+
+
+  .sliced:hover::after {
+    transform: translateX(-5px);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+
+  }
+
+  .sliced:hover::before {
+    transform: translateX(5px);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+
+  }
+</style>
+<style>
+  .box {
+    width: 80%;
+    max-width: 800px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(113, 113, 113, .15) -5px -5px 11px, rgba(0, 0, 0, .15) 5px 5px 0x;
+  }
+
+  .box p {
+    color: #000;
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+</style>
+
+<body>
+  <div class="sliced" data-title="Text">text</div>
+  <div class="box glass bg-dark" id="box">
+    <p>width <span id="width"></span>px</p>
+  </div>
+  <script>
+    var box = document.getElementById("box")
+    var width = document.getElementById("width")
+
+    function callback() {
+      width.innerHTML = box.offsetWidth;
+    }
+    const observer = new ResizeObserver(callback)
+    observer.observe(box)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                DUngeons and dragons
+              </a>            
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 navLinks">
+
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+<table class="table"></table>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="accordion" id="accordionExample">
+
+              </div>
+        </div>
+      </div>
+
+
+      
+    <script src="jsFunction.js"></script>
+<script>
+
+fetch(`https://digimon-api.vercel.app/api/digimon`).then((data) => {
+      let info = data.json();
+        return info;
+    }).then((data)=>{
+      console.log(data)
+    })
+    
+    
+
+
+listOfApi=[];
+    console.log(
+
+    fetch(`https://www.dnd5eapi.co/api/`).then((data) => {
+        let info = data.json();
+        return info;
+      }).then((data) => {
+        listOfApi=Object.keys(data)
+        console.log(listOfApi);
+        putArray()
+      })
+    )
+
+      
+
+    function putArray(){
+        listOfApi.forEach(async api=>{
+            document.querySelector("#accordionExample").innerHTML+=
+            `<div class="accordion-item">
+                  <h2 class="accordion-header" id="heading${api}">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${api}" aria-expanded="true" aria-controls="collapse${api}">
+                      ${api}
+                    </button>
+                  </h2>
+                  <div id="collapse${api}" class="accordion-collapse collapse" aria-labelledby="heading${api}" data-bs-parent="#accordionExample">
+                    <div class="accordion-body list-group" id="accordion-${api}">
+                    </div>
+                  </div>
+                </div>`
+
+                details=await fetchAPI(`https://www.dnd5eapi.co/api/${api}`)
+                detail=JSON.parse(details)
+                detail.results.forEach(det=>{
+                    document.querySelector(`#accordion-${api}`).innerHTML+=`  <a href="#"onClick="displayTable('${det.url}')" class="list-group-item list-group-item-action">${det.name}</a>`
+                })
+                
+
+        })
+    }
+
+
+    async function displayTable(getME){
+        console.log(getME)
+        myspells= await fetchAPI(`https://www.dnd5eapi.co${getME}`)
+        myspells=JSON.parse(myspells)
+        mytbody=document.createElement("tbody")
+        document.querySelector(".table").append(mytbody);
+        console.log(myspells)
+            Object.keys(myspells).forEach(spelldetail=>{
+                mytr = document.createElement("tr")
+                mytd=document.createElement("td")
+                mytd1=document.createElement("td")
+                mytd.innerHTML=`${spelldetail}`
+                    if(isArray(myspells[spelldetail]) == true){
+                        myspells[spelldetail].forEach(spp=>{
+                            if(isObject(spp) == true){
+                                mytd1.innerHTML+=`<p>${spp.name}</p>`
+                            }
+                            else{
+                                mytd1.innerHTML+=`<p>${spp}</p>`
+                            }
+                        })
+                    }
+                    else{
+                        mytd1.innerHTML=`${myspells[spelldetail]}`
+                    }
+                mytbody.append(mytr)
+                mytr.append(mytd)
+                mytr.append(mytd1)
+
+            })
+    }
+
+</script>
+</body>
+</html>

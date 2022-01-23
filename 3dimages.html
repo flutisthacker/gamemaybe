@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+
+  <style>
+    body {
+      /* perspective: 1000px; */
+      scroll-behavior: smooth;
+    }
+
+    .imgdiv {
+      width: 1000px;
+      height: 1000px;
+      perspective: 10 00px;
+      transform-style: preserve-3d;
+      transition: transform .9s ease;
+      /* transform: rotateX(35deg); */
+    }
+
+    .imgdiv img {
+      width: 1000px;
+      height: 1000px;
+    }
+
+    .imgdiv:hover {
+      transform: translateY(-800px);
+    }
+
+    .rotatex35 {
+      font-size: 20rem;
+      text-transform: uppercase;
+      transform-style: preserve-3d;
+      transform: rotateY(45deg);
+      transition: transform 1s ease;
+    }
+
+    .rotatex35:hover {
+      transform: rotateY(0deg);
+
+    }
+
+    .rotatex {
+      perspective: 1000px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="rotatex">
+
+    <p class="rotatex35 text-success">photoshop</p>
+  </div>
+  <div class="imgdiv centerize-flex"><img class="rx35" src="../../dog1.jpg" alt="">
+  </div>
+  <div class="imgdiv centerize-flex"><img class="rx35" src="../../dog2.jpg" alt="">
+  </div>
+  <div class="imgdiv centerize-flex"><img class="rx35" src="../../dog3.jpg" alt="">
+  </div>
+</body>
+<script>
+  //   https://www.instagram.com/p/CCZ_HOLB7Iq/
+  // https://www.instagram.com/p/CCciFSRJukY/
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chatbox</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  .chatbox {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: auto;
+    background: red;
+    box-shadow: -5px -5px 3px 2px #ffffff2f;
+  }
+
+  .chatname {
+    background: rgba(236, 45, 45, 0.877);
+    width: 100%;
+    height: 50px;
+    font-size: 1.5rem;
+    line-height: 50px;
+
+    text-transform: capitalize;
+    text-align: center;
+    transition: transform 1s ease-in-out;
+
+  }
+
+  .chat {
+    width: 100%;
+    height: 250px;
+    transition: transform 1s ease-in-out;
+  }
+
+  #chatshow {
+    display: none
+  }
+
+  #chatme,
+  #chatme:focus {
+    z-index: 0;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    border: none;
+  }
+</style>
+
+<body>
+  <div class="chatbox brtechfr">
+    <div class="chatname">
+      <label for="chatshow" id="chatnamed">saman maharjan</label>
+      <input type="checkbox" name="" id="chatshow">
+    </div>
+    <div class="chat">
+      <input type="text" id="chatme" placeholder="Enter message...">
+    </div>
+  </div>
+  <script>
+    cshow = document.querySelector("#chatshow");
+    document.querySelector("#chatnamed").addEventListener("click", () => {
+      if (cshow.checked == false) {
+        document.querySelector(".chat").style = "height:0px"
+        document.querySelector("#chatme").style = "height:0px"
+
+      } else {
+        document.querySelector(".chat").style = "height:250px"
+        document.querySelector("#chatme").style = "height:30px"
+
+      }
+    })
+    document.querySelector("#chatme").addEventListener("keypress", (e) => {
+      if (e.keyCode == 13) {
+        vals = document.createElement("div")
+        vals.innerHTML = document.querySelector("#chatme").value;
+        document.querySelector(".chat").append(vals);
+        document.querySelector("#chatme").value = ""
+      }
+    });
+  </script>
+</body>
+
+</html>

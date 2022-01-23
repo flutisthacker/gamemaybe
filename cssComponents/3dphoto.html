@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<style>
+  body{
+    display: flex;
+    flex-direction: row;
+  }
+  .imgs{
+    position: relative;
+}
+.img{
+    position: absolute;
+    background-image: url("../burger.jpg");
+    background-position: center;
+    background-size: cover;
+    width:500px;
+    height:500px;
+    margin: 20px;
+    z-index: 2;
+    /* opacity: 0; */
+}
+.img1{
+    transform: rotateX(5deg) rotateY(5deg) translateX(10px);
+    filter: hue-rotate(240deg);
+    z-index: 4;
+    opacity: .4;
+}
+.img2{
+    transform: rotateX(-5deg) rotateY(-5deg) translateX(-10px);
+    filter: hue-rotate(0deg);
+    z-index: 3;
+    opacity: .4;
+}
+
+</style>
+<body>
+  <div class="imgs">
+    <div class="img"></div>
+    <div class="img img1"></div>
+    <div class="img img2"></div>
+</div></body>
+
+
+</html>

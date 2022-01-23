@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<style>
+  body{
+    display: flex;
+    flex-direction: row;
+  }
+  .img{
+    background-image: url("../burger.jpg");
+    background-position: center;
+    background-size: cover;
+    width:500px;
+    height:500px;
+    margin: 20px;
+    /* opacity: 0; */
+
+}
+.filter{
+  display: flex;
+  flex-direction: column;
+}
+</style>
+<body>
+<div class="img"></div>
+<div class="filter">
+  <label for="">blur</label> 
+  <input type="range" class="range" value="0" min="0" max="100" ext="px" name="" id="blur">
+  <label for="">brightness</label> 
+  <input type="range" class="range" value="0" min="0" max="100" ext="%" name="" id="brightness">
+  <label for="">contrast</label> 
+  <input type="range" class="range" value="0" min="0" max="100" ext="%" name="" id="contrast">
+  <label for="">drop-shadow</label> 
+  <input type="range" class="range" value="0" min="0" max="100" ext="deg" name="" id="drop-shadow">
+  <label for="">grayscale</label> 
+<input type="range" class="range" value="0" min="0" max="100" ext="%" name="" id="grayscale">
+<label for="">hue-rotate</label> 
+<input type="range" class="range" value="0" min="-100" max="100" ext="deg" name="" id="hue-rotate">
+<label for="">invert</label> 
+<input type="range" class="range" value="0" min="0" max="100" ext="%" name="" id="invert">
+<label for="">opacity</label> 
+<input type="range" class="range" value="0" min="0" max="100" ext="%" name="" id="opacity">
+<label for="">saturate</label> 
+<input type="range" class="range" value="0" min="0" max="100" ext="" name="" id="saturate">
+<label for="">sepia</label> 
+<input type="range" class="range" value="0" min="0" max="100" ext="%" name="" id="sepia">
+<label for="">url</label> ?
+<input type="range" class="range" value="0" min="0" max="100" ext="deg" name="" id="url">
+</div>
+</body>
+<script>
+  document.querySelectorAll(".range").forEach(range=>{
+  range.addEventListener("change",a=>{
+    ext = range.getAttribute("ext")
+    myVal=range.value + ext
+    if(range.id == "drop-shadow"){
+      myVal=`${range.value/2}px,${range.value/2}px, ${range.value/4}px,#16161d`
+    }
+    console.log(`-webkit-filter:${range.id}(${myVal})`)
+    document.querySelector(".img").style=`filter: ${range.id}(${myVal})`
+  })
+  })
+</script>
+
+</html>

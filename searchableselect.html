@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    scroll-behavior: smooth;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: #fff;
+  }
+
+  form {
+    max-width: 40vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  form label {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  form input {
+    border: 2px solid lightslategray;
+    height: 40px;
+    border-radius: 3ox;
+    padding: 5px;
+    font-size: 1rem;
+    outline: none;
+  }
+</style>
+<style>
+  h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #fff;
+  }
+
+  details {
+    width: 100%;
+    border: 2px splid yellow;
+    color: #fff
+  }
+
+  details p {
+    padding: 20px;
+    color: #fff;
+    background: #000;
+  }
+
+  summary {
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #9fb6ce;
+  }
+
+  section {
+    max-width: 80%;
+    width: 100%;
+    height: 100vh;
+  }
+</style>
+
+<style>
+  .dott {
+    max-width: 100%;
+    background: linear-gradient(45deg, #115581, #00a2ed);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dott .dot {
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+    background: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: translateX(-600px);
+    animation: gogogo infinite 3s ease-in-out;
+  }
+
+  .dot:nth-child(1) {
+
+    animation-delay: .8s;
+  }
+
+  .dot:nth-child(2) {
+
+    animation-delay: .6s;
+  }
+
+  .dot:nth-child(3) {
+
+    animation-delay: .4s;
+  }
+
+  .dot:nth-child(4) {
+
+    animation-delay: .2s;
+  }
+
+  @keyframes gogogo {
+    from {
+      transform: translateX(-600px);
+      opacity: 0;
+    }
+
+    30%,
+    60% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    to {
+      transform: translateX(620px);
+      opacity: 0;
+    }
+  }
+</style>
+
+<body>
+
+  <h1>dropdown with searchable test</h1>
+  <form>
+    <label for="yahoo">choose your magical house</label>
+    <input type="text" id="yahoo" name="yahoo" placeholder="type here/..." list="google">
+    <datalist id="google">
+      <option value="how to become a hacker"></option>
+      <option value="how to become a coder">
+      <option value="how to become a programmer">
+      <option value="how to become a teacher">
+      <option value="how to become a dancer">
+      <option value="how to become a musician">
+      <option value="how to become a chefs">
+      <option value="how to become a rapper">
+    </datalist>
+  </form>
+
+  <h1>detail and summary</h1>
+  <h2>read more about this page</h2>
+  <section>
+    <details open>
+      <summary> beauxbatons academy of magic</summary>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos maxime repellendus vitae ab a placeat aut
+        accusamus corporis, rem cum ducimus beatae quasi sint rerum nam deserunt quibusdam? Assumenda, maiores.</p>
+    </details>
+    <details>
+      <summary>Drumstran institute</summary>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, ea! Assumenda, autem eaque excepturi asperiores
+        accusamus laudantium exercitationem blanditiis, unde ut eveniet quam, alias harum incidunt adipisci quos
+        repellendus voluptatibus!</p>
+    </details>
+  </section>
+  <section class="dott">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </section>
+  <section class="myapi">
+    <button class="btn" onclick="generateAndShowApiKey()">generate</button>
+  </section>
+  <script src="../resources/console.js"></script>
+</body>
+
+</html>

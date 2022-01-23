@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  :root {
+    --a: #fdd08d;
+    --b: #ff98c5;
+    --c: #9dd7ff;
+  }
+
+  .chart {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform: scale(3);
+  }
+
+  .circle1 {
+    width: 20px;
+    height: 20px;
+    background-color: var(--a);
+    position: absolute;
+    z-index: 6;
+    top: 101%;
+    left: 101%;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .4);
+  }
+
+  .circle2 {
+    width: 128px;
+    height: 128px;
+    /* background-color: var(--c); */
+    /* overflow: hidden; */
+    position: absolute;
+    top: 76%;
+    left: 76%;
+    transform: rotate(30deg);
+    border: 20px solid var(--c);
+    z-index: 3;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .4);
+
+  }
+
+  .circle2::after {
+    content: '';
+    position: absolute;
+    width: 108px;
+    height: 108px;
+    top: -30px;
+    right: 50px;
+    background-color: #161615;
+    transform: rotate(-30deg);
+
+  }
+
+
+  .circle3 {
+    width: 150px;
+    height: 150px;
+    /* overflow: hidden; */
+    position: absolute;
+    top: 72%;
+    left: 72%;
+    transform: rotate(20deg);
+    border: 20px solid var(--b);
+    z-index: 2;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .4);
+
+  }
+
+  .circle3::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    top: -70px;
+    right: 70px;
+    transform: rotate(-20deg);
+
+    /* background-color: #fff; */
+    background-color: #161615;
+  }
+
+  .circle4 {
+    width: 170px;
+    height: 170px;
+    position: absolute;
+    transform: rotate(10deg);
+    border: 20px solid var(--a);
+    top: 68%;
+    left: 68%;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .4);
+
+  }
+
+  .circle4::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: 80px;
+    width: 170px;
+    height: 170px;
+    transform: rotate(-10deg);
+    background-color: #161615;
+  }
+
+  .chartd {
+    width: 400px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+  }
+
+  .chartd::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    /* background-color: #fff; */
+    background-color: #161615;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+  }
+</style>
+
+
+<body>
+  <div class="chart">
+    <div class="circle1 brcircle"></div>
+    <div class="circle2 brcircle"></div>
+    <div class="circle3 brcircle"></div>
+    <div class="circle4 brcircle"></div>
+
+  </div>
+
+  <div class="chartd brcircle bg-cg"></div>
+
+</body>
+<script>
+var now = new Date("January 02, 2012 22:00:00 GMT+0530");
+
+var nowUtc = new Date( now.getTime() + (now.getTimezoneOffset() * 60000));
+
+//var nowUtc = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+
+console.log(nowUtc)
+
+now.toUTCString()
+
+now = new Date(now.toUTCString());
+var millis = now.getTime() + (now.getTimezoneOffset() * 60000)
+now.setTime(millis - (now.getTimezoneOffset() * 60000))
+console.log(now)
+
+
+var compareDate = new Date("January 02, 2012 22:00:00 GMT+0530");
+var diff = Math.abs(new Date() - compareDate);
+console.log(diff)
+now.setTime(diff - (now.getTimezoneOffset() * 60000))
+console.log(now)
+
+
+var aMinuteAgo = new Date( Date.now() - 1000 * 60 );
+console.log(aMinuteAgo)
+</script>
+</html>

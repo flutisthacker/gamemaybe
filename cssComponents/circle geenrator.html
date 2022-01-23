@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="80"> -->
+    <title>circle generator</title>
+<link rel="stylesheet" href="circle.css">
+</head>
+
+<body>
+    <div class="ranges">
+        <h3 class="title">Border radius</h3>
+        <label for="">Border top</label>
+        <input type="range" class="range" name="" value="50" ext="%" id="top">
+        <label for="">Border Bottom</label>
+        <input type="range" class="range" name="" value="50" ext="%" id="bottom">
+        <label for="">Border left</label>
+        <input type="range" class="range" name="" value="50" ext="%" id="left">
+        <label for="">Border Right</label>
+        <input type="range" class="range" name="" value="50" ext="%" id="right">
+        deg 
+        <input type="range" name="" id="" min="0" max="360" value="50" ext="%" class="deg">
+        <select name="" id="pattern">
+            <option value="choose">choose</option>
+            <option value="circle">circle</option>
+            <option value="oval">oval</option>
+            <option value="eye">eye</option>
+            <option value="eye1">eye1</option>
+            <option value="pin">pin</option>
+            <option value="barfi">barfi</option>
+            <option value="square">square</option>
+            <option value="hait">hait</option>
+                <option value="paralellogram">paralellogram</option>
+        </select>
+        <select name="" id="bordType">
+            <option value="border type">border type</option>
+            <option value="dotted">dotted</option>
+            <option value="dashed">dashed</option>
+            <option value="ridge">ridge</option>
+            <option value="double">double</option>
+            <option value="groove">groove</option>
+            <option value="solid">solid</option>
+        </select>
+        <input type="number" name="" id="skewdeg" placeholder="skew value" min="-15" max="15">
+        <input type="number" name="" min="0" id="bordSize" placeholder="border value">
+        <input type="number" value="180" name="" id="numShape" placeholder="number of rounds value">
+        <label for="">Rotate</label>
+        <input type="checkbox" name="" id="animate">
+        <button onclick="changeMe()">click me</button>
+    </div>
+
+    <div class="mymain">
+        <div class="newShape"></div>
+    </div>
+
+</body>
+<script src="./generatecolor.js"></script>
+<script src="./colorchange.js"></script>
+<script>
+
+function makeDynamicCircle(shape){
+        // transform-origin: top;
+document.querySelector(".mymain").innerHTML=""
+let increasignDeg =Math.random()*360;
+let TransformOrigin= Math.random() < 0.5 ? "top": "right"
+let myColor = generatecolor();
+let myColor2 = invertcolor(myColor);
+document.querySelector(".mymain").style.filter = `drop-shadow(10px 10px 3px ${myColor2}6f)`
+console.log(myColor,myColor2)
+    for(i=0;i<myCount;i++){
+        createDIv(shape,myColor,increasignDeg,TransformOrigin)
+    }
+}
+
+function getRandomBorder(){
+    let borders=[];
+    for(i=0;i<4;i++){
+        borders.push(Math.floor(Math.random()*100))
+    }
+    console.log(borders)
+    return borders;
+}
+
+function changeMe(){
+    acd=getRandomBorder();
+    document.querySelectorAll(`.${pattern.value}`).forEach((sc,index)=>{
+        sc.style.borderRadius= `${acd[0]}% ${acd[1]}% ${acd[2]}% ${acd[3]}%`
+    })
+}
+
+document.querySelector("#animate").addEventListener("change",()=>{
+var toggleAnimation = (document.querySelector("#animate").checked)
+if(toggleAnimation === true){
+    document.querySelector(".mymain").style.animation ="rotate ease 30s";
+    document.querySelector(".mymain").style.TransformOrigin ="center";
+}else{
+    document.querySelector(".mymain").style.animation =""
+}
+});
+
+function createDIv(shape,myColor,increasignDeg,TransformOrigin){
+    var myShape = document.createElement("div")
+    myShape.className=shape;
+    myShape.style=`border-color:${myColor}; transform-origin:${TransformOrigin}; transform:rotate(${i*increasignDeg}deg)`
+    document.querySelector(".mymain").append(myShape)
+    
+}
+
+let myCount=document.querySelector("#numShape").value;
+function makeDynamicPattern(shape,increasignDeg){
+    let myColor = generatecolor();
+    let TransformOrigin= Math.random() < 0.5 ? "top": "bottom"
+    for(i=0;i<myCount;i++){
+        var myShape = document.createElement("div")
+        myShape.className=shape;
+        myShape.style=`border-color:${myColor}; transform-origin:${TransformOrigin}; transform:rotate(${i*increasignDeg}deg) translate(50%,50%)`
+        document.querySelector(".mymain").append(myShape)
+    }
+}
+
+function setBorderSize(size,shape){
+    document.querySelectorAll(`.${shape}`).forEach(w=>{
+        w.style.borderWidth =size+"px";
+    })
+}
+function setBorderType(type,shape){
+    document.querySelectorAll(`.${shape}`).forEach(w=>{
+        w.style.borderStyle =type;
+    })
+}
+
+function changeColor(myColor,shape){
+    document.querySelectorAll(`.${shape}`).forEach(w=>{
+        w.style.borderLeftColor = hexToHsl(myColor, 20)
+        w.style.borderRightColor = hexToHsl(myColor, 20)
+        w.style.borderTopColor =hexToHsl(myColor, 10)
+        w.style.borderBottomColor =hexToHsl(myColor, 10)
+    })
+}
+function changeBorder(borderRad,shape){
+    document.querySelectorAll(`.${shape}`).forEach(w=>{
+        w.style.borderRadius =borderRad
+    })
+}
+function changeDeg(borderRad,shape){
+    document.querySelectorAll(`.${shape}`).forEach((w,index)=>{
+        w.style.transform += `rotate(-${borderRad}deg)`
+    })
+}
+function skewDeg(borderRad,shape){
+    document.querySelectorAll(`.${shape}`).forEach((w,index)=>{
+        w.style.transform += `skew(${borderRad/2}deg,${borderRad/2}deg)`
+    })
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    // makeDynamicCircle("eye1");
+    let pattern=document.querySelector("#pattern");
+    pattern.addEventListener("change",()=>{
+        makeDynamicCircle(pattern.value);    
+    })
+    document.querySelector(".deg").addEventListener("change",()=>{
+
+        changeDeg(document.querySelector(".deg").value,pattern.value)
+        // document.querySelector(".mymain").innerHTML=""
+        // makeDynamicPattern("oval",document.querySelector(".deg").value,"50%")
+    })
+    document.querySelector("#bordSize").addEventListener("change",()=>{
+        setBorderSize(document.querySelector("#bordSize").value,pattern.value)
+    })
+    document.querySelector("#bordType").addEventListener("change",()=>{
+        setBorderType(document.querySelector("#bordType").value,pattern.value)
+    })
+    document.querySelector("#numShape").addEventListener("change",()=>{
+        myCount=document.querySelector("#numShape").value;
+    })
+
+    document.querySelector("#skewdeg").addEventListener("change",()=>{
+        skewDeg(document.querySelector("#skewdeg").value,pattern.value)
+        // document.querySelector(".mymain").innerHTML=""
+        // makeDynamicPattern("oval",document.querySelector(".deg").value,"50%")
+    })
+    document.querySelectorAll(".range").forEach(range=>{
+        range.addEventListener("change",()=>{
+            var bLeft =document.querySelector("#left").value
+            var bTop =document.querySelector("#top").value
+            var bRight =document.querySelector("#right").value
+            var bBottom =document.querySelector("#bottom").value
+            // document.querySelectorAll(".oval").forEach(oval=>{
+                // document.querySelector(".mymain").innerHTML=""
+                borderRad = `border-radius:${bTop}%,${bRight}%,${bBottom}%,${bLeft}%`
+                changeBorder(`${bTop}% ${bRight}% ${bBottom}% ${bLeft}%`,pattern.value)
+                // makeDynamicPattern("oval",document.querySelector(".deg").value)
+            // })
+        })
+    })
+</script>
+</html>

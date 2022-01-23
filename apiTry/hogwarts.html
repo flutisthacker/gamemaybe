@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../resources/perfect.css">
+</head>
+<style>
+  body {
+    flex-direction: row;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: repeat(3, 500px);
+    /* grid-column-gap: 30px; */
+    place-items: center;
+    padding: 10px;
+  }
+
+  .box {
+    /* background: linear-gradient(90deg, #f6ea67, #ecc22e); */
+    background: linear-gradient(90deg, #fa9dbe, #ef878d);
+    width: 300px;
+    box-shadow: 2px 2px 5px gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    transition: transform 1s ease, opacity 1s ease;
+    border-radius: 5px;
+    position: relative;
+
+    background-size: cover;
+    background-position: center;
+  }
+
+  .box .myimage {
+    width: 150px;
+  }
+
+  .box .info {
+    background: linear-gradient(90deg, #f6ea67, #ecc22e);
+    color: #161615;
+    opacity: 0;
+    z-index: -1;
+    transform: translateX(-150px);
+    list-style: none;
+  }
+
+
+  .box:hover .info {
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<style>
+  :root {
+    --padding: 80px;
+  }
+
+  .guides {
+
+    position: absolute;
+    height: 100vh;
+
+    width: cals(500px -var(--padding));
+    border-right: 2px solid lightskyblue;
+    border-left: 2px solid lightskyblue;
+  }
+
+  .guides::after {
+    position: absolute;
+    content: "";
+    width: 100vw;
+
+    height: calc(500px -var(--padding));
+    width: calc(500px -var(--padding));
+    top: calc((var(--padding)/2+50vw)-250px);
+    left: calc((var(--padding)/2+50vh)-250px);
+    border-top: 2px solid lightskyblue;
+    border-bottom: 2px solid lightskyblue
+  }
+</style>
+
+<body>
+  <div class="main"></div>
+  <script>
+    houses = ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"];
+    datas = [
+      "gender", "house", "dateOfBirth", "patronus", "actor", "eyeColor", "hairColour", "HogwartsStaff",
+      "HogwartsStudent"
+    ]
+    houses.forEach(house => {
+      fetch(`http://hp-api.herokuapp.com/api/characters/house/${house}`).then((data) => {
+        let info = data.json();
+        return info;
+      }).then((data) => {
+        displaydata(data);
+      })
+    })
+
+    function displaydata(data) {
+      // console.log(data);
+      var main = document.querySelector(".main");
+      for (var i = 0; i < data.length; i++) {
+        // console.log(data[i]);
+        let box = document.createElement("div");
+        box.setAttribute("class", "box");
+        let content = document.getElementById("content");
+
+        main.appendChild(box);
+        //               <li>Gender:- ${data[i].gender}</li>
+        // <li>House:- ${data[i].house}</li>
+        // box.style = `background:url(${data[i].image})`;
+        if (i == 0) {
+          debugger
+          main.innerHTML += data[i].house;
+        }
+        box.innerHTML += `
+        <img class="myimage" src="${data[i].image}">
+          <ul class="info">
+              <li>DateOfBirth:- ${data[i].dateOfBirth}</li>
+              <li>patronus:- ${data[i].patronus  || "not found"}</li>
+              <li>actor:- ${data[i].actor}</li>
+<li>                                    <span>eyeColor:- ${data[i].eyeColor || "not found"}</span>
+              <span>hairColour:- ${data[i].hairColour || "not found"}</span>
+</li>
+<li>${data[i].HogwartsStaff} ||${data[i].HogwartsStudent}</li>
+<li>Wand wood:${data[i].wand.wood  ||"not found"}</li>
+<li>Wand core:${data[i].wand.core  ||"not found"}</li>
+<li>Wand length:${data[i].wand.length  ||"not found"}</li>
+</ul>
+          <h2>${data[i].name ||"not found"}</h2>
+
+`;
+        // wand wood core length
+      }
+    }
+  </script>
+</body>
+
+</html>

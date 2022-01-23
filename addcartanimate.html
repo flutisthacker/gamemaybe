@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+  <link rel="stylesheet" href="../resources/gradient.css">
+</head>
+<style>
+  .mycart {
+    position: relative;
+  }
+
+  .item {
+    content: var(--data-title);
+    background: #C82333;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    z-index: -2;
+    left: -50px;
+    top: 15px;
+  }
+
+  .item-round {
+    animation: round 2s forwards;
+  }
+
+  @keyframes round {
+    50% {
+      left: -25px;
+      top: -40px;
+    }
+
+    100% {
+      left: 25px;
+      top: -15px;
+    }
+  }
+</style>
+<style>
+  .credit {
+    height: 174px;
+    width: 295px;
+    border-radius: 16px;
+    position: relative;
+  }
+
+  .credit>.frow {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+  }
+
+  .credit>.frow>.type {
+    margin-left: 5px;
+    margin-right: 50px;
+  }
+
+  .credit>.info {
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 20px;
+  }
+</style>
+
+<body>
+  <button class="btn btn-danger p-2">add to cart</button>
+  <div class="mycart"> <i class="fa fa-shopping-cart bg-outline-danger p-2 mr-2"></i>
+    <div class="item" data-title="1">1</div>
+  </div>
+  <!-- <div class="credit visa">
+    <div class="frow">
+      <div class="type">CREDIT</div>
+      <div class="brand">VISA</div>
+    </div>
+    <div class="info mr-2">
+      <div class="credit-name">han solo</div>
+      <div class="credit-num">
+        6542-6534-4562-4562
+      </div>
+    </div>
+  </div> -->
+</body>
+<script>
+  count = 0;
+  document.querySelector(".btn").addEventListener("click", () => {
+    count++;
+    item = document.createElement("div")
+    item.className = "item"
+    item.innerText = count;
+    // item.style = "animation:round 2s forwards;"
+    item.classList.add("item-round")
+    document.querySelector(".mycart").append(item)
+  })
+</script>
+
+</html>

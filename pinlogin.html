@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .login-body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .login {
+    width: 500px;
+    height: 700px;
+    background-color: gray;
+    text-align: center;
+    border-radius: 8px;
+
+  }
+
+  .pinbtns {
+    width: inherit;
+    height: calc(450px - 50px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+
+  }
+
+  .pinbtns .pin,
+  .pin:active,
+  .pin:focus {
+    background-color: #aaa;
+    border: none;
+    border-radius: 50%;
+    margin: 15px;
+    line-height: 120px;
+    font-size: 3rem;
+  }
+
+  #pinid {
+    width: 60%;
+    background-color: #aaa;
+    height: 50px;
+    border-radius: 4px;
+    border: none;
+    margin: 12px;
+    text-align: center;
+    font-size: 2rem;
+
+  }
+</style>
+<style>
+  .textdesign {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(-90deg, #3d4a61, #57698a);
+    font-size: 20rem;
+    padding: 50px;
+  }
+
+  .textdesign3d {
+    width: 100px;
+    height: 100px;
+    color: transparent;
+    text-shadow: -10px 10px 10px rgba(0, 0, 0, .35), -30px 30px 30px rgba(0, 0, 0, .20), -45px 45px 70px rgba(0, 0, 0, .20), 8px -8px 10px rgba(255, 255, 255, .07), -3px 3px 4px rgba(255, 255, 255, .20);
+    box-shadow: -10px 10px 10px rgba(0, 0, 0, .35), -30px 30px 30px rgba(0, 0, 0, .20), -45px 45px 70px rgba(0, 0, 0, .20), 8px -8px 10px rgba(255, 255, 255, .07), inset -3px 3px 4px rgba(255, 255, 255, .20);
+    background: linear-gradient(-90deg, #476670, #4e5e7c);
+    /* filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, .35)), drop-shadow(-30px 30px 30px rgba(0, 0, 0, .20)),
+      drop-shadow(-45px 45px 70px rgba(0, 0, 0, .20)), drop-shadow(8px -8px 10px rgba(255, 255, 255, .7)),
+      drop-shadow(-3px 3px 4px rgba(255, 255, 255, .20))); */
+    /* -webkit-background-clip: text; */
+  }
+
+  .glow {
+    z-index: 1;
+    position: relative;
+    text-shadow: 5px 5px 30px yellow, -5px -5px 30px yellow;
+    transform: scale(0.7);
+  }
+</style>
+
+<body>
+
+  <div class="login-body">
+    <div class="login">
+      <input type="text" id="pinid">
+      <div class="pinbtns">
+        <div class="pin">1</div>
+        <div class="pin">2</div>
+        <div class="pin">3</div>
+        <div class="pin">4</div>
+        <div class="pin">5</div>
+        <div class="pin">6</div>
+        <div class="pin">7</div>
+        <div class="pin">8</div>
+        <div class="pin">9</div>
+        <div class="pin fa fa-backspace" id="del"></div>
+        <div class="pin">0</div>
+        <div class="pin fa fa-check" id="oks"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="textdesign">
+    <p class="textdesign3d">
+      saman
+    </p>
+    <p class="glow">
+      maharjan
+    </p>
+  </div>
+</body>
+<script>
+  oks = document.querySelector("#oks")
+  del = document.querySelector("#del")
+  pinid = document.querySelector("#pinid")
+  mybtns = document.querySelectorAll(".pin");
+  mybtns.forEach((pin) => {
+    pin.addEventListener("click", () => {
+      pinid.value += pin.innerHTML
+    })
+  })
+  del.addEventListener("click", () => {
+    pid = pinid.value
+    pid = pid.slice(0, pid.length - 1)
+    pinid.value = pid;
+  })
+  oks.addEventListener("click", () => {
+    if (pinid.value == "8080") {
+      location.href = "https://www.fb.com"
+    }
+  })
+</script>
+
+</html>

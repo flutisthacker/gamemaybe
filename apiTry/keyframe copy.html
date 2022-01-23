@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<style>
+    .changeForKF{
+    /* border-radius: 50%; */
+    background-color: red;
+    width:100px;
+    height:100px;
+    margin:10px;
+
+}
+.cubic-bezier{
+    /* border-radius: 50%; */
+    background-color: red;
+    width:50px;
+    height:50px;
+    margin:10px;
+    /* position: absolute; */
+    animation: swing 2s infinite;
+    transition: 2s ease;
+}
+</style>
+<body>
+
+    <div class="makeKeyframe">
+        <input type="range" name="keyFrameRange" id="keyFrameRange"><label for="keyFrameRange" id="keyframeLabel">key time</label>
+        <input type="range" name="optValA" id="optValA"><label id="optA" for="optValA">X</label>
+        <input type="range" name="optValB" id="optValB"><label id="optB" for="optValB">Y</label>
+        <select name="" id="keyFrameOptions">
+            <option value="r">r</option>
+            <option value="rotate">rotate</option>
+            <option value="rotateX">rotateX</option>
+            <option value="rotateY">rotateY</option>
+            <option value="rotateZ">rotateZ</option>
+            <option value="rotate3D">rotate3D</option>
+            <option value="translate">translate</option>
+            <option value="translateX">translateX</option>
+            <option value="translateY">translateY</option>
+            <option value="translate3D">translate3D</option>
+            <option value="scale">scale</option>
+            <option value="scaleX">scaleX</option>
+            <option value="scaleY">scaleY</option>
+            <option value="scale3D">scale3D</option>
+            <option value="skew">skew</option>
+            <option value="skewX">skewX</option>
+            <option value="skewY">skewY</option>
+            <option value="matrix">matrix</option>
+        </select>
+        <div class="changeForKF">saman</div>
+    </div>
+</body>
+<script src="jsFunction.js"></script>
+<script>
+    myDom("#keyFrameRange").addEventListener("change" , e=>{
+        keyframevalue= "key frame: "+myDom("#keyFrameRange").value
+        changeInnerText("#keyframeLabel",keyframevalue)
+        onChange()
+    })  
+    myDom("#optValA").addEventListener("change" , e=>{
+        optval= "X: "+myDom("#optValA").value
+        changeInnerText("#optA",optval)
+        onChange()
+    })
+    myDom("#optValB").addEventListener("change" , e=>{
+        optval= "Y: "+myDom("#optValB").value
+        changeInnerText("#optB",optval)
+        onChange()
+    })
+
+function onChange(){
+    let Ova,Ovb,Ovc;
+        if((myDom("#keyFrameOptions").value).includes("rotate")){
+            Ova= (optValA.value/100)*360 +"deg"
+            Ovb= (optValB.value/100)*360 +"deg"
+            Ovc=`${Ova}, ${Ovb}`
+            if(myDom("#keyFrameOptions").value.includes("X")||myDom("#keyFrameOptions").value.includes("Y")||myDom("#keyFrameOptions").value.includes("Z")){
+                Ovc=Ova
+            }
+            else if(myDom("#keyFrameOptions").value.includes("3D")){
+                Ovc+=",50deg,20deg"
+            }
+        }
+        else if((myDom("#keyFrameOptions").value).includes("translate")){
+            Ova= (optValA.value/100)*1136  +"px"
+            Ovb= (optValB.value/100)*720  +"px" //height
+            Ovc=`${Ova}, ${Ovb}`
+            if(myDom("#keyFrameOptions").value.includes("X")||myDom("#keyFrameOptions").value.includes("Y")||myDom("#keyFrameOptions").value.includes("Z")){
+                Ovc=Ova
+            }
+            else if(myDom("#keyFrameOptions").value.includes("3D")){
+                Ovc+=","+(optValA.value+optValB.value)+"px"
+            }
+            
+        }
+        else if((myDom("#keyFrameOptions").value).includes("scale")){
+            Ova= optValA.value /100
+            Ovb= optValB.value /100
+            Ovc=`${Ova}, ${Ovb}`
+            if(myDom("#keyFrameOptions").value.includes("X")||myDom("#keyFrameOptions").value.includes("Y")||myDom("#keyFrameOptions").value.includes("Z")){
+                Ovc=Ova
+            }
+            else if(myDom("#keyFrameOptions").value.includes("3D")){
+                Ovc+=", .5"
+            }
+        }
+        else if((myDom("#keyFrameOptions").value).includes("skew")){
+            Ova= (optValA.value/100)*360 +"deg"
+            Ovb= (optValB.value/100)*360 +"deg"
+            Ovc=`${Ova}, ${Ovb}`
+            if(myDom("#keyFrameOptions").value.includes("X")||myDom("#keyFrameOptions").value.includes("Y")||myDom("#keyFrameOptions").value.includes("Z")){
+                Ovc=Ova
+            }
+        }
+        else if(myDom("#keyFrameOptions").value =="matrix"){
+            // Ovc="2,5,3,4,6,8";
+            Ovc=`${randomToten()},${randomToten()},${randomToten()},${randomToten()},${randomToten()},${randomToten()}`;
+            // matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())
+        }
+        console.log(`transform : ${myDom("#keyFrameOptions").value}(${Ovc})`)
+        myDom(".changeForKF").style = `transform : ${myDom("#keyFrameOptions").value}(${Ovc})`
+}
+
+function randomToten(){
+    return Math.floor(Math.random()*10)
+}
+</script>
+<script>
+    document.querySelectorAll(".cubicbez").forEach(Cb=>{
+        Cb.addEventListener("keypress",e=>{
+            if(e.keyCode==13){
+                cba = document.querySelector("#cba").value
+                cbb = document.querySelector("#cbb").value
+                cbc = document.querySelector("#cbc").value
+                cbd = document.querySelector("#cbd").value
+                // document.querySelector(".cubic-bezier").style.transitionTimingFunction = `cubic-bezier(${cba}, ${cbb}, ${cbc}, ${cbd})`
+                document.querySelector(".cubic-bezier").style.animationTimingFunction = `cubic-bezier(${cba}, ${cbb}, ${cbc}, ${cbd})`
+            }
+        })
+    })
+
+</script>
+</html>

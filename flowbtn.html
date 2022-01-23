@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    background: #161615;
+  }
+
+  .s-btn {
+    position: relative;
+    transform: translate(50%, 50%);
+    padding: 5px;
+    margin: auto;
+  }
+
+  @keyframes connectingDotsAnim {
+    0% {
+      max-width: 10ch;
+    }
+
+    50% {
+      max-width: 11ch;
+    }
+
+    100% {
+      max-width: 11.8ch;
+    }
+  }
+
+  .s-btn:hover {
+    width: 260xp;
+    cursor: pointer;
+  }
+
+  .s-btn:active {
+    transform: scale(.95);
+  }
+
+  .s-btn .btn-content {
+    width: 280px;
+    height: 120px;
+    bottom: -40px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 350ms ease;
+  }
+
+  .s-btn .btn-content .btn-part {
+    width: 100%;
+    height: 40px;
+    position: relative;
+  }
+
+  .s-btn .btn-content .btn-pay {
+    background: linear-gradient(91.59deg, #4e54c8 0%, #8f94fb 100%)
+  }
+
+  .s-btn .btn-content .btn-done {
+    background: #2acd61;
+    font-weight: 100;
+  }
+
+  .s-btn .btn-content .btn-processing {
+    background: #fff;
+  }
+
+  .s-btn .btn-content .btn-processing p {
+    background: #fff;
+    color: #000670 !important;
+    overflow: hidden;
+    animation: connectingDotsAnim 2s ease infinite;
+    animation-direction: alternate-reverse;
+  }
+
+  .s-btn .active {
+    bottom: 0 !important;
+  }
+
+  .s-btn .success {
+    bottom: -80px !important;
+  }
+
+  .s-btn .btn-content p {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* transform: translate(-50%, -50%); */
+  }
+</style>
+<script>
+  function payEvent(elm) {
+    let x = setInterval(() => {
+      elm.classList.add("success");
+      clearInterval(x);
+    }, 2000);
+  };
+</script>
+
+<style>
+  .drop-shadow {
+    background: #000000aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .popup {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .popup-large {
+    width: 800px;
+    height: 600px;
+  }
+
+  .title {
+    height: 50px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #865fe0;
+    font-weight: bold;
+    word-spacing: 5px;
+    font-size: 20px;
+  }
+
+  .body {
+    flex: 1;
+    color: #333;
+    text-align: center;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .buttons {
+    height: 70px;
+    display: flex;
+    background: #865fe0;
+    justify-content: space-evenly;
+  }
+
+  .buttons button {
+    background: #9069e8;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 130px;
+  }
+
+  button:hover {
+    box-shadow: inset 0 100px 0 rgba(255, 255, 255, .1);
+  }
+</style>
+
+<style>
+  .btn-ripple {
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    font-family: sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background: #ff4754;
+    border-radius: 4px;
+    padding: 1.4rem 4rem;
+
+    transition-property: opacity, box-shadow, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: .2s;
+  }
+
+  .btn-ripple:hover {
+    cursor: pointer;
+    opacity: .8;
+    transform: translateY(-.1rem);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, .25),
+      0 10px 10px rgba(0, 0, 0, .22);
+  }
+
+  .btn-ripple:active {
+    transform: translateY(.1rem);
+  }
+
+  .btn-ripple .ripple {
+    pointer-events: none;
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .6);
+    opacity: 0;
+    animation: ripples .6s ease-in-out;
+  }
+
+  @keyframes ripples {
+    from {
+      opacity: .7;
+      transform: scale(0);
+    }
+
+    80% {
+      opacity: .3;
+    }
+
+    to {
+      opacity: .1;
+      transform: scale(1.2);
+    }
+  }
+</style>
+<script>
+  const onClick = event => {
+    const button = event.target;
+    const appendRipple = document.createElement('div');
+    appendRipple.classlist.add('ripple');
+
+    const size = button.offsetWidth * 2 + "px";
+    appendRipple.styleheight = appendRipple.style.width = size;
+
+    const x = event.clientX = button.offsetLeft = button.offsetWidth;
+    const y = event.clientY = button.offsetTop = button.offsetHeight;
+
+    appendRipple.style.left = x + "px";
+    appendRipple.style.top = y + "px";
+
+    button.appendChild(appendRipple)
+
+    setTimeout(() => {
+      button.removeChild(appendRipple)
+    }, 600);
+  }
+  document.querySelectorAll(".btn-ripple").forEach(button => {
+    button.addEventListener("click", onClick);
+  });
+</script>
+
+<body>
+
+  <button class="s-btn">
+    <div class="btn-content active" onclick="this.classlist.remove('active');payEvent(this)">
+      <div class="btn-part btn-done">
+        <p>success</p>
+      </div>
+      <div class="btn-part btn-processing">
+        <p>connecting...</p>
+      </div>
+      <div class="btn-part btn-pay">
+        <p>pays</p>
+      </div>
+    </div>
+  </button>
+
+
+  <div class="drop-shadow">
+    <div class="popup ">
+      <div class="title">just checking</div>
+      <div class="body">
+        <h1>del you acc</h1>
+        <p>this is finall and you will be unable to recover</p>
+      </div>
+      <div class="buttons"><button>yes</button><button>no</button></div>
+    </div>
+    <button class="btn-ripple">ripple</button>
+  </div>
+</body>
+
+</html>

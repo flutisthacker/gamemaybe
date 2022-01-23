@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea type="text" name="" id="json" rows="30" cols="60"></textarea>
+    <textarea type="text" name="" id="XML" rows="30" cols="60"></textarea>
+    <script>
+        /* 
+{"employees":[{"firstName":"Chris","lastName":"Pratt"},{"firstName":"Christian","lastName":"Bale"},{"firstName":"Chris","lastName":"Evens"}]}
+        
+{"root":{"shape":" ","god":" ","vijmantra":"Lam लँ","experiences":" ","color":"Red","sanskrit_name":"muldhara मुलधारा","Location":"Base of spine","Glands":"Adrenaline","elements":"Earth","sense":"Smell","Spice":"Ginger","rights":"To have","frequency":"256","note":"C","Planets":"Saturn earth","connected with":"grounding safety survival trust","food":"protien and meat","main purpose":"source of support"}}
+typeof a
+Array.isArray(a)
+*/
+
+function insertArray(target, body, startIndex)
+{
+    let tail = target.splice(startIndex); // target is now [1,2] and the head
+    return [].concat(target, body, tail);
+}
+
+
+       exml=document.querySelector("#XML")
+       document.querySelector("#json").addEventListener("keypress",e=>{
+           if(e.keyCode===13){
+            var jsonValue=document.querySelector("#json").value
+            var Jsonparsed=JSON.parse(jsonValue);
+            makeXML(Jsonparsed);
+            }
+        })
+
+       jSon=document.querySelector("#json")
+       exml.addEventListener("keypress",e=>{
+           if(e.keyCode===13){
+            var xmlValue=exml.value
+            xmlValue=xmlValue.replaceAll("</","")
+            xmlValue=xmlValue.replaceAll("<","")
+            xmlValue=xmlValue.replaceAll(">","")
+            console.log(xmlValue.split("\n"))
+            set= new Set(xmlValue.split("\n"))
+            let xmlArray = Array.from(set)
+            let xmlArray2=[];
+            let tempArr=[]
+            xmlArray.forEach((xarr,ind)=>{
+                if(ind==0){
+                    xmlArray2.push(`${xarr}`)
+                    tempArr=[]
+                }
+                if((ind%2 ==0 &&ind>0) == true){
+                    console.log(xarr,ind)
+                    xmlArray2.push(`[${xarr},${xmlArray[ind-1]}]`)
+                    tempArr=[]
+                }
+                if(ind==xmlArray.length){
+                    console.log("end")
+                }
+            })
+            console.log(xmlArray2)
+            }
+        })
+
+function isArrayOrObject(myObj){
+    if(Array.isArray(myObj) ===true){
+        return "array";
+    }
+    if( typeof myObj==="object"){
+        return "object";
+    }
+}
+
+function makeXML(Jsonparsed){
+            if(Array.isArray(Jsonparsed) ===true){
+                Jsonparsed.forEach(jpjp=>{                
+                    console.log(Jsonparsed)
+                            exml.innerHTML+=(`<array1>\n`)
+                            makeXML(jpjp)
+                            exml.innerHTML+=(`</array1>\n`)
+                            console.log(jpjp)
+                        })
+                        console.log("array")
+            }
+            else if(Array.isArray(Jsonparsed) === false && typeof Jsonparsed !=="object"){
+                console.log("none")
+                exml.innerHTML+=(`${Jsonparsed}\n`)
+            }
+            else{
+                console.log("object")
+                Object.keys(Jsonparsed).forEach(jpjp=>{                
+                    exml.innerHTML+=(`<${jpjp}>\n`)
+                    makeXML(Jsonparsed[jpjp])
+                    exml.innerHTML+=(`</${jpjp}>\n`)
+                })
+            }
+}
+function makeXML2(Jsonparsed){
+    Object.keys(Jsonparsed).forEach(jp=>{
+            exml.innerHTML+=(`<${jp}>`)
+            console.log(Jsonparsed[jp]  )
+            if(Array.isArray(Jsonparsed[jp]) ===true|| typeof Jsonparsed[jp]==="object"){
+                if(Array.isArray(Jsonparsed[jp]) ===true){
+                    Jsonparsed[jp].forEach(jpjp=>{                
+                                exml.innerHTML+=(`<employee>`)
+                                Object.keys(jpjp).forEach(pjpj=>{
+                                    exml.innerHTML+=(`<${pjpj}> ${jpjp[pjpj]} </${pjpj}>`)
+                                })
+                                exml.innerHTML+=(`</employee>`)
+                            })
+                        }
+                        else{
+                            Object.keys(Jsonparsed[jp]).forEach(jpjp=>{                
+                                console.log(jpjp)
+                                exml.innerHTML+=(`<${jpjp}>`)
+                                exml.innerHTML+=(`${Jsonparsed[jp][jpjp]}`)
+                                // Object.keys(jpjp).forEach(pjpj=>{
+                                //     exml.innerHTML+=(`<${pjpj}> ${jpjp[pjpj]} </${pjpj}>`)
+                                // })
+                                exml.innerHTML+=(`</${jpjp}>`)
+                            })                            
+                }
+            }
+            exml.innerHTML+=(`</${jp}>`)
+        })
+
+}
+</script>
+</body>
+</html>
+
+<!-- 
+    a>(b>cd)(b>cd)(b>cd)
+<employees>
+    <employee>
+    <firstName>
+    </firstName>
+    <lastName>
+    </lastName>
+    </employee>
+</employees>
+
+ -->

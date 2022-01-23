@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../resources/perfect.css">
+</head>
+<style>
+  body {
+display: flex;
+    flex-direction: row;
+  }
+
+  .query {
+    font-size: 2rem;
+  }
+
+  .date {
+    font-size: 1rem;
+  }
+
+  .degree {
+    font-size: 5rem;
+    font-weight: 900;
+  }
+
+  .degrees,
+  .clouds {
+    font-size: 1.5rem;
+  }
+
+  .myweather {
+    width: 900px;
+    height: 600px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    z-index: -2;
+    background: center contain;
+    box-shadow: 12px 12px 5px 1px gray, -6px -6px 5px 1px gray;
+  }
+
+  #search{
+    background: transparent;
+  }
+</style>
+
+<body>
+  <div class="myweather bg-lg2">
+    <img class="degrees" src="#" height="100%" width="100%">
+    <!-- <input type="search" name="country" id="search"> -->
+  </div>
+<div class="seconddiv">
+  <button id="search">search</button>
+  <p class="query" id="query">0</p>
+  <div class="date">0</div>
+  <p class="degree"></p>
+</div>
+
+    <script>
+    document.querySelector("#search").addEventListener("click", (e) => {
+        getResults()
+    })
+    const api = {
+      key: "5d8b83d671479b0a9a1c4ed5fd08ec4a",
+      baseurl: "https://picsum.photos",
+      path:{
+        list:"v2/list",
+        }
+    }
+    // console.log(getResults("mumbai"))
+
+    function getResults() {
+      fetch(`${api.baseurl}/v2/list?page=2&limit=100`)
+        .then(img => {
+          return img.json();
+        }).then(displayResult);
+    }
+
+    function displayResult(img) {
+      // console.log(img)
+      // debugger
+      totalkeys=(Object.keys(img)).length
+      randomNUmber= Math.floor(Math.random()*totalkeys)
+      document.querySelector(".query").innerHTML = `<a href="${img[randomNUmber].download_url}">link</a>`
+      document.querySelector(".degrees").src = `${img[randomNUmber].download_url}`
+      document.querySelector(".degree").innerHTML = `${img[randomNUmber].id}`;
+      // document.querySelector(".degree").innerHTML = Math.round(weather.main["temp"]) + "°C";
+      document.querySelector(".date").innerHTML =`${img[randomNUmber].author}`;
+      // &0176;
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    body{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        background:#12121d;
+    display:flex;
+    flex-direction: column;
+    row-gap:10px ;
+    }
+    input{
+        margin:20px;
+        padding:20px 20px 20px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    -webkit-accent-color:#ff4d6d;
+    }
+    #text{
+
+    }
+
+    #text::selection{
+        /* background-color: #42C6FF; */
+        background-color: #AF26FF;
+        color:#ffffff;
+    }
+    #morse{}
+</style>
+ <input type="text" placeholder="enter your text" name="" id="text">
+<input type="text" placeholder="enter your morse" name="" id="morse">
+<script>
+var text=document.querySelector("#text")
+var morse=document.querySelector("#morse")
+
+var morsed=[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","  -.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..-----",".----","..---","...--","....-",".....","-....","--...","---..","----."," "]
+var texted=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9","  "]
+
+text.addEventListener("keyup", (e)=>{
+    if(e.keyCode){
+        textToMorse(text.value)
+    }
+})
+morse.addEventListener("keyup", (e)=>{
+    if(e.keyCode==13){
+        morseToText(morse.value)
+    }
+})
+
+function morseToText(mors){
+    var morss=mors.split(" ")
+    var txtme="";
+    morss.forEach(mmors => {
+        var mytext=texted[morsed.indexOf(mmors)];
+        console.log(" my:"+mytext)
+        txtme += mytext 
+    });
+    text.value=txtme
+}
+
+function textToMorse(txt){
+    var txts=txt.split("")
+    var morsme="";
+    txts.forEach(ttxt => {
+        var mymorse=morsed[texted.indexOf(ttxt)];
+        console.log("has"+mymorse)
+        morsme +=mymorse+" "
+    });
+    morse.value = morsme 
+    flash("red")
+}
+function flash(col){
+    setTimeout(setColor(col),3000)
+}
+function setColor(col){
+    document.body.style= "background-color:" +col
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="animeName"></select>
+    <script src="jsFunction.js"></script>
+
+<script>
+var animeNames=[]
+
+async function animefacts(){
+    aa=await fetchAPI(`https://anime-facts-rest-api.herokuapp.com/api/v1`)
+    console.log(aa)
+    aa=JSON.parse(aa)
+    aa.data.forEach(d=>{
+        animeNames.push(d["anime_name"])
+        // document.body.innerHTML+=`<p>${d["anime_id"]}</p> <p>${d["anime_name"]}</p>  <img src='${d["anime_img"]}' alt="url" width="500px" height="500px">`
+})
+}
+async function putName(){
+    await animefacts();
+    animeNames.forEach(anime=>{
+        opt=document.createElement("option")
+        opt.value=anime
+        opt.innerText=anime
+        document.querySelector("#animeName").append(opt)
+    })
+}
+
+
+document.querySelector("#animeName").addEventListener("change",async ()=>{
+    myvalue=document.querySelector("#animeName").value;
+    await fetchFact(myvalue)
+})
+
+myrandom=Math.floor(Math.random() *animeNames.length)
+
+async function fetchFact(url){
+    console.log(url)
+let aa=await fetchAPI(`https://anime-facts-rest-api.herokuapp.com/api/v1/${url}`)
+console.log(aa)
+    aa=JSON.parse(aa)
+        document.body.innerHTML+=`  <img src='${aa.img}' alt="url" width="500px" height="500px">`
+        aa.data.forEach((facts,index)=>{
+            document.body.innerHTML+=`<p>${index+1} ${facts.fact}</p>`
+        })
+}
+
+
+// https://chandan-02.github.io/anime-facts-rest-api/
+// :anime_name/:fact_id
+</script>
+</body>
+</html>

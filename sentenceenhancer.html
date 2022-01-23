@@ -8,16 +8,41 @@
 <body>
 <input type="text" id="takesentence">
 <p class="myanswer"></p>
+<p class="myanswer1"></p>
 <script>
 tksentence= document.querySelector("#takesentence");
 
 tksentence.addEventListener("keypress", (e)=>{
   if(e.keyCode==13){
+    twopairswap(tksentence.value)
     extendsentence(tksentence.value)
+    cubevaluechanger(tksentence.value);
   }
 })
 
-
+function cubevaluechanger(tk){
+  tks=tk.split("")
+  cubemoves=["u","l","f","r","b","d","U","B","L","F","R","D","u|","l|","f|","r|","b|","d|","U|","B|","L|","F|","R|","D|","u2","l2","f2","r2","b2","d2","U2","B2","L2","F2","R2","D2"]
+  pot=["u","l","f","r","b","d"]
+  tops=["U","B","L","F","R","D"]
+  newtk=[];
+  console.log("changed algs");
+  for(i=0;i<tks.length;i++){
+    myindex=pot.indexOf(tks[i]);
+    console.log(tks[i],myindex,tops[myindex])
+    newtk.push(tops[myindex])
+  }
+  console.log(newtk)
+}
+function twopairswap(rec){
+  asents = rec.split("");
+  let asentss=[];
+  sends = [asents[2],asents[3],asents[0],asents[1]]
+  for(i=0;i<=3;i++){
+    asentss.push(asents.shift());
+  }
+  console.log((sends) + (asents))
+}
 function extendsentence(sent,tk){
   sents=sent.split(" ")
   highest=0;
@@ -26,8 +51,8 @@ function extendsentence(sent,tk){
     highest = send.length
     }
   });
-  console.log(highest)
-  console.log(sents)
+  // console.log(highest)
+  // console.log(sents)
 
   var myArr=[];
   let ssend="";
@@ -37,7 +62,7 @@ function extendsentence(sent,tk){
     }
     ssend+= send;
     myArr.push(ssend)
-    console.log(ssend)
+    // console.log(ssend)
     ssend="";
   });
 

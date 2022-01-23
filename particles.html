@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ededed;
+  }
+
+  particle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+  }
+
+  canvas {
+    width: 100%;
+    height: 100vh;
+  }
+</style>
+
+<body data-particle="../gamemaybe/ironman .png">
+  <canvas id="paint-board"></canvas>
+</body>
+
+
+<script>
+  function pop(e) {
+    const amt = 30;
+    let x = e.clientX,
+      y = e.clientY + window.scrollY;
+
+    const create = (x, y) => {
+      for (let i = 0; i < 100; i++) {
+        createParticle(x, y, event.target.dataset.particle)
+      }
+    }
+    if (e.clientX === 0 && e.clientY === 0) {
+      const box = e.target.getBoundingClentRect();
+      x = box.left + box.width / 2;
+      y = box.top + box.height / 2;
+    }
+    create(x, y);
+  }
+
+  function createParticle(x, y, img) {
+    const particle = document.createElement("particle");
+    document.body.appendChild(particle);
+    const size = Math.floor(Math.random() * 28 + 8)
+    const destinationX = (Math.random() - .5 * 300);
+    const destinationY = (Math.random() - .5 * 300);
+    const rotation = (Math.random() * 500)
+    const duration = (Math.random() * 1000 + 4000);
+    const delay = Math.random() * 250;
+
+    particle.style.backgroundImage = `url(${img})`
+    particle.style.width = particle.styleheight = `${size}px`
+
+    const animation = particle.animate([{
+        transform: `translate(-50%,-50%)
+      translate(${x}px, ${y}px)
+      rotate(0deg)`,
+        opacity: 1
+      }, {
+        transform: `translate(-50%,-50%)
+      translate(${x+destinationX}px, ${y+destinationY}px)
+      rotate(${rotation}deg)`,
+        opacity: 0
+      }
+
+    ], {
+      duration,
+      easing: 'cubic-bezier(0,.9,.57,1)',
+      delay
+    });
+    animation.onfinish = removeParticle;
+  }
+
+  function removeParticle(e) {
+    e.srcElement.effect.target.remove();
+  }
+  if (document.body.animate)
+    document.body.addEventListener("click", pop)
+</script>
+
+<script>
+  const canvas = document.getElementById("paint-board")
+  const context = canvas.getContext("2d")
+  canvas.width = canvas.getBoundingClientRect().width
+  canvas.height = canvas.getBoundingClientRect().height
+  context.lineJoin = "round";
+  canvas.lineCap = "round";
+  context.lineWidth = 2;
+  context.strokeStyle = "#dd4754";
+
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  function draw(e) {
+    if (!isDrawing) {
+      return e;
+    }
+    context.beginPath();
+    context.moveTo(lastX, lastY);
+    context.lineTo(e.offsetX, e.offsetY);
+    context.stroke();
+
+    lastX = e.offsetX
+    lastY = e.offsetY
+  }
+
+  canvas.addEventListener("mousedown", e => {
+
+    isDrawing - true;
+    lastX = e.offsetX
+    lastY = e.offsetY
+
+  })
+
+  canvas.addEventListener("mousemove", draw)
+  canvas.addEventListener("mouseup", () => {
+    isDrawing = false;
+  });
+  canvas.addEventListener("mouseout", () => {
+    isDrawing = true;
+  });
+</script>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  pokename = fetch("https://pokemon-go1.p.rapidapi.com/pokemon_names.json", {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "pokemon-go1.p.rapidapi.com",
+        "x-rapidapi-key": "87347cf32cmsh313069fc5727913p1579bbjsnbf34cc5a6919"
+      }
+    })
+    .then(response => {
+      console.log(response);
+      return response;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  ass = getData()
+  async function getData() {
+    const url = "https://pokeapi.co.api/v2/pokemon/ditto";
+    const response = await fetch(url);
+    const data = await response.json();
+    return data
+  }
+
+
+  fetch("https://weatheronline-weather-forecast-basic-v1.p.rapidapi.com/api/getlocation?city=kathmandu", {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "weatheronline-weather-forecast-basic-v1.p.rapidapi.com",
+        "x-rapidapi-key": "87347cf32cmsh313069fc5727913p1579bbjsnbf34cc5a6919"
+      }
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+  fetch("https://weatheronline-weather-forecast-basic-v1.p.rapidapi.com/api/getforecastdata?KEY=%7Bkey%7D", {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "weatheronline-weather-forecast-basic-v1.p.rapidapi.com",
+        "x-rapidapi-key": "87347cf32cmsh313069fc5727913p1579bbjsnbf34cc5a6919"
+      }
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+<script>
+  async function getfb() {
+    const url = "https://graph.facebook.com/saman.maharjan.3/photos?access_token=2016642158628384";
+    const response = await fetch(url);
+    const data = await response.json();
+    return data
+  }
+  console.log(getfb())
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: '2016642158628384',
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: 'v7.0'
+    });
+    FB.api(
+      '/me',
+      'GET', {
+        "fields": "id,name"
+      },
+      function (response) {
+        // Insert your code here
+      }
+    );
+    FB.ui({
+      method: 'share',
+      href: 'https://developers.facebook.com/docs/'
+    }, function (response) {});
+
+    FB.login(function (response) {
+      if (response.authResponse) {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function (response) {
+          console.log('Good to see you, ' + response.name + '.');
+        });
+      } else {
+        console.log('User cancelled login or did not fully authorize.');
+      }
+    });
+    FB.getLoginStatus(function (response) {
+      statusChangeCallback(response);
+    });
+  };
+</script>
+
+</html>

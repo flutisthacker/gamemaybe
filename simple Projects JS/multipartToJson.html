@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    body{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        display:flex;
+        flex-direction:column ;
+    }
+    #json,#boundary{
+        margin:40px;
+    }
+
+    #json{
+        width:900px;
+        height:300px;
+    }
+    #mjson,#mform{
+        width:450px;
+        height:200px;
+    }
+</style>
+    <p>json to multipart</p>
+    <input type="text" name=""  id="json" placeholder="tyyoe json"></textarea>
+    <input type="text" name="" id="boundary" placeholder="type boundry">
+<div id="twoData">
+    <textarea name="" id="mform" cols="30" rows="10"></textarea>
+    <textarea name="" id="mjson" cols="30" rows="10"></textarea>
+</div>
+<button class="btn" onclick="changeMToJ()">change</button>
+<script>
+   var mpartfdata ="";        
+   var mjsondata ="";        
+    function changeMToJ(){
+        var boundary = document.querySelector("#boundary").value
+        // var jsoon = document.querySelector("#json").value
+        jsoons=(document.querySelector("#json").value).split(",");
+        jsoons.forEach((item,index) => {
+        items=item.split(":")
+
+        mpartfdata += "--"+boundary.toUpperCase()+"\n Content-Disposition:form-data; name='"+ items[0]+"'\n"+items[1]
+        if(index<items.length+1){
+            mpartfdata+="\n"
+        }
+        if(index==items.length+1){
+            mpartfdata=mpartfdata+"\n--"+boundary.toUpperCase()+"--"
+        }
+        console.log(mpartfdata)
+    });
+    document.querySelector("#mform").value =mpartfdata    
+changeToJson()
+}
+
+function changeToJson(){
+    jsoons=(document.querySelector("#json").value).split(",");
+    jsoons.forEach((item,index) => {
+        items=item.split(":")
+        console.log(items)
+        mjsondata+= `"${items[0]}" : "${items[1]}"`
+        if (index==items.length+1){
+            mjsondata+=""
+        }else{
+            mjsondata+=","
+
+        }
+        console.log(mjsondata)
+    });
+    document.querySelector("#mjson").value ="{"+mjsondata+"}"    
+
+    }
+</script>
+</body>
+</html>

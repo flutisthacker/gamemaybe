@@ -1,0 +1,15 @@
+{
+  "manifest_version":2,
+  "name":"all index",
+  "description":"quick launch saman ",
+  "version":"1.0.0",
+
+  "browser_action":{
+    "default_title":"instapic save",
+    "default_popup":"index.html"
+  },
+  "permissions":["activeTab"],
+  "chrome_url_override":{
+    "newtab":"index.html"
+  }
+  }

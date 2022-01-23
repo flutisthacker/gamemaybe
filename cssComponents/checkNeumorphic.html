@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    background: #55b9f3;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .neumorphic {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background: #55b9f3;
+    box-shadow: 13px 13px 23px #489dcf, -13px -13px 23px #62d5ff;
+  }
+
+  .neubtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 30px #e9e9e8;
+    padding: 0 50px;
+  }
+
+  .grid {
+    width: 100px;
+    height: 100px;
+    display: grid;
+    position: relative;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .suare {
+    margin: 1px;
+    background: red;
+  }
+
+  input[type="radio"] {
+    /* opacity: 0; */
+  }
+
+
+
+  .suare.active {
+    background: green;
+  }
+
+  #newcolor {
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+  }
+
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  input[type="color"]::-webkit-color-swatch {
+    border-radius: 50%;
+  }
+
+  input {
+    margin-bottom: 10px;
+  }
+
+  section {
+    width: 100%;
+    height: 100vh;
+  }
+</style>
+
+<body>
+  <div class="neumorphic">
+  </div>
+  <div class="neubtn">
+    <input type="color" name="" id="newcolor">
+    <label for="neuDistance">Size: <span id="nsizeval">0</span></label>
+    <input class="range" type="range" name="neuDistance" min="0" value="0" max="100" id="neuDistance">
+    <label for="neuborder">Radius: <span id="nborderval">0</span></label>
+    <input class="range" type="range" name="" min="0" value="0" max="100" id="neuborder">
+    <input class="range" type="range" name="" min="100" value="0" max="500" id="neuSize">
+    <label for="neuint">Intensity: <span id="nintval">0</span></label>
+    <input class="range" type="range" name="" min="0" value="0" max="25" id="neuint">
+    <label for="neuBlur">Blur: <span id="nBlurval">0</span></label>
+    <input class="range" type="range" name="" min="0" value="0" max="50" id="neublur">
+    <div class="grid">
+      <label for="stleft" class="suare">
+      </label>
+      <input type="radio" name="checks" value="abxy" id="stleft" class="suareR">
+      <label for="sbleft" class="suare">
+      </label>
+      <input type="radio" name="checks" value="axby" id="sbleft" class="suareR">
+      <label for="sbright" class="suare">
+      </label>
+      <input type="radio" name="checks" value="aybx" id="sbright" class="suareR">
+      <label for="stright" class="suare">
+      </label>
+      <input type="radio" name="checks" value="axyb" id="stright" class="suareR">
+    </div>
+    <div class="grid">
+      <label for="stleft" class="suare">
+      </label>
+      <input type="radio" name="checkss" value="normal" id="stleft" class="suareS">
+      <label for="stright" class="suare">
+      </label>
+      <input type="radio" name="checkss" value="inset" id="stright" class="suareS">
+      <label for="sbleft" class="suare">
+      </label>
+      <input type="radio" name="checkss" value="lgab" id="sbleft" class="suareS">
+      <label for="sbright" class="suare">
+      </label>
+      <input type="radio" name="checkss" value="lgba" id="sbright" class="suareS">
+    </div>
+    <select name="" id="neuShadow">
+      <option value="abxy">normal</option>
+      <option value="axyb">bhitra</option>
+      <option value="axby">\diagonal</option>
+      <option value="aybx">/diagonal</option>
+    </select>
+    <select name="" id="neuShape">
+      <option value="normal">bahira</option>
+      <option value="inset">bhitra</option>
+      <option value="lgab">concave</option>
+      <option value="lgba">uncave</option>
+    </select>
+
+  </div>
+  <script src="colorchange.js"></script>
+  <script>
+    neubtn = document.querySelector(".neubtn")
+    neumorphic = document.querySelector(".neumorphic")
+
+    neuborder = neubtn.querySelector("#neuborder")
+    newcolor = neubtn.querySelector("#newcolor")
+    neublur = neubtn.querySelector("#neublur")
+    neuShadow = neubtn.querySelector("#neuShadow")
+    neuShape = neubtn.querySelector("#neuShape")
+    neuSize = neubtn.querySelector("#neuSize")
+    neuint = neubtn.querySelector("#neuint")
+    neuDistance = neubtn.querySelector("#neuDistance")
+    suareRs = neubtn.querySelectorAll(".suareR")
+    suareSs = neubtn.querySelectorAll(".suareS")
+    const tldeg = 145;
+    const trdeg = 225
+    const brdeg = 315;
+    const bldeg = 45;
+    let shadowdeg = 145;
+
+    let nblur = 23;
+    let ndis = 0;
+    let nint = 15;
+    let nrad = 50;
+    let nsize = 13;
+    let ncolor = "#55b9f3";
+    let ncolorx = hexToHsl(ncolor, nint);
+    let ncolory = hexToHsl(ncolor, Math.floor(nint * .5));
+    let nshape = "normal";
+    let nshadow = "normal";
+    putValue(neublur, nblur);
+    putValue(neuSize, nsize);
+    putValue(neuDistance, nsize);
+    putValue(neuint, nint);
+    putValue(newcolor, ncolor);
+
+    function putValue(ele, val) {
+      ele.value = val;
+    }
+    suareRs.forEach(s => {
+      s.addEventListener("click", () => {
+        setNeuMorphic(neumorphic, selectShadow(s.value, ""), nrad, selectShape(nshape))
+        if (s.previousElementSibling.classList.contains("active")) {
+          s.previousElementSibling.classList.remove("active")
+        } else {
+          s.previousElementSibling.classList.add("active")
+        }
+      })
+    })
+    suareSs.forEach(s => {
+      s.addEventListener("click", () => {
+        setNeuMorphic(neumorphic, selectShadow(neuShadow.value, ""), nrad, selectShape(s.value))
+      })
+    })
+
+
+    newcolor.addEventListener("change", () => {
+      ncolor = newcolor.value;
+      neumorphic.style.backgroundColor = ncolor;
+      document.body.style.backgroundColor = ncolor;
+      ncolorx = hexToHsl(ncolor, nint);
+      ncolory = hexToHsl(ncolor, 0 - nint);
+      setNeuMorphic(neumorphic, selectShadow(neuShadow.value, ""), nrad, selectShape(nshape))
+
+    })
+    neuborder.addEventListener("change", () => {
+      nrad = neuborder.value;
+      // console.log(nrad)
+      neubtn.querySelector("#nborderval").innerHTML = nrad;
+      setNeuMorphic(neumorphic, selectShadow(neuShadow.value, ""), nrad, selectShape(nshape))
+
+    })
+    neuSize.addEventListener("change", () => {
+      ndis = neuSize.value;
+      neumorphic.style = `height:${ndis}px; width:${ndis}px`
+      // console.log(nsize)
+    })
+    neuDistance.addEventListener("change", () => {
+      nsize = neuDistance.value;
+      neubtn.querySelector("#nsizeval").innerHTML = nsize;
+      // console.log(nsize)
+    })
+    neuint.addEventListener("change", () => {
+      nint = neuint.value;
+      // console.log(nint)
+      neubtn.querySelector("#nintval").innerHTML = nint;
+      ncolorx = hexToHsl(ncolor, nint);
+      ncolory = hexToHsl(ncolor, 0 - nint);
+      setNeuMorphic(neumorphic, selectShadow(neuShadow.value, ""), nrad, selectShape(nshape))
+
+    })
+    neuSize.addEventListener("change", () => {
+      nsize = neuSize.value;
+      neubtn.querySelector("#nsizeval").innerHTML = nsize;
+      // console.log(nsize)
+      setNeuMorphic(neumorphic, selectShadow(neuShadow.value, ""), nrad, selectShape(nshape))
+
+    })
+    neublur.addEventListener("change", () => {
+      nblur = neublur.value;
+      // console.log(nblur)
+      neubtn.querySelector("#nBlurval").innerHTML = nblur;
+      setNeuMorphic(neumorphic, selectShadow(neuShadow.value, ""), nrad, selectShape(nshape))
+
+    })
+    neuShadow.addEventListener("change", () => {
+      // neuShadow = neubtn.querySelector("#neuShadow").value;
+      nshadow = neuShadow.value;;
+      setNeuMorphic(neumorphic, selectShadow(nshadow, ""), nrad, selectShape(nshape));
+    })
+    neuShape.addEventListener("change", () => {
+      // neuShadow = neubtn.querySelector("#neuShadow").value;
+      nshape = neuShape.value
+      setNeuMorphic(neumorphic, selectShadow(neuShadow.value, ""), nrad, selectShape(nshape));
+    })
+
+    function setBoxShadow(ele, bshadow) {
+      ele.style.boxShadow = bshadow;
+    }
+
+    function setBackground(ele, bg) {
+      ele.style.background = bg;
+    }
+
+    function setNeuMorphic(element, selectedshadow, rad, color) {
+      element.style.borderRadius = `${rad}%`;
+      element.style.background = color;
+      element.style.boxShadow = selectedshadow;
+      codetext = `border-radius:${rad}%;
+      background:${color};
+      box-shadow:${selectedshadow}`;
+      console.clear()
+      console.log(codetext)
+    }
+
+    function addMinutes(date, minutes) {
+      //   var d = new Date();
+      // d.setHours(15);
+      return new Date(date.getTime() + minutes * 60000);
+    }
+
+    function selectShadow(ele, inset) {
+      switch (ele) {
+        case "abxy":
+          // console.log("normal")
+          shadowdeg = tldeg;
+          return `${inset} ${nsize}px ${nsize}px ${nblur}px ${ncolorx},${inset} ${0-nsize}px ${0-nsize}px ${nblur}px ${ncolory}`
+          break;
+        case "axyb":
+          // console.log("inset")
+          shadowdeg = trdeg;
+          return `${inset} ${0-nsize}px ${0-nsize}px ${nblur}px ${ncolorx},${inset} ${nsize}px ${nsize}px ${nblur}px ${ncolory}`
+          break;
+        case "axby":
+          // console.log("axby")
+          shadowdeg = bldeg;
+          return `${inset} ${0-nsize}px ${nsize}px ${nblur}px ${ncolorx},${inset} ${nsize}px ${0-nsize}px ${nblur}px ${ncolory}`
+          break;
+        case "aybx":
+          shadowdeg = brdeg;
+          // console.log("aybx")
+          return `${inset} ${nsize}px ${0-nsize}px ${nblur}px ${ncolorx},${inset} ${0-nsize}px ${nsize}px ${nblur}px ${ncolory}`
+          break;
+        default:
+          return `${inset} ${nsize}px ${nsize}px ${nblur}px ${ncolorx},${inset} ${0-nsize}px ${0-nsize}px ${nblur}px ${ncolory}`
+      }
+    }
+
+    function selectShape(ele) {
+      switch (ele) {
+        case "lgab":
+          return `repeating-linear-gradient(${shadowdeg}deg,${ncolorx},${ncolory})`
+          break;
+        case "lgba":
+          return `repeating-linear-gradient(${shadowdeg}deg,${ncolory},${ncolorx})`
+          break;
+        case "inset":
+          setBoxShadow(neumorphic, selectShadow(ele, "inset"));
+          return ncolor;
+          break;
+        case "normal":
+          setBoxShadow(neumorphic, selectShadow(ele, ""));
+          return ncolor;
+          break;
+        default:
+          return `default ${nsize}px ${nsize}px ${nblur}px ${ncolorx}, ${0-nsize}px ${0-nsize}px ${nblur}px ${ncolory}`
+      }
+    }
+  </script>
+</body>
+
+</html>

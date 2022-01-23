@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+
+<style>
+  .card {
+    max-width: 300px;
+
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    z-index: 0;
+    overflow: hidden;
+    background: #ff00ad;
+  }
+
+  .card-heading,
+  .card-content {
+    padding: 15px;
+  }
+
+  .card-heading *,
+  .card-content * {
+    color: #fff;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -55%;
+    left: -20px;
+    width: 120%;
+    height: 100%;
+    background: #5203fc;
+    z-index: -1;
+    transform: rotate(-10deg);
+    border-radius: 5px;
+    transition: .4s;
+  }
+
+  .card:hover::before {
+    transform: rotate(0deg);
+    top: 0;
+  }
+
+  .light {
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    /* border-radius: 50%; */
+    pointer-events: none;
+  }
+
+  .light.on {
+    background: radial-gradient(rgba(255, 255, 255, .4)0%, rgba(255, 255, 255, 0) 60%);
+    z-index: 2;
+  }
+</style>
+
+<body>
+  <div class="light brcircle"></div>
+  <div class="card .centerize-fix">
+    <div class="card-heading">
+      <h1>Card heading</h1>
+    </div>
+    <div class="card-content">
+      <p>hover over card</p>
+    </div>
+  </div>
+
+  <script>
+    var light = document.querySelector('.light');
+    document.querySelector('.card').addEventListener("mousemove", (e) => {
+      light.classList.add("on");
+      light.style =
+        `left: ${e.pageX - light.offsetWidth / 2}px;        top: ${e.pageY - light.offsetHeight / 2}px;`;
+    });
+    document.querySelector('.card').addEventListener("mouseout", (e) => {
+      light.classList.remove("on")
+    });
+  </script>
+</body>
+
+</html>

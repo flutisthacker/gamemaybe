@@ -1,0 +1,38 @@
+#myowncustomtoolbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  background:#aaa;
+}
+
+
+body{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+
+.flex-container{
+  display:flex;
+  justify-content: space-between;
+  padding:10px 22px;
+flex-direction: row;
+}
+
+
+.flex{
+  transition: all 0.2s ease-in-out;
+  width:120px;
+}
+
+.flex .fa{
+  font-size: 20px;
+  color:#ff1171;
+}
+        .flex .fa:hover{
+          font-size: 30px;
+  color:#ff5876;
+        }
+

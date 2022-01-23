@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../resources/perfect.css">
+
+</head>
+<style>
+  body {
+    flex-direction: column;
+  }
+
+  .mycard {
+    position: absolute;
+    top: 0;
+    transition: left .2s ease;
+    left: 45%;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  .mycard:hover {
+    transform: rotateY(0deg);
+
+  }
+
+  .nikal {
+    transform: translateY(90px);
+  }
+
+  .mystats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+</style>
+
+<body>
+  <div class="mystats"> <button class="nikal btn btn-success">take</button>
+    <p class="alert alert-success" id="playera"></p>
+    <p class="alert alert-danger" id="playerb"></p>
+  </div>
+  <div class="cards"></div>
+  <div class="container fannas">
+    <div class="row">
+      <div class="col-lg-4" id="pa1"></div>
+      <div class="col-lg-4" id="pa2"></div>
+      <div class="col-lg-4" id="pa3"></div>
+      <div class="col-lg-4" id="pb1"></div>
+      <div class="col-lg-4" id="pb2"></div>
+      <div class="col-lg-4" id="pb3"></div>
+    </div>
+  </div>
+  <script>
+    getdeck()
+
+    function getdeck() {
+      deck = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
+      fetch(deck).then((covidData) => {
+        return covidData.json();
+      }).then((getData) => {
+        deckData = getData
+        fetch(`https://deckofcardsapi.com/api/deck/${deckData.deck_id}/draw/?count=52`).then((card) => {
+          return card.json();
+        }).then((getcard) => {
+          cardData = getcard
+          console.log(cardData)
+          cardData.cards.forEach((card, index) => {
+            div = document.createElement("div")
+            div.className = "mycard"
+            div.id = "card" + index
+            div.style = `z-index:${51-index}; background:#151515; color:white;`
+            div.innerHTML +=
+              `<img src="${cardData.cards[`${index}`].image}"><p>${cardData.cards[`${index}`].code}</p> <p>${cardData.cards[`${index}`].suit}</p>`
+            document.querySelector(".cards").append(div)
+          })
+        })
+        console.log(deckData)
+      })
+    }
+    var took = 0;
+    let pa1 = document.querySelector("#pa1")
+    let pa2 = document.querySelector("#pa2")
+    let pa3 = document.querySelector("#pa3")
+    let pb1 = document.querySelector("#pb1")
+    let pb2 = document.querySelector("#pb2")
+    let pb3 = document.querySelector("#pb3")
+    document.querySelector(".nikal").addEventListener("click", () => {
+      if (took % 2 == 0) {
+        document.querySelector(`#card${took}`).style = "left:250px; transform:rotateY(0);"
+      } else {
+        document.querySelector(`#card${took}`).style = "left:950px;  transform:rotateY(0); "
+        collectPoint(document.querySelector(`#card${took-1}`), document.querySelector(`#card${took}`));
+      }
+      took++;
+
+    })
+    let numberpower = ["2", "3", "4", "5", "6", "7", "8", "9", "0", "J", "Q", "K", "A"]
+    let suitpower = ["H", "D", "C", "S"]
+    var playerA = 0;
+    var playerB = 0;
+
+    function collectPoint(a, b) {
+      a = a.childNodes[1].textContent.slice(0, 1)
+      b = b.childNodes[1].textContent.slice(0, 1)
+      let aa, bb;
+      numberpower.forEach((number, index) => {
+        if (number == a) {
+          aa = index;
+        } else if (number == b) {
+          bb = index;
+        }
+      })
+      if (aa > bb) {
+        playerA++;
+        document.querySelector("#playera").innerHTML = "playerA:" + playerA
+        document.querySelector("#playerb").innerHTML = "playerB:" + playerB
+      } else {
+        playerB++;
+        document.querySelector("#playera").innerHTML = "playerA:" + playerA
+        document.querySelector("#playerb").innerHTML = "playerB:" + playerB
+      }
+      // debugger
+    }
+  </script>
+</body>
+
+</html>

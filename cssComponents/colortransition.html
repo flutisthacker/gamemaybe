@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn {
+    font-size: 5rem;
+    width: 300px;
+    height: 300px;
+    background: #000;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    line-height: 300px;
+  }
+
+  .btn:hover {
+    transform: rotate(360deg);
+    background-color: aqua;
+  }
+
+  .btn1:hover {
+    transition: 350ms;
+  }
+
+  .btn3:hover {
+    transition: 350ms ease;
+  }
+
+  .btn2:hover {
+    transition: 350ms linear;
+  }
+</style>
+
+<body>
+  <div class="btn btn1">x</div>
+  <div class="btn btn2">x</div>
+  <div class="btn btn3">x</div>
+</body>
+
+</html>

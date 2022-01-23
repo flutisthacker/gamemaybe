@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  body {
+    /* color: #fff; */
+    display: block;
+  }
+
+  .con-chat {
+    position: fixed;
+    left: 20px;
+    top: 100px;
+    color: #fff;
+    transition: transform .25s ease;
+  }
+
+  .open .con-sms {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .con-icon {
+    width: 70px;
+    height: 60px;
+
+    background: rgb(255, 153, 91);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px 20px 20px 5px;
+    transform: translate(-50%, -50%);
+    transition: all .25s ease;
+    border: 0px;
+    padding-left: 10px;
+    color: #fff;
+  }
+
+  .openRight .con-icon {
+    border-radius: 20px 5px 5px 20px;
+    padding-left: 0px;
+    padding-right: 5px;
+  }
+
+  .openRight .con-sms {
+    transform-origin: right top;
+    top: auto;
+    right: 65px;
+    border-radius: 26px 10px 26px 10px;
+  }
+
+  .openTop .con-sms {
+    transform-origin: left bottom;
+    top: auto;
+    bottom: 100px;
+    border-radius: 26px 26px 26px 10px;
+  }
+
+  .openTop.openRight .con-sms {
+    transform-origin: right bottom;
+    top: auto;
+    bottom: 100px;
+    border-radius: 26px 26px 10px 26px;
+  }
+
+  /* css2 */
+  .con-sms {
+    position: absolute;
+    left: -5px;
+    top: 45px;
+    background: #fff;
+    color: #000;
+    width: 325px;
+    border-radius: 10px 26px 26px 26px;
+    overflow: hidden;
+    opacity: .2;
+    transform: scale(.2);
+    pointer-events: none;
+    transition: all .25s ease;
+    transform-origin: left top;
+    background-origin: 0 0 35px 0 rgba(0, 0, 0, .06);
+  }
+
+  .con-sms>header {
+    position: relative;
+  }
+
+  .con-sms>header h3 {
+    padding: 10px 20px;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  .con-sms>header:before {
+    content: '';
+    top: 0;
+    position: absolute;
+    background: #000;
+    width: 30px;
+    height: 100%;
+    z-index: 100;
+
+    background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, .001) 100%);
+    right: 0;
+
+  }
+
+  .con-sms>header:after {
+    content: '';
+    top: 0;
+    position: absolute;
+    background: #000;
+    width: 30px;
+    height: 100%;
+    z-index: 100;
+
+    background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, .001) 100%);
+    left: 0;
+  }
+
+  .con-sms>header .con-avatars {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: auto;
+    padding-left: 5px;
+    z-index: 10;
+    width: 100%;
+  }
+
+  /* css3 */
+  .sms {
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+<style>
+  .wavy {
+    height: 100vh;
+    width: 100%;
+    padding: 5rem;
+    color: white;
+  }
+
+  .wavy h1 {
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: .01rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    color: aqua;
+  }
+</style>
+
+<body>
+  <div class="wavy-bg">
+    <section class="wavy">
+      <h1>wavy backgrounds</h1>
+    </section>
+    <svg viewBox="0 0 500 200">
+      <path d="M0, 100 C150,200 350,0 500, 100 L500,00  L0,0 Z"></path>
+    </svg>
+
+  </div>
+  <button class="con-icon"><i class="fab fa-facebook-f bx bxs-chat "></i></button>
+
+  <header>
+    <h3>messages</h3>
+    <div class="con-avatars">
+      <div class="con-img active"><img src="../../dog1.jpg" alt=""></div>
+    </div>
+    <div class="con-avatars">
+      <div class="con-img"><img src="../../dog2.jpg" alt=""></div>
+    </div>
+    <div class="space"></div>
+  </header>
+
+  <div class="con-list">
+    <div class="sms">
+      <div class="con-img"><img src="../../dog1.jpg" alt=""></div>
+      <div class="con-text">
+        <h6>jhon doe</h6>
+        <p>lorem asdasd</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="con-chat-user">
+    <header><button class="back"><i class="bx bx-arrow"></i></button>
+      <h3>laura</h3>
+    </header>
+    <div class="chat-texts">
+      <div class="message">
+        <p>loremsdf adsfafd</p>
+      </div>
+      <div class="message send">
+        <p>loremsdf adsfafd</p>
+      </div>
+    </div>
+    <footer><input type="text" name="" id=""><button><i class="bx bx-send"></i></button></footer>
+  </div>
+</body>
+
+
+<script>
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`)
+  setTimeout(function () {
+    window.scrollTo(0, 1)
+  }, 0)
+
+  const chat = document.querySelector(".con-chat")
+  const icon = document.querySelector(".con-icon")
+  let activetouch = false;
+  let x, y, time = 0;
+  let interval = null;
+
+  icon.addEventListener("touched", () => {
+    if (time <= 10) {
+      chat.classList.toggle("open")
+    }
+    time = 0;
+    clearInterval(interval);
+  })
+  icon.addEventListener("touchstart", () => {
+    chat.style.transition = "all .3s ease"
+    if (x < window.innerWidth / 2) {
+      chat.style.left = "20px"
+    } else {
+      chat.style.left = `${window.innerWidth -20}px`
+    }
+    setTimeout(() => {
+      chat.style.transition = ""
+    }, 250);
+    chaat.classList.remove("move");
+  })
+  icon.addEventListener("touchmove", (evt) => {
+    x = evt.touches[0].clientX;
+    y = evt.touches[0].clientY;
+    chat.style.left = `${x}px`;
+    chat.style.top = `${y}px`;
+    chat.classlist.add("move")
+    chat.classlist.remove("open");
+
+  })
+</script>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/perfect.css">
+</head>
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transform: perspective(800px);
+    font-family: 'roboto', sans-serif;
+
+  }
+
+  a {
+    position: relative;
+    display: inline-block;
+    padding: 1.2em 3em;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+  }
+
+  a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(135deg, #f6086c, #ff133a);
+    border-radius: 4px;
+    transition: box-shadow .5s ease, transform .2s ease;
+    will-change: transform;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    transform: translateY(var(--ty, 0)) rotateX(var(--tx, 0)) rotateY(var(--ry, 0)) translateZ(var(--tz, -12px))
+  }
+
+  a:hover::before {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3)
+  }
+
+  a:after {
+    content: attr(data-title);
+    display: inline-block;
+    position: relative;
+    transition: transform .2s ease;
+    will-change: transform;
+    letter-spacing: .01em;
+    font-weight: 800;
+    transform: translateY(var(--ty, 0)) rotateX(var(--tx, 0)) rotateY(var(--ry, 0));
+
+  }
+</style>
+
+<body>
+  <a href="#" data-title="hover me" class="btn-perfect brkidsgame"></a>
+</body>
+<script>
+  const docStyle = document.documentElement.style;
+  const aElement = document.querySelector("a");
+  const boundingClientRect = aElement.getBoundingClientRect();
+
+  aElement.onmousemove = (e) => {
+    const x = e.clientX - boundClientRect.left;
+    const y = e.clientY - boundClientRect.top;
+
+    const xc = boundingClientRect.width / 2;
+    const yc = boundingClientRect.height / 2;
+    const dx = x - xc;
+    const dy = y - yc;
+    docStyle.setProperty("--rx", `${dy/-1}deg`)
+    docStyle.setProperty("--ry", `${tx/1}deg`)
+    debugger
+  }
+</script>
+
+</html>

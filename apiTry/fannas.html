@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../resources/perfect.css">
+
+</head>
+<style>
+  body {
+    flex-direction: column;
+  }
+
+  .mycard {
+    position: absolute;
+    top: 0;
+    transition: left .2s ease;
+    left: 45%;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  .mycard:hover {
+    transform: rotateY(0deg);
+
+  }
+
+  .hand {
+    position: absolute;
+    transform-origin: left bottom;
+  }
+
+  .pahand:nth-child(2) {
+    transform: rotate(10deg);
+  }
+
+  .pbhand:nth-child(2) {
+    transform: rotate(10deg);
+  }
+
+  .pahand:nth-child(3) {
+    transform: rotate(20deg);
+  }
+
+  .pbhand:nth-child(3) {
+    transform: rotate(20deg);
+  }
+</style>
+
+<style>
+  .ftri,
+  .ltri {
+    width: 200px;
+    height: 200px;
+    background-color: crimson;
+    line-height: 200px;
+    position: relative;
+  }
+
+  .ftri .fa,
+  .ltri .fa {
+    /* text-align: center; */
+    font-size: 3rem;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+  }
+
+  .ftri {
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  }
+
+  .ltri {
+    clip-path: polygon(0 0, 31% 0, 100% 100%, 0% 100%);
+  }
+</style>
+
+<body>
+  <div class="nepalflag">
+    <div class="ftri">
+      <i class="fa fa-moon"></i>
+    </div>
+    <div class="ltri">
+      <i class="fa fa-sun"></i>
+    </div>
+  </div>
+  <div class="cards"></div>
+  <button class="btn btn-success" id="playme">playme</button>
+  <div class="container fannas">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="hand pahand" id="pa1"></div>
+        <div class="hand pahand" id="pa2"></div>
+        <div class="hand pahand" id="pa3"></div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hand pbhand" id="pb1"></div>
+        <div class="hand pbhand" id="pb2"></div>
+        <div class="hand pbhand" id="pb3"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    getdeck()
+    var cardData;
+
+    function getdeck() {
+      deck = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
+      fetch(deck).then((covidData) => {
+        return covidData.json();
+      }).then((getData) => {
+        deckData = getData
+        fetch(`https://deckofcardsapi.com/api/deck/${deckData.deck_id}/draw/?count=52`).then((card) => {
+          return card.json();
+        }).then((getcard) => {
+          cardData = getcard
+          console.log(cardData)
+          cardData.cards.forEach((card, index) => {
+            div = document.createElement("div")
+            div.className = "mycard"
+            div.id = "card" + index
+            div.style = `z-index:${51-index}; background:#151515; color:white;`
+            div.innerHTML +=
+              `<img src="${cardData.cards[`${index}`].image}"><p>${cardData.cards[`${index}`].code}</p> <p>${cardData.cards[`${index}`].suit}</p>`
+            document.querySelector(".cards").append(div)
+          })
+          // play(cardData)
+        })
+        console.log(deckData)
+      })
+    }
+    var pp = 0;
+    var pptimes = 0;
+    document.querySelector("#playme").addEventListener("click", () => {
+      pptimes++;
+      let pps = [];
+      for (pp; pp < (6 * pptimes); pp++) {
+        pps.push(pp);
+      }
+      play(pps[0], pps[1], pps[2], pps[3], pps[4], pps[5])
+    })
+
+    if (pptimes == 9) {
+      location.reload()
+    }
+
+    function play(c0, c1, c2, c3, c4, c5) {
+      debugger
+      let pa1 = document.querySelector("#pa1")
+      let pa2 = document.querySelector("#pa2")
+      let pa3 = document.querySelector("#pa3")
+      let pb1 = document.querySelector("#pb1")
+      let pb2 = document.querySelector("#pb2")
+      let pb3 = document.querySelector("#pb3")
+      pa1.innerHTML =
+        `<img src="${cardData["cards"][c0].image}" alt="${cardData["cards"][0].code}" id="f${cardData["cards"][0].code}"/> `
+      pa2.innerHTML =
+        `<img src="${cardData["cards"][c2].image}" alt="${cardData["cards"][2].code}" id="f${cardData["cards"][2].code}"/> `
+      pa3.innerHTML =
+        `<img src="${cardData["cards"][c4].image}" alt="${cardData["cards"][4].code}" id="f${cardData["cards"][4].code}"/> `
+      pb1.innerHTML =
+        `<img src="${cardData["cards"][c1].image}" alt="${cardData["cards"][1].code}" id="f${cardData["cards"][1].code}"/> `
+      pb2.innerHTML =
+        `<img src="${cardData["cards"][c3].image}" alt="${cardData["cards"][3].code}" id="f${cardData["cards"][3].code}"/> `
+      pb3.innerHTML =
+        `<img src="${cardData["cards"][c5].image}" alt="${cardData["cards"][5].code}" id="f${cardData["cards"][5].code}"/> `
+
+
+      pavspb(getStats(pa1.firstElementChild.id, pa2.firstElementChild.id, pa3
+          .firstElementChild.id, "PLayer1"),
+        getStats(pb1.firstElementChild.id, pb2.firstElementChild.id, pb3
+          .firstElementChild.id, "PLayer2"));
+
+
+      console.log("run run run" + isRun(pa1.firstElementChild.id.split("")[1], pa2.firstElementChild.id.split("")[
+        1], pa3.firstElementChild.id.split("")[1]))
+      console.log("run run run" + isRun(pb1.firstElementChild.id.split("")[1], pb2.firstElementChild.id.split("")[
+        1], pb3.firstElementChild.id.split("")[1]))
+
+
+      if (isDouble(pb1.firstElementChild.id.split("")[1], pb2.firstElementChild.id.split("")[1], pb3.firstElementChild
+          .id.split("")[1]) == true) {
+        console.log("p2 doouble");
+      }
+      if (pb1.firstElementChild.id.split("")[1] == pb2.firstElementChild.id.split("")[1] && pb1.firstElementChild.id
+        .split("")[1] == pb3.firstElementChild.id.split("")[1]) {
+        console.log("triple");
+      } else if (isColor(pa1.firstElementChild.id.split("")[2], pa2.firstElementChild.id.split("")[2], pa1
+          .firstElementChild.id.split("")[2]) == true) {
+        console.log("pa1 color");
+      } else {
+        console.log("pb:" + myHighest(pb1.firstElementChild.id.split("")[1], pb2.firstElementChild.id.split("")[1], pb3
+          .firstElementChild
+          .id.split("")[1]))
+        console.log("pa:" + myHighest(pa1.firstElementChild.id.split("")[1], pa2.firstElementChild.id.split("")[1], pa3
+          .firstElementChild
+          .id.split("")[1]))
+      }
+    }
+
+    function pavspb(a, b) {
+      debugger
+      console.log("player a vs playerb" + a, b)
+      let aa, bb;
+      if (a.length == 1 || b.length == 1) {
+        aa = 0;
+        bb = 0;
+
+      } else if (a == b) {
+        //take second card high
+        console.log("second card")
+      } else if (a.length > 1 || b.length > 1) {
+        aa = winstreaks.indexOf(a);
+        bb = winstreaks.indexOf(b);
+      }
+      if (aa > bb) {
+        console.log("player 1 wins")
+      } else {
+        console.log("player 2 wins")
+      }
+    }
+
+    function getStats(a, b, c, d) {
+      // console.group(d)
+      if (isDouble(a.split("")[1], b.split("")[1], c.split("")[1]) == true) {
+        console.log(d + " double");
+        return "double";
+      } else if (isTriple(a.split("")[1], b.split("")[1], c.split("")[1]) == true) {
+        console.log(d + " triple");
+        return "triple";
+      } else if (isColor(a.split("")[2], b.split("")[2], c.split("")[2]) == true) {
+        console.log(d + " color");
+        return "color";
+      } else if (isRun(a.split("")[2], b.split("")[2], c.split("")[2]) == true) {
+        console.log(d + " run");
+        return "run";
+      } else {
+        console.log(myHighest(a.split("")[1], b.split("")[1], c.split("")[1]));
+        return myHighest(a.split("")[1], b.split("")[1], c.split("")[1])
+      }
+      console.log(a, b, c)
+      // console.groupEnd();
+      // isRun(a, b, c)
+      // isColor(a, b, c)
+      // isTriple(a, b, c)
+      // isDouble(a, b, c)
+    }
+    var winstreaks = ["high", "double", "triple", "run", "color"]
+    var numberpower = ["2", "3", "4", "5", "6", "7", "8", "9", "0", "J", "Q", "K", "A"]
+    var suitpower = ["H", "D", "C", "S"]
+    var playerA = 0;
+    var playerB = 0;
+
+    function isColor(a, b, c) {
+      if (a == b && a == c) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function isTriple(a, b, c) {
+      if (a == b && a == c) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function isDouble(a, b, c) {
+      if (a == b || a == c || b == c) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function myHighest(a, b, c) {
+      let aa = numberpower.indexOf(a);
+      let bb = numberpower.indexOf(b);
+      let cc = numberpower.indexOf(c);
+      if (aa > bb && aa > cc) {
+        return a;
+      } else if (bb > aa && bb > cc) {
+        return b;
+      } else {
+        return c;
+      }
+    }
+
+    function isRun(a, b, c) {
+      let aa = numberpower.indexOf(a);
+      let bb = numberpower.indexOf(b);
+      let cc = numberpower.indexOf(c);
+      let aabbcc = [aa, bb, cc]
+      aabbcc.sort()
+      if ((aabbcc[0] + 2) == aabbcc[2] && (aabbcc[1] + 1) == aabbcc[2]) {
+        return true;
+      } else if (aa == 0 && bb == 1 && cc == 12) {
+        return true;
+      } else {
+        return false
+      }
+    }
+  </script>
+</body>
+
+</html>

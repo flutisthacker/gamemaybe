@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    height: 100vh;
+  }
+
+  #searchme {
+    height: 5vh;
+    width: 100%;
+  }
+
+  .results {
+    width: 100%;
+    background: red;
+  }
+
+  .result {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  .result .hey {
+    display: flex;
+    flex-direction: row;
+
+  }
+</style>
+
+<body>
+  <input type="search" name="" id="searchme">
+  <div class="results">
+    <div class="result">
+      <h2>saman</h2>
+      <img src="../../dog1.jpg" alt="asss">
+      airing
+      episodes
+      rated
+      score
+      start_date
+      end_date
+      type
+      url
+      synopsis
+    </div>
+
+  </div>
+  <script>
+    searchs = document.querySelector("#searchme");
+    searchs.addEventListener("keypress", (e) => {
+      if (e.keyCode == 13) {
+        searchs.value.replace("/n", "");
+        fetch(` https://api.jikan.moe/v3/search/anime?q=${searchs.value}`).then((data) => {
+          let info = data.json();
+          return info;
+        }).then((data) => {
+          search(data);
+        });
+      }
+    })
+    /* fetch("https://official-joke-api.appspot.com/jokes/random").then((data)=>{console.log(data.json())}) */
+    function search(data) {
+      results = document.querySelector(".results");
+      data.results.forEach(d => {
+        result = document.createElement("result")
+        result.className = "result";
+        // console.log(d)
+        result.innerHTML = `<h2 id="">
+      ${d.title}</h2>
+      <img src="${d.image_url}">
+<div class="hey">
+        ${d.airing}
+      ${d.episodes}
+      <ul>
+      <li>${d.rated}</li>      <li>${d.score}</li>  </ul>
+  <ul>
+  <li>${d.start_date}</li>
+<li>${d.end_date}</li>
+</ul>
+<ul>
+  <li>${d.type}</li>
+  <li>      <a href="${d.url}">
+learn more </a></li>
+  </ul>
+  ${d.synopsis}
+</div>
+      `;
+        results.append(result);
+      })
+    }
+  </script>
+</body>
+
+</html>

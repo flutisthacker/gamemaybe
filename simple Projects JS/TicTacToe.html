@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    place-items: center;
+    transform: scale(.7) translateY(-220px);
+  }
+
+  .two {
+    width: 300px;
+    height: 300px;
+    background: #000;
+  }
+</style>
+<style>
+  .tic-tac-toe{
+    width:700px;
+    height:700px;
+    display: grid;
+    grid-template-columns: repeat(3,240px);
+    /* background-color:#212342; */
+  }
+  .boxes{
+    width:200px;
+    height:200px;
+    color:#fff;
+    background-color:#212342;
+  }
+  .mytag{
+    font-size: 20ch;
+    text-align: center;
+  }
+  .disable{
+  pointer-events: none;
+  }
+</style>
+<body>
+  <div class="alert"></div>
+  <div class="tic-tac-toe">
+    <div class="boxes" id="box0"></div>
+    <div class="boxes" id="box1"></div>
+    <div class="boxes" id="box2"></div>
+    <div class="boxes" id="box3"></div>
+    <div class="boxes" id="box4"></div>
+    <div class="boxes" id="box5"></div>
+    <div class="boxes" id="box6"></div>
+    <div class="boxes" id="box7"></div>
+    <div class="boxes" id="box8"></div>
+  </div>
+  <button class="reset" onclick="reset()">reset</button>
+</body>
+
+<script>
+  var click =0
+  mytac=[1,2,3,4,5,6,7,8];
+  winStreak=[
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6],
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  ]
+
+
+  document.querySelectorAll(".boxes").forEach(box=>{
+    box.addEventListener("click",b=>{
+      if(click%2==0){
+        box.innerHTML=`<div class="mytag">O</div>`
+        mytac[(box.id).slice(3,4)] = "O"
+        box.classList.add("disable")
+      }
+      else{
+        box.innerHTML=`<div class="mytag">X</div>`
+        mytac[(box.id).slice(3,4)] = "X"
+        box.classList.add("disable")
+      }
+      click++;
+      checkWins();
+    })
+  })
+
+function checkWins(){
+  winStreak.forEach(wS=>{
+      if(mytac[wS[0]]==mytac[wS[1]] && mytac[wS[0]]==mytac[wS[2]]){
+        document.querySelector(".alert").innerHTML=mytac[wS[0]] +" wins"
+        document.querySelectorAll(".boxes").forEach(box=>{
+        box.classList.add("disable")
+        })             
+      }
+  })
+}
+
+function reset(){
+  mytac=[1,2,3,4,5,6,7,8];
+        click=0;
+        document.querySelectorAll(".boxes").forEach(box=>{
+        box.innerHTML=""
+        box.classList.remove("disable")
+        })      
+}
+</script>
+</html>

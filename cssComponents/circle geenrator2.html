@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="80"> -->
+    <title>Circle generator 2</title>
+    <script src="../fibonanci.js"></script>
+<link rel="stylesheet" href="circle.css">
+</head>
+<style>
+.bttns{
+    display: grid;
+    grid-template-columns: repeat(2,100px);
+
+}
+ 
+
+</style>
+<body>
+    <div class="ranges">
+        <h3 class="title">Border radius</h3>
+        <label for="">Border top</label>
+        <input type="range" class="range" name="" value="50" ext="%" id="top">
+        <label for="">Border Bottom</label>
+        <input type="range" class="range" name="" value="50" ext="%" id="bottom">
+        <label for="">Border left</label>
+        <input type="range" class="range" name="" value="50" ext="%" id="left">
+        <label for="">Border Right</label>
+        <input type="range" class="range" name="" value="50" ext="%" id="right">
+        deg 
+        <input type="range" name="" id="" min="0" max="360" value="50" ext="%" class="deg">
+        <input type="text" name="" id="mytext" placeholder="transform">
+<div class="bttns">
+    <button class="right" onclick="writtenTrans('circle','X(3deg)')">R</button>
+        <button class="left" onclick="writtenTrans('circle','X(-3deg)')">L</button>
+        <button class="top" onclick="writtenTrans('circle','Y(3deg)')">T</button>
+        <button class="bottom" onclick="writtenTrans('circle','Y(-3deg)')">B</button>
+        <button onclick="writtenTrans('circle','Z(3deg)')">D</button>
+        <button onclick="writtenTrans('circle','Z(-3deg)')">D'</button>
+</div>
+    </div>
+
+    <div class="mymain">
+
+        <!-- <div class="newShape"></div> -->
+        <!-- <div class="circle"></div> -->
+    </div>
+
+
+</body>
+<script src="./generatecolor.js"></script>
+<script src="./colorchange.js"></script>
+<script>
+
+document.querySelector("#mytext").addEventListener("keypress",e=>{
+    mytranval=document.querySelector("#mytext").value
+    // document.querySelector(`.mymain`).style.transform += mytranval
+    document.querySelectorAll(`.${selecSHpae}`).forEach(w=>{
+        w.style.transform += mytranval
+        w.borderWidth = "50px"
+    })    
+})
+
+
+function writtenTrans(shape,deg){
+    document.querySelectorAll(`.${shape}`).forEach(w=>{
+        w.style.transform += `rotate${deg}`
+        w.borderWidth = "5px"
+    })
+}
+function makeDynamicCircle(shape){
+            // transform-origin: top;
+let increasignDeg =Math.random()*360;
+let myColor = generatecolor();
+console.log(myColor)
+let TransformOrigin= Math.random() < 0.5 ? "top": "bottom"
+acd=["skewX","skewY","rotateX","rotateY","rotateZ"]
+        console.log(getRandom(acd))
+        myTm=getRandom(acd)
+        for(i=0;i<190;i++){
+        createDIv(shape,myColor,increasignDeg,TransformOrigin,i,myTm)
+    }
+}
+//       $(".color1").css("background", hexToHsl(color.value, -20))
+function createDIv(shape,myColor,increasignDeg,TransformOrigin,index,myTm){
+    var myShape = document.createElement("div")
+    // acd=["skew","rotate"]
+    myShape.className=shape
+    // myShape.style=`height:${20+index}px; width:${20+index}px; border-color:${myColor}; transform-origin:${TransformOrigin}; transform:rotate(-${i*increasignDeg}deg) translate(50%,50%)`
+    myShape.style.borderBottomColor = hexToHsl(myColor, -90)
+    myShape.style.borderRightColor = hexToHsl(myColor, -20)
+    myShape.style.borderLeftColor = hexToHsl(myColor, 20)
+    myShape.style.borderTopColor = hexToHsl(myColor, 40)
+    mytransform=`transform:${myTm}(${i*increasignDeg}deg) `
+    // myShape.style=`border-color:${myColor}; transform-origin:${TransformOrigin}; transform:rotate(-${i*increasignDeg}deg) translate(50%,50%)`
+    myShape.style=`border-color:${myColor}; transform-origin:${TransformOrigin}; ${mytransform} translate(50%,50%)`
+    // myShape.style=`border-color:${myColor}; transform-origin:${TransformOrigin}; transform:rotateY(-${i*increasignDeg}deg) translate(50%,50%)`
+    document.querySelector(".mymain").append(myShape)
+}
+
+function makeDynamicPattern(shape,increasignDeg){
+            // transform-origin: top;
+let myColor = generatecolor();
+let TransformOrigin= Math.random() < 0.5 ? "top": "bottom"
+for(i=0;i<180;i++){
+    var myShape = document.createElement("div")
+myShape.className=shape;
+myShape.style=`border-color:${myColor}; transform-origin:${TransformOrigin}; transform:rotate(-${i*increasignDeg}deg) translate(50%,50%)`
+document.querySelector(".mymain").append(myShape)
+}
+
+}
+function makeDynamicPattern2(shape){
+            // transform-origin: top;
+let myColor = generatecolor();
+let TransformOrigin= Math.random() < 0.5 ? "top": "bottom"
+memo.splice(2,memo.length).forEach(increasignDeg=>{
+
+    var myShape = document.createElement("div")
+myShape.className=shape;
+myShape.style=`border-color:${myColor}; transform-origin:${TransformOrigin}; transform:rotate(-${i*increasignDeg}deg)`
+document.querySelector(".mymain").append(myShape);  
+});
+
+}
+
+
+function changeBorder(borderRad){
+    document.querySelectorAll(".circle").forEach(w=>{
+        w.style.borderRadius =borderRad
+    })
+}
+function changeDeg(borderRad){
+    document.querySelectorAll(".circle").forEach((w,index)=>{
+        w.style.transform += `rotate(-${borderRad}deg)`
+    })
+}
+</script>
+
+<script>
+    shapeArr=["eye","eye1","circle","square","oval","paralellogram","pin","barfi","hait"]
+    selecSHpae=getRandom(shapeArr)
+
+    function getRandom(myArr){
+    return myArr[Math.floor(Math.random()*myArr.length)]
+
+    }
+
+console.log(selecSHpae)
+makeDynamicCircle(selecSHpae);
+    // makeDynamicCircle("circle");
+    // makeDynamicCircle("newShape");
+
+    document.querySelector(".deg").addEventListener("change",()=>{
+        changeDeg(document.querySelector(".deg").value)
+        // document.querySelector(".mymain").innerHTML=""
+        // makeDynamicPattern("oval",document.querySelector(".deg").value,"50%")
+    })
+    document.querySelectorAll(".range").forEach(range=>{
+        range.addEventListener("change",()=>{
+            var bLeft =document.querySelector("#left").value
+            var bTop =document.querySelector("#top").value
+            var bRight =document.querySelector("#right").value
+            var bBottom =document.querySelector("#bottom").value
+            // document.querySelectorAll(".oval").forEach(oval=>{
+                // document.querySelector(".mymain").innerHTML=""
+                borderRad = `border-radius:${bTop}%,${bRight}%,${bBottom}%,${bLeft}%`
+                changeBorder(`${bTop}% ${bRight}% ${bBottom}% ${bLeft}%`)
+                // makeDynamicPattern("oval",document.querySelector(".deg").value)
+            // })
+        })
+    })
+</script>
+</html>

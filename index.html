@@ -116,25 +116,25 @@ overflow: scroll;
 <script>
   const $=(c)=>document.querySelector(c)
   mapFiles={
-    cssComponents:["3dphoto.html",
-"allgradients.html",
-"alltransform.html",
-"checkNeumorphic.html",
-"circle geenrator.html",
-"circle geenrator2.html",
-"colorandinverse.html",
-"colorcheck.html",
-"colortransition.html",
-"dynamicgradient.html",
-"filterphoto.html",
-"generatecolor.html",
-"patternGenerator.html",
-"rgbgenerator.html"]
+    cssComponents:["3dphoto",
+"allgradients",
+"alltransform",
+"checkNeumorphic",
+"circle geenrator",
+"circle geenrator2",
+"colorandinverse",
+"colorcheck",
+"colortransition",
+"dynamicgradient",
+"filterphoto",
+"generatecolor",
+"patternGenerator",
+"rgbgenerator"]
   }
   Object.keys(mapFiles).forEach(m=>{
     mapFiles[m].forEach(mm=>{
-        $("#ListOfBtn").innerHTML+=(`<button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="/${m}/${mm}.html">${mm}</button>`)
-        console.log(`<button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="/${m}/${mm}.html">${mm}</button>`)
+        $("#ListOfBtn").innerHTML+=(`<button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./${m}/${mm}.html">${mm}</button>`)
+        console.log(`<button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./${m}/${mm}.html">${mm}</button>`)
     })
   })
         function changeIframeSrc(elsrc){

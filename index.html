@@ -53,7 +53,7 @@ overflow: scroll;
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <div class="btn-group-vertical d-grid gap-2">
+      <div class="btn-group-vertical d-grid gap-2" id="ListOfBtn">
         <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/3dphoto.html">3dphoto</button>
         <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/allgradients.html">allgradients</button>
         <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/alltransform.html">alltransform</button>
@@ -114,6 +114,28 @@ overflow: scroll;
 
 </body>
 <script>
+  mapFiles={
+    cssComponents:["3dphoto.html",
+"allgradients.html",
+"alltransform.html",
+"checkNeumorphic.html",
+"circle geenrator.html",
+"circle geenrator2.html",
+"colorandinverse.html",
+"colorcheck.html",
+"colortransition.html",
+"dynamicgradient.html",
+"filterphoto.html",
+"generatecolor.html",
+"patternGenerator.html",
+"rgbgenerator.html"]
+  }
+  Object.keys(mapFiles).forEach(m=>{
+    mapFiles[m].forEach(mm=>{
+        $("#ListOfBtn").innerHTML+=(`<button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="/${m}/${mm}.html">${mm}</button>`)
+        console.log(`<button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="/${m}/${mm}.html">${mm}</button>`)
+    })
+  })
           const $=(c)=>document.querySelector(c)
         function changeIframeSrc(elsrc){
             $("#gamemaybeIframe").src=elsrc.dataset.src

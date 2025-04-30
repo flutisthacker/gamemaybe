@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>game maybe</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <style>
   body {
@@ -42,37 +46,71 @@ overflow: scroll;
 </style>
 
 <body>
-  <a href="clipather.html">clipather</a>
-  <a href="commentlist.html">commentlist</a>
-  <a href="covidtracker.html">covidtracker</a>
-  <a href="qrcode.html">QR make</a>
-  <a href="binaryconverter.html">binaryconverter</a>
-  <a href="guessnumber.html">guessnumber</a>
-  <a href="gyrooo.html">gyrooo.html</a>
-  <a href="moviesearch.html">moviesearch</a>
-  <a href="weatherapi.html">weather</a>
-  <a href="headntail.html">headntail</a>
-  <a href="pinlogin.html">pinlogin</a>
-  <a href="slicedtext.html">slicedtext</a>
-  <a href="keyboard.html">keyboard</a>
-  <a href="mirrorword.html">mirrorword</a>
-  <a href="stopwatch.html">stopwatch</a>
-  <a href="spr.html">spr</a>
-  <a href="simple app.html">simple app</a>
-  <a href="crud.html">crud</a>
-  <a href="wavesvgmaker.html">waves</a>
-  <a href="./cssComponents/alltransform.html">alltransform</a>
-  <a href="./cssComponents/patternGenerator.html">patternGenerator</a>
-  <a href="./cssComponents/colorandinverse.html">colorandinverse</a>
-  <a href="./cssComponents/checkNeumorphic.html">neumorphic test</a>
-  <a href="./cssComponents/dynamicgradient.html">dynamicgradient</a>
-  <a href="./cssComponents/generatecolor.html">color generator</a>
-  <a href="./cssComponents/rgbgenerator.html">rgb</a>
-  <a href="./cssComponents/allgradients.html">allgradients</a>
-  <a href="./generatePassword.html">generatePassword</a>
-  <a href="transpose2.html">transpose2</a>
-  <a href="typing.html">typing</a>
-  <a href="typingspeed.html">typingspeed</a>
-</body>
+        
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Tools</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="btn-group-vertical d-grid gap-2">
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/alltransform.html">alltransform</button>
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/patternGenerator.html">patternGenerator</button>
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/colorandinverse.html">colorandinverse</button>
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/checkNeumorphic.html">checkNeumorphic</button>
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/dynamicgradient.html">dynamicgradient</button>
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/generatecolor.html">generatecolor</button>
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/rgbgenerator.html">rgbgenerator</button>
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./cssComponents/allgradients.html">allgradients</button>
+        <button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./generatePassword.html">">./generatePassword</button>
+      </div>
+    </div>
+  </div>
+<div class="container-fluid row">
+<div class="col-12 mx-auto d-grid gap-2">
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+        Menu
+      </button>
+</div>
+<iframe id="gamemaybeIframe" src="./blogwriter.html" width="100px" height="800px" frameborder="0" allowfullscreen></iframe>
+</div>
+<a href="clipather.html">clipather</a>
+<a href="commentlist.html">commentlist</a>
+<a href="covidtracker.html">covidtracker</a>
+<a href="qrcode.html">QR make</a>
+<a href="binaryconverter.html">binaryconverter</a>
+<a href="guessnumber.html">guessnumber</a>
+<a href="gyrooo.html">gyrooo.html</a>
+<a href="moviesearch.html">moviesearch</a>
+<a href="weatherapi.html">weather</a>
+<a href="headntail.html">headntail</a>
+<a href="pinlogin.html">pinlogin</a>
+<a href="slicedtext.html">slicedtext</a>
+<a href="keyboard.html">keyboard</a>
+<a href="mirrorword.html">mirrorword</a>
+<a href="stopwatch.html">stopwatch</a>
+<a href="spr.html">spr</a>
+<a href="simple app.html">simple app</a>
+<a href="crud.html">crud</a>
+<a href="wavesvgmaker.html">waves</a>
+<a href="./cssComponents/alltransform.html">alltransform</a>
+<a href="./cssComponents/patternGenerator.html">patternGenerator</a>
+<a href="./cssComponents/colorandinverse.html">colorandinverse</a>
+<a href="./cssComponents/checkNeumorphic.html">neumorphic test</a>
+<a href="./cssComponents/dynamicgradient.html">dynamicgradient</a>
+<a href="./cssComponents/generatecolor.html">color generator</a>
+<a href="./cssComponents/rgbgenerator.html">rgb</a>
+<a href="./cssComponents/allgradients.html">allgradients</a>
+<a href="./generatePassword.html">generatePassword</a>
+<a href="transpose2.html">transpose2</a>
+<a href="typing.html">typing</a>
+<a href="typingspeed.html">typingspeed</a>
 
+</body>
+<script>
+          const $=(c)=>document.querySelector(c)
+        function changeIframeSrc(elsrc){
+            $("#gamemaybeIframe").src=elsrc.dataset.src
+        }
+</script>
 </html>

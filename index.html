@@ -114,6 +114,7 @@ overflow: scroll;
 
 </body>
 <script>
+  const $=(c)=>document.querySelector(c)
   mapFiles={
     cssComponents:["3dphoto.html",
 "allgradients.html",
@@ -136,7 +137,6 @@ overflow: scroll;
         console.log(`<button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="/${m}/${mm}.html">${mm}</button>`)
     })
   })
-          const $=(c)=>document.querySelector(c)
         function changeIframeSrc(elsrc){
             $("#gamemaybeIframe").src=elsrc.dataset.src
         }

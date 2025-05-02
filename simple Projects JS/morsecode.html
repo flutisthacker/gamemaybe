@@ -95,7 +95,7 @@ morse.addEventListener("keyup", (e)=>{
 })
 
 function changeMorseToText(mors,isMors){
-    var morss=mors.split("")
+    var morss=isMors?mors.split(" "):mors.split("")
     var txtme="";
     morss.forEach(mmors => {
         var mytext=isMors?MapMorseInvert[mmors]:mapMorse[mmors];

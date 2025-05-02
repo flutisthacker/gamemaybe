@@ -81,7 +81,7 @@ var mapMorse={
 "y":"-.--",
 "z":"--..-----"
 }
-var MapMorseInvert=Object.entries(mapMorse).map(a=> { return [a[1],a[0]]})
+var MapMorseInvert=Object.fromEntries(Object.entries(mapMorse).map(a=> { return [a[1],a[0]]}))
 
 text.addEventListener("keyup", (e)=>{
     if(e.keyCode){
@@ -94,14 +94,14 @@ morse.addEventListener("keyup", (e)=>{
     }
 })
 
-function changeMorseToText(mors){
-    var morss=mors.split(" ")
+function changeMorseToText(mors,isMors){
+    var morss=mors.split("")
     var txtme="";
     morss.forEach(mmors => {
-        var mytext=mapMorse[mmors];
+        var mytext=isMors?MapMorseInvert[mmors]:mapMorse[mmors];
         txtme += mytext 
     });
-    text.value=txtme
+    return txtme
 }
 
 function morseToText(mors){

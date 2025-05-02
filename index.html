@@ -101,6 +101,7 @@ apiTry:[
 
   }
   Object.keys(mapFiles).forEach(m=>{
+    $("#ListOfBtn").innerHTML+=`<button class="btn btn-info btn-block">${m}</button>`
     mapFiles[m].forEach(mm=>{
         $("#ListOfBtn").innerHTML+=(`<button class="btn btn-primary btn-block" onclick="changeIframeSrc(this)" data-src="./${m}/${mm}.html">${mm}</button>`)
     })

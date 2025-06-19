@@ -48,7 +48,11 @@
     .clockhand:nth-child(5){
       transform: rotateZ(180deg) translateY(-60px) translateX(-40px);
     }
-
+    .listClock{
+      font-size: 100px;
+      font-weight: 700;
+      text-shadow: 5px 5px 9px grey,-5px -5px 4px #636364;
+    }
 
   </style>
 </head>
@@ -56,6 +60,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <body>
+  <div class="listClock"></div>
 
 
 <div class="fContainer d-flex flex-row justify-content-evenly align-items-start">
@@ -134,6 +139,13 @@
       8:[5,1,2,6,0,3,4],
       9:[5,1,2,6,3,4],
       0:[5,1,2,0,3,4],
+            roman:["0","I","II","III","IV","V","VI","VII","VIII","IX","X",
+            "XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX",
+            "XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX",
+            "XXXI","XXXII","XXXIII","XXXIV","XXXV","XXXVI","XXXVII","XXXVIII","XXXIX","XL",
+            "XLI","XLII","XLIII","XLIV","XLV","XLVI","XLVII","XLVIII","XLIX","L",
+            "LI","LII","LIII","LIV","LV","LVI","LVII","LVIII","LIX",
+          ]
 
     }
 
@@ -157,6 +169,8 @@
   lista=currentdate.getHours().toString().split("")
   listb=currentdate.getMinutes().toString().split("")
   listc=currentdate.getSeconds().toString().split("")
+  $(".listClock").innerHTML=(clockMap.roman[currentdate.getHours()]+"-"+clockMap.roman[currentdate.getMinutes()]+"-"+clockMap.roman[currentdate.getSeconds()])
+
   updateIt(".hourA>.clockhand",lista.length>1?lista[0]:0)
   // updateIt(".hourA>.clockhand",8)
   updateIt(".hourB>.clockhand",lista.length>1?lista[1]:lista[0])

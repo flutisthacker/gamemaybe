@@ -232,16 +232,21 @@
   <section>
     <div id="getdata">
       <input type="text" name="myqr" placeholder="Put your ID here.." id="myqr">
+      <input type="color" name="" id="QRColor">
       <select name="" id="mylinks">
+        <option value="x">Choose</option>
         <option value="facebook.com">facebook</option>
         <option value="twitter.com">twitter</option>
         <option value="instagram.com">instagram</option>
         <option value="linkedin.com">linkedin</option>
         <option value="linktr.ee">linktree</option>
         <option value="github.com">github</option>
+        <option value="">Link</option>
+
       </select>
       <button class="btn btn-success generate">Generate</button>
     </div>
+    
     <div id="custom-qr-code"></div>
 
   </section>
@@ -287,8 +292,10 @@
         text: href,
         width: size,
         height: size,
-        colorDark: "#0c0f16",
-        colorLight: "rgba(0,0,0,0)"
+        colorLight: "rgba(0,0,0,0)",
+        colorDark: document.querySelector("#QRColor").value,
+        correctLevel : QRCode.CorrectLevel.H
+
       });
       let alink = document.createElement("button");
       alink.addEventListener("click", () => {

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-shrink: 2;
+        background-color: #333;
+    }
+
+.myContainer{
+display: grid;
+grid-template-columns: repeat(2, 2fr);
+gap:10px;
+color: #9f9f9f;
+}
+
+    svg path,svg text{
+        fill: var(--fill);
+        stroke: var(--stroke);
+        stroke-width: 0.2;
+        stroke-dasharray: 40;
+        stroke-dashoffset: 40;
+        animation: textAnimation 4s ease-in-out infinite;
+    }
+    @keyframes textAnimation{
+        0%{
+            stroke-dashoffset: 80;
+            /* stroke-dasharray: 40; */
+
+        }
+        80%{
+            fill:transparent;
+            /* stroke-dasharray: 0; */
+        }
+        100%{
+            stroke-dashoffset: 0;
+            fill: var(--fillFull);
+        }
+    }
+</style>
+<body>
+<div class="myContainer">
+    <label for="svgHeight">Height:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg" data-element="height" name="" onchange="UpdateSvg(this)" id="svgHeight">
+    <label for="svgWidth">Width:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg" data-element="width" name="" onchange="UpdateSvg(this)" id="svgWidth">
+    <label for="svgTextFill">Text Fill:</label> <input type="color" class="form-control"  data-style="true" data-tag="svg>text" data-element="fill" name="" onchange="UpdateSvg(this)" id="svgTextFill">
+    <label for="svgTextStroke">Text Stroke:</label> <input type="color" class="form-control"  data-style="true" data-tag="svg>text" data-element="stroke" name="" onchange="UpdateSvg(this)" id="svgTextStroke">
+    <label for="svgTextFsize">Text Font size:</label> <input type="number" class="form-control"  data-style="true" data-tag="svg>text" data-element="font-size" value="100" name="" onchange="UpdateSvg(this)" id="svgTextFsize">
+    <label for="svgTextFfamily">Text Font family:</label> <select name="" class="form-select"  data-style="true" data-tag="svg>text" data-element="font-family" ondblclick="getFonts()"  onchange="UpdateSvg(this)" id="svgTextFfamily"></select>
+    <label for="svgImportFfamily">Text Font family:</label> <input name=""type="text" class="form-control"  data-style="true" data-tag="svg>text" data-element="font-family" ondblclick="getFonts()"  onchange="AddFontFamilyAndUpdateFont(this)" id="svgImportFfamily">
+    <label for="svgTextTransform">Text Transform:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="transform" name="" onchange="UpdateSvg(this)" id="svgTextTransform">
+    <label for="svgTextRotate">Text Rotate:</label> <input type="number" class="form-control"  data-style="false" data-tag="svg>text" data-element="rotate" name="" onchange="UpdateSvg(this)" id="svgTextRotate">
+    <label for="svgText">Text text:</label> <input type="text" class="form-control"  data-style="text" data-tag="svg>text" data-element="innerHTML" value="Samaharjan" name="" onchange="UpdateSvg(this)" id="svgText">
+    <label for="svgtX">X:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="" name="" onchange="UpdateSvg(this)" id="svgtX">
+    <label for="svgtY">Y:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="" name="" onchange="UpdateSvg(this)" id="svgtY">
+<button class="btn btn-info" onclick="AddSubText(5,5,'red','blue','hello',true)">Add</button>
+</div>
+<svg height="600" width="1200" xmlns="http://www.w3.org/2000/svg">
+    <text x="30" y="80" fill="#333" style="--fill:#333; --fillFull:#fff; --stroke:#000; " stroke="none" font-size="85" font-family="Poppins" transform="">Samaharjan!
+        <tspan dx="5" dy="5" fill="gray" stroke="green">h</tspan>        
+    </text>
+</svg>
+<script>
+    function AddFontFamilyAndUpdateFont(e){
+        document.querySelector("style").append=e.value
+        document.querySelector(e.dataset.tag)[e.dataset.element].value="Poppins"
+    }
+    function UpdateSvg(e){
+        if(e.dataset.style =="false"){
+            console.log(e.value, e.dataset.element,e.dataset.tag)
+            document.querySelector(e.dataset.tag)[e.dataset.element].value=e.value
+        }
+        else if(e.dataset.style=="text"){
+            document.querySelector(e.dataset.tag).innerHTML=e.value
+
+        }
+        else{
+            console.log(e.value, e.dataset.element,e.dataset.tag,document.querySelector(e.dataset.tag)[e.dataset.element])
+            document.querySelector(e.dataset.tag).style[e.dataset.element]=e.value
+        }
+    }
+    async function getFonts() {
+        await queryLocalFonts().then(fonts=>{
+            fonts.forEach(font=>{
+                document.querySelector("#svgTextFfamily").innerHTML+=`<option value="${font.family}" style="font-family:${font.family}">${font.fullName}</option>`
+            })
+        })
+    }
+    function AddSubText(dx,dy,fill,stroke,text,isText,fSize,fFamily){
+        isText?document.querySelector("svg>text").innerHTML+=(`<tspan dx="${dx}" dy="${dy}" fill="${fill}" stroke="${stroke}">${text}</tspan>`):document.querySelector("svg").innerHTML+=(`<text x="${dx}" y="${dy}" fill="${fill}" stroke="${stroke}">${text}</text>`)
+    }
+    document.querySelector("#download").href=document.querySelector("svg")
+</script>
+</body>
+</html>

@@ -52,16 +52,16 @@ color: #9f9f9f;
 <div class="myContainer">
     <label for="svgHeight">Height:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg" data-element="height" name="" onchange="UpdateSvg(this)" id="svgHeight">
     <label for="svgWidth">Width:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg" data-element="width" name="" onchange="UpdateSvg(this)" id="svgWidth">
+    <label for="svgtX">X:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="x" name="" onchange="UpdateSvg(this)" id="svgtX">
+    <label for="svgtY">Y:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="y" name="" onchange="UpdateSvg(this)" id="svgtY">
     <label for="svgTextFill">Text Fill:</label> <input type="color" class="form-control"  data-style="true" data-tag="svg>text" data-element="fill" name="" onchange="UpdateSvg(this)" id="svgTextFill">
     <label for="svgTextStroke">Text Stroke:</label> <input type="color" class="form-control"  data-style="true" data-tag="svg>text" data-element="stroke" name="" onchange="UpdateSvg(this)" id="svgTextStroke">
     <label for="svgTextFsize">Text Font size:</label> <input type="number" class="form-control"  data-style="true" data-tag="svg>text" data-element="font-size" value="100" name="" onchange="UpdateSvg(this)" id="svgTextFsize">
     <label for="svgTextFfamily">Text Font family:</label> <select name="" class="form-select"  data-style="true" data-tag="svg>text" data-element="font-family" ondblclick="getFonts()"  onchange="UpdateSvg(this)" id="svgTextFfamily"></select>
     <label for="svgImportFfamily">Text Font family:</label> <input name=""type="text" class="form-control"  data-style="true" data-tag="svg>text" data-element="font-family" ondblclick="getFonts()"  onchange="AddFontFamilyAndUpdateFont(this)" id="svgImportFfamily">
-    <label for="svgTextTransform">Text Transform:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="transform" name="" onchange="UpdateSvg(this)" id="svgTextTransform">
-    <label for="svgTextRotate">Text Rotate:</label> <input type="number" class="form-control"  data-style="false" data-tag="svg>text" data-element="rotate" name="" onchange="UpdateSvg(this)" id="svgTextRotate">
+    <label for="svgTextTransform">Text Transform:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" placeholder="rotate(10 10,10)" data-element="transform" name="" onchange="UpdateSvg(this)" id="svgTextTransform">
+    <label for="svgTextRotate">Text Rotate:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="rotate" name="" onchange="UpdateSvg(this)" id="svgTextRotate">
     <label for="svgText">Text text:</label> <input type="text" class="form-control"  data-style="text" data-tag="svg>text" data-element="innerHTML" value="Samaharjan" name="" onchange="UpdateSvg(this)" id="svgText">
-    <label for="svgtX">X:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="" name="" onchange="UpdateSvg(this)" id="svgtX">
-    <label for="svgtY">Y:</label> <input type="text" class="form-control"  data-style="false" data-tag="svg>text" data-element="" name="" onchange="UpdateSvg(this)" id="svgtY">
 <button class="btn btn-info" onclick="AddSubText(5,5,'red','blue','hello',true)">Add</button>
 </div>
 <svg height="600" width="1200" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +77,8 @@ color: #9f9f9f;
     function UpdateSvg(e){
         if(e.dataset.style =="false"){
             console.log(e.value, e.dataset.element,e.dataset.tag)
-            document.querySelector(e.dataset.tag)[e.dataset.element].value=e.value
+            // document.querySelector(e.dataset.tag)[e.dataset.element].value=e.value
+            document.querySelector(e.dataset.tag).setAttribute(e.dataset.element,e.value)
         }
         else if(e.dataset.style=="text"){
             document.querySelector(e.dataset.tag).innerHTML=e.value

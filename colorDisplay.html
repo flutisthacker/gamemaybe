@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    :root{
+        --color1-1:#31393c;
+        --color2-1:#2176ff;
+        --color3-1:#33a1fd;
+        --color4-1:#fdca40;
+        --color5-1:#f79824;
+
+        --color1-2:#03045e;
+        --color2-2:#0077b6;
+        --color3-2:#00b4d8;
+        --color4-2:#90e0ef;
+        --color5-2:#caf0f8;
+        
+        --color1-3:#081f5c;
+        --color2-3:#334eac;
+        --color3-3:#7096d1;
+        --color4-3:#d0e3ff;
+        --color5-3:#e7f1ff;
+
+        --color1-4:#cdb4db;
+        --color2-4:#ffc8dd;
+        --color3-4:#ffafcc;
+        --color4-4:#bde0fe;
+        --color5-4:#a2d2ff;
+        
+        --color1-5:#9c89b8;
+        --color2-5:#f0a6ca;
+        --color3-5:#e7bcde; 
+        --color4-5:#f0e6ef;
+        --color5-5:#b8bedd;
+        --color6-5:#f2f4ee;
+
+        --color1-6:#2c98a0;
+        --color2-6:#38b2a3;
+        --color3-6:#4ccba3;
+        --color4-6:#67dba5;
+        --color5-6:#89e8ac;
+        --color6-6:#b0f2bc;
+
+        --color1-7:#7a0177;
+        --color2-7:#c51b8a;
+        --color3-7:#f768a1;
+        --color4-7:#fa9fb5;
+        --color5-7:#fcc5c0;
+        --color6-7:#feebe2;
+
+    --color1-8: #128cba;
+  --color2-8: #71ceed;
+  --color3-8: #f89b07;
+  --color4-8: #f9dda3;
+
+  --color1-9: #149388;
+  --color2-9: #1fc39e;
+  --color3-9: #a5e39d;
+  --color4-9: #ffe9c0;
+
+--cp25c1: #1c2429;
+--cp25c2: #A1D1B1;
+--cp26c1: #D8c9ae;
+--cp26c2: #575757;
+--cp27c1: #352323;
+--cp27c2: #c47623;
+--cp28c1: #990302;
+--cp28c2: #EbE2E0;
+--cp29c1: #CA763A;
+--cp29c2: #134B42;
+  
+--color1-10:#00412e;
+--color2-10:#96bf8a;
+--color3-10:#ebeae5;
+--color4-10:#ffffff;
+
+--color1-11:#00ff8b;
+--color2-11:#00001c;
+--color3-11:#6765ec;
+--color4-11:#f7f7ff;
+
+--color1-12:#000223;
+--color2-12:#ffa000;
+--color3-12:#7c521b;
+--color4-12:#fffafe;
+
+--color1-13:#e7e6c4;
+--color2-13:#ff3500;
+--color3-13:#3f3826;
+--color4-13:#000000;
+
+--color1-17:#522f2c;
+--color2-17:#fff0f8;
+--color3-17:#665254;
+--color4-17:#fbcab6;
+
+--color1-18:#fcfaee;
+--color2-18:#035a52;
+--color3-18:#d8e267;
+--color4-18:#bdF806;
+
+--color1-19:#010313;
+--color2-19:#fcebe5;
+--color3-19:#ff001e;
+--color4-19:#1e3c65;
+
+
+  --color1-20: #ffc57a;
+  --color2-20: #fe771b;
+  --color3-20: #b78957;
+  --color4-20: #e1312d;
+  --color5-20: #302016;
+
+  --color1-21: #e2cf9b;
+  --color2-21: #f77969;
+  --color3-21: #fa1c24;
+  --color4-21: #6f1b33;
+  --color5-21: #361e3b;
+
+  --color1-22: #e7d39f;
+  --color2-22: #fb7b6b;
+  --color3-22: #14435e;
+  --color4-22: #46443e;
+
+  --color1-23: #fce8d5;
+  --color2-23: #f9d0af;
+  --color3-23: #0a97b0;
+  --color4-23: #100fbf;
+
+  --color1-24: #d2c6d3;
+  --color2-24: #ed502f;
+  --color3-24: #b90034;
+  --color4-24: #1a1a1a;
+
+  --color1-25: #c02330;
+  --color2-25: #1d63b4;
+  --color3-25: #e5e3ff;
+  --color4-25: #7c5568;
+  --color5-25: #bbcae9;
+
+  --color1-16: #f9dc44;
+  --color2-16: #d14235;
+  --color3-16: #6594b0;
+  --color4-16: #c15d99;
+  --color5-16: #9ecabf;
+
+  --color1-15: #53a677;
+  --color2-15: #fdba3e;
+  --color3-15: #eb5326;
+  --color4-15: #0164a9;
+  --color5-15: #cba8b0;
+
+  --color1-14: #7d4198;
+  --color2-14: #4cabcf;
+  --color3-14: #f5b75a;
+  --color4-14: #6f678e;
+  --color5-14: #81335f;
+
+
+  /* awsmcolor */
+  --stromblue: #182f53;
+  --alpacawool: #f9eee2;
+  --corolrose: #f57a4d;
+  --brownishred: #9c3725;
+
+  --color1-26: #30bcc9;
+  --color2-26: #faf3e3;
+  --color3-26: #fada80;
+  --color4-26: #f6404f;
+
+  --color1-27: #13a699;
+  --color2-27: #ffd708;
+  --color3-27: #fff7ed;
+  --color4-27: #aaf0d1;
+
+  --color1-28: #f1e1c9;
+  --color2-28: #faf8f0;
+  --color3-28: #cfecf5;
+  --color4-28: #a9e2f5;
+
+  --color1-29: #f340af;
+  --color2-29: #fbdb14;
+  --color3-29: #fffceb;
+  --color4-29: #01f9c6;
+
+  --color1-30: #f49fb6;
+  --color2-30: #f4d2d2;
+  --color3-30: #faf8f0;
+  --color4-30: #a6e0de;
+
+
+    --color1-31: #c95e57;
+  --color2-31: #00b8f2;
+  --color3-31: #7dc9d6;
+  --color4-31: #fae687;
+  --color5-31: #c6e0c2;
+
+  --color1-32: #f8bd3a;
+  --color2-32: #961d21;
+  --color3-32: #28598a;
+  --color4-32: #a8ab9c;
+  --color5-32: #6d503e;
+
+  --color1-33: #fb6c6d;
+  --color2-33: #1e86ff;
+  --color3-33: #f59a55;
+  --color4-33: #ffffff;
+
+  --color5-33: #3959a2;
+  --color6-33: #a8dbd2;
+  --color7-33: #16181e;
+  --color8-33: #ffffff;
+
+  --color1-34: #3acbe8;
+  --color2-34: #0d85d8;
+  --color3-34: #0160c9;
+  --color4-34: #0041c7;
+
+  --color1-35: #ffbf00;
+  --color2-35: #ffa000;
+  --color3-35: #ff8c00;
+  --color4-35: #ff6600;
+
+  --color1-36: #4cbb17;
+  --color2-36: #46cb18;
+  --color3-36: #138808;
+  --color4-36: #006400;
+
+  --color1-37: #fff6f6;
+  --color2-37: #eea1eb;
+  --color3-37: #cb22d7;
+  --color4-37: #891180;
+
+
+  --color1-38:#213A58;
+  --color2-38:#0C6478;
+  --color3-38:#15919B;
+  --color4-38:#09D1C7;
+  --color1-38:#47DEB1;
+  --color1-38:#81EE99;
+
+  --color1-39:#F4E7FB;
+  --color2-39:#F3DCDC;
+  --color3-39:#F5BCBA;
+  --color4-39:#E3AADD;
+  --color4-39:#C8A8E9;
+  --color4-39:#C3C7F3;
+    
+    --color1-40:#e9f5db;
+    --color2-40:#cfe1b9;
+    --color3-40:#b5c99a;
+    --color4-40:#97a97c;
+    --color5-40:#87986a;
+    --color6-40:#718355;
+
+    --color1-41:#eae8d7;
+    --color2-41:#ecc1b8;
+    --color3-41:#c787b9;
+    --color4-41:#bd2860;
+    --color5-41:#3a0a5e;
+
+    --color1-42:#83e7e5;
+    --color2-42:#36cdc3;
+    --color3-42:#3baba7;
+    --color4-42:#429d96;
+    --color5-42:#4e7773;
+
+
+    --color1-43:#fd9a69;
+    --color2-43: #d9867d;
+    --color3-43:#b6809a;
+    --color4-43:#8b76b1;
+    --color5-43:#6D6ecb;
+
+    --color1-44:#FFB3B7; 
+    --color2-44:#FFDDDE; 
+    --color3-44:#DDE5EF; 
+    --color4-44:#A5BCDE;
+    --color5-44:#7C9CCB; 
+
+--color1-45:#DDBCD7;
+--color2-45:#D291BC;
+--color3-45:#C66EA8;
+--color4-45:#D6F7EC;
+--color5-45:#EBFFF6;
+}
+    
+    body{
+        background:#1E1E1E;
+        backdrop-filter: blur(10px);
+    }
+    .colors{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        transform-style: preserve-3d;
+        transition: .5s ease;
+    }
+    .color,.btn-color{
+        width: 250px;
+        height: 500px;
+        position: absolute;
+        top:200px;
+        left:calc(var(--position) *150px);
+        box-shadow:-2px -2px 3px rgb(93, 92, 92), 2px 2px 3px rgb(77, 71, 71);
+        border-radius: 40px;
+    }
+    .color:hover{
+        transform: scale(1.03);
+    }
+
+    .btn-color,.color-text{
+        background:gray;
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 15px;
+        padding: 10px;
+        z-index: 10;
+    }
+</style>
+<body>
+    <div class="colors" style="--color-pos:1">
+        <span class="color-text">1</span>
+        <button class="btn-color" style="--position:0" id="prv" onclick="change('-')"><</button>
+        <div class="color color1" style="background-color:var(--color1-1); --position:2" onclick="copyCode(this)"></div>
+        <div class="color color2" style="background-color:var(--color2-1); --position:3"></div>
+        <div class="color color3" style="background-color:var(--color3-1); --position:4"></div>
+        <div class="color color4" style="background-color:var(--color4-1); --position:5"></div>
+        <div class="color color5" style="background-color:var(--color5-1); --position:6"></div>
+        <button class="btn-color" style="--position:8" id="nxt" onclick="change('+')">></button>
+    </div>
+</body>
+
+<script>
+function change(type){
+    currentPosition=document.querySelector(".colors").style.getPropertyValue("--color-pos")
+    newPosition= type=="+"?(parseInt(currentPosition) +1):(parseInt(currentPosition) -1)
+    if(newPosition<1 ){
+        newPosition=45
+    }else if(newPosition>45){
+        newPosition= 1
+    }
+    // document.body.style=`background:linear-gradient(to left,var(--color${thiPos}-${newPosition}),var(--color${thiPos}-${newPosition}),var(--color${thiPos}-${newPosition}),var(--color${thiPos}-${newPosition}),var(--color${thiPos}-${newPosition}));`
+document.querySelector(".color-text").innerHTML=newPosition
+    document.querySelector(".colors").style.setProperty("--color-pos",newPosition)
+    document.querySelectorAll(".color").forEach(col=>{
+        thiPos=col.style.getPropertyValue("--position")- 1
+        col.style.backgroundColor = `var(--color${thiPos}-${newPosition})`
+    })
+}
+
+function copyCode(event){
+    console.log(event.style.getPropertyValue("background-color"))
+}
+</script>
+</html>

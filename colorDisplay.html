@@ -287,6 +287,83 @@
 --color3-45:#C66EA8;
 --color4-45:#D6F7EC;
 --color5-45:#EBFFF6;
+
+        --color1-46:0082a6;
+        --color2-46:f7f5ed;
+        --color3-46:c4dee3;
+        --color4-46:86b9c7;
+
+        --color1-47:7096a1;
+        --color2-47:b2c9ce;
+        --color3-47:e2f2dc;
+        --color4-47:f4f8f9;
+        --color5-47:85c5e9;
+
+        --color1-48:54261f;
+        --color2-48:986448;
+        --color3-48:eeafbfa;
+        --color4-48:f2f2ed;
+        --color5-48:f1dc92;
+
+        --color1-49:924a4e;
+        --color2-49:a37f97;
+        --color3-49:c7d1cf;
+        --color4-49:ecebe6;
+        --color5-49:d8ae5c;
+
+        --color1-50:987c83;
+        --color2-50:21bd72;
+        --color3-50:c1d4e1;
+        --color4-50:eaf2f2;
+        --color5-50:c0e25f;
+
+        --color1-51:856861;
+        --color2-51:ff81af;
+        --color3-51:ffc3d3;
+        --color4-51:f4eee8;
+        --color5-51:e2e991;
+
+        --color1-52:133f52;
+        --color2-52:307db8;
+        --color3-52:a4c7c6;
+        --color4-52:f1f1ea;
+        --color5-52:ffcb53;
+
+        --color1-53:2a5c4e;
+        --color2-53:6ea85e;
+        --color3-53:cdd5bc;
+        --color4-53:f1f0ed;
+        --color5-53:e3a6bd;
+
+        --color1-54:cc2804;
+        --color2-54:e77b3e;
+        --color3-54:dfbbd7;
+        --color4-54:ece8e6;
+        --color5-54:91bfd3;
+
+        --color1-55:699699;
+        --color2-55:a8c3c9;
+        --color3-55:eaebce;
+        --color4-55:f7f7f0;
+        --color5-55:e6cce3;
+
+        --color1-56:2d6d90;
+        --color2-56:a3d0da;
+        --color3-56:f2ecea;
+        --color4-56:e2d8cd;
+        --color5-56:b39d91;
+
+        --color1-57:951388;
+        --color2-57:c444a8;
+        --color3-57:f7b6d2;
+        --color4-57:f6ecd5;
+        --color5-57:b8b10d;
+
+        --color1-58:075b75;
+        --color2-58:3684bc;
+        --color3-58:e9f1f3;
+        --color4-58:e9b6d5;
+        --color5-58:fd6321;
 }
     
     body{
@@ -341,8 +418,8 @@ function change(type){
     currentPosition=document.querySelector(".colors").style.getPropertyValue("--color-pos")
     newPosition= type=="+"?(parseInt(currentPosition) +1):(parseInt(currentPosition) -1)
     if(newPosition<1 ){
-        newPosition=45
-    }else if(newPosition>45){
+        newPosition=58
+    }else if(newPosition>58){
         newPosition= 1
     }
     // document.body.style=`background:linear-gradient(to left,var(--color${thiPos}-${newPosition}),var(--color${thiPos}-${newPosition}),var(--color${thiPos}-${newPosition}),var(--color${thiPos}-${newPosition}),var(--color${thiPos}-${newPosition}));`

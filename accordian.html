@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://flutisthacker.github.io/gamemaybe/fonts.css">
+    <style>
+        body{
+            margin: 0;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .item{
+            background-color: #e9e9e9;
+            width: 280px;
+            padding: 20px;
+            border: 1px solid #c9c6c655;
+            border-radius: 10px;
+            transition: 0.5s;
+            margin-bottom:20px;
+            cursor: pointer;
+        }
+
+        .item .question{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+        .item .question .text{
+            width: calc(100% - 10px);
+        }
+
+        .item .question .dropdown{
+            width: max-content;
+            font-size: x-large;
+            transform: rotate(90deg);
+            transition: 0.5s;
+
+        }
+        .item .answer{
+            overflow: hidden;
+            max-height: 0px;
+            transition: .5s;
+        }
+
+        .item.active{
+            background-color: #fff;
+            cursor: auto;
+        }
+
+        .item.active .question .text{
+            font-weight: bold;
+        }
+
+        .item.active .question .dropdown{
+            transform: rotate(270deg);
+        }
+
+        .item.active .answer{
+            max-height: 100px;
+        }
+    </style>
+</head>
+
+<body class="f-geo">
+    <div class="list">
+        <div class="item">
+            <div class="question">
+                <div class="text">
+                    whats your name
+                </div>
+                <div class="dropdown">></div>
+            </div>
+            <div class="answer f-anta">my name saman</div>
+        </div>
+                <div class="item active">
+            <div class="question">
+                <div class="text">
+                    whats your name
+                </div>
+                <div class="dropdown">></div>
+            </div>
+            <div class="answer">my name saman</div>
+        </div>
+    </div>
+
+    <script>
+        let listItems= document.querySelectorAll(".list .item")
+
+        listItems.forEach(listItem=>{
+            listItem.addEventListener("click",(e)=>{
+                if(listItem.classList.contains("active")){
+                    if(e.target.classList.contains("dropdown")){
+                        listItem.classList.remove("active")
+                    }
+                }
+                else{
+                    listItem.classList.add("active")
+                }
+            })
+        })
+    </script>
+</body>
+</html>

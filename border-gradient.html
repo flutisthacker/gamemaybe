@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        height: 100vh;
+        background: #0e2136;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box{
+        width: 200px;
+        background: #142d4a;
+        aspect-ratio:  1/1;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    @property --deg{
+        syntax: '<angle>';
+        inherits: true;
+        initial-value: 0deg;
+    }
+
+    .box::after,.box::before{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: conic-gradient(from var(--deg) at center, #00c3ff, #4d0199,#6300c6,#009dcd);
+        border-radius: inherit;
+        z-index: -2;
+        padding: 2px;
+        animation: autoRotate 2s linear infinite;
+    }
+
+    @keyframes autoRotate {
+        from{
+            --deg: 0deg;
+        }
+        to{
+            --deg: 360deg;
+        }
+    }
+    .box::after{
+        /* z-index: 1; */
+        filter: blur(10px);
+    }
+
+</style>
+<body>
+    <div class="box"></div>
+</body>
+</html>

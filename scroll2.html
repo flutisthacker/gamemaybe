@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<style>
+    :root{
+        --size:25rem;
+    }
+    body{
+        background-color: #000;
+    }
+    .d-none{
+        display: none;
+    }
+    .menu{
+        border:  2px solid rgba(255, 255, 255,0.1);
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        /* width: 400px;
+        height: 400px; */
+        width: var(--size);
+        height: var(--size);
+        background: radial-gradient(55% 55% at 70% 35%, rgba(255,255,255,0.2) 0%,
+         rgba(0,0,0,0) 100%), rgba(255, 255, 255, .05);
+        box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.5),
+         inset -1px -1px 1px rgba(255, 255, 255, 0.3);
+         transition: .600s ease;
+    }
+    .menu a{
+        position: absolute;
+        top:50%;
+        right: 50%;
+        transform: translate(-50% , -50%);
+    }
+    .sector{
+        border: 1px solid rgba(255, 255, 255,0.1);
+        width: calc(var(--size)/2);
+        height: calc(var(--size)/2);
+        --totalSector:5;
+        --skewVal:calc((360 / 5 ) - 90 );
+        --angle:calc((360 / 5 ) * (var(--pos) + 1) );
+        margin: calc((var(--size)/2) * -1 ) calc((var(--size)/2) * -1) 0 0 ;
+        transform-origin: bottom left;
+        /* transform:  skew(calc( var(--skewVal)* 1deg)) rotate(calc(var(--angle) * 1deg)) ; */
+        /* transform:  skew(calc(((360 / 5 ) - 90 )* 1deg)) rotate(calc(((360 / 5 ) - 90 )* 1deg)) ; */
+    }
+    .option{
+        position: absolute;
+        font-size: 2rem;
+        color: #eee;
+        width: calc(var(--size)/4);
+        height: calc(var(--size)/4);
+        text-align: center;
+        top: calc(50% - var(--size)/14);
+        left: calc(50% - var(--size)/8);
+        /* top: calc(50% - 1.7rem); */
+        /* left: calc(50% - 3rem); */
+        transform-origin: bottom left;
+        /* transform: rotateZ(30deg) translate(-140px) rotate(-30deg); */
+    }
+    .menu a:hover .sector{
+        background-color: #eee;
+    }
+
+    .menu a:hover .option{
+        color: #444;
+        transform: scale(1.1);
+    }
+    .mainMenu{
+     width:calc(var(--size)/5);   
+     height:calc(var(--size)/5);   
+     color: #f1aca2;
+     z-index: 100;
+     position: absolute;
+     top: 40%;
+     left: 40%;
+     background-color: rgba(15, 15, 15,1);
+     border-radius: 50%
+    }
+    .mainMenu i{
+        margin: 5px;
+        line-height: 10px;
+        font-size: 42px;
+        transform: translate(45%,300%);
+    }
+</style>
+<body>
+    <div class="menu">
+        <div class="mainMenu">
+            <i class="fa fa-list"></i>
+        </div>
+        <a href=""><div class="sector" style="--pos:0;"></div><div class="option"><i class="fa fa-home"></i></div></a>
+        <a href=""><div class="sector" style="--pos:1;"></div><div class="option"><i class="fa fa-phone"></i></div></a>
+        <a href=""><div class="sector" style="--pos:2;"></div><div class="option"><i class="fa fa-edit"></i></div></a>
+        <a href=""><div class="sector" style="--pos:3;"></div><div class="option"><i class="fa fa-music"></i></div></a>
+        <a href=""><div class="sector" style="--pos:4;"></div><div class="option"><i class="fa fa-search"></i></div></a>
+        <a href=""><div class="sector" style="--pos:4;"></div><div class="option"><i class="fa fa-camera"></i></div></a>
+    </div>
+    <script>
+        let $=(x)=> document.querySelector(x);
+        let $$=(x)=> document.querySelectorAll(x);
+        $(".mainMenu").addEventListener("click",(e)=>{
+            $$(".menu a").forEach((x,i)=>{
+                x.classList.toggle("d-none")
+            })
+        })
+        
+        let sectors=$$(".sector");
+        let options=$$(".option");
+        const totalSector=sectors.length;
+        const skewCal= (360 / totalSector ) - 90;
+        var deviattion=0;
+        if((totalSector/2) % 2 !=0){
+            deviattion= 360 /totalSector /2;
+        }
+        sectors.forEach((e,i) => {
+            const angle=(360 / totalSector) * (i + 1) -deviattion;
+            let optionAngle= angle + Math.abs(skewCal)+ (90 - Math.abs(skewCal))/2 
+            e.style.transform =`rotate(${angle}deg) skew(${skewCal}deg)`
+            options[i].style.transform =`rotateZ(${optionAngle}deg) translateY(-140px) rotate(-${optionAngle}deg)`
+        });
+    </script>
+</body>
+</html>

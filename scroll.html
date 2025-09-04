@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *,body{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        display: flex;
+        flex-direction: row;
+        height: 500vh;
+        background: white;
+        scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+    }
+    .text-item{
+        flex-basis: 30%;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+    .menu-item{
+        flex-basis:70%;
+        height: 100vh;
+        font-size: 20rem;
+        text-align: center;
+        text-transform: uppercase;
+        line-height: -20px;
+        position: sticky;
+        top: 0;
+    }
+    
+    .card{
+        transition: .675s ease;
+        background-color: #407Aff;
+        border-radius: 25px;
+        height: 22rem;
+        width: 22rem;
+        position: absolute;
+        top:calc(50% - 11rem);
+        left:calc(50% - 11rem);
+    }
+    .away{
+        transform: translateY(20px);
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="text-item">
+            saman Maharjan
+            <nav class="nav">
+                <a href="#home" class="nav-item">home</a>
+                <a href="#about" class="nav-item">about</a>
+                <a href="#contact" class="nav-item">contact</a>
+                <a href="#policy" class="nav-item">policy</a>
+                <a href="#team" cla☻ss="nav-item">team</a>
+            </nav>
+        </div>
+        <div class="menu-item">
+            <div class="card" id="home" style="background-color: #407Aff;">1</div>
+            <div class="card" id="about" style="background-color: #427Cff;">2</div>
+            <div class="card" id="contact" style="background-color: #119Aff;">3</div>
+            <div class="card" id="policy" style="background-color: #21FAff;">4</div>
+            <div class="card" id="team" style="background-color: #14A1ff;">5</div>
+            <div class="card" id="team" style="background-color: #25A2ff;">6</div>
+            <div class="card" id="team" style="background-color: #36A5ff;">7</div>
+            <div class="card" id="team" style="background-color: #47A7ff;">8</div>
+        </div>
+    </div>
+    <script>
+        stackArea=document.querySelector(".container")
+        cards=document.querySelectorAll(".card")
+            function rotateCards(){
+                let angle=0;
+                cards.forEach((card,index)=>{
+                    if(card.classList.contains("away")){
+                        card.style.transform=`translateY(-120vh) rotate(-48deg)`
+                    }
+                    else{
+                        card.style.transform=`rotate(${angle}deg)`;
+                        angle=angle-10;
+                        card.style.zIndex=cards.length-index;
+                    }
+                    })
+            }
+
+            window.addEventListener("scroll",(x)=>{
+                let distance=window.innerHeight/2;
+                let topVal=stackArea.getBoundingClientRect().top;
+                console.log(topVal,distance)
+                let index= -1 * (topVal / distance + 1);
+                index = Math.floor(index)
+                for(i=0;i<cards.length;i++){
+                    if(i<=index){
+                        cards[i].classList.add("away")
+                    }else{
+                        cards[i].classList.remove("away")
+                    }
+                }
+            rotateCards()
+            })
+    </script>
+</body>
+</html>

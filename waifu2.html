@@ -6,22 +6,70 @@
     <title>Document</title>
 </head>
 <style>
-    body{
+    .imgs{
         display: flex;
         gap:10px;
-        overflow-x: scroll;
-        scroll-snap-type:mandatory;
+
     }
     img{
-        /* width: 100vw; */
-        height: 100vh;
+        width: 50vw;
+        /* height: 100vh; */
         aspect-ratio:"16:9";       
     }
 </style>
 <body>
-    <img src="" alt="" id="img" srcset="">
+    <div class="imgs">
+        <img src="" alt="" id="img" srcset="">
+    </div>
+    <a href="https://example.com/image.jpg" id="imgDownload" download="my-image.gif">Download</a>
+    <select name="" id="type"></select>
     <script>
-        const apiUrl = 'https://api.nekosia.cat/api/v1/images/sword';
+        const list2=["ufiaw",
+"oken",
+"part",
+"bojwolb"]
+        const lists=["waifu",
+"neko",
+"shinobu",
+"megumin",
+"bully",
+"cuddle",
+"cry",
+"hug",
+"awoo",
+"kiss",
+"lick",
+"pat",
+"smug",
+"bonk",
+"yeet",
+"blush",
+"smile",
+"wave",
+"highfive",
+"handhold",
+"nom",
+"bite",
+"glomp",
+"slap",
+"kill",
+"kick",
+"happy",
+"wink",
+"poke",
+"dance",
+"cringe"]
+lists.forEach(l=>{
+    document.querySelector("#type").innerHTML+=`<option value="${l}">${l}</option>`
+})
+list2.forEach(l=>{
+    document.querySelector("#type").innerHTML+=`<option value="${l.split("").reverse().join("")}">${l}</option>`
+})
+document.querySelector("#type").addEventListener("change",s=>{
+    location.search="?sfw=" +s.target.value
+})
+        urlPath=location.search.slice(1,).split("=").join("/")
+        const apiUrl = 'https://api.waifu.pics/'+urlPath;
 const params = {
 //   included_tags: ['raiden-shogun', 'maid'],
   height: '>=2000',
@@ -54,7 +102,8 @@ fetch(requestUrl)
   .then(data => {
     // Process the response data as needed
     console.log(data);
-    document.querySelector("#img").src=(data.image.original.url)
+    document.querySelector("#img").src=(data.url)
+    document.querySelector("#imgDownload").href=(data.url)
 
   })
   .catch(error => {

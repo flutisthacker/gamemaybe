@@ -123,7 +123,7 @@ document.querySelector("#nekos").addEventListener("change",()=>{
 async function putimg(url){
     console.log(url)
     aa=await fetchAPI(`https://api.waifu.pics/${url}`)
-    aaa=await fetchAPI(`https://nekos.best/api/v1/${url}`)
+    aaa=await fetchAPI(`https://api.waifu.pics/${url}`)
     
     aa=JSON.parse(aa)
     aaa=JSON.parse(aaa)

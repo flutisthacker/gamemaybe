@@ -19,6 +19,7 @@
     transition: left .2s ease;
     left: 45%;
     transform: rotateY(180deg);
+    transform-origin: bottom left;
     backface-visibility: hidden;
   }
 
@@ -90,9 +91,9 @@
     let pb3 = document.querySelector("#pb3")
     document.querySelector(".nikal").addEventListener("click", () => {
       if (took % 2 == 0) {
-        document.querySelector(`#card${took}`).style = "left:250px; transform:rotateY(0);"
+        document.querySelector(`#card${took}`).style = `left:250px; transform:rotateZ(${20*took}deg);`
       } else {
-        document.querySelector(`#card${took}`).style = "left:950px;  transform:rotateY(0); "
+        document.querySelector(`#card${took}`).style = `left:950px;  transform:rotateZ(${20*took}deg);`
         collectPoint(document.querySelector(`#card${took-1}`), document.querySelector(`#card${took}`));
       }
       took++;

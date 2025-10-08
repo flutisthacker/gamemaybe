@@ -91,9 +91,9 @@
     let pb3 = document.querySelector("#pb3")
     document.querySelector(".nikal").addEventListener("click", () => {
       if (took % 2 == 0) {
-        document.querySelector(`#card${took}`).style = `left:250px; transform:rotateZ(${20*took}deg);`
+        document.querySelector(`#card${took}`).style = `left:250px; transform:rotateZ(${5*took}deg);`
       } else {
-        document.querySelector(`#card${took}`).style = `left:950px;  transform:rotateZ(${20*took}deg);`
+        document.querySelector(`#card${took}`).style = `left:950px;  transform:rotateZ(${5*took}deg);`
         collectPoint(document.querySelector(`#card${took-1}`), document.querySelector(`#card${took}`));
       }
       took++;

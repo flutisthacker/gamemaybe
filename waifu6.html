@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        gap:10px;
+        overflow-x: scroll;
+        scroll-snap-type:mandatory;
+    }
+    img{
+        /* width: 100vw; */
+        height: 100vh;
+        aspect-ratio:"16:9";       
+    }
+</style>
+<body>
+    <img src="" alt="" id="img" srcset="">
+    <video src="" id="video"></video>
+    <script>
+        const apiUrl = 'https://random.dog/woof.json';
+const params = {
+//   included_tags: ['raiden-shogun', 'maid'],
+//   height: '>=2000',
+//   is_nsfw:"true",
+// gif:true,
+// limit:20
+};
+
+const queryParams = new URLSearchParams();
+
+for (const key in params) {
+  if (Array.isArray(params[key])) {
+    params[key].forEach(value => {
+      queryParams.append(key, value);
+    });
+  } else {
+    queryParams.set(key, params[key]);
+  }
+}
+const requestUrl = `${apiUrl}?${queryParams.toString()}`;
+
+fetch(requestUrl)
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Request failed with status code: ' + response.status);
+    }
+  })
+  .then(data => {
+    // Process the response data as needed
+    console.log(data);
+    if(!data.url.includes("mp4")){
+        document.querySelector("#img").src=(data.url)
+    }
+    else{
+        document.querySelector("#video").src=(data.url)
+
+    }
+
+  })
+  .catch(error => {
+    console.error('An error occurred:', error.message);
+  });
+
+    </script>
+</body>
+</html>

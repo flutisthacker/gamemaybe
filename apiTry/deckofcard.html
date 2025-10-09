@@ -23,6 +23,14 @@
     backface-visibility: hidden;
   }
 
+  .mycard::before{
+    position: absolute;
+    top: 0;
+    transition: left .2s ease;
+    left: 45%;
+    transform: rotateY(180deg);
+    background: url("https://deckofcardsapi.com/static/img/back.png");
+  }
   .mycard:hover {
     transform: rotateY(180deg);
   }

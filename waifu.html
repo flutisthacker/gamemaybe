@@ -25,9 +25,10 @@
 const params = {
 //   included_tags: ['raiden-shogun', 'maid'],
   height: '>=2000',
-//   is_nsfw:"true",
+  width: '>=1000',
+  is_nsfw:`${location.search.slice(1,).split("=")[0]}`,
 // gif:true,
-limit:20
+limit:parseInt(location.search.split("=")[1]) ||10
 };
 
 const queryParams = new URLSearchParams();

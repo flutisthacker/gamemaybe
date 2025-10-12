@@ -7,15 +7,15 @@
 </head>
 <style>
     .card{
-        width: 15rem;
-        height: 18rem;
+        width: 90vw;
+        height: 90vh;
         background: var(--col);
         border-radius: 5%;
         color: var(--col);
         content: var(--pos);
-        font-size: 5rem;
+        font-size: 20rem;
         text-align: center;
-        line-height: 18rem;
+        line-height: 90vw;
         margin: 10px;
     }
     .card::before{
@@ -23,7 +23,7 @@
         height: 75px;
         z-index: 3;
         content: var(--pos);
-        filter: invert();
+        color: black;
     }
 
 .wild{
@@ -31,10 +31,9 @@
 }
 </style>
 <body>
-<div class="myCards">
+<div class="myCards" onclick="updateCard()">
     <div class="card" style="--pos:'4';--col:red"></div>
 </div>
-<button class="btn-info" onclick="updateCard()">change</button>
     <script>
         lists=[0,1,2,3,4,5,6,7,8,9,'x','o','#','+2',"+4"]
         clist=["red","blue","green","yellow"]

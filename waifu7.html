@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .card{
+        width: 15rem;
+        height: 18rem;
+        background: var(--col);
+        border-radius: 5%;
+        color: var(--col);
+        content: var(--pos);
+        font-size: 5rem;
+        text-align: center;
+        line-height: 18rem;
+        margin: 10px;
+    }
+    .card::before{
+        width: inherit;
+        height: 75px;
+        z-index: 3;
+        content: var(--pos);
+        filter: invert();
+    }
+
+.wild{
+    background: conic-gradient(red 25%,blue 75%,green 25%,yellow 75%);
+}
+</style>
+<body>
+<div class="myCards">
+    <div class="card" style="--pos:'4';--col:red"></div>
+</div>
+<button class="btn-info" onclick="updateCard()">change</button>
+    <script>
+        lists=[0,1,2,3,4,5,6,7,8,9,'x','o','#','+2',"+4"]
+        clist=["red","blue","green","yellow"]
+        totalList=[]
+        lists.forEach(e => {
+        clist.forEach(f => {
+            totalList.push(`<div class="card" style="--pos:'${e}'; --col:${f}"></div>`)
+        });
+        });
+        function updateCard(){
+            document.querySelector(".myCards").innerHTML=totalList[Math.floor(Math.random()* totalList.length)]
+        }
+    </script>
+</html>

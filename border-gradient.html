@@ -16,19 +16,23 @@
         justify-content: center;
         align-items: center;
     }
-
-    .box{
-        width: 200px;
-        background: #142d4a;
-        aspect-ratio:  1/1;
-        border-radius: 10px;
-        position: relative;
-    }
-
     @property --deg{
         syntax: '<angle>';
         inherits: true;
         initial-value: 0deg;
+    }
+
+
+    .box{
+        width: 700px;
+        background: #142d4a;
+        aspect-ratio:  4/3;
+        border-radius: 25px;
+        /* border-radius: 10px; */
+        /* border-radius: 90px 0; */
+        position: relative;
+        margin: 9px;
+        box-shadow: 3px 3px 10px #6300c6;
     }
 
     .box::after,.box::before{
@@ -36,13 +40,27 @@
         position: absolute;
         height: 100%;
         width: 100%;
-        background: conic-gradient(from var(--deg) at center, #00c3ff, #4d0199,#6300c6,#009dcd);
+        /* background: conic-gradient(from var(--deg) at center, #00c3ff,transparent, #4d0199,#6300c6,transparent,#009dcd); */
+        /* background: conic-gradient(from var(--deg) at center, #00c3ff, #4d0199,#6300c6,#009dcd); */
+        /* background: conic-gradient(from var(--deg) at center,transparent,#6300c6,#009dcd); */
+        /* background: conic-gradient(from var(--deg) at center,#6300c6,transparent,transparent); */
+        background: linear-gradient( 90deg, transparent 30%,#c800ff,#ff2c9B,#ff7b00,#ff8504,#ffd363,transparent 70%);
+        background-size: 300% 300%;
         border-radius: inherit;
         z-index: -2;
         padding: 2px;
-        animation: autoRotate 2s linear infinite;
+        /* animation: autoRotate 8s linear infinite; */
+        animation: autoRotate2 5s linear infinite;
     }
 
+    @keyframes autoRotate2 {
+        from{
+            background-position: 300% 50%;
+        }
+        to{
+            background-position: 0% 50%;
+        }
+    }
     @keyframes autoRotate {
         from{
             --deg: 0deg;
@@ -53,11 +71,78 @@
     }
     .box::after{
         /* z-index: 1; */
-        filter: blur(10px);
+        filter: blur(20px);
+    }
+    .box::before{
+        /* z-index: 1; */
+        filter: blur(5px);
     }
 
+
+
 </style>
+
+<style>
+        .box2{
+        width: 700px;
+        background: #142d4a;
+        aspect-ratio:  4/3;
+        border-radius: 25px;
+        /* border-radius: 10px; */
+        /* border-radius: 90px 0; */
+        position: relative;
+        margin: 9px;
+        box-shadow: 3px 3px 10px #6300c6;
+    }
+
+    .box2::after,.box2::before{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        /* background: conic-gradient(from var(--deg) at center, #00c3ff,transparent, #4d0199,#6300c6,transparent,#009dcd); */
+        /* background: conic-gradient(from var(--deg) at center, #00c3ff, #4d0199,#6300c6,#009dcd); */
+        /* background: conic-gradient(from var(--deg) at center,transparent,#6300c6,#009dcd); */
+        background: conic-gradient(from var(--deg) at center,#6300c6,transparent,transparent);
+        /* background: linear-gradient( 90deg, transparent 30%,#c800ff,#ff2c9B,#ff7b00,#ff8504,#ffd363,transparent 70%); */
+        /* background-size: 300% 300%; */
+        border-radius: inherit;
+        z-index: -2;
+        padding: 2px;
+        animation: autoRotate 8s linear infinite;
+        /* animation: autoRotate2 5s linear infinite; */
+    }
+
+    @keyframes autoRotate2 {
+        from{
+            background-position: 300% 50%;
+        }
+        to{
+            background-position: 0% 50%;
+        }
+    }
+    @keyframes autoRotate {
+        from{
+            --deg: 0deg;
+        }
+        to{
+            --deg: 360deg;
+        }
+    }
+    .box2::after{
+        /* z-index: 1; */
+        filter: blur(20px);
+    }
+    .box2::before{
+        /* z-index: 1; */
+        filter: blur(5px);
+    }
+
+
+    </style>
+
 <body>
     <div class="box"></div>
+    <div class="box2"></div>
 </body>
 </html>

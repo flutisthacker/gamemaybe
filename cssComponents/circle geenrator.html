@@ -43,6 +43,13 @@
             <option value="groove">groove</option>
             <option value="solid">solid</option>
         </select>
+        <select name="" id="cornerType">
+            <option value="bevel">border type</option>
+            <option value="squircle">dotted</option>
+            <option value="notch">dashed</option>
+            <option value="scoop">ridge</option>
+            <option value="round">double</option>
+        </select>
         <input type="number" name="" id="skewdeg" placeholder="skew value" min="-15" max="15">
         <input type="number" name="" min="0" id="bordSize" placeholder="border value">
         <input type="number" value="180" name="" id="numShape" placeholder="number of rounds value">
@@ -144,6 +151,11 @@ function changeBorder(borderRad,shape){
         w.style.borderRadius =borderRad
     })
 }
+function changeCorner(borderRad,shape){
+    document.querySelectorAll(`.${shape}`).forEach(w=>{
+        w.style.cornerShape=borderRad
+    })
+}
 function changeDeg(borderRad,shape){
     document.querySelectorAll(`.${shape}`).forEach((w,index)=>{
         w.style.transform += `rotate(-${borderRad}deg)`
@@ -173,6 +185,9 @@ function skewDeg(borderRad,shape){
     })
     document.querySelector("#bordType").addEventListener("change",()=>{
         setBorderType(document.querySelector("#bordType").value,pattern.value)
+    })
+    document.querySelector("#cornerType").addEventListener("change",()=>{
+        setCornerType(document.querySelector("#cornerType").value,pattern.value)
     })
     document.querySelector("#numShape").addEventListener("change",()=>{
         myCount=document.querySelector("#numShape").value;

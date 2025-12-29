@@ -44,11 +44,11 @@
             <option value="solid">solid</option>
         </select>
         <select name="" id="cornerType">
-            <option value="bevel">border type</option>
-            <option value="squircle">dotted</option>
-            <option value="notch">dashed</option>
-            <option value="scoop">ridge</option>
-            <option value="round">double</option>
+            <option value="bevel">bevel type</option>
+            <option value="squircle">squircle</option>
+            <option value="notch">notch</option>
+            <option value="scoop">scoop</option>
+            <option value="round">round</option>
         </select>
         <input type="number" name="" id="skewdeg" placeholder="skew value" min="-15" max="15">
         <input type="number" name="" min="0" id="bordSize" placeholder="border value">
@@ -187,7 +187,7 @@ function skewDeg(borderRad,shape){
         setBorderType(document.querySelector("#bordType").value,pattern.value)
     })
     document.querySelector("#cornerType").addEventListener("change",()=>{
-        setCornerType(document.querySelector("#cornerType").value,pattern.value)
+        changeCorner(document.querySelector("#cornerType").value,pattern.value)
     })
     document.querySelector("#numShape").addEventListener("change",()=>{
         myCount=document.querySelector("#numShape").value;

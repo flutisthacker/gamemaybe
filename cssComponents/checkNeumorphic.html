@@ -265,10 +265,8 @@
  
 
     function changeCorner(borderRad,shape){
-    document.querySelector(`.neumorphic`).forEach(w=>{
-        w.style.cornerShape=document.querySelector("#cornerType").selectedOptions[0].value || borderRad
-    })
-}
+        document.querySelector(`.neumorphic`).style.cornerShape=document.querySelector("#cornerType").selectedOptions[0].value || borderRad
+    }
 
     function setBoxShadow(ele, bshadow) {
       ele.style.boxShadow = bshadow;

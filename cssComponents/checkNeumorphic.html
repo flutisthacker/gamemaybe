@@ -144,6 +144,9 @@
             <option value="round">round</option>
         </select>
   </div>
+      <code class="myCode" style="height:10vh; width:100vw">
+    </code>
+
   <script src="colorchange.js"></script>
   <script>
     neubtn = document.querySelector(".neubtn")
@@ -285,6 +288,7 @@
       box-shadow:${selectedshadow}`;
       console.clear()
       console.log(codetext)
+      document.querySelector(".myCode").innerHTML=codetext
     }
 
     function addMinutes(date, minutes) {

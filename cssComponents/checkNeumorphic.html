@@ -136,7 +136,13 @@
       <option value="lgab">concave</option>
       <option value="lgba">uncave</option>
     </select>
-
+    <select name="" id="cornerType" onchange="changeCorner(this.selectedOpions[0].value)">
+            <option value="bevel">bevel type</option>
+            <option value="squircle">squircle</option>
+            <option value="notch">notch</option>
+            <option value="scoop">scoop</option>
+            <option value="round">round</option>
+        </select>
   </div>
   <script src="colorchange.js"></script>
   <script>
@@ -254,6 +260,15 @@
       nshape = neuShape.value
       setNeuMorphic(neumorphic, selectShadow(neuShadow.value, ""), nrad, selectShape(nshape));
     })
+
+    
+ 
+
+    function changeCorner(borderRad,shape){
+    document.querySelector(`.neumorphic`).forEach(w=>{
+        w.style.cornerShape=borderRad
+    })
+}
 
     function setBoxShadow(ele, bshadow) {
       ele.style.boxShadow = bshadow;

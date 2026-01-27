@@ -11,11 +11,14 @@
 <style>
   body {
     background: #55b9f3;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
   }
 
+  .offcanvas-body{
+        display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+  }
   .neumorphic {
     height: 300px;
     width: 300px;
@@ -85,13 +88,9 @@
 </style>
 
 <body>
-<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-  Link with href
+<a class="btn btn-primary fixed-top" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+  Menu
 </a>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-  Button with data-bs-target
-</button>
-
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>

@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <style>
   body {
@@ -83,67 +85,81 @@
 </style>
 
 <body>
+<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+  Link with href
+</a>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  Button with data-bs-target
+</button>
 
-  <div class="neubtn">
-    <input type="color" name="" id="newcolor">
-    <label for="neuDistance">Size: <span id="nsizeval">0</span></label>
-    <input class="range" type="range" name="neuDistance" min="0" value="0" max="100" id="neuDistance">
-    <label for="neuborder">Radius: <span id="nborderval">0</span></label>
-    <input class="range" type="range" name="" min="0" value="0" max="100" id="neuborder">
-    <input class="range" type="range" name="" min="100" value="0" max="500" id="neuSize">
-    <label for="neuint">Intensity: <span id="nintval">0</span></label>
-    <input class="range" type="range" name="" min="0" value="0" max="25" id="neuint">
-    <label for="neuBlur">Blur: <span id="nBlurval">0</span></label>
-    <input class="range" type="range" name="" min="0" value="0" max="50" id="neublur">
-    <div class="grid">
-      <label for="stleft" class="suare">
-      </label>
-      <input type="radio" name="checks" value="abxy" id="stleft" class="suareR">
-      <label for="sbleft" class="suare">
-      </label>
-      <input type="radio" name="checks" value="axby" id="sbleft" class="suareR">
-      <label for="sbright" class="suare">
-      </label>
-      <input type="radio" name="checks" value="aybx" id="sbright" class="suareR">
-      <label for="stright" class="suare">
-      </label>
-      <input type="radio" name="checks" value="axyb" id="stright" class="suareR">
-    </div>
-    <div class="grid">
-      <label for="stleft" class="suare">
-      </label>
-      <input type="radio" name="checkss" value="normal" id="stleft" class="suareS">
-      <label for="stright" class="suare">
-      </label>
-      <input type="radio" name="checkss" value="inset" id="stright" class="suareS">
-      <label for="sbleft" class="suare">
-      </label>
-      <input type="radio" name="checkss" value="lgab" id="sbleft" class="suareS">
-      <label for="sbright" class="suare">
-      </label>
-      <input type="radio" name="checkss" value="lgba" id="sbright" class="suareS">
-    </div>
-    <select name="" id="neuShadow">
-      <option value="abxy">normal</option>
-      <option value="axyb">bhitra</option>
-      <option value="axby">\diagonal</option>
-      <option value="aybx">/diagonal</option>
-    </select>
-    <select name="" id="neuShape">
-      <option value="normal">bahira</option>
-      <option value="inset">bhitra</option>
-      <option value="lgab">concave</option>
-      <option value="lgba">uncave</option>
-    </select>
-    <select name="" id="cornerType" onchange="changeCorner(this)">
-            <option value="bevel">bevel type</option>
-            <option value="squircle">squircle</option>
-            <option value="notch">notch</option>
-            <option value="scoop">scoop</option>
-            <option value="round">round</option>
-        </select>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="neumorphic">
+  <div class="offcanvas-body">
+    <div class="neubtn">
+      <input type="color" name="" id="newcolor">
+      <label for="neuDistance">Size: <span id="nsizeval">0</span></label>
+      <input class="range" type="range" name="neuDistance" min="0" value="0" max="100" id="neuDistance">
+      <label for="neuborder">Radius: <span id="nborderval">0</span></label>
+      <input class="range" type="range" name="" min="0" value="0" max="100" id="neuborder">
+      <input class="range" type="range" name="" min="100" value="0" max="500" id="neuSize">
+      <label for="neuint">Intensity: <span id="nintval">0</span></label>
+      <input class="range" type="range" name="" min="0" value="0" max="25" id="neuint">
+      <label for="neuBlur">Blur: <span id="nBlurval">0</span></label>
+      <input class="range" type="range" name="" min="0" value="0" max="50" id="neublur">
+      <div class="grid">
+        <label for="stleft" class="suare">
+        </label>
+        <input type="radio" name="checks" value="abxy" id="stleft" class="suareR">
+        <label for="sbleft" class="suare">
+        </label>
+        <input type="radio" name="checks" value="axby" id="sbleft" class="suareR">
+        <label for="sbright" class="suare">
+        </label>
+        <input type="radio" name="checks" value="aybx" id="sbright" class="suareR">
+        <label for="stright" class="suare">
+        </label>
+        <input type="radio" name="checks" value="axyb" id="stright" class="suareR">
+      </div>
+      <div class="grid">
+        <label for="stleft" class="suare">
+        </label>
+        <input type="radio" name="checkss" value="normal" id="stleft" class="suareS">
+        <label for="stright" class="suare">
+        </label>
+        <input type="radio" name="checkss" value="inset" id="stright" class="suareS">
+        <label for="sbleft" class="suare">
+        </label>
+        <input type="radio" name="checkss" value="lgab" id="sbleft" class="suareS">
+        <label for="sbright" class="suare">
+        </label>
+        <input type="radio" name="checkss" value="lgba" id="sbright" class="suareS">
+      </div>
+      <select name="" id="neuShadow">
+        <option value="abxy">normal</option>
+        <option value="axyb">bhitra</option>
+        <option value="axby">\diagonal</option>
+        <option value="aybx">/diagonal</option>
+      </select>
+      <select name="" id="neuShape">
+        <option value="normal">bahira</option>
+        <option value="inset">bhitra</option>
+        <option value="lgab">concave</option>
+        <option value="lgba">uncave</option>
+      </select>
+      <select name="" id="cornerType" onchange="changeCorner(this)">
+              <option value="bevel">bevel type</option>
+              <option value="squircle">squircle</option>
+              <option value="notch">notch</option>
+              <option value="scoop">scoop</option>
+              <option value="round">round</option>
+          </select>
+    </div>
+  </div>
+</div>
+  <div class="neumorphic row">
   </div>
   
   <script src="colorchange.js"></script>
